@@ -1,8 +1,3 @@
----
-html:
-    toc: true
----
-
 # MySQL
 
 ## MySQL基础

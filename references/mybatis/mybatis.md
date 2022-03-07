@@ -1,8 +1,3 @@
----
-html:
-    toc: true
----
-
 # MyBatis
 
 ## MyBatis基础

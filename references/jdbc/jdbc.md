@@ -1,8 +1,3 @@
----
-html:
-    toc: true
----
-
 # JDBC
 
 ### 一、JDBC快速入门
