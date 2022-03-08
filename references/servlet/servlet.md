@@ -151,7 +151,7 @@ Servlet支持三种映射方式，以达到灵活配置的目的。
 
 它其实就是给一个Servlet配置多个访问映射，从而可以根据不同请求URL实现不同的功能。
 
-首先，创建一个Servlet：
+首先，创建一个Servlet。
 
 ```java
 /**
@@ -231,7 +231,7 @@ public class ServletDemo7 extends HttpServlet {
 我们前面讲解了Servlet的生命周期，Servlet的创建默认情况下是请求第一次到达Servlet时创建的。但是我们都知道，Servlet是单例的，也就是说在应用中只有唯一的一个实例，所以在Tomcat启动加载应用的时候就创建也是一个很好的选择。那么两者有什么区别呢？
 
 - 第一种：**应用加载时创建Servlet**，它的优势是在服务器启动时，就把需要的对象都创建完成了，从而在使用的时候减少了创建对象的时间，提高了首次执行的效率。它的弊端也同样明显，因为在应用加载时就创建了Servlet对象，因此，导致内存中充斥着大量用不上的Servlet对象，造成了内存的浪费。
-- 第二种：**请求第一次访问是创建Servlet**，它的优势就是减少了对服务器内存的浪费，因为那些一直没有被访问过的Servlet对象都没有创建，因此也提高了服务器的启动时间。而它的弊端就是，如果有一些要在应用加载时就做的初始化操作，它都没法完成，从而要考虑其他技术实现。
+- 第二种：**请求第一次访问时创建Servlet**，它的优势就是减少了对服务器内存的浪费，因为那些一直没有被访问过的Servlet对象都没有创建，因此也提高了服务器的启动时间。而它的弊端就是，如果有一些要在应用加载时就做的初始化操作，它都没法完成，从而要考虑其他技术实现。
 
 在web.xml中是支持对Servlet的创建时机进行配置的，配置的方式如下：我们就以ServletDemo3为例。
 
@@ -272,6 +272,9 @@ public class ServletDemo7 extends HttpServlet {
 #### 4.1.2 生命周期
 
 由于它是在初始化阶段读取了web.xml中为Servlet准备的初始化配置，并把配置信息传递给Servlet，所以生命周期与Servlet相同。这里需要注意的是，如果Servlet配置了`<load-on-startup>1</load-on-startup>`，那么ServletConfig也会在应用加载时创建。
+
+> + 非负整数（包括0）表示应用加载时创建，数值越小，表明创建的优先级越高；
+> + 负数表示第一次访问时创建。
 
 ### 4.2 ServletConfig的使用
 
@@ -993,23 +996,23 @@ public class RequestDemo5 extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //1.获取请求正文
-		/*POST方式：
-		 * 问题：
-		 * 	取的时候会不会有乱码
-		 * 答案：
-		 * 	获取请求正文，会有乱码问题。
-		 * 	是在获取的时候就已经乱码了。
-		 * 解决办法：
-		 * 	 是request对象的编码出问题了
-		 *   设置request对象的字符集
-		 *   request.setCharacterEncoding("GBK");它只能解决POST的请求方式，GET方式解决不了
-		 * 结论：
-		 * 	 请求正文的字符集和响应正文的字符集没有关系。各是各的
-		 */
-		request.setCharacterEncoding("UTF-8");
-		String username = request.getParameter("username");
+        /*POST方式：
+        * 问题：
+        * 	取的时候会不会有乱码
+        * 答案：
+        * 	获取请求正文，会有乱码问题。
+        * 	是在获取的时候就已经乱码了。
+        * 解决办法：
+        * 	 是request对象的编码出问题了
+        *   设置request对象的字符集
+        *   request.setCharacterEncoding("GBK");它只能解决POST的请求方式，GET方式解决不了
+        * 结论：
+        * 	 请求正文的字符集和响应正文的字符集没有关系。各是各的
+        */
+        request.setCharacterEncoding("UTF-8");
+        String username = request.getParameter("username");
         //输出到控制台
-		System.out.println(username);
+        System.out.println(username);
         //输出到浏览器：注意响应的乱码问题已经解决了
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -1035,8 +1038,6 @@ GET方式请求的正文是在地址栏中，在Tomcat8.5版本及以后，Tomca
  */
 public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-   
-
         /*
          * GET方式：正文在地址栏
          * username=%D5%C5%C8%FD
@@ -1150,8 +1151,6 @@ public class ResponseDemo1 extends HttpServlet {
          *   把存和取的码表统一。
          */
         String str = "字节流输出中文的乱码问题";//UTF-8的字符集，此时浏览器显示也需要使用UTF-8的字符集。
-        //1.拿到字节流输出对象
-        ServletOutputStream sos = response.getOutputStream();
         /**
          * 解决办法：
          * 	第一种解决办法：
@@ -1171,6 +1170,8 @@ public class ResponseDemo1 extends HttpServlet {
         //第三种解决办法：response.setHeader("Content-Type","text/html;charset=UTF-8");
         //第四种解决办法：
         response.setContentType("text/html;charset=UTF-8");
+        //1.拿到字节流输出对象
+        ServletOutputStream sos = response.getOutputStream();
         //2.把str转换成字节数组之后输出到浏览器
         sos.write(str.getBytes("UTF-8")); 
     }
@@ -1402,7 +1403,7 @@ public class ResponseDemo5 extends HttpServlet {
 /**
  * 设置响应状态码，实现重定向
  * 重定向的特点：
- * 	 两次请求，地址栏改变，浏览器行为，xxxx
+ * 	 两次请求，地址栏改变，浏览器行为
  * @author 黑马程序员
  * @Company http://www.itheima.com
  *
@@ -1507,7 +1508,7 @@ public class ResponseDemo8 extends HttpServlet {
 
 ### 7.7 响应对象注意事项
 
-+ 第一： response得到的字符流和字节流互斥，只能选其一
++ 第一：response得到的字符流和字节流互斥，只能选其一
 
 + 第二：response获取的流不用关闭，由服务器关闭即可
 
@@ -1547,7 +1548,7 @@ public class ResponseDemo9 extends HttpServlet {
 
 + 什么是会话
   
-  这里的会话，指的是web开发中的一次通话过程，当打开浏览器，访问网站地址后，会话开始，当关闭浏览器（或者到了过期时间），会话结束。
+  这里的会话，指的是web开发中的一次通话过程，**当打开浏览器，访问网站地址后，会话开始，当关闭浏览器（或者到了过期时间），会话结束**。
   > 例如，你在给家人打电话，这时突然有送快递的配送员敲门，你放下电话去开门，收完快递回来后，通话还在保持中，继续说话就行了。
 
 + 会话管理作用
@@ -1575,7 +1576,7 @@ public class ResponseDemo9 extends HttpServlet {
 
 **什么是Cookie**
 
-它是客户端浏览器的缓存文件，里面记录了客户浏览器访问网站的一些内容。同时，也是HTTP协议请求和响应消息头的一部分（在HTTP协议课程中，我们备注了它很重要）。
+它是客户端浏览器的缓存文件，里面记录了客户浏览器访问网站的一些内容。同时，也是HTTP协议请求和响应消息头的一部分。
 
 **作用**
 
@@ -1595,7 +1596,7 @@ public class ResponseDemo9 extends HttpServlet {
 
 **细节**
 
-Cookie有大小，个数限制。每个网站最多只能存20个cookie，且大小不能超过4kb。同时，所有网站的cookie总数不超过300个。
+Cookie有大小、个数限制。每个网站最多只能存20个cookie，且大小不能超过4kb。同时，所有网站的cookie总数不超过300个。
 
 当删除Cookie时，设置maxAge值为0。当不设置maxAge时，使用的是浏览器的内存，当关闭浏览器之后，cookie将丢失。设置了此值，就会保存成缓存文件（值必须是大于0的,以秒为单位）。
 
@@ -1792,11 +1793,12 @@ public class PathQuestionDemo3 extends HttpServlet {
 
 通过分别运行PathQuestionDemo1，2和3这3个Servlet，我们发现由demo1写Cookie，在demo2中可以取到，但是到了demo3中就无法获取了，如下图所示：
 
+![案例2-3](./assets/servlet_Cookie案例2-3.png)
+
 ![案例2-1](./assets/servlet_Cookie案例2-1.png)
 
 ![案例2-2](./assets/servlet_Cookie案例2-2.png)
 
-![案例2-3](./assets/servlet_Cookie案例2-3.png)
 
 #### 5）路径问题的分析及总结
 
@@ -1820,7 +1822,7 @@ public class PathQuestionDemo3 extends HttpServlet {
   我们是通过demo1写的cookie，demo1的访问路径是： http://localhost:9090/servlet/PathQuestionDemo1
 + 通过比较两个路径：请求资源地址和cookie的path，可以看出：
   
-  cookie的path默认值是：请求资源URI且不包含资源的部分（在我们的案例中，就是没有PathQuestionDemo1）。
+  **cookie的path默认值是：请求资源URI且不包含资源的部分**（在我们的案例中，就是没有PathQuestionDemo1）。
 
 **客户端什么时候带cookie到服务器，什么时候不带？**
 
@@ -1905,6 +1907,12 @@ HttpSession，它虽然是服务端会话管理技术的对象，但它本质仍
 
 当我们使用HttpSession时，浏览器在没有禁用Cookie的情况下，都会把这个Cookie带到服务器端，然后根据唯一标识去查找对应的HttpSession对象，找到了，我们就可以直接使用了。下图就是我们入门案例中，HttpSession分配的唯一标识，同学们可以看到两次请求的JSESSIONID的值是一样的：
 
+> 浏览器禁用cookie时，可以通过如下方法使用session:
+> + 把sessionid作为参数追加的原url中
+> + 服务器的返回数据中包含sessionid
+> + 服务器的返回header中包含sessionid字段
+
+
 ![案例3-3](./assets/servlet_Session案例3-5.png)
 
 ![案例3-5](./assets/servlet_Session案例3-5.png)
@@ -1942,10 +1950,10 @@ JSP和HTML以及Servlet的适用场景:
 
 ![Tomcat中的HttpJspBase类声明](./assets/servlet_Tomcat中的HttpJspBase类声明.png)
 
-这张图一出场，就表明我们写的JSP它本质就是一个HttpServlet了。
+这张图一出场，就表明我们写的**JSP它本质就是一个HttpServlet**了。
 
 
-同时，我们在index_jsp.java文件中找到了输出页面的代码，并且在浏览器端查看源文件，看到的内容是一样的。这也就是说明，我们的浏览器上的内容，在通过jsp展示时，本质都是用`out.write()`输出出来的。
+同时，我们在index_jsp.java文件中找到了输出页面的代码，并且在浏览器端查看源文件，看到的内容是一样的。这也就是说明，**我们的浏览器上的内容，在通过jsp展示时，本质都是用`out.write()`输出出来的**。
 
 讲到这里，我们应该清楚的认识到，JSP它是一个特殊的Servlet，主要是用于展示动态数据。它展示的方式是用流把数据输出出来，而我们在使用JSP时，涉及HTML的部分，都与HTML的用法一致，这部分称为jsp中的模板元素，在开发过程中，先写好这些模板元素，因为它们决定了页面的外观。
 
@@ -1957,7 +1965,6 @@ JSP和HTML以及Servlet的适用场景:
 在jsp中，可以使用java脚本代码。形式为：`<% java代码 %>`
 
 > 但是，在实际开发中，极少使用此种形式编写java代码。
-> 
 > 同时需要注意的是：这里面的内容由tomcat负责翻译，翻译之后是service方法的成员变量。
 
 **示例：**
@@ -1973,10 +1980,8 @@ JSP和HTML以及Servlet的适用场景:
 在jsp中，可以使用特定表达式语法，形式为：`<%=表达式%>`
 
 > 在实际开发中，这种表达式语法用的也很少使用。
-> 
 > jsp在翻译完后是out.print(表达式内容)
-> 
-> 所以：<%out.print("当前时间);%>和<%="当前时间"%>是一样的。
+> 所以：`<%out.print("当前时间);%>`和`<%="当前时间"%>`是一样的。
 
 **示例：**
 
@@ -2006,9 +2011,7 @@ JSP和HTML以及Servlet的适用场景:
 在使用JSP时，它有自己的注释，形式为：`<%--注释--%>`
 
 > 在Jsp中可以使用html的注释，但是只能注释html元素，不能注释java程序片段和表达式。
-> 
 > 同时，被html注释部分会参与翻译，并且会在浏览器上显示。
-> 
 > jsp的注释不仅可以注释java程序片段，也可以注释html元素，并且被jsp注释的部分不会参与翻译成.java文件，也不会在浏览器上显示。
 
 **示例：**
@@ -2028,7 +2031,7 @@ JSP和HTML以及Servlet的适用场景:
 + **extends:** 告知引擎，JSP对应的Servlet的父类是哪个，不需要写，也不需要改。
 
 + **import:** 告知引擎，导入哪些包（类）。
-  > 注意：引擎会自动导入：java.lang.\*, javax.servlet.\*, javax.servlet.http.\*, javax.servlet.jsp.\***
+  > 注意：引擎会自动导入：java.lang.\*, javax.servlet.\*, javax.servlet.http.\*, javax.servlet.jsp.\*
   
   导入的形式： `<%@page import="java.util.Date,java.util.UUID"%>`
 
@@ -2864,7 +2867,10 @@ public class ServletContextListenerDemo implements ServletContextListener {
 
 它可以对web应用中的所有资源进行拦截，并且在拦截之后进行一些特殊的操作。
 
-常见应用场景：URL级别的权限控制；过滤敏感词汇；中文乱码问题等等。
+常见应用场景：
++ URL级别的权限控制；
++ 过滤敏感词汇；
++ 中文乱码问题等等。
 
 #### 11.1.2 过滤器的入门案例
 
@@ -2973,12 +2979,12 @@ public class FilterDemo1 implements Filter {
      */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        /**
-         * 如果不写此段代码，控制台会输出两次：FilterDemo1拦截到了请求。
-         */
         HttpServletRequest req = (HttpServletRequest) request;
         String requestURI = req.getRequestURI();
         if (requestURI.contains("favicon.ico")) {
+            /**
+            * 如果不写此段代码，控制台会输出两次
+            */
             return;
         }
         System.out.println("FilterDemo1拦截到了请求");
@@ -3313,7 +3319,7 @@ public class FilterDemo2 implements Filter {
 
 在过滤器的配置中，有过滤器的声明和过滤器的映射两部分，到底是声明决定顺序，还是映射决定顺序呢？
 
-答案是：`<filter-mapping>`的配置前后顺序决定过滤器的调用顺序，也就是由映射配置顺序决定。
+答案是：`<filter-mapping>`的配置前后顺序决定过滤器的调用顺序，也就是由**映射配置顺序**决定。
 
 #### 11.2.2 过滤器的五种拦截行为
 
@@ -3356,7 +3362,7 @@ public class FilterDemo2 implements Filter {
 
 #### 1） 需求说明
 
-在我们访问html，js，image时，不需要每次都重新发送请求读取资源，就可以通过设置响应消息头的方式，设置缓存时间。但是如果每个Servlet都编写相同的代码，显然不符合我们统一调用和维护的理念。（此处有个非常重要的编程思想：AOP思想，在录制视频时提不提都可以）
+在我们访问html，js，image时，不需要每次都重新发送请求读取资源，就可以通过设置响应消息头的方式，设置缓存时间。但是如果每个Servlet都编写相同的代码，显然不符合我们统一调用和维护的理念。（此处有个非常重要的编程思想：AOP思想）
 
 因此，我们要采用过滤器来实现功能。
 
@@ -3439,15 +3445,15 @@ public class StaticResourceNeedCacheFilter implements Filter {
     <filter-class>com.itheima.web.filter.StaticResourceNeedCacheFilter</filter-class>
     <init-param>
         <param-name>html</param-name>
-        <param-value>3</param-value>
+        <param-value>1</param-value>
     </init-param>
     <init-param>
         <param-name>js</param-name>
-        <param-value>4</param-value>
+        <param-value>2</param-value>
     </init-param>
     <init-param>
         <param-name>css</param-name>
-        <param-value>5</param-value>
+        <param-value>3</param-value>
     </init-param>
 </filter>
 <filter-mapping>
