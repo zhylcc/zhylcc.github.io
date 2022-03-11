@@ -50,9 +50,9 @@
 7. 释放资源
 
    ```java
-   con.close();
-   stat.close();
    rs.close();
+   stat.close();
+   con.close();
    ```
 
 ### 二、JDBC各个功能类详解
@@ -265,14 +265,13 @@ public ArrayList<Student> findAll() {
         e.printStackTrace();
     } finally {
         //6.释放资源
-        if(con != null) {
+        if(rs != null) {
             try {
-                con.close();
+                rs.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-
         if(stat != null) {
             try {
                 stat.close();
@@ -280,10 +279,9 @@ public ArrayList<Student> findAll() {
                 e.printStackTrace();
             }
         }
-
-        if(rs != null) {
+        if(con != null) {
             try {
-                rs.close();
+                con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -367,14 +365,13 @@ public Student findById(Integer id) {
         e.printStackTrace();
     } finally {
         //6.释放资源
-        if(con != null) {
+        if(rs != null) {
             try {
-                con.close();
+                rs.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-
         if(stat != null) {
             try {
                 stat.close();
@@ -382,10 +379,9 @@ public Student findById(Integer id) {
                 e.printStackTrace();
             }
         }
-
-        if(rs != null) {
+        if(con != null) {
             try {
-                rs.close();
+                con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -455,17 +451,16 @@ public int insert(Student stu) {
         e.printStackTrace();
     } finally {
         //6.释放资源
-        if(con != null) {
+        if(stat != null) {
             try {
-                con.close();
+                stat.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-
-        if(stat != null) {
+        if(con != null) {
             try {
-                stat.close();
+                con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -540,17 +535,16 @@ public int update(Student stu) {
         e.printStackTrace();
     } finally {
         //6.释放资源
-        if(con != null) {
+        if(stat != null) {
             try {
-                con.close();
+                stat.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-
-        if(stat != null) {
+        if(con != null) {
             try {
-                stat.close();
+                con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -624,17 +618,16 @@ public int delete(Integer id) {
         e.printStackTrace();
     } finally {
         //6.释放资源
-        if(con != null) {
+        if(stat != null) {
             try {
-                con.close();
+                stat.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-
-        if(stat != null) {
+        if(con != null) {
             try {
-                stat.close();
+                con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -742,22 +735,6 @@ public class JDBCUtils {
 
     //5.释放资源的方法
     public static void close(Connection con, Statement stat, ResultSet rs) {
-        if(con != null) {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        if(stat != null) {
-            try {
-                stat.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
         if(rs != null) {
             try {
                 rs.close();
@@ -765,6 +742,20 @@ public class JDBCUtils {
                 e.printStackTrace();
             }
         }
+        if(stat != null) {
+            try {
+                stat.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if(con != null) {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }        
     }
 
     public static void close(Connection con, Statement stat) {
@@ -775,7 +766,7 @@ public class JDBCUtils {
 
 #### 2.使用工具类优化student表的CRUD
 
-- 查询全部
+- 以查询全部为例，修改数据库连接和资源释放部分
 
 ```java
 /*
@@ -823,361 +814,6 @@ public ArrayList<Student> findAll() {
 }
 ```
 
-- 条件查询
-
-```java
-/*
-    条件查询，根据id查询学生信息
-*/
-@Override
-public Student findById(Integer id) {
-    Student stu = new Student();
-    Connection con = null;
-    Statement stat = null;
-    ResultSet rs = null;
-    try{
-
-        con = JDBCUtils.getConnection();
-
-        //3.获取执行者对象
-        stat = con.createStatement();
-
-        //4.执行sql语句，并且接收返回的结果集
-        String sql = "SELECT * FROM student WHERE sid='"+id+"'";
-        rs = stat.executeQuery(sql);
-
-        //5.处理结果集
-        while(rs.next()) {
-            Integer sid = rs.getInt("sid");
-            String name = rs.getString("name");
-            Integer age = rs.getInt("age");
-            Date birthday = rs.getDate("birthday");
-
-            //封装Student对象
-            stu.setSid(sid);
-            stu.setName(name);
-            stu.setAge(age);
-            stu.setBirthday(birthday);
-        }
-
-    } catch(Exception e) {
-        e.printStackTrace();
-    } finally {
-        //6.释放资源
-        JDBCUtils.close(con,stat,rs);
-    }
-    //将对象返回
-    return stu;
-}
-```
-
-- 新增数据
-
-```java
-/*
-     添加学生信息
-*/
-@Override
-public int insert(Student stu) {
-    Connection con = null;
-    Statement stat = null;
-    int result = 0;
-    try{
-        con = JDBCUtils.getConnection();
-
-        //3.获取执行者对象
-        stat = con.createStatement();
-
-        //4.执行sql语句，并且接收返回的结果集
-        Date d = stu.getBirthday();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String birthday = sdf.format(d);
-        String sql = "INSERT INTO student VALUES ('"+stu.getSid()+"','"+stu.getName()+"','"+stu.getAge()+"','"+birthday+"')";
-        result = stat.executeUpdate(sql);
-
-    } catch(Exception e) {
-        e.printStackTrace();
-    } finally {
-        //6.释放资源
-        JDBCUtils.close(con,stat);
-    }
-    //将结果返回
-    return result;
-}
-```
-
-- 修改数据
-
-```java
-/*
-     修改学生信息
-*/
-@Override
-public int update(Student stu) {
-    Connection con = null;
-    Statement stat = null;
-    int result = 0;
-    try{
-        con = JDBCUtils.getConnection();
-
-        //3.获取执行者对象
-        stat = con.createStatement();
-
-        //4.执行sql语句，并且接收返回的结果集
-        Date d = stu.getBirthday();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String birthday = sdf.format(d);
-        String sql = "UPDATE student SET sid='"+stu.getSid()+"',name='"+stu.getName()+"',age='"+stu.getAge()+"',birthday='"+birthday+"' WHERE sid='"+stu.getSid()+"'";
-        result = stat.executeUpdate(sql);
-
-    } catch(Exception e) {
-        e.printStackTrace();
-    } finally {
-        //6.释放资源
-        JDBCUtils.close(con,stat);
-    }
-    //将结果返回
-    return result;
-}
-```
-
-- 删除数据
-
-```java
-/*
-   删除学生信息
-*/
-@Override
-public int delete(Integer id) {
-    Connection con = null;
-    Statement stat = null;
-    int result = 0;
-    try{
-        con = JDBCUtils.getConnection();
-
-        //3.获取执行者对象
-        stat = con.createStatement();
-
-        //4.执行sql语句，并且接收返回的结果集
-        String sql = "DELETE FROM student WHERE sid='"+id+"'";
-        result = stat.executeUpdate(sql);
-
-    } catch(Exception e) {
-        e.printStackTrace();
-    } finally {
-        //6.释放资源
-        JDBCUtils.close(con,stat);
-    }
-    //将结果返回
-    return result;
-}
-```
-
-#### 3.student表的CRUD整合页面
-
-- 用户表的数据准备
-
-```SQL
--- 创建用户表
-CREATE TABLE USER(
-	uid VARCHAR(50) PRIMARY KEY,	-- 用户id
-	ucode VARCHAR(50),				-- 用户标识
-	loginname VARCHAR(100),			-- 登录用户名
-	PASSWORD VARCHAR(100),			-- 登录密码
-	username VARCHAR(100),			-- 用户名
-	gender VARCHAR(10),				-- 用户性别
-	birthday DATE,					-- 出生日期
-	dutydate DATE                   -- 入职日期
-);
-
--- 添加一条测试数据
-INSERT INTO `user` VALUES ('11111111', 'zhangsan001', 'zhangsan', '1234', '张三', '男', '2008-10-28', '2018-10-28');
-```
-
-- 将student表的dao层操作复制到项目中的dao层即可
-
-```java
-public class StudentDaoImpl implements StudentDao {
-
-    /*
-        查询所有学生信息
-     */
-    @Override
-    public ArrayList<Student> findAll() {
-        Connection con = null;
-        Statement stat = null;
-        ResultSet rs = null;
-        ArrayList<Student> list = new ArrayList<>();
-        try {
-            //1.获取连接
-            con = JDBCUtils.getConnection();
-
-            //2.获取执行者对象
-            stat = con.createStatement();
-
-            //3.执行sql语句，并接收结果
-            String sql = "SELECT * FROM student";
-            rs = stat.executeQuery(sql);
-
-            //4.处理结果，将每条记录封装成一个Student对象。将多个Student对象保存到集合中
-            while(rs.next()) {
-                Integer sid = rs.getInt("sid");
-                String name = rs.getString("name");
-                Integer age = rs.getInt("age");
-                Date birthday = rs.getDate("birthday");
-
-                Student stu = new Student(sid,name,age,birthday);
-
-                list.add(stu);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            //5.释放资源
-            JDBCUtils.close(con,stat,rs);
-        }
-
-        return list;
-    }
-
-    /*
-        条件查询，根据id查询学生信息
-     */
-    @Override
-    public Student findById(Integer id) {
-        Connection con = null;
-        Statement stat = null;
-        ResultSet rs = null;
-        Student stu = new Student();
-        try {
-            //1.获取连接
-            con = JDBCUtils.getConnection();
-
-            //2.获取执行者对象
-            stat = con.createStatement();
-
-            //3.执行sql语句，并接收结果
-            String sql = "SELECT * FROM student WHERE sid='"+id+"'";
-            rs = stat.executeQuery(sql);
-
-            //4.处理结果，将记录封装成一个Student对象。
-            if(rs.next()) {
-                Integer sid = rs.getInt("sid");
-                String name = rs.getString("name");
-                Integer age = rs.getInt("age");
-                Date birthday = rs.getDate("birthday");
-
-                stu.setSid(sid);
-                stu.setName(name);
-                stu.setAge(age);
-                stu.setBirthday(birthday);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            //5.释放资源
-            JDBCUtils.close(con,stat,rs);
-        }
-
-        return stu;
-    }
-
-    /*
-        新增学生信息
-     */
-    @Override
-    public int insert(Student stu) {
-        Connection con = null;
-        Statement stat = null;
-        int result = 0;
-        try{
-            //1.获取连接
-            con = JDBCUtils.getConnection();
-
-            //2.获取执行者对象
-            stat = con.createStatement();
-
-            //3.执行sql语句，并接收结果
-            Date date = stu.getBirthday();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            String birthday = sdf.format(date);
-            String sql = "INSERT INTO student VALUES (null,'"+stu.getName()+"','"+stu.getAge()+"','"+birthday+"')";
-            result = stat.executeUpdate(sql);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            //4.释放资源
-            JDBCUtils.close(con,stat);
-        }
-
-        return result;
-    }
-
-    /*
-        修改学生信息
-     */
-    @Override
-    public int update(Student stu) {
-        Connection con = null;
-        Statement stat = null;
-        int result = 0;
-        try{
-            //1.获取连接
-            con = JDBCUtils.getConnection();
-
-            //2.获取执行者对象
-            stat = con.createStatement();
-
-            //3.执行sql语句，并接收结果
-            Date date = stu.getBirthday();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            String birthday = sdf.format(date);
-            String sql = "UPDATE student SET sid='"+stu.getSid()+"',name='"+stu.getName()+"',age='"+stu.getAge()+"',birthday='"+birthday+"' WHERE sid='"+stu.getSid()+"'";
-            result = stat.executeUpdate(sql);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            //4.释放资源
-            JDBCUtils.close(con,stat);
-        }
-
-        return result;
-    }
-
-    /*
-        删除学生信息
-     */
-    @Override
-    public int delete(Integer id) {
-        Connection con = null;
-        Statement stat = null;
-        int result = 0;
-        try{
-            //1.获取连接
-            con = JDBCUtils.getConnection();
-
-            //2.获取执行者对象
-            stat = con.createStatement();
-
-            //3.执行sql语句，并接收结果
-            String sql = "DELETE FROM student WHERE sid='"+id+"'";
-            result = stat.executeUpdate(sql);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }  finally {
-            //4.释放资源
-            JDBCUtils.close(con,stat);
-        }
-
-        return result;
-    }
-}
-```
 
 ### 五、SQL注入攻击
 
@@ -1190,23 +826,26 @@ public class StudentDaoImpl implements StudentDao {
 #### 2.sql注入攻击的原理
 
 - 按照正常道理来说，我们在密码处输入的所有内容，都应该认为是密码的组成
+> SELECT * FROM user WHERE loginname='`name`' AND password='`password`';
 - 但是现在Statement对象在执行sql语句时，将一部分内容当做查询条件来执行了
+> SELECT * FROM user WHERE loginname='`aaa`' AND password='`aaa' or '1'='1`';
 
 #### 3.PreparedStatement的介绍
 
-- 预编译sql语句的执行者对象。在执行sql语句之前，将sql语句进行提前编译。明确sql语句的格式后，就不会改变了。剩余的内容都会认为是参数！参数使用?作为占位符
-- 为参数赋值的方法：setXxx(参数1,参数2);
-  - 参数1：?的位置编号(编号从1开始)
-  - 参数2：?的实际参数
+- 预编译sql语句的执行者对象。在执行sql语句之前，将sql语句进行提前编译。明确sql语句的格式后，就不会改变了。剩余的内容都会认为是**参数**！
+- 参数使用`?`作为占位符
+- 为参数赋值的方法：`setXxx(参数1,参数2)`;
+  - 参数1：`?`的位置编号(编号从**1**开始)
+  - 参数2：`?`的实际参数
 - 执行sql语句的方法
-  - 执行insert、update、delete语句：int executeUpdate();
-  - 执行select语句：ResultSet executeQuery();
+  - 执行insert、update、delete语句：`int executeUpdate();`
+  - 执行select语句：`ResultSet executeQuery();`
 
 #### 4.PreparedStatement的使用
 
 ```java
 /*
-	 使用PreparedStatement的登录方法，解决注入攻击
+    使用PreparedStatement的登录方法，解决注入攻击
 */
 @Override
 public User findByLoginNameAndPassword(String loginName, String password) {
@@ -1250,213 +889,9 @@ public User findByLoginNameAndPassword(String loginName, String password) {
 }
 ```
 
-#### 5.使用PreparedStatement优化student表的CRUD
-
-```java
-public class StudentDaoImpl implements StudentDao {
-
-    @Override
-    public ArrayList<Student> findAll() {
-        //定义必要信息
-        Connection conn = null;
-        PreparedStatement pstm = null;
-        ResultSet rs = null;
-        ArrayList<Student> students = null;
-        try {
-            //1.获取连接
-            conn = JDBCUtils.getConnection();
-            //2.获取操作对象
-            pstm = conn.prepareStatement("select * from student");
-            //3.执行sql语句，获取结果集
-            rs = pstm.executeQuery();
-            //4.遍历结果集
-            students = new ArrayList<Student>();
-            while (rs.next()) {
-                //5.封装
-                Student student = new Student();
-                student.setSid(rs.getInt("sid"));
-                student.setName(rs.getString("name"));
-                student.setAge(rs.getInt("age"));
-                student.setBirthday(rs.getDate("birthday"));
-                //加入到集合中
-                students.add(student);
-            }
-            //6.返回
-            return students;
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }finally {
-            JDBCUtils.close(conn,pstm,rs);
-        }
-    }
-
-    @Override
-    public Student findById(Integer sid) {
-        //定义必要信息
-        Connection conn = null;
-        PreparedStatement pstm = null;
-        ResultSet rs = null;
-        Student student = null;
-        try {
-            //1.获取连接
-            conn = JDBCUtils.getConnection();
-            //2.获取操作对象
-            pstm = conn.prepareStatement("select * from student where sid = ? ");
-            pstm.setInt(1,sid);
-            //3.执行sql语句，获取结果集
-            rs = pstm.executeQuery();
-            //4.遍历结果集
-            if (rs.next()) {
-                //5.封装
-                student = new Student();
-                student.setSid(rs.getInt("sid"));
-                student.setName(rs.getString("name"));
-                student.setAge(rs.getInt("age"));
-                student.setBirthday(rs.getDate("birthday"));
-            }
-            //6.返回
-            return student;
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }finally {
-            JDBCUtils.close(conn,pstm,rs);
-        }
-    }
-
-    @Override
-    public int insert(Student student) {
-        //定义必要信息
-        Connection conn = null;
-        PreparedStatement pstm = null;
-        int result = 0;
-        try {
-            //1.获取连接
-            conn = JDBCUtils.getConnection();
-            //2.获取操作对象
-            pstm = conn.prepareStatement("insert into student(sid,name,age,birthday)values(null,?,?,?)");
-            //3.设置参数
-            //pstm.setInt(1,null);
-            pstm.setString(1,student.getName());
-            pstm.setInt(2,student.getAge());
-            pstm.setDate(3,new Date(student.getBirthday().getTime()));
-            //4.执行sql语句
-            result = pstm.executeUpdate();
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }finally {
-            JDBCUtils.close(conn,pstm);
-        }
-        return result;
-    }
-
-    @Override
-    public int update(Student student) {
-        //定义必要信息
-        Connection conn = null;
-        PreparedStatement pstm = null;
-        int result = 0;
-        try {
-            //1.获取连接
-            conn = JDBCUtils.getConnection();
-            //2.获取操作对象
-            pstm = conn.prepareStatement("update student set name=?,age=?,birthday=? where sid=? ");
-            //3.设置参数
-            pstm.setString(1,student.getName());
-            pstm.setInt(2,student.getAge());
-            pstm.setDate(3,new Date(student.getBirthday().getTime()));
-            pstm.setInt(4,student.getSid());
-            //4.执行sql语句
-            result = pstm.executeUpdate();
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }finally {
-            JDBCUtils.close(conn,pstm);
-        }
-        return result;
-    }
-
-    @Override
-    public int delete(Integer sid) {
-        //定义必要信息
-        Connection conn = null;
-        PreparedStatement pstm = null;
-        int result = 0;
-        try {
-            //1.获取连接
-            conn = JDBCUtils.getConnection();
-            //2.获取操作对象
-            pstm = conn.prepareStatement("delete from student where sid=? ");
-            //3.设置参数
-            pstm.setInt(1,sid);
-            //4.执行sql语句
-            result = pstm.executeUpdate();
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }finally {
-            JDBCUtils.close(conn,pstm);
-        }
-        return result;
-    }
-}
-```
-
 ### 六、综合案例-课程表批量新增加事务管理
 
-#### 1.service层
-
-- 接口
-
-```java
-/*
-	 批量添加
-*/
-void batchAdd(List<User> users);
-```
-
-- 实现类
-
-```java
-/*
-      事务要控制在此处
-*/
-@Override
-public void batchAdd(List<User> users) {
-    //获取数据库连接
-    Connection connection = JDBCUtils.getConnection();
-    try {
-        //开启事务
-        connection.setAutoCommit(false);
-        for (User user : users) {
-            //1.创建ID,并把UUID中的-替换
-            String uid = UUID.randomUUID().toString().replace("-", "").toUpperCase();
-            //2.给user的uid赋值
-            user.setUid(uid);
-            //3.生成员工编号
-            user.setUcode(uid);
-
-            //模拟异常
-            //int n = 1 / 0;
-
-            //4.保存
-            userDao.save(connection,user);
-        }
-        //提交事务
-        connection.commit();
-    }catch (Exception e){
-        try {
-            //回滚事务
-            connection.rollback();
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
-        e.printStackTrace();
-    }finally {
-        JDBCUtils.close(connection,null,null);
-    }
-}
-```
-
-#### 2.dao层
+#### 1.dao层
 
 - 接口
 
@@ -1502,6 +937,60 @@ public void save(Connection connection, User user) {
 ```
 
 
+#### 2.service层
+
+- 接口
+
+```java
+/*
+    批量添加
+*/
+void batchAdd(List<User> users);
+```
+
+- 实现类
+
+```java
+/*
+    事务要控制在此处
+*/
+@Override
+public void batchAdd(List<User> users) {
+    //获取数据库连接
+    Connection connection = JDBCUtils.getConnection();
+    try {
+        //开启事务
+        connection.setAutoCommit(false);
+        for (User user : users) {
+            //1.创建ID,并把UUID中的-替换
+            String uid = UUID.randomUUID().toString().replace("-", "").toUpperCase();
+            //2.给user的uid赋值
+            user.setUid(uid);
+            //3.生成员工编号
+            user.setUcode(uid);
+
+            //模拟异常
+            //int n = 1 / 0;
+
+            //4.保存
+            userDao.save(connection,user);
+        }
+        //提交事务
+        connection.commit();
+    }catch (Exception e){
+        try {
+            //回滚事务
+            connection.rollback();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        e.printStackTrace();
+    }finally {
+        JDBCUtils.close(connection,null,null);
+    }
+}
+```
+
 ### 七、数据库连接池
 
 #### 1.数据库连接池的概念
@@ -1516,13 +1005,13 @@ public void save(Connection connection, User user) {
 
 #### 2.自定义连接池
 
-- java.sql.DataSource接口：数据源(数据库连接池)。java官方提供的数据库连接池规范(接口)
-  - 获取数据库连接对象：Connection getConnection();
+- `java.sql.DataSource`接口：数据源(数据库连接池)。java官方提供的数据库连接池规范(接口)
+  - 获取数据库连接对象：`Connection getConnection();`
 - 自定义连接池
 
 ```java
 /*
-	自定义连接池类
+    自定义连接池类
 */
 public class MyDataSource implements DataSource{
     //定义集合容器，用于保存多个数据库连接对象
@@ -1630,7 +1119,7 @@ public class MyDataSourceTest {
 
 #### 4.归还连接
 
-- 继承(无法解决)
+- **继承(无法解决)**
 
   - 通过打印连接对象，发现DriverManager获取的连接实现类是JDBC4Connection。
   - 自定义一个类，继承JDBC4Connection这个类，重写close()方法。
@@ -1659,7 +1148,7 @@ public class MyDataSourceTest {
   }
   ```
 
-  - 但是这种方式行不通，通过查看JDBC工具类获取连接的方法我们发现：我们虽然自定义了一个子类，完成了归还连接的操作。但是DriverManager获取的还是JDBC4Connection这个对象，并不是我们的子类对象。而我们又不能整体去修改驱动包中类的功能！
+  - 但是这种方式**行不通**，通过查看JDBC工具类获取连接的方法我们发现：我们虽然自定义了一个子类，完成了归还连接的操作。但是**DriverManager获取的还是JDBC4Connection这个对象**，并不是我们的子类对象。而我们又不能整体去修改驱动包中类的功能！
 
   ```java
   //将之前的连接对象换成自定义的子类对象
@@ -1678,7 +1167,7 @@ public class MyDataSourceTest {
   }
   ```
 
-- 装饰器设计模式
+- **装饰器设计模式**
 
   - 自定义连接类
 
@@ -1716,265 +1205,8 @@ public class MyDataSourceTest {
           return con.createStatement();
       }
   
-      @Override
-      public PreparedStatement prepareStatement(String sql) throws SQLException {
-          return con.prepareStatement(sql);
-      }
-  
-      @Override
-      public CallableStatement prepareCall(String sql) throws SQLException {
-          return con.prepareCall(sql);
-      }
-  
-      @Override
-      public String nativeSQL(String sql) throws SQLException {
-          return con.nativeSQL(sql);
-      }
-  
-      @Override
-      public void setAutoCommit(boolean autoCommit) throws SQLException {
-          con.setAutoCommit(autoCommit);
-      }
-  
-      @Override
-      public boolean getAutoCommit() throws SQLException {
-          return con.getAutoCommit();
-      }
-  
-      @Override
-      public void commit() throws SQLException {
-          con.commit();
-      }
-  
-      @Override
-      public void rollback() throws SQLException {
-          con.rollback();
-      }
-  
-      @Override
-      public boolean isClosed() throws SQLException {
-          return con.isClosed();
-      }
-  
-      @Override
-      public DatabaseMetaData getMetaData() throws SQLException {
-          return con.getMetaData();
-      }
-  
-      @Override
-      public void setReadOnly(boolean readOnly) throws SQLException {
-          con.setReadOnly(readOnly);
-      }
-  
-      @Override
-      public boolean isReadOnly() throws SQLException {
-          return con.isReadOnly();
-      }
-  
-      @Override
-      public void setCatalog(String catalog) throws SQLException {
-          con.setCatalog(catalog);
-      }
-  
-      @Override
-      public String getCatalog() throws SQLException {
-          return con.getCatalog();
-      }
-  
-      @Override
-      public void setTransactionIsolation(int level) throws SQLException {
-          con.setTransactionIsolation(level);
-      }
-  
-      @Override
-      public int getTransactionIsolation() throws SQLException {
-          return con.getTransactionIsolation();
-      }
-  
-      @Override
-      public SQLWarning getWarnings() throws SQLException {
-          return con.getWarnings();
-      }
-  
-      @Override
-      public void clearWarnings() throws SQLException {
-          con.clearWarnings();
-      }
-  
-      @Override
-      public Statement createStatement(int resultSetType, int resultSetConcurrency) throws SQLException {
-          return con.createStatement(resultSetType,resultSetConcurrency);
-      }
-  
-      @Override
-      public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
-          return con.prepareStatement(sql,resultSetType,resultSetConcurrency);
-      }
-  
-      @Override
-      public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
-          return con.prepareCall(sql,resultSetType,resultSetConcurrency);
-      }
-  
-      @Override
-      public Map<String, Class<?>> getTypeMap() throws SQLException {
-          return con.getTypeMap();
-      }
-  
-      @Override
-      public void setTypeMap(Map<String, Class<?>> map) throws SQLException {
-          con.setTypeMap(map);
-      }
-  
-      @Override
-      public void setHoldability(int holdability) throws SQLException {
-          con.setHoldability(holdability);
-      }
-  
-      @Override
-      public int getHoldability() throws SQLException {
-          return con.getHoldability();
-      }
-  
-      @Override
-      public Savepoint setSavepoint() throws SQLException {
-          return con.setSavepoint();
-      }
-  
-      @Override
-      public Savepoint setSavepoint(String name) throws SQLException {
-          return con.setSavepoint(name);
-      }
-  
-      @Override
-      public void rollback(Savepoint savepoint) throws SQLException {
-          con.rollback(savepoint);
-      }
-  
-      @Override
-      public void releaseSavepoint(Savepoint savepoint) throws SQLException {
-          con.releaseSavepoint(savepoint);
-      }
-  
-      @Override
-      public Statement createStatement(int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
-          return con.createStatement(resultSetType,resultSetConcurrency,resultSetHoldability);
-      }
-  
-      @Override
-      public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
-          return con.prepareStatement(sql,resultSetType,resultSetConcurrency,resultSetHoldability);
-      }
-  
-      @Override
-      public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
-          return con.prepareCall(sql,resultSetType,resultSetConcurrency,resultSetHoldability);
-      }
-  
-      @Override
-      public PreparedStatement prepareStatement(String sql, int autoGeneratedKeys) throws SQLException {
-          return con.prepareStatement(sql,autoGeneratedKeys);
-      }
-  
-      @Override
-      public PreparedStatement prepareStatement(String sql, int[] columnIndexes) throws SQLException {
-          return con.prepareStatement(sql,columnIndexes);
-      }
-  
-      @Override
-      public PreparedStatement prepareStatement(String sql, String[] columnNames) throws SQLException {
-          return con.prepareStatement(sql,columnNames);
-      }
-  
-      @Override
-      public Clob createClob() throws SQLException {
-          return con.createClob();
-      }
-  
-      @Override
-      public Blob createBlob() throws SQLException {
-          return con.createBlob();
-      }
-  
-      @Override
-      public NClob createNClob() throws SQLException {
-          return con.createNClob();
-      }
-  
-      @Override
-      public SQLXML createSQLXML() throws SQLException {
-          return con.createSQLXML();
-      }
-  
-      @Override
-      public boolean isValid(int timeout) throws SQLException {
-          return con.isValid(timeout);
-      }
-  
-      @Override
-      public void setClientInfo(String name, String value) throws SQLClientInfoException {
-          con.setClientInfo(name,value);
-      }
-  
-      @Override
-      public void setClientInfo(Properties properties) throws SQLClientInfoException {
-          con.setClientInfo(properties);
-      }
-  
-      @Override
-      public String getClientInfo(String name) throws SQLException {
-          return con.getClientInfo(name);
-      }
-  
-      @Override
-      public Properties getClientInfo() throws SQLException {
-          return con.getClientInfo();
-      }
-  
-      @Override
-      public Array createArrayOf(String typeName, Object[] elements) throws SQLException {
-          return con.createArrayOf(typeName,elements);
-      }
-  
-      @Override
-      public Struct createStruct(String typeName, Object[] attributes) throws SQLException {
-          return con.createStruct(typeName,attributes);
-      }
-  
-      @Override
-      public void setSchema(String schema) throws SQLException {
-          con.setSchema(schema);
-      }
-  
-      @Override
-      public String getSchema() throws SQLException {
-          return con.getSchema();
-      }
-  
-      @Override
-      public void abort(Executor executor) throws SQLException {
-          con.abort(executor);
-      }
-  
-      @Override
-      public void setNetworkTimeout(Executor executor, int milliseconds) throws SQLException {
-          con.setNetworkTimeout(executor,milliseconds);
-      }
-  
-      @Override
-      public int getNetworkTimeout() throws SQLException {
-          return con.getNetworkTimeout();
-      }
-  
-      @Override
-      public <T> T unwrap(Class<T> iface) throws SQLException {
-          return con.unwrap(iface);
-      }
-  
-      @Override
-      public boolean isWrapperFor(Class<?> iface) throws SQLException {
-          return con.isWrapperFor(iface);
-      }
+      
+      //其它接口方法仿照createStatement实现
   }
   ```
 
@@ -2015,9 +1247,10 @@ public class MyDataSourceTest {
   }
   ```
 
-- 适配器设计模式
+- **适配器设计模式**
 
-  - 通过之前MyConnection2连接类我们发现，有很多个需要实现的方法。这个时候我们就可以使用适配器设计模式了。提供一个适配器类，实现Connection接口，将所有功能进行实现(除了close方法)。自定义连接类只需要继承这个适配器类，重写需要改进的close()方法即可！
+  - 通过之前MyConnection2连接类我们发现，有很多个需要实现的方法。这个时候我们就可以使用适配器设计模式了：
+    > 提供一个适配器抽象类，实现Connection接口，将所有功能进行实现(除了close方法)。自定义连接类只需要继承这个适配器类，重写需要改进的close()方法即可！
   - 适配器类
 
   ```java
@@ -2041,265 +1274,7 @@ public class MyDataSourceTest {
           return con.createStatement();
       }
   
-      @Override
-      public PreparedStatement prepareStatement(String sql) throws SQLException {
-          return con.prepareStatement(sql);
-      }
-  
-      @Override
-      public CallableStatement prepareCall(String sql) throws SQLException {
-          return con.prepareCall(sql);
-      }
-  
-      @Override
-      public String nativeSQL(String sql) throws SQLException {
-          return con.nativeSQL(sql);
-      }
-  
-      @Override
-      public void setAutoCommit(boolean autoCommit) throws SQLException {
-          con.setAutoCommit(autoCommit);
-      }
-  
-      @Override
-      public boolean getAutoCommit() throws SQLException {
-          return con.getAutoCommit();
-      }
-  
-      @Override
-      public void commit() throws SQLException {
-          con.commit();
-      }
-  
-      @Override
-      public void rollback() throws SQLException {
-          con.rollback();
-      }
-  
-      @Override
-      public boolean isClosed() throws SQLException {
-          return con.isClosed();
-      }
-  
-      @Override
-      public DatabaseMetaData getMetaData() throws SQLException {
-          return con.getMetaData();
-      }
-  
-      @Override
-      public void setReadOnly(boolean readOnly) throws SQLException {
-          con.setReadOnly(readOnly);
-      }
-  
-      @Override
-      public boolean isReadOnly() throws SQLException {
-          return con.isReadOnly();
-      }
-  
-      @Override
-      public void setCatalog(String catalog) throws SQLException {
-          con.setCatalog(catalog);
-      }
-  
-      @Override
-      public String getCatalog() throws SQLException {
-          return con.getCatalog();
-      }
-  
-      @Override
-      public void setTransactionIsolation(int level) throws SQLException {
-          con.setTransactionIsolation(level);
-      }
-  
-      @Override
-      public int getTransactionIsolation() throws SQLException {
-          return con.getTransactionIsolation();
-      }
-  
-      @Override
-      public SQLWarning getWarnings() throws SQLException {
-          return con.getWarnings();
-      }
-  
-      @Override
-      public void clearWarnings() throws SQLException {
-          con.clearWarnings();
-      }
-  
-      @Override
-      public Statement createStatement(int resultSetType, int resultSetConcurrency) throws SQLException {
-          return con.createStatement(resultSetType,resultSetConcurrency);
-      }
-  
-      @Override
-      public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
-          return con.prepareStatement(sql,resultSetType,resultSetConcurrency);
-      }
-  
-      @Override
-      public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
-          return con.prepareCall(sql,resultSetType,resultSetConcurrency);
-      }
-  
-      @Override
-      public Map<String, Class<?>> getTypeMap() throws SQLException {
-          return con.getTypeMap();
-      }
-  
-      @Override
-      public void setTypeMap(Map<String, Class<?>> map) throws SQLException {
-          con.setTypeMap(map);
-      }
-  
-      @Override
-      public void setHoldability(int holdability) throws SQLException {
-          con.setHoldability(holdability);
-      }
-  
-      @Override
-      public int getHoldability() throws SQLException {
-          return con.getHoldability();
-      }
-  
-      @Override
-      public Savepoint setSavepoint() throws SQLException {
-          return con.setSavepoint();
-      }
-  
-      @Override
-      public Savepoint setSavepoint(String name) throws SQLException {
-          return con.setSavepoint(name);
-      }
-  
-      @Override
-      public void rollback(Savepoint savepoint) throws SQLException {
-          con.rollback(savepoint);
-      }
-  
-      @Override
-      public void releaseSavepoint(Savepoint savepoint) throws SQLException {
-          con.releaseSavepoint(savepoint);
-      }
-  
-      @Override
-      public Statement createStatement(int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
-          return con.createStatement(resultSetType,resultSetConcurrency,resultSetHoldability);
-      }
-  
-      @Override
-      public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
-          return con.prepareStatement(sql,resultSetType,resultSetConcurrency,resultSetHoldability);
-      }
-  
-      @Override
-      public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
-          return con.prepareCall(sql,resultSetType,resultSetConcurrency,resultSetHoldability);
-      }
-  
-      @Override
-      public PreparedStatement prepareStatement(String sql, int autoGeneratedKeys) throws SQLException {
-          return con.prepareStatement(sql,autoGeneratedKeys);
-      }
-  
-      @Override
-      public PreparedStatement prepareStatement(String sql, int[] columnIndexes) throws SQLException {
-          return con.prepareStatement(sql,columnIndexes);
-      }
-  
-      @Override
-      public PreparedStatement prepareStatement(String sql, String[] columnNames) throws SQLException {
-          return con.prepareStatement(sql,columnNames);
-      }
-  
-      @Override
-      public Clob createClob() throws SQLException {
-          return con.createClob();
-      }
-  
-      @Override
-      public Blob createBlob() throws SQLException {
-          return con.createBlob();
-      }
-  
-      @Override
-      public NClob createNClob() throws SQLException {
-          return con.createNClob();
-      }
-  
-      @Override
-      public SQLXML createSQLXML() throws SQLException {
-          return con.createSQLXML();
-      }
-  
-      @Override
-      public boolean isValid(int timeout) throws SQLException {
-          return con.isValid(timeout);
-      }
-  
-      @Override
-      public void setClientInfo(String name, String value) throws SQLClientInfoException {
-          con.setClientInfo(name,value);
-      }
-  
-      @Override
-      public void setClientInfo(Properties properties) throws SQLClientInfoException {
-          con.setClientInfo(properties);
-      }
-  
-      @Override
-      public String getClientInfo(String name) throws SQLException {
-          return con.getClientInfo(name);
-      }
-  
-      @Override
-      public Properties getClientInfo() throws SQLException {
-          return con.getClientInfo();
-      }
-  
-      @Override
-      public Array createArrayOf(String typeName, Object[] elements) throws SQLException {
-          return con.createArrayOf(typeName,elements);
-      }
-  
-      @Override
-      public Struct createStruct(String typeName, Object[] attributes) throws SQLException {
-          return con.createStruct(typeName,attributes);
-      }
-  
-      @Override
-      public void setSchema(String schema) throws SQLException {
-          con.setSchema(schema);
-      }
-  
-      @Override
-      public String getSchema() throws SQLException {
-          return con.getSchema();
-      }
-  
-      @Override
-      public void abort(Executor executor) throws SQLException {
-          con.abort(executor);
-      }
-  
-      @Override
-      public void setNetworkTimeout(Executor executor, int milliseconds) throws SQLException {
-          con.setNetworkTimeout(executor,milliseconds);
-      }
-  
-      @Override
-      public int getNetworkTimeout() throws SQLException {
-          return con.getNetworkTimeout();
-      }
-  
-      @Override
-      public <T> T unwrap(Class<T> iface) throws SQLException {
-          return con.unwrap(iface);
-      }
-  
-      @Override
-      public boolean isWrapperFor(Class<?> iface) throws SQLException {
-          return con.isWrapperFor(iface);
-      }
+      //其它接口方法仿照createStatement实现，不需要实现close方法
   }
   ```
 
@@ -2374,7 +1349,7 @@ public class MyDataSourceTest {
   
   ```
 
-- 动态代理
+- **动态代理**
 
   - 经过我们适配器模式的改进，自定义连接类中的方法已经很简洁了。剩余所有的方法已经抽取到了适配器类中。但是适配器这个类还是我们自己编写的，也比较麻烦！所以可以使用动态代理的方式来改进。
   - 自定义数据库连接池类
@@ -2427,24 +1402,6 @@ public class MyDataSourceTest {
           }
       }
   
-  
-      //从池中返回一个数据库连接
-      /*@Override
-      public Connection getConnection() {
-          if(pool.size() > 0) {
-              //从池中获取数据库连接
-              Connection con = pool.remove(0);
-  
-              //通过自定义连接对象进行包装
-              //MyConnection2 mycon = new MyConnection2(con,pool);
-              MyConnection3 mycon = new MyConnection3(con,pool);
-  
-              //返回包装后的连接对象
-              return mycon;
-          }else {
-              throw new RuntimeException("连接数量已用尽");
-          }
-      }*/
   }
   
   ```
@@ -2489,7 +1446,7 @@ public class MyDataSourceTest {
   
   ```
 
-  - 配置演示
+  - 连接测试
 
   ```java
   public class C3P0Demo2 {
@@ -2509,6 +1466,56 @@ public class MyDataSourceTest {
   }
   
   ```
+
+  - 配置文件（两种配置方式）
+    - xml形式，命名固定：`c3p0-config.xml`，自动读取配置
+    ```xml
+    <c3p0-config>
+        <!-- 使用默认的配置读取连接池对象 -->
+        <default-config>
+            <!--  连接参数 -->
+            <property name="driverClass">com.mysql.jdbc.Driver</property>
+            <property name="jdbcUrl">jdbc:mysql://192.168.59.129:3306/db14</property>
+            <property name="user">root</property>
+            <property name="password">itheima</property>
+            
+            <!-- 连接池参数 -->
+            <!--初始化的连接数量-->
+            <property name="initialPoolSize">5</property>
+            <!--最大连接数量-->
+            <property name="maxPoolSize">10</property>
+            <!--超时时间-->
+            <property name="checkoutTimeout">3000</property>
+        </default-config>
+
+        <named-config name="otherc3p0"> 
+            <!--  连接参数 -->
+            <property name="driverClass">com.mysql.jdbc.Driver</property>
+            <property name="jdbcUrl">jdbc:mysql://localhost:3306/db15</property>
+            <property name="user">root</property>
+            <property name="password">itheima</property>
+            
+            <!-- 连接池参数 -->
+            <property name="initialPoolSize">5</property>
+            <property name="maxPoolSize">8</property>
+            <property name="checkoutTimeout">1000</property>
+        </named-config>
+    </c3p0-config>
+    ```
+    - 配置文件形式，名字不固定，如`c3p0.properties`，需要手动读取
+    ```properties
+    driverClass=com.mysql.jdbc.Driver
+    url=jdbc:mysql://localhost:3306/website?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username=root
+    password=123456
+    
+    # 初始化连接数量
+    initialSize=5
+    # 最大连接数
+    maxActive=10
+    # 最大等待时间
+    maxWait=3000
+    ```
 
 - Druid
 
@@ -2601,14 +1608,13 @@ public class MyDataSourceTest {
   
       //6.提供释放资源的方法
       public static void close(Connection con, Statement stat, ResultSet rs) {
-          if(con != null) {
+          if(rs != null) {
               try {
-                  con.close();
+                  rs.close();
               } catch (SQLException e) {
                   e.printStackTrace();
               }
           }
-  
           if(stat != null) {
               try {
                   stat.close();
@@ -2616,10 +1622,9 @@ public class MyDataSourceTest {
                   e.printStackTrace();
               }
           }
-  
-          if(rs != null) {
+          if(con != null) {
               try {
-                  rs.close();
+                  con.close();
               } catch (SQLException e) {
                   e.printStackTrace();
               }
@@ -2631,34 +1636,45 @@ public class MyDataSourceTest {
       }
   
   }
-  
   ```
+
+  - 配置文件
+    ```properties
+    driverClassName=com.mysql.jdbc.Driver
+    url=jdbc:mysql://192.168.59.129:3306/db14
+    username=root
+    password=itheima
+    # 初始化连接数量
+    initialSize=5
+    # 最大连接数量
+    maxActive=10
+    # 超时时间
+    maxWait=3000
+    ```
 
 ### 八、JDBC框架(JDBCTemplate)
 
 #### 1.分析案例中的重复代码
 
-- dao层的重复代码
-  - 定义必要的信息、获取数据库的连接、释放资源都是重复的代码！
-  - 而我们最终的核心功能仅仅只是执行一条sql语句而已啊！
-  - 所以我们可以抽取出一个JDBC模板类，来封装一些方法(update、query)，专门帮我们执行增删改查的sql语句！
-  - 将之前那些重复的操作，都抽取到模板类中的方法里。就能大大简化我们的使用步骤！
+dao层**定义必要的信息、获取数据库的连接、释放资源**都是重复的代码！
+而我们最终的核心功能仅仅只是**执行一条sql语句**而已！
+所以我们可以抽取出一个JDBC模板类，来**封装一些专门帮我们执行增删改查的sql语句的方法(update、query)**，将之前那些重复的操作，都抽取到模板类中的方法里。就能大大简化我们的使用步骤！
 
 #### 2.自定义JDBC框架
 
 ##### 2.1数据库的源信息
 
-- DataBaseMetaData(了解)：数据库的源信息
+- `DataBaseMetaData`(了解)：数据库的源信息
   - java.sql.DataBaseMetaData：封装了整个数据库的综合信息
   - 例如：
     - String getDatabaseProductName()：获取数据库产品的名称
     - int getDatabaseProductVersion()：获取数据库产品的版本号
-- ParameterMetaData：参数的源信息
+- `ParameterMetaData`：参数的源信息
   - java.sql.ParameterMetaData：封装的是预编译执行者对象中每个参数的类型和属性
   - 这个对象可以通过预编译执行者对象中的getParameterMetaData()方法来获取
   - 核心功能：
     - int getParameterCount()：获取sql语句中参数的个数
-- ResultSetMetaData：结果集的源信息
+- `ResultSetMetaData`：结果集的源信息
   - java.sql.ResultSetMetaData：封装的是结果集对象中列的类型和属性
   - 这个对象可以通过结果集对象中的getMetaData()方法来获取
   - 核心功能：
@@ -2795,7 +1811,7 @@ public class Student {
  */
 public interface ResultSetHandler<T> {
     //处理结果集的抽象方法。
-    <T> T handler(ResultSet rs);
+    T handler(ResultSet rs);
 }
 
 ```
