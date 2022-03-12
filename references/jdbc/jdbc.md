@@ -1524,7 +1524,7 @@ public class MyDataSourceTest {
   ```java
   /*
       Druid连接池
-      1.导入jar包
+      1.导入jar包，需要注意jar包与sql驱动版本是否相符
       2.编写配置文件，放在src目录下
       3.通过Properties集合加载配置文件
       4.通过Druid连接池工厂类获取数据库连接池对象

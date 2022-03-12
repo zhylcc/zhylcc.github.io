@@ -502,6 +502,8 @@ INSERT INTO product VALUES (1,'华为手机',3999,'华为',23,'2088-03-10'),
 
 - 查询语法
 
+> 小知识：结尾使用`\G`替换`;`可按列展示
+
 ```SQL
 select
 	字段列表
@@ -602,7 +604,7 @@ SELECT * FROM product;
   | <> 或 !=            | 不等于                                 |
   | BETWEEN ... AND ... | 在某个范围之内(都包含)                 |
   | IN(...)             | 多选一                                 |
-  | LIKE 占位符         | 模糊查询  _单个任意字符  %多个任意字符 |
+  | LIKE 占位符         | 模糊查询: `_`表示单个任意字符, `%`表示多个任意字符 |
   | IS NULL             | 是NULL                                 |
   | IS NOT NULL         | 不是NULL                               |
   | AND 或 &&           | 并且                                   |
@@ -955,13 +957,13 @@ ALTER TABLE student4 MODIFY NAME VARCHAR(20);
 
 - 建表后单独添加非空约束
 
-  ```SQL
-  -- 标准语法
-  ALTER TABLE 表名 MODIFY 列名 数据类型 NOT NULL;
-  
-  -- 添加非空约束
-  ALTER TABLE student4 MODIFY NAME VARCHAR(20) NOT NULL;
-  ```
+```SQL
+-- 标准语法
+ALTER TABLE 表名 MODIFY 列名 数据类型 NOT NULL;
+
+-- 添加非空约束
+ALTER TABLE student4 MODIFY NAME VARCHAR(20) NOT NULL;
+```
 
 
 
@@ -1358,15 +1360,15 @@ SELECT * FROM USER u JOIN orderlist o ON u.id=o.uid;
 
 -- 查询用户姓名，年龄。和订单编号
 SELECT
-	u.`name`,	-- 姓名
-	u.`age`,	-- 年龄
-	o.`number`	-- 订单编号
+	u.name,	-- 姓名
+	u.age,	-- 年龄
+	o.number	-- 订单编号
 FROM
 	USER u          -- 用户表
 JOIN
 	orderlist o     -- 订单表
 ON 
-	u.`id` = o.`uid`;
+	u.id = o.uid;
 ```
 
 - 隐式内连接
@@ -1377,14 +1379,14 @@ SELECT 列名 FROM 表名1,表名2 WHERE 条件;
 
 -- 查询用户姓名，年龄。和订单编号
 SELECT
-	u.`name`,	-- 姓名
-	u.`age`,	-- 年龄
-	o.`number`	-- 订单编号
+	u.name,	-- 姓名
+	u.age,	-- 年龄
+	o.number	-- 订单编号
 FROM
 	USER u,		-- 用户表
 	orderlist o     -- 订单表
 WHERE
-	u.`id`=o.`uid`;
+	u.id=o.uid;
 ```
 
 #### 4.多表查询-外连接查询
@@ -1401,15 +1403,15 @@ WHERE
   
   -- 查询所有用户信息，以及用户对应的订单信息
   SELECT
-  	u.`name`,	-- 姓名
-  	u.`age`,	-- 年龄
-  	o.`number`	-- 订单编号
+  	u.name,	-- 姓名
+  	u.age,	-- 年龄
+  	o.number	-- 订单编号
   FROM
   	USER u          -- 用户表
   LEFT OUTER JOIN
   	orderlist o     -- 订单表
   ON
-  	u.`id`=o.`uid`;
+  	u.id=o.uid;
   ```
 
 - 右外连接
@@ -1424,15 +1426,15 @@ WHERE
   
   -- 查询所有订单信息，以及订单所属的用户信息
   SELECT
-  	u.`name`,	-- 姓名
-  	u.`age`,	-- 年龄
-  	o.`number`	-- 订单编号
+  	u.name,	-- 姓名
+  	u.age,	-- 年龄
+  	o.number	-- 订单编号
   FROM
   	USER u          -- 用户表
   RIGHT OUTER JOIN
   	orderlist o     -- 订单表
   ON
-  	u.`id`=o.`uid`;
+  	u.id=o.uid;
   ```
 
 #### 5.多表查询-子查询
@@ -1535,7 +1537,7 @@ ON
 
 - 视图是一种虚拟存在的数据表
 - 这个虚拟的表并不在数据库中实际存在
-- 作用是将一些比较复杂的查询语句的结果，封装到一个虚拟表中。后期再有相同复杂查询时，直接查询这张虚拟表即可
+- 作用是将一些比较复杂的查询语句的结果，封装到一个**虚拟表**中。后期再有相同复杂查询时，直接查询这张虚拟表即可
 - 说白了，视图就是将一条SELECT查询语句的结果封装到了一个虚拟表中，所以我们在创建视图的时候，工作重心就要放在这条SELECT查询语句上
 
 #### 2.视图的好处
@@ -1661,6 +1663,7 @@ SHOW CREATE VIEW city_country;
 #### 6.视图的修改
 
 - 修改视图表中的数据
+> 注意：视图表数据修改，会自动修改源表中的数据
 
 ```SQL
 -- 标准语法
@@ -1675,7 +1678,6 @@ SELECT * FROM city_country;
 -- 查询city表,北京也修改为了北京市
 SELECT * FROM city;
 
--- 注意：视图表数据修改，会自动修改源表中的数据
 ```
 
 - 修改视图表结构
@@ -1723,7 +1725,8 @@ DROP VIEW IF EXISTS city_country2;
 
 - 删除旧数据：`drop database 数据库名称;`
 
-- 重建同名的数据库：`create database 数据库名词;`
+- 重建数据库：`create database 数据库名词;`
+  > 可以同名也可以重新命名
 
 - 使用该数据库：`use 数据库名称`
 
@@ -1738,12 +1741,12 @@ DROP VIEW IF EXISTS city_country2;
 
 #### 1.存储过程和函数的概念
 
-- 存储过程和函数是  事先经过编译并存储在数据库中的一段 SQL 语句的集合
+- 存储过程和函数是**事先经过编译并存储在数据库中**的**一段SQL语句的集合**
 
 #### 2.存储过程和函数的好处
 
-- 存储过程和函数可以重复使用，减轻开发人员的工作量。类似于java中方法可以多次调用
-- 减少网络流量，存储过程和函数位于服务器上，调用的时候只需要传递名称和参数即可
+- 存储过程和函数可以**重复使用**，减轻开发人员的工作量。类似于java中方法可以多次调用
+- 减少网络流量，存储过程和函数**位于服务器上**，调用的时候只需要传递名称和参数即可
 - 减少数据在数据库和应用服务器之间的传输，可以提高数据处理的效率
 - 将一些业务逻辑在数据库层面来实现，可以减少代码层面的业务处理
 
@@ -1840,8 +1843,13 @@ CALL stu_group();
 - 查看存储过程语法
 
 ```SQL
--- 查询数据库中所有的存储过程 标准语法
+-- 查询数据库中所有的存储过程标准语法
 SELECT * FROM mysql.proc WHERE db='数据库名称';
+
+-- MySQL 8.0中官方将proc表进行了移除，可使用如下命令
+SELECT * FROM information_schema.routines WHERE routine_schema='数据库名称';
+
+SELECT specific_name,routine_definition FROM information_schema.routines WHERE routine_schema='数据库名称';
 ```
 
 #### 7.删除存储过程
@@ -2339,7 +2347,7 @@ CALL pro_test10();
 
   - 游标可以遍历返回的多行结果，每次拿到一整行数据
   - 在存储过程和函数中可以使用游标对结果集进行循环的处理
-  - 简单来说游标就类似于集合的迭代器遍历
+  - 简单来说游标就类似于集合的**迭代器遍历**
   - MySQL中的游标只能用在存储过程和函数中
 
 - 游标的语法
@@ -2566,7 +2574,7 @@ SELECT * FROM stu_score;
   
   -- 标准语法
   CREATE FUNCTION 函数名称([参数 数据类型])
-  RETURNS 返回值类型
+  RETURNS 返回值类型 [声明类型]
   BEGIN
   	执行的sql语句;
   	RETURN 结果;
@@ -2574,6 +2582,8 @@ SELECT * FROM stu_score;
   
   DELIMITER ;
   ```
+  > 此处的声明类型包括：`DETERMINISTIC`, `NO SQL`,  `READS SQL DATA`, `MODIFIES SQL DATA`, `CONTAINS SQL`
+  > 更详细的说明参考：https://blog.csdn.net/lv_hang515888/article/details/78094889
 
   - 调用存储函数
 
@@ -2620,6 +2630,7 @@ SELECT fun_test1();
 
 - 触发器是与表有关的数据库对象，可以在 insert/update/delete 之前或之后，触发并执行触发器中定义的SQL语句。触发器的这种特性可以协助应用在数据库端确保数据的完整性 、日志记录 、数据校验等操作 。
 - 使用别名 NEW 和 OLD 来引用触发器中发生变化的记录内容，这与其他的数据库是相似的。现在触发器还只支持行级触发，不支持语句级触发。
+> 即可以使用`old.列名`和`new.列名`表示数据
 
 | 触发器类型      | OLD的含义                      | NEW的含义                      |
 | --------------- | ------------------------------ | ------------------------------ |
@@ -2760,9 +2771,6 @@ DELIMITER ;
 #### 3.查看触发器
 
 ```SQL
--- 标准语法
-SHOW TRIGGERS;
-
 -- 查看触发器
 SHOW TRIGGERS;
 ```
