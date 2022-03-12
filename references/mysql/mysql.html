@@ -769,6 +769,9 @@ pre[data-line] .line-highlight[data-end]:after {
 </pre><ul>
 <li>&#x67E5;&#x8BE2;&#x8BED;&#x6CD5;</li>
 </ul>
+<blockquote>
+<p>&#x5C0F;&#x77E5;&#x8BC6;&#xFF1A;&#x7ED3;&#x5C3E;&#x4F7F;&#x7528;<code>\G</code>&#x66FF;&#x6362;<code>;</code>&#x53EF;&#x6309;&#x5217;&#x5C55;&#x793A;</p>
+</blockquote>
 <pre data-role="codeBlock" data-info="SQL" class="language-sql"><span class="token keyword keyword-select">select</span>
 	&#x5B57;&#x6BB5;&#x5217;&#x8868;
 <span class="token keyword keyword-from">from</span>
@@ -894,7 +897,7 @@ pre[data-line] .line-highlight[data-end]:after {
 </tr>
 <tr>
 <td>LIKE &#x5360;&#x4F4D;&#x7B26;</td>
-<td>&#x6A21;&#x7CCA;&#x67E5;&#x8BE2;  _&#x5355;&#x4E2A;&#x4EFB;&#x610F;&#x5B57;&#x7B26;  %&#x591A;&#x4E2A;&#x4EFB;&#x610F;&#x5B57;&#x7B26;</td>
+<td>&#x6A21;&#x7CCA;&#x67E5;&#x8BE2;: <code>_</code>&#x8868;&#x793A;&#x5355;&#x4E2A;&#x4EFB;&#x610F;&#x5B57;&#x7B26;, <code>%</code>&#x8868;&#x793A;&#x591A;&#x4E2A;&#x4EFB;&#x610F;&#x5B57;&#x7B26;</td>
 </tr>
 <tr>
 <td>IS NULL</td>
@@ -1307,16 +1310,14 @@ pre[data-line] .line-highlight[data-end]:after {
 <span class="token comment">-- &#x5220;&#x9664;&#x975E;&#x7A7A;&#x7EA6;&#x675F;</span>
 <span class="token keyword keyword-ALTER">ALTER</span> <span class="token keyword keyword-TABLE">TABLE</span> student4 <span class="token keyword keyword-MODIFY">MODIFY</span> NAME <span class="token keyword keyword-VARCHAR">VARCHAR</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </pre><ul>
-<li>
-<p>&#x5EFA;&#x8868;&#x540E;&#x5355;&#x72EC;&#x6DFB;&#x52A0;&#x975E;&#x7A7A;&#x7EA6;&#x675F;</p>
+<li>&#x5EFA;&#x8868;&#x540E;&#x5355;&#x72EC;&#x6DFB;&#x52A0;&#x975E;&#x7A7A;&#x7EA6;&#x675F;</li>
+</ul>
 <pre data-role="codeBlock" data-info="SQL" class="language-sql"><span class="token comment">-- &#x6807;&#x51C6;&#x8BED;&#x6CD5;</span>
 <span class="token keyword keyword-ALTER">ALTER</span> <span class="token keyword keyword-TABLE">TABLE</span> &#x8868;&#x540D; <span class="token keyword keyword-MODIFY">MODIFY</span> &#x5217;&#x540D; &#x6570;&#x636E;&#x7C7B;&#x578B; <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">;</span>
 
 <span class="token comment">-- &#x6DFB;&#x52A0;&#x975E;&#x7A7A;&#x7EA6;&#x675F;</span>
 <span class="token keyword keyword-ALTER">ALTER</span> <span class="token keyword keyword-TABLE">TABLE</span> student4 <span class="token keyword keyword-MODIFY">MODIFY</span> NAME <span class="token keyword keyword-VARCHAR">VARCHAR</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">;</span>
-</pre></li>
-</ul>
-<h4 class="mume-header" id="6%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F">6.&#x5916;&#x952E;&#x7EA6;&#x675F;</h4>
+</pre><h4 class="mume-header" id="6%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F">6.&#x5916;&#x952E;&#x7EA6;&#x675F;</h4>
 
 <ul>
 <li>
@@ -1716,15 +1717,15 @@ pre[data-line] .line-highlight[data-end]:after {
 
 <span class="token comment">-- &#x67E5;&#x8BE2;&#x7528;&#x6237;&#x59D3;&#x540D;&#xFF0C;&#x5E74;&#x9F84;&#x3002;&#x548C;&#x8BA2;&#x5355;&#x7F16;&#x53F7;</span>
 <span class="token keyword keyword-SELECT">SELECT</span>
-	u<span class="token punctuation">.</span><span class="token punctuation">`</span>name<span class="token punctuation">`</span><span class="token punctuation">,</span>	<span class="token comment">-- &#x59D3;&#x540D;</span>
-	u<span class="token punctuation">.</span><span class="token punctuation">`</span>age<span class="token punctuation">`</span><span class="token punctuation">,</span>	<span class="token comment">-- &#x5E74;&#x9F84;</span>
-	o<span class="token punctuation">.</span><span class="token punctuation">`</span>number<span class="token punctuation">`</span>	<span class="token comment">-- &#x8BA2;&#x5355;&#x7F16;&#x53F7;</span>
+	u<span class="token punctuation">.</span>name<span class="token punctuation">,</span>	<span class="token comment">-- &#x59D3;&#x540D;</span>
+	u<span class="token punctuation">.</span>age<span class="token punctuation">,</span>	<span class="token comment">-- &#x5E74;&#x9F84;</span>
+	o<span class="token punctuation">.</span>number	<span class="token comment">-- &#x8BA2;&#x5355;&#x7F16;&#x53F7;</span>
 <span class="token keyword keyword-FROM">FROM</span>
 	<span class="token keyword keyword-USER">USER</span> u          <span class="token comment">-- &#x7528;&#x6237;&#x8868;</span>
 <span class="token keyword keyword-JOIN">JOIN</span>
 	orderlist o     <span class="token comment">-- &#x8BA2;&#x5355;&#x8868;</span>
 <span class="token keyword keyword-ON">ON</span> 
-	u<span class="token punctuation">.</span><span class="token punctuation">`</span>id<span class="token punctuation">`</span> <span class="token operator">=</span> o<span class="token punctuation">.</span><span class="token punctuation">`</span>uid<span class="token punctuation">`</span><span class="token punctuation">;</span>
+	u<span class="token punctuation">.</span>id <span class="token operator">=</span> o<span class="token punctuation">.</span>uid<span class="token punctuation">;</span>
 </pre><ul>
 <li>&#x9690;&#x5F0F;&#x5185;&#x8FDE;&#x63A5;</li>
 </ul>
@@ -1733,14 +1734,14 @@ pre[data-line] .line-highlight[data-end]:after {
 
 <span class="token comment">-- &#x67E5;&#x8BE2;&#x7528;&#x6237;&#x59D3;&#x540D;&#xFF0C;&#x5E74;&#x9F84;&#x3002;&#x548C;&#x8BA2;&#x5355;&#x7F16;&#x53F7;</span>
 <span class="token keyword keyword-SELECT">SELECT</span>
-	u<span class="token punctuation">.</span><span class="token punctuation">`</span>name<span class="token punctuation">`</span><span class="token punctuation">,</span>	<span class="token comment">-- &#x59D3;&#x540D;</span>
-	u<span class="token punctuation">.</span><span class="token punctuation">`</span>age<span class="token punctuation">`</span><span class="token punctuation">,</span>	<span class="token comment">-- &#x5E74;&#x9F84;</span>
-	o<span class="token punctuation">.</span><span class="token punctuation">`</span>number<span class="token punctuation">`</span>	<span class="token comment">-- &#x8BA2;&#x5355;&#x7F16;&#x53F7;</span>
+	u<span class="token punctuation">.</span>name<span class="token punctuation">,</span>	<span class="token comment">-- &#x59D3;&#x540D;</span>
+	u<span class="token punctuation">.</span>age<span class="token punctuation">,</span>	<span class="token comment">-- &#x5E74;&#x9F84;</span>
+	o<span class="token punctuation">.</span>number	<span class="token comment">-- &#x8BA2;&#x5355;&#x7F16;&#x53F7;</span>
 <span class="token keyword keyword-FROM">FROM</span>
 	<span class="token keyword keyword-USER">USER</span> u<span class="token punctuation">,</span>		<span class="token comment">-- &#x7528;&#x6237;&#x8868;</span>
 	orderlist o     <span class="token comment">-- &#x8BA2;&#x5355;&#x8868;</span>
 <span class="token keyword keyword-WHERE">WHERE</span>
-	u<span class="token punctuation">.</span><span class="token punctuation">`</span>id<span class="token punctuation">`</span><span class="token operator">=</span>o<span class="token punctuation">.</span><span class="token punctuation">`</span>uid<span class="token punctuation">`</span><span class="token punctuation">;</span>
+	u<span class="token punctuation">.</span>id<span class="token operator">=</span>o<span class="token punctuation">.</span>uid<span class="token punctuation">;</span>
 </pre><h4 class="mume-header" id="4%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2-%E5%A4%96%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2">4.&#x591A;&#x8868;&#x67E5;&#x8BE2;-&#x5916;&#x8FDE;&#x63A5;&#x67E5;&#x8BE2;</h4>
 
 <ul>
@@ -1759,15 +1760,15 @@ pre[data-line] .line-highlight[data-end]:after {
 
 <span class="token comment">-- &#x67E5;&#x8BE2;&#x6240;&#x6709;&#x7528;&#x6237;&#x4FE1;&#x606F;&#xFF0C;&#x4EE5;&#x53CA;&#x7528;&#x6237;&#x5BF9;&#x5E94;&#x7684;&#x8BA2;&#x5355;&#x4FE1;&#x606F;</span>
 <span class="token keyword keyword-SELECT">SELECT</span>
-	u<span class="token punctuation">.</span><span class="token punctuation">`</span>name<span class="token punctuation">`</span><span class="token punctuation">,</span>	<span class="token comment">-- &#x59D3;&#x540D;</span>
-	u<span class="token punctuation">.</span><span class="token punctuation">`</span>age<span class="token punctuation">`</span><span class="token punctuation">,</span>	<span class="token comment">-- &#x5E74;&#x9F84;</span>
-	o<span class="token punctuation">.</span><span class="token punctuation">`</span>number<span class="token punctuation">`</span>	<span class="token comment">-- &#x8BA2;&#x5355;&#x7F16;&#x53F7;</span>
+	u<span class="token punctuation">.</span>name<span class="token punctuation">,</span>	<span class="token comment">-- &#x59D3;&#x540D;</span>
+	u<span class="token punctuation">.</span>age<span class="token punctuation">,</span>	<span class="token comment">-- &#x5E74;&#x9F84;</span>
+	o<span class="token punctuation">.</span>number	<span class="token comment">-- &#x8BA2;&#x5355;&#x7F16;&#x53F7;</span>
 <span class="token keyword keyword-FROM">FROM</span>
 	<span class="token keyword keyword-USER">USER</span> u          <span class="token comment">-- &#x7528;&#x6237;&#x8868;</span>
 <span class="token keyword keyword-LEFT">LEFT</span> <span class="token keyword keyword-OUTER">OUTER</span> <span class="token keyword keyword-JOIN">JOIN</span>
 	orderlist o     <span class="token comment">-- &#x8BA2;&#x5355;&#x8868;</span>
 <span class="token keyword keyword-ON">ON</span>
-	u<span class="token punctuation">.</span><span class="token punctuation">`</span>id<span class="token punctuation">`</span><span class="token operator">=</span>o<span class="token punctuation">.</span><span class="token punctuation">`</span>uid<span class="token punctuation">`</span><span class="token punctuation">;</span>
+	u<span class="token punctuation">.</span>id<span class="token operator">=</span>o<span class="token punctuation">.</span>uid<span class="token punctuation">;</span>
 </pre></li>
 <li>
 <p>&#x53F3;&#x5916;&#x8FDE;&#x63A5;</p>
@@ -1784,15 +1785,15 @@ pre[data-line] .line-highlight[data-end]:after {
 
 <span class="token comment">-- &#x67E5;&#x8BE2;&#x6240;&#x6709;&#x8BA2;&#x5355;&#x4FE1;&#x606F;&#xFF0C;&#x4EE5;&#x53CA;&#x8BA2;&#x5355;&#x6240;&#x5C5E;&#x7684;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
 <span class="token keyword keyword-SELECT">SELECT</span>
-	u<span class="token punctuation">.</span><span class="token punctuation">`</span>name<span class="token punctuation">`</span><span class="token punctuation">,</span>	<span class="token comment">-- &#x59D3;&#x540D;</span>
-	u<span class="token punctuation">.</span><span class="token punctuation">`</span>age<span class="token punctuation">`</span><span class="token punctuation">,</span>	<span class="token comment">-- &#x5E74;&#x9F84;</span>
-	o<span class="token punctuation">.</span><span class="token punctuation">`</span>number<span class="token punctuation">`</span>	<span class="token comment">-- &#x8BA2;&#x5355;&#x7F16;&#x53F7;</span>
+	u<span class="token punctuation">.</span>name<span class="token punctuation">,</span>	<span class="token comment">-- &#x59D3;&#x540D;</span>
+	u<span class="token punctuation">.</span>age<span class="token punctuation">,</span>	<span class="token comment">-- &#x5E74;&#x9F84;</span>
+	o<span class="token punctuation">.</span>number	<span class="token comment">-- &#x8BA2;&#x5355;&#x7F16;&#x53F7;</span>
 <span class="token keyword keyword-FROM">FROM</span>
 	<span class="token keyword keyword-USER">USER</span> u          <span class="token comment">-- &#x7528;&#x6237;&#x8868;</span>
 <span class="token keyword keyword-RIGHT">RIGHT</span> <span class="token keyword keyword-OUTER">OUTER</span> <span class="token keyword keyword-JOIN">JOIN</span>
 	orderlist o     <span class="token comment">-- &#x8BA2;&#x5355;&#x8868;</span>
 <span class="token keyword keyword-ON">ON</span>
-	u<span class="token punctuation">.</span><span class="token punctuation">`</span>id<span class="token punctuation">`</span><span class="token operator">=</span>o<span class="token punctuation">.</span><span class="token punctuation">`</span>uid<span class="token punctuation">`</span><span class="token punctuation">;</span>
+	u<span class="token punctuation">.</span>id<span class="token operator">=</span>o<span class="token punctuation">.</span>uid<span class="token punctuation">;</span>
 </pre></li>
 </ul>
 <h4 class="mume-header" id="5%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2-%E5%AD%90%E6%9F%A5%E8%AF%A2">5.&#x591A;&#x8868;&#x67E5;&#x8BE2;-&#x5B50;&#x67E5;&#x8BE2;</h4>
@@ -1898,7 +1899,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <ul>
 <li>&#x89C6;&#x56FE;&#x662F;&#x4E00;&#x79CD;&#x865A;&#x62DF;&#x5B58;&#x5728;&#x7684;&#x6570;&#x636E;&#x8868;</li>
 <li>&#x8FD9;&#x4E2A;&#x865A;&#x62DF;&#x7684;&#x8868;&#x5E76;&#x4E0D;&#x5728;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x5B9E;&#x9645;&#x5B58;&#x5728;</li>
-<li>&#x4F5C;&#x7528;&#x662F;&#x5C06;&#x4E00;&#x4E9B;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x7684;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x5C01;&#x88C5;&#x5230;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x8868;&#x4E2D;&#x3002;&#x540E;&#x671F;&#x518D;&#x6709;&#x76F8;&#x540C;&#x590D;&#x6742;&#x67E5;&#x8BE2;&#x65F6;&#xFF0C;&#x76F4;&#x63A5;&#x67E5;&#x8BE2;&#x8FD9;&#x5F20;&#x865A;&#x62DF;&#x8868;&#x5373;&#x53EF;</li>
+<li>&#x4F5C;&#x7528;&#x662F;&#x5C06;&#x4E00;&#x4E9B;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x7684;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x5C01;&#x88C5;&#x5230;&#x4E00;&#x4E2A;<strong>&#x865A;&#x62DF;&#x8868;</strong>&#x4E2D;&#x3002;&#x540E;&#x671F;&#x518D;&#x6709;&#x76F8;&#x540C;&#x590D;&#x6742;&#x67E5;&#x8BE2;&#x65F6;&#xFF0C;&#x76F4;&#x63A5;&#x67E5;&#x8BE2;&#x8FD9;&#x5F20;&#x865A;&#x62DF;&#x8868;&#x5373;&#x53EF;</li>
 <li>&#x8BF4;&#x767D;&#x4E86;&#xFF0C;&#x89C6;&#x56FE;&#x5C31;&#x662F;&#x5C06;&#x4E00;&#x6761;SELECT&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x7684;&#x7ED3;&#x679C;&#x5C01;&#x88C5;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x8868;&#x4E2D;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5728;&#x521B;&#x5EFA;&#x89C6;&#x56FE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5DE5;&#x4F5C;&#x91CD;&#x5FC3;&#x5C31;&#x8981;&#x653E;&#x5728;&#x8FD9;&#x6761;SELECT&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x4E0A;</li>
 </ul>
 <h4 class="mume-header" id="2%E8%A7%86%E5%9B%BE%E7%9A%84%E5%A5%BD%E5%A4%84">2.&#x89C6;&#x56FE;&#x7684;&#x597D;&#x5904;</h4>
@@ -2017,6 +2018,9 @@ pre[data-line] .line-highlight[data-end]:after {
 <ul>
 <li>&#x4FEE;&#x6539;&#x89C6;&#x56FE;&#x8868;&#x4E2D;&#x7684;&#x6570;&#x636E;</li>
 </ul>
+<blockquote>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x89C6;&#x56FE;&#x8868;&#x6570;&#x636E;&#x4FEE;&#x6539;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x4FEE;&#x6539;&#x6E90;&#x8868;&#x4E2D;&#x7684;&#x6570;&#x636E;</p>
+</blockquote>
 <pre data-role="codeBlock" data-info="SQL" class="language-sql"><span class="token comment">-- &#x6807;&#x51C6;&#x8BED;&#x6CD5;</span>
 <span class="token keyword keyword-UPDATE">UPDATE</span> &#x89C6;&#x56FE;&#x540D;&#x79F0; <span class="token keyword keyword-SET">SET</span> &#x5217;&#x540D;<span class="token operator">=</span>&#x503C; <span class="token keyword keyword-WHERE">WHERE</span> &#x6761;&#x4EF6;<span class="token punctuation">;</span>
 
@@ -2029,7 +2033,6 @@ pre[data-line] .line-highlight[data-end]:after {
 <span class="token comment">-- &#x67E5;&#x8BE2;city&#x8868;,&#x5317;&#x4EAC;&#x4E5F;&#x4FEE;&#x6539;&#x4E3A;&#x4E86;&#x5317;&#x4EAC;&#x5E02;</span>
 <span class="token keyword keyword-SELECT">SELECT</span> <span class="token operator">*</span> <span class="token keyword keyword-FROM">FROM</span> city<span class="token punctuation">;</span>
 
-<span class="token comment">-- &#x6CE8;&#x610F;&#xFF1A;&#x89C6;&#x56FE;&#x8868;&#x6570;&#x636E;&#x4FEE;&#x6539;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x4FEE;&#x6539;&#x6E90;&#x8868;&#x4E2D;&#x7684;&#x6570;&#x636E;</span>
 </pre><ul>
 <li>&#x4FEE;&#x6539;&#x89C6;&#x56FE;&#x8868;&#x7ED3;&#x6784;</li>
 </ul>
@@ -2073,7 +2076,10 @@ pre[data-line] .line-highlight[data-end]:after {
 <p>&#x5220;&#x9664;&#x65E7;&#x6570;&#x636E;&#xFF1A;<code>drop database &#x6570;&#x636E;&#x5E93;&#x540D;&#x79F0;;</code></p>
 </li>
 <li>
-<p>&#x91CD;&#x5EFA;&#x540C;&#x540D;&#x7684;&#x6570;&#x636E;&#x5E93;&#xFF1A;<code>create database &#x6570;&#x636E;&#x5E93;&#x540D;&#x8BCD;;</code></p>
+<p>&#x91CD;&#x5EFA;&#x6570;&#x636E;&#x5E93;&#xFF1A;<code>create database &#x6570;&#x636E;&#x5E93;&#x540D;&#x8BCD;;</code></p>
+<blockquote>
+<p>&#x53EF;&#x4EE5;&#x540C;&#x540D;&#x4E5F;&#x53EF;&#x4EE5;&#x91CD;&#x65B0;&#x547D;&#x540D;</p>
+</blockquote>
 </li>
 <li>
 <p>&#x4F7F;&#x7528;&#x8BE5;&#x6570;&#x636E;&#x5E93;&#xFF1A;<code>use &#x6570;&#x636E;&#x5E93;&#x540D;&#x79F0;</code></p>
@@ -2090,13 +2096,13 @@ pre[data-line] .line-highlight[data-end]:after {
 <h4 class="mume-header" id="1%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E5%BF%B5">1.&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x548C;&#x51FD;&#x6570;&#x7684;&#x6982;&#x5FF5;</h4>
 
 <ul>
-<li>&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x548C;&#x51FD;&#x6570;&#x662F;  &#x4E8B;&#x5148;&#x7ECF;&#x8FC7;&#x7F16;&#x8BD1;&#x5E76;&#x5B58;&#x50A8;&#x5728;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x4E00;&#x6BB5; SQL &#x8BED;&#x53E5;&#x7684;&#x96C6;&#x5408;</li>
+<li>&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x548C;&#x51FD;&#x6570;&#x662F;<strong>&#x4E8B;&#x5148;&#x7ECF;&#x8FC7;&#x7F16;&#x8BD1;&#x5E76;&#x5B58;&#x50A8;&#x5728;&#x6570;&#x636E;&#x5E93;&#x4E2D;</strong>&#x7684;<strong>&#x4E00;&#x6BB5;SQL&#x8BED;&#x53E5;&#x7684;&#x96C6;&#x5408;</strong></li>
 </ul>
 <h4 class="mume-header" id="2%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E5%87%BD%E6%95%B0%E7%9A%84%E5%A5%BD%E5%A4%84">2.&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x548C;&#x51FD;&#x6570;&#x7684;&#x597D;&#x5904;</h4>
 
 <ul>
-<li>&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x548C;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x4F7F;&#x7528;&#xFF0C;&#x51CF;&#x8F7B;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7684;&#x5DE5;&#x4F5C;&#x91CF;&#x3002;&#x7C7B;&#x4F3C;&#x4E8E;java&#x4E2D;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x591A;&#x6B21;&#x8C03;&#x7528;</li>
-<li>&#x51CF;&#x5C11;&#x7F51;&#x7EDC;&#x6D41;&#x91CF;&#xFF0C;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x548C;&#x51FD;&#x6570;&#x4F4D;&#x4E8E;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF0C;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#x53EA;&#x9700;&#x8981;&#x4F20;&#x9012;&#x540D;&#x79F0;&#x548C;&#x53C2;&#x6570;&#x5373;&#x53EF;</li>
+<li>&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x548C;&#x51FD;&#x6570;&#x53EF;&#x4EE5;<strong>&#x91CD;&#x590D;&#x4F7F;&#x7528;</strong>&#xFF0C;&#x51CF;&#x8F7B;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7684;&#x5DE5;&#x4F5C;&#x91CF;&#x3002;&#x7C7B;&#x4F3C;&#x4E8E;java&#x4E2D;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x591A;&#x6B21;&#x8C03;&#x7528;</li>
+<li>&#x51CF;&#x5C11;&#x7F51;&#x7EDC;&#x6D41;&#x91CF;&#xFF0C;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x548C;&#x51FD;&#x6570;<strong>&#x4F4D;&#x4E8E;&#x670D;&#x52A1;&#x5668;&#x4E0A;</strong>&#xFF0C;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#x53EA;&#x9700;&#x8981;&#x4F20;&#x9012;&#x540D;&#x79F0;&#x548C;&#x53C2;&#x6570;&#x5373;&#x53EF;</li>
 <li>&#x51CF;&#x5C11;&#x6570;&#x636E;&#x5728;&#x6570;&#x636E;&#x5E93;&#x548C;&#x5E94;&#x7528;&#x670D;&#x52A1;&#x5668;&#x4E4B;&#x95F4;&#x7684;&#x4F20;&#x8F93;&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x6570;&#x636E;&#x5904;&#x7406;&#x7684;&#x6548;&#x7387;</li>
 <li>&#x5C06;&#x4E00;&#x4E9B;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x5728;&#x6570;&#x636E;&#x5E93;&#x5C42;&#x9762;&#x6765;&#x5B9E;&#x73B0;&#xFF0C;&#x53EF;&#x4EE5;&#x51CF;&#x5C11;&#x4EE3;&#x7801;&#x5C42;&#x9762;&#x7684;&#x4E1A;&#x52A1;&#x5904;&#x7406;</li>
 </ul>
@@ -2184,8 +2190,13 @@ pre[data-line] .line-highlight[data-end]:after {
 <ul>
 <li>&#x67E5;&#x770B;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x8BED;&#x6CD5;</li>
 </ul>
-<pre data-role="codeBlock" data-info="SQL" class="language-sql"><span class="token comment">-- &#x67E5;&#x8BE2;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B; &#x6807;&#x51C6;&#x8BED;&#x6CD5;</span>
+<pre data-role="codeBlock" data-info="SQL" class="language-sql"><span class="token comment">-- &#x67E5;&#x8BE2;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x6807;&#x51C6;&#x8BED;&#x6CD5;</span>
 <span class="token keyword keyword-SELECT">SELECT</span> <span class="token operator">*</span> <span class="token keyword keyword-FROM">FROM</span> mysql<span class="token punctuation">.</span><span class="token keyword keyword-proc">proc</span> <span class="token keyword keyword-WHERE">WHERE</span> db<span class="token operator">=</span><span class="token string">&apos;&#x6570;&#x636E;&#x5E93;&#x540D;&#x79F0;&apos;</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- MySQL 8.0&#x4E2D;&#x5B98;&#x65B9;&#x5C06;proc&#x8868;&#x8FDB;&#x884C;&#x4E86;&#x79FB;&#x9664;&#xFF0C;&#x53EF;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x547D;&#x4EE4;</span>
+<span class="token keyword keyword-SELECT">SELECT</span> <span class="token operator">*</span> <span class="token keyword keyword-FROM">FROM</span> information_schema<span class="token punctuation">.</span>routines <span class="token keyword keyword-WHERE">WHERE</span> routine_schema<span class="token operator">=</span><span class="token string">&apos;&#x6570;&#x636E;&#x5E93;&#x540D;&#x79F0;&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-SELECT">SELECT</span> specific_name<span class="token punctuation">,</span>routine_definition <span class="token keyword keyword-FROM">FROM</span> information_schema<span class="token punctuation">.</span>routines <span class="token keyword keyword-WHERE">WHERE</span> routine_schema<span class="token operator">=</span><span class="token string">&apos;&#x6570;&#x636E;&#x5E93;&#x540D;&#x79F0;&apos;</span><span class="token punctuation">;</span>
 </pre><h4 class="mume-header" id="7%E5%88%A0%E9%99%A4%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B">7.&#x5220;&#x9664;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;</h4>
 
 <ul>
@@ -2646,7 +2657,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <ul>
 <li>&#x6E38;&#x6807;&#x53EF;&#x4EE5;&#x904D;&#x5386;&#x8FD4;&#x56DE;&#x7684;&#x591A;&#x884C;&#x7ED3;&#x679C;&#xFF0C;&#x6BCF;&#x6B21;&#x62FF;&#x5230;&#x4E00;&#x6574;&#x884C;&#x6570;&#x636E;</li>
 <li>&#x5728;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x548C;&#x51FD;&#x6570;&#x4E2D;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6E38;&#x6807;&#x5BF9;&#x7ED3;&#x679C;&#x96C6;&#x8FDB;&#x884C;&#x5FAA;&#x73AF;&#x7684;&#x5904;&#x7406;</li>
-<li>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x6E38;&#x6807;&#x5C31;&#x7C7B;&#x4F3C;&#x4E8E;&#x96C6;&#x5408;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x904D;&#x5386;</li>
+<li>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x6E38;&#x6807;&#x5C31;&#x7C7B;&#x4F3C;&#x4E8E;&#x96C6;&#x5408;&#x7684;<strong>&#x8FED;&#x4EE3;&#x5668;&#x904D;&#x5386;</strong></li>
 <li>MySQL&#x4E2D;&#x7684;&#x6E38;&#x6807;&#x53EA;&#x80FD;&#x7528;&#x5728;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x548C;&#x51FD;&#x6570;&#x4E2D;</li>
 </ul>
 </li>
@@ -2868,14 +2879,18 @@ pre[data-line] .line-highlight[data-end]:after {
 
 <span class="token comment">-- &#x6807;&#x51C6;&#x8BED;&#x6CD5;</span>
 <span class="token keyword keyword-CREATE">CREATE</span> <span class="token keyword keyword-FUNCTION">FUNCTION</span> &#x51FD;&#x6570;&#x540D;&#x79F0;<span class="token punctuation">(</span><span class="token punctuation">[</span>&#x53C2;&#x6570; &#x6570;&#x636E;&#x7C7B;&#x578B;<span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword keyword-RETURNS">RETURNS</span> &#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;
+<span class="token keyword keyword-RETURNS">RETURNS</span> &#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B; <span class="token punctuation">[</span>&#x58F0;&#x660E;&#x7C7B;&#x578B;<span class="token punctuation">]</span>
 <span class="token keyword keyword-BEGIN">BEGIN</span>
 	&#x6267;&#x884C;&#x7684;<span class="token keyword keyword-sql">sql</span>&#x8BED;&#x53E5;<span class="token punctuation">;</span>
 	<span class="token keyword keyword-RETURN">RETURN</span> &#x7ED3;&#x679C;<span class="token punctuation">;</span>
 <span class="token keyword keyword-END">END</span>$
 
 <span class="token keyword keyword-DELIMITER">DELIMITER</span> <span class="token punctuation">;</span>
-</pre><ul>
+</pre><blockquote>
+<p>&#x6B64;&#x5904;&#x7684;&#x58F0;&#x660E;&#x7C7B;&#x578B;&#x5305;&#x62EC;&#xFF1A;<code>DETERMINISTIC</code>, <code>NO SQL</code>,  <code>READS SQL DATA</code>, <code>MODIFIES SQL DATA</code>, <code>CONTAINS SQL</code><br>
+&#x66F4;&#x8BE6;&#x7EC6;&#x7684;&#x8BF4;&#x660E;&#x53C2;&#x8003;&#xFF1A;<a href="https://blog.csdn.net/lv_hang515888/article/details/78094889">https://blog.csdn.net/lv_hang515888/article/details/78094889</a></p>
+</blockquote>
+<ul>
 <li>&#x8C03;&#x7528;&#x5B58;&#x50A8;&#x51FD;&#x6570;</li>
 </ul>
 <pre data-role="codeBlock" data-info="SQL" class="language-sql"><span class="token comment">-- &#x6807;&#x51C6;&#x8BED;&#x6CD5;</span>
@@ -2918,6 +2933,9 @@ pre[data-line] .line-highlight[data-end]:after {
 <li>&#x89E6;&#x53D1;&#x5668;&#x662F;&#x4E0E;&#x8868;&#x6709;&#x5173;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x5728; insert/update/delete &#x4E4B;&#x524D;&#x6216;&#x4E4B;&#x540E;&#xFF0C;&#x89E6;&#x53D1;&#x5E76;&#x6267;&#x884C;&#x89E6;&#x53D1;&#x5668;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;SQL&#x8BED;&#x53E5;&#x3002;&#x89E6;&#x53D1;&#x5668;&#x7684;&#x8FD9;&#x79CD;&#x7279;&#x6027;&#x53EF;&#x4EE5;&#x534F;&#x52A9;&#x5E94;&#x7528;&#x5728;&#x6570;&#x636E;&#x5E93;&#x7AEF;&#x786E;&#x4FDD;&#x6570;&#x636E;&#x7684;&#x5B8C;&#x6574;&#x6027; &#x3001;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55; &#x3001;&#x6570;&#x636E;&#x6821;&#x9A8C;&#x7B49;&#x64CD;&#x4F5C; &#x3002;</li>
 <li>&#x4F7F;&#x7528;&#x522B;&#x540D; NEW &#x548C; OLD &#x6765;&#x5F15;&#x7528;&#x89E6;&#x53D1;&#x5668;&#x4E2D;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x7684;&#x8BB0;&#x5F55;&#x5185;&#x5BB9;&#xFF0C;&#x8FD9;&#x4E0E;&#x5176;&#x4ED6;&#x7684;&#x6570;&#x636E;&#x5E93;&#x662F;&#x76F8;&#x4F3C;&#x7684;&#x3002;&#x73B0;&#x5728;&#x89E6;&#x53D1;&#x5668;&#x8FD8;&#x53EA;&#x652F;&#x6301;&#x884C;&#x7EA7;&#x89E6;&#x53D1;&#xFF0C;&#x4E0D;&#x652F;&#x6301;&#x8BED;&#x53E5;&#x7EA7;&#x89E6;&#x53D1;&#x3002;</li>
 </ul>
+<blockquote>
+<p>&#x5373;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>old.&#x5217;&#x540D;</code>&#x548C;<code>new.&#x5217;&#x540D;</code>&#x8868;&#x793A;&#x6570;&#x636E;</p>
+</blockquote>
 <table>
 <thead>
 <tr>
@@ -3067,10 +3085,7 @@ BEFORE<span class="token operator">|</span><span class="token keyword keyword-AF
 </ul>
 <h4 class="mume-header" id="3%E6%9F%A5%E7%9C%8B%E8%A7%A6%E5%8F%91%E5%99%A8">3.&#x67E5;&#x770B;&#x89E6;&#x53D1;&#x5668;</h4>
 
-<pre data-role="codeBlock" data-info="SQL" class="language-sql"><span class="token comment">-- &#x6807;&#x51C6;&#x8BED;&#x6CD5;</span>
-<span class="token keyword keyword-SHOW">SHOW</span> TRIGGERS<span class="token punctuation">;</span>
-
-<span class="token comment">-- &#x67E5;&#x770B;&#x89E6;&#x53D1;&#x5668;</span>
+<pre data-role="codeBlock" data-info="SQL" class="language-sql"><span class="token comment">-- &#x67E5;&#x770B;&#x89E6;&#x53D1;&#x5668;</span>
 <span class="token keyword keyword-SHOW">SHOW</span> TRIGGERS<span class="token punctuation">;</span>
 </pre><h4 class="mume-header" id="4%E5%88%A0%E9%99%A4%E8%A7%A6%E5%8F%91%E5%99%A8">4.&#x5220;&#x9664;&#x89E6;&#x53D1;&#x5668;</h4>
 
