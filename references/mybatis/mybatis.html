@@ -361,7 +361,7 @@ pre[data-line] .line-highlight[data-end]:after {
     <span class="token keyword keyword-private">private</span> <span class="token class-name">Integer</span> id<span class="token punctuation">;</span>
     <span class="token keyword keyword-private">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
     <span class="token keyword keyword-private">private</span> <span class="token class-name">Integer</span> age<span class="token punctuation">;</span>
-    <span class="token comment">//&#x7701;&#x7565;get&#x4E2A;set&#x65B9;&#x6CD5;</span>
+    <span class="token comment">//&#x7701;&#x7565;&#x6784;&#x9020;&#x5668;&#x3001;get&#x548C;set&#x65B9;&#x6CD5;</span>
 <span class="token punctuation">}</span>
 </pre><ol start="4">
 <li>&#x7F16;&#x5199;StudentMapper.xml&#x6620;&#x5C04;&#x6587;&#x4EF6;</li>
@@ -435,6 +435,13 @@ pre[data-line] .line-highlight[data-end]:after {
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mappers</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
 
+</pre><ul>
+<li>&#x5176;&#x4E2D;&#x540C;&#x8DEF;&#x5F84;&#x4E0B;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1A;<code>jdbc.properties</code></li>
+</ul>
+<pre data-role="codeBlock" data-info="properties" class="language-properties"><span class="token attr-name">driver</span><span class="token punctuation">=</span><span class="token attr-value">com.mysql.jdbc.Driver</span>
+<span class="token attr-name">url</span><span class="token punctuation">=</span><span class="token attr-value">jdbc:mysql://localhost:3306/&#x6570;&#x636E;&#x5E93;&#x540D;&#x79F0;</span>
+<span class="token attr-name">username</span><span class="token punctuation">=</span><span class="token attr-value">&#x7528;&#x6237;&#x540D;</span>
+<span class="token attr-name">password</span><span class="token punctuation">=</span><span class="token attr-value">&#x5BC6;&#x7801;</span>
 </pre><h5 class="mume-header" id="152-%E7%BC%96%E5%86%99%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81">1.5.2 &#x7F16;&#x5199;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;</h5>
 
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">/*
@@ -453,40 +460,38 @@ pre[data-line] .line-highlight[data-end]:after {
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</pre><h4 class="mume-header" id="16-%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93">1.6 &#x77E5;&#x8BC6;&#x5C0F;&#x7ED3;</h4>
-
-<ul>
-<li>
-<p>&#x6846;&#x67B6;</p>
-<p>&#x6846;&#x67B6;&#x662F;&#x4E00;&#x6B3E;&#x534A;&#x6210;&#x54C1;&#x8F6F;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E;&#x6846;&#x67B6;&#x7EE7;&#x7EED;&#x5F00;&#x53D1;&#xFF0C;&#x4ECE;&#x800C;&#x5B8C;&#x6210;&#x4E00;&#x4E9B;&#x4E2A;&#x6027;&#x5316;&#x7684;&#x9700;&#x6C42;&#x3002;</p>
-</li>
-<li>
-<p>ORM</p>
-<p>&#x5BF9;&#x8C61;&#x5173;&#x7CFB;&#x6620;&#x5C04;&#xFF0C;&#x6570;&#x636E;&#x548C;&#x5B9E;&#x4F53;&#x5BF9;&#x8C61;&#x7684;&#x6620;&#x5C04;&#x3002;</p>
-</li>
-<li>
-<p>MyBatis</p>
-<p>&#x662F;&#x4E00;&#x4E2A;&#x4F18;&#x79C0;&#x7684;&#x57FA;&#x4E8E; Java &#x7684;&#x6301;&#x4E45;&#x5C42;&#x6846;&#x67B6;&#xFF0C;&#x5B83;&#x5185;&#x90E8;&#x5C01;&#x88C5;&#x4E86; JDBC&#x3002;</p>
-</li>
-</ul>
-<h3 class="mume-header" id="%E4%BA%8C-mybatis%E7%9A%84%E7%9B%B8%E5%85%B3api">&#x4E8C;. MyBatis&#x7684;&#x76F8;&#x5173;api</h3>
+</pre><h3 class="mume-header" id="%E4%BA%8C-mybatis%E7%9A%84%E7%9B%B8%E5%85%B3api">&#x4E8C;. MyBatis&#x7684;&#x76F8;&#x5173;api</h3>
 
 <h4 class="mume-header" id="21-resources">2.1 Resources</h4>
 
 <ul>
 <li>
-<p>org.apache.ibatis.io.Resources&#xFF1A;&#x52A0;&#x8F7D;&#x8D44;&#x6E90;&#x7684;&#x5DE5;&#x5177;&#x7C7B;&#x3002;</p>
+<p><code>org.apache.ibatis.io.Resources</code>&#xFF1A;&#x52A0;&#x8F7D;&#x8D44;&#x6E90;&#x7684;&#x5DE5;&#x5177;&#x7C7B;&#x3002;</p>
 </li>
 <li>
 <p>&#x6838;&#x5FC3;&#x65B9;&#x6CD5;</p>
 <p><img src="./assets/mybatis_Resources%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95.png" alt="Resources&#x6838;&#x5FC3;&#x65B9;&#x6CD5;"></p>
+</li>
+<li>
+<p>&#x6709;&#x5173;<code>getResourceAsStream</code>&#x65B9;&#x6CD5;&#x7684;&#x8DEF;&#x5F84;&#x95EE;&#x9898;&#xFF08;&#x4E0D;&#x4EC5;&#x9650;&#x4E8E;Resources&#x7684;&#x8BE5;&#x65B9;&#x6CD5;&#xFF09;</p>
+<ol>
+<li>
+<p>Class.getResourceAsStream(String path) &#xFF1A; path&#x4E0D;&#x4EE5;<code>/</code>&#x5F00;&#x5934;&#x65F6;&#x9ED8;&#x8BA4;&#x662F;&#x4ECE;&#x6B64;&#x7C7B;&#x6240;&#x5728;&#x7684;&#x5305;&#x4E0B;&#x53D6;&#x8D44;&#x6E90;&#xFF0C;&#x4EE5;<code>/</code>&#x5F00;&#x5934;&#x5219;&#x662F;&#x4ECE;ClassPath&#x6839;&#x4E0B;&#x83B7;&#x53D6;&#x3002;&#x5176;&#x53EA;&#x662F;&#x901A;&#x8FC7;path&#x6784;&#x9020;&#x4E00;&#x4E2A;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x6700;&#x7EC8;&#x8FD8;&#x662F;&#x7531;ClassLoader&#x83B7;&#x53D6;&#x8D44;&#x6E90;&#x3002;</p>
+</li>
+<li>
+<p>Class.getClassLoader.getResourceAsStream(String path) &#xFF1A;&#x9ED8;&#x8BA4;&#x5219;&#x662F;&#x4ECE;ClassPath&#x6839;&#x4E0B;&#x83B7;&#x53D6;&#xFF0C;path&#x4E0D;&#x80FD;&#x4EE5;<code>/</code>&#x5F00;&#x5934;&#xFF0C;&#x6700;&#x7EC8;&#x662F;&#x7531;ClassLoader&#x83B7;&#x53D6;&#x8D44;&#x6E90;&#x3002;</p>
+</li>
+<li>
+<p>ServletContext.getResourceAsStream(String path)&#xFF1A;&#x9ED8;&#x8BA4;&#x4ECE;WebAPP&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x53D6;&#x8D44;&#x6E90;&#xFF0C;Tomcat&#x4E0B;path&#x662F;&#x5426;&#x4EE5;<code>/</code>&#x5F00;&#x5934;&#x65E0;&#x6240;&#x8C13;</p>
+</li>
+</ol>
 </li>
 </ul>
 <h4 class="mume-header" id="22-%E6%9E%84%E5%BB%BA%E5%99%A8sqlsessionfactorybuilder">2.2 &#x6784;&#x5EFA;&#x5668;SqlSessionFactoryBuilder</h4>
 
 <ul>
 <li>
-<p>org.apache.ibatis.session.SqlSessionFactoryBuilder&#xFF1A;&#x83B7;&#x53D6; SqlSessionFactory &#x5DE5;&#x5382;&#x5BF9;&#x8C61;&#x7684;&#x529F;&#x80FD;&#x7C7B;</p>
+<p><code>org.apache.ibatis.session.SqlSessionFactoryBuilder</code>&#xFF1A;&#x83B7;&#x53D6; <code>SqlSessionFactory</code> &#x5DE5;&#x5382;&#x5BF9;&#x8C61;&#x7684;&#x529F;&#x80FD;&#x7C7B;</p>
 </li>
 <li>
 <p>&#x6838;&#x5FC3;&#x65B9;&#x6CD5;</p>
@@ -494,18 +499,18 @@ pre[data-line] .line-highlight[data-end]:after {
 </li>
 <li>
 <p>&#x901A;&#x8FC7;&#x52A0;&#x8F7D;mybatis&#x7684;&#x6838;&#x5FC3;&#x6587;&#x4EF6;&#x7684;&#x8F93;&#x5165;&#x6D41;&#x7684;&#x5F62;&#x5F0F;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;SqlSessionFactory&#x5BF9;&#x8C61;</p>
-</li>
-</ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token class-name">String</span> resource <span class="token operator">=</span> <span class="token string">&quot;org/mybatis/builder/mybatis-config.xml&quot;</span><span class="token punctuation">;</span> 
 <span class="token class-name">InputStream</span> inputStream <span class="token operator">=</span> <span class="token class-name">Resources</span><span class="token punctuation">.</span><span class="token function">getResourceAsStream</span><span class="token punctuation">(</span>resource<span class="token punctuation">)</span><span class="token punctuation">;</span> 
 <span class="token class-name">SqlSessionFactoryBuilder</span> builder <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">SqlSessionFactoryBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 <span class="token class-name">SqlSessionFactory</span> factory <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>inputStream<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</pre><p>&#x5176;&#x4E2D;&#xFF0C; Resources &#x5DE5;&#x5177;&#x7C7B;&#xFF0C;&#x8FD9;&#x4E2A;&#x7C7B;&#x5728; <a href="http://org.apache.ibatis.io">org.apache.ibatis.io</a> &#x5305;&#x4E2D;&#x3002;Resources &#x7C7B;&#x5E2E;&#x52A9;&#x4F60;&#x4ECE;&#x7C7B;&#x8DEF;&#x5F84;&#x4E0B;&#x3001;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6216;&#x4E00;&#x4E2A; web URL &#x4E2D;&#x52A0;&#x8F7D;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x3002;</p>
+</pre></li>
+</ul>
+<p>&#x5176;&#x4E2D;&#xFF0C; Resources &#x5DE5;&#x5177;&#x7C7B;&#xFF0C;&#x8FD9;&#x4E2A;&#x7C7B;&#x5728;<code>org.apache.ibatis.io</code>&#x5305;&#x4E2D;&#x3002;Resources &#x7C7B;&#x5E2E;&#x52A9;&#x4F60;&#x4ECE;&#x7C7B;&#x8DEF;&#x5F84;&#x4E0B;&#x3001;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6216;&#x4E00;&#x4E2A; web URL &#x4E2D;&#x52A0;&#x8F7D;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x3002;</p>
 <h4 class="mume-header" id="23-%E5%B7%A5%E5%8E%82%E5%AF%B9%E8%B1%A1sqlsessionfactory">2.3 &#x5DE5;&#x5382;&#x5BF9;&#x8C61;SqlSessionFactory</h4>
 
 <ul>
 <li>
-<p>org.apache.ibatis.session.SqlSessionFactory&#xFF1A;&#x83B7;&#x53D6; SqlSession &#x6784;&#x5EFA;&#x8005;&#x5BF9;&#x8C61;&#x7684;&#x5DE5;&#x5382;&#x63A5;&#x53E3;&#x3002;</p>
+<p><code>org.apache.ibatis.session.SqlSessionFactory</code>&#xFF1A;&#x83B7;&#x53D6; SqlSession &#x6784;&#x5EFA;&#x8005;&#x5BF9;&#x8C61;&#x7684;&#x5DE5;&#x5382;&#x63A5;&#x53E3;&#x3002;</p>
 </li>
 <li>
 <p>&#x6838;&#x5FC3;api</p>
@@ -516,7 +521,7 @@ pre[data-line] .line-highlight[data-end]:after {
 
 <ul>
 <li>
-<p>org.apache.ibatis.session.SqlSession&#xFF1A;&#x6784;&#x5EFA;&#x8005;&#x5BF9;&#x8C61;&#x63A5;&#x53E3;&#x3002;&#x7528;&#x4E8E;&#x6267;&#x884C; SQL&#x3001;&#x7BA1;&#x7406;&#x4E8B;&#x52A1;&#x3001;&#x63A5;&#x53E3;&#x4EE3;&#x7406;&#x3002;</p>
+<p><code>org.apache.ibatis.session.SqlSession</code>&#xFF1A;&#x6784;&#x5EFA;&#x8005;&#x5BF9;&#x8C61;&#x63A5;&#x53E3;&#x3002;&#x7528;&#x4E8E;&#x6267;&#x884C; SQL&#x3001;&#x7BA1;&#x7406;&#x4E8B;&#x52A1;&#x3001;&#x63A5;&#x53E3;&#x4EE3;&#x7406;&#x3002;</p>
 </li>
 <li>
 <p>&#x6838;&#x5FC3;api</p>
@@ -569,8 +574,6 @@ pre[data-line] .line-highlight[data-end]:after {
 <li>
 <p>SQL &#x83B7;&#x53D6;&#x53C2;&#x6570;: <code>#{&#x5C5E;&#x6027;&#x540D;}</code></p>
 </li>
-</ul>
-<ul>
 <li>
 <p>&#x793A;&#x4F8B;</p>
 <p><img src="./assets/mybatis_%E9%85%8D%E7%BD%AEinsert.png" alt="&#x914D;&#x7F6E;insert"></p>
@@ -591,8 +594,6 @@ pre[data-line] .line-highlight[data-end]:after {
 <li>
 <p>SQL &#x83B7;&#x53D6;&#x53C2;&#x6570;: <code>#{&#x5C5E;&#x6027;&#x540D;}</code></p>
 </li>
-</ul>
-<ul>
 <li>
 <p>&#x793A;&#x4F8B;</p>
 <p><img src="./assets/mybatis_%E9%85%8D%E7%BD%AEupdate.png" alt="&#x914D;&#x7F6E;update"></p>
@@ -613,15 +614,13 @@ pre[data-line] .line-highlight[data-end]:after {
 <li>
 <p>SQL &#x83B7;&#x53D6;&#x53C2;&#x6570;: <code>#{&#x5C5E;&#x6027;&#x540D;}</code></p>
 </li>
-</ul>
-<ul>
 <li>
 <p>&#x793A;&#x4F8B;</p>
 <p><img src="./assets/mybatis_%E9%85%8D%E7%BD%AEdelete.png" alt="&#x914D;&#x7F6E;delete"></p>
 </li>
-<li>
-<p>&#x603B;&#x7ED3;&#xFF1A; &#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;crud&#x64CD;&#x4F5C;&#xFF0C;&#x9664;&#x4E86;&#x6807;&#x7B7E;&#x540D;&#x79F0;&#x4EE5;&#x53CA;sql&#x8BED;&#x53E5;&#x4E0D;&#x4E00;&#x6837;&#x4E4B;&#x5916;&#xFF0C;&#x5176;&#x4ED6;&#x5C5E;&#x6027;&#x53C2;&#x6570;&#x57FA;&#x672C;&#x4E00;&#x81F4;&#x3002;</p>
-</li>
+</ul>
+<ul>
+<li>&#x603B;&#x7ED3;&#xFF1A; &#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;crud&#x64CD;&#x4F5C;&#xFF0C;&#x9664;&#x4E86;&#x6807;&#x7B7E;&#x540D;&#x79F0;&#x4EE5;&#x53CA;sql&#x8BED;&#x53E5;&#x4E0D;&#x4E00;&#x6837;&#x4E4B;&#x5916;&#xFF0C;&#x5176;&#x4ED6;&#x5C5E;&#x6027;&#x53C2;&#x6570;&#x57FA;&#x672C;&#x4E00;&#x81F4;&#x3002;</li>
 </ul>
 <h3 class="mume-header" id="%E5%9B%9B-mybatis%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D">&#x56DB;. Mybatis&#x6838;&#x5FC3;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4ECB;&#x7ECD;</h3>
 
@@ -756,10 +755,13 @@ pre[data-line] .line-highlight[data-end]:after {
 <h4 class="mume-header" id="12%E7%BC%96%E5%86%99studentmapper%E6%8E%A5%E5%8F%A3">1.2.&#x7F16;&#x5199;StudentMapper&#x63A5;&#x53E3;</h4>
 
 <p><img src="./assets/mybatis_%E7%BC%96%E5%86%99StudentMapper%E6%8E%A5%E5%8F%A3.png" alt="&#x7F16;&#x5199;StudentMapper&#x63A5;&#x53E3;"></p>
+<blockquote>
+<p>&#x6B64;&#x5904;resultType&#x4E2D;&#x7684;student&#x4F7F;&#x7528;&#x4E86;&#x522B;&#x540D;&#x6307;&#x5B9A;&#x4E86;Student&#x7C7B;&#x7684;&#x5168;&#x9650;&#x5B9A;&#x540D;</p>
+</blockquote>
 <h4 class="mume-header" id="13-%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%90%86%E6%96%B9%E5%BC%8F">1.3 &#x6D4B;&#x8BD5;&#x4EE3;&#x7406;&#x65B9;&#x5F0F;</h4>
 
-<pre data-role="codeBlock" data-info="java" class="language-java"> <span class="token keyword keyword-public">public</span> <span class="token class-name">Student</span> <span class="token function">selectById</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token class-name">Student</span> stu <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">;</span>
+<pre data-role="codeBlock" data-info="java" class="language-java"> <span class="token keyword keyword-public">public</span> <span class="token class-name">Student</span> <span class="token function">selectAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Student</span><span class="token punctuation">&gt;</span></span> stu <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">;</span>
         <span class="token class-name">SqlSession</span> sqlSession <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">;</span>
         <span class="token class-name">InputStream</span> is <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">;</span>
         <span class="token keyword keyword-try">try</span><span class="token punctuation">{</span>
@@ -776,7 +778,7 @@ pre[data-line] .line-highlight[data-end]:after {
             <span class="token class-name">StudentMapper</span> mapper <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">StudentMapper</span><span class="token punctuation">.</span><span class="token keyword keyword-class">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// StudentMapper mapper = new StudentMapperImpl();</span>
 
             <span class="token comment">//5.&#x901A;&#x8FC7;&#x5B9E;&#x73B0;&#x7C7B;&#x5BF9;&#x8C61;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#xFF0C;&#x63A5;&#x6536;&#x7ED3;&#x679C;</span>
-            stu <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">selectById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            stu <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">selectAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
         <span class="token punctuation">}</span> <span class="token keyword keyword-catch">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
@@ -802,11 +804,11 @@ pre[data-line] .line-highlight[data-end]:after {
 <ul>
 <li>
 <p>&#x5206;&#x6790;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x5982;&#x4F55;&#x751F;&#x6210;&#x7684;&#xFF1F;</p>
-<p>&#x901A;&#x8FC7;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x5F00;&#x53D1;&#x6A21;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x4E0D;&#x5199;&#x5B9E;&#x73B0;&#x7C7B;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7; getMapper() &#x65B9;&#x6CD5;&#x6700;&#x7EC8;&#x83B7;&#x53D6;&#x5230; org.apache.ibatis.binding.MapperProxy &#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C;&#x529F;&#x80FD;&#xFF0C;&#x800C;&#x8FD9;&#x4E2A;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x6B63;&#x662F; MyBatis &#x4F7F;&#x7528;&#x4E86; JDK &#x7684;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x6280;&#x672F;&#xFF0C;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x751F;&#x6210;&#x4E86;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;&#x7C7B;&#x5BF9;&#x8C61;&#x3002;&#x4ECE;&#x800C;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x76F8;&#x5173;&#x6301;&#x4E45;&#x5316;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x5F00;&#x53D1;&#x6A21;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x4E0D;&#x5199;&#x5B9E;&#x73B0;&#x7C7B;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7; <code>getMapper()</code>&#x65B9;&#x6CD5;&#x6700;&#x7EC8;&#x83B7;&#x53D6;&#x5230; org.apache.ibatis.binding.MapperProxy &#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C;&#x529F;&#x80FD;&#xFF0C;&#x800C;&#x8FD9;&#x4E2A;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x6B63;&#x662F; MyBatis &#x4F7F;&#x7528;&#x4E86; JDK &#x7684;<strong>&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x6280;&#x672F;</strong>&#xFF0C;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x751F;&#x6210;&#x4E86;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;&#x7C7B;&#x5BF9;&#x8C61;&#x3002;&#x4ECE;&#x800C;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x76F8;&#x5173;&#x6301;&#x4E45;&#x5316;&#x64CD;&#x4F5C;&#x3002;</p>
 </li>
 <li>
 <p>&#x5206;&#x6790;&#x65B9;&#x6CD5;&#x662F;&#x5982;&#x4F55;&#x6267;&#x884C;&#x7684;&#xFF1F;</p>
-<p>&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;&#x7C7B;&#x5BF9;&#x8C61;&#x5728;&#x6267;&#x884C;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x6700;&#x7EC8;&#x8C03;&#x7528;&#x4E86; mapperMethod.execute() &#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E2D;&#x901A;&#x8FC7; switch &#x8BED;&#x53E5;&#x6839;&#x636E;&#x64CD;&#x4F5C;&#x7C7B;&#x578B;&#x6765;&#x5224;&#x65AD;&#x662F;&#x65B0;&#x589E;&#x3001;&#x4FEE;&#x6539;&#x3001;&#x5220;&#x9664;&#x3001;&#x67E5;&#x8BE2;&#x64CD;&#x4F5C;&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x6B65;&#x56DE;&#x5230;&#x4E86; MyBatis &#x6700;&#x539F;&#x751F;&#x7684; SqlSession &#x65B9;&#x5F0F;&#x6765;&#x6267;&#x884C;&#x589E;&#x5220;&#x6539;&#x67E5;&#x3002;</p>
+<p>&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;&#x7C7B;&#x5BF9;&#x8C61;&#x5728;&#x6267;&#x884C;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x6700;&#x7EC8;&#x8C03;&#x7528;&#x4E86; <code>mapperMethod.execute()</code> &#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E2D;&#x901A;&#x8FC7; switch &#x8BED;&#x53E5;&#x6839;&#x636E;&#x64CD;&#x4F5C;&#x7C7B;&#x578B;&#x6765;&#x5224;&#x65AD;&#x662F;&#x65B0;&#x589E;&#x3001;&#x4FEE;&#x6539;&#x3001;&#x5220;&#x9664;&#x3001;&#x67E5;&#x8BE2;&#x64CD;&#x4F5C;&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x6B65;&#x56DE;&#x5230;&#x4E86; MyBatis &#x6700;&#x539F;&#x751F;&#x7684; <code>SqlSession</code> &#x65B9;&#x5F0F;&#x6765;&#x6267;&#x884C;&#x589E;&#x5220;&#x6539;&#x67E5;&#x3002;</p>
 </li>
 </ul>
 <h4 class="mume-header" id="15-%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93">1.5 &#x77E5;&#x8BC6;&#x5C0F;&#x7ED3;</h4>
@@ -814,11 +816,11 @@ pre[data-line] .line-highlight[data-end]:after {
 <p>&#x63A5;&#x53E3;&#x4EE3;&#x7406;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x53EA;&#x7F16;&#x5199;&#x63A5;&#x53E3;&#x5373;&#x53EF;&#xFF0C;&#x800C;&#x5B9E;&#x73B0;&#x7C7B;&#x5BF9;&#x8C61;&#x7531; MyBatis &#x751F;&#x6210;&#x3002;</p>
 <p>&#x5B9E;&#x73B0;&#x89C4;&#x5219; &#xFF1A;</p>
 <ol>
-<li>&#x6620;&#x5C04;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x540D;&#x79F0;&#x7A7A;&#x95F4;&#x5FC5;&#x987B;&#x548C; Dao &#x5C42;&#x63A5;&#x53E3;&#x7684;&#x5168;&#x7C7B;&#x540D;&#x76F8;&#x540C;&#x3002;</li>
-<li>&#x6620;&#x5C04;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x589E;&#x5220;&#x6539;&#x67E5;&#x6807;&#x7B7E;&#x7684; id &#x5C5E;&#x6027;&#x5FC5;&#x987B;&#x548C; Dao &#x5C42;&#x63A5;&#x53E3;&#x7684;&#x65B9;&#x6CD5;&#x540D;&#x76F8;&#x540C;&#x3002;</li>
-<li>&#x6620;&#x5C04;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x589E;&#x5220;&#x6539;&#x67E5;&#x6807;&#x7B7E;&#x7684; parameterType &#x5C5E;&#x6027;&#x5FC5;&#x987B;&#x548C; Dao &#x5C42;&#x63A5;&#x53E3;&#x65B9;&#x6CD5;&#x7684;&#x53C2;&#x6570;&#x76F8;&#x540C;&#x3002;</li>
-<li>&#x6620;&#x5C04;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x589E;&#x5220;&#x6539;&#x67E5;&#x6807;&#x7B7E;&#x7684; resultType &#x5C5E;&#x6027;&#x5FC5;&#x987B;&#x548C; Dao &#x5C42;&#x63A5;&#x53E3;&#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x76F8;&#x540C;&#x3002; &#xF06C;</li>
-<li>&#x83B7;&#x53D6;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x5BF9;&#x8C61; SqlSession &#x529F;&#x80FD;&#x7C7B;&#x4E2D;&#x7684; getMapper() &#x65B9;&#x6CD5;&#x3002;</li>
+<li>&#x6620;&#x5C04;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x540D;&#x79F0;&#x7A7A;&#x95F4;&#x5FC5;&#x987B;&#x548C; Dao &#x5C42;&#x63A5;&#x53E3;&#x7684;<strong>&#x5168;&#x7C7B;&#x540D;</strong>&#x76F8;&#x540C;&#x3002;</li>
+<li>&#x6620;&#x5C04;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x589E;&#x5220;&#x6539;&#x67E5;&#x6807;&#x7B7E;&#x7684; id &#x5C5E;&#x6027;&#x5FC5;&#x987B;&#x548C; Dao &#x5C42;&#x63A5;&#x53E3;&#x7684;<strong>&#x65B9;&#x6CD5;&#x540D;</strong>&#x76F8;&#x540C;&#x3002;</li>
+<li>&#x6620;&#x5C04;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x589E;&#x5220;&#x6539;&#x67E5;&#x6807;&#x7B7E;&#x7684; parameterType &#x5C5E;&#x6027;&#x5FC5;&#x987B;&#x548C; Dao &#x5C42;&#x63A5;&#x53E3;&#x65B9;&#x6CD5;&#x7684;<strong>&#x53C2;&#x6570;</strong>&#x76F8;&#x540C;&#x3002;</li>
+<li>&#x6620;&#x5C04;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x589E;&#x5220;&#x6539;&#x67E5;&#x6807;&#x7B7E;&#x7684; resultType &#x5C5E;&#x6027;&#x5FC5;&#x987B;&#x548C; Dao &#x5C42;&#x63A5;&#x53E3;&#x65B9;&#x6CD5;&#x7684;<strong>&#x8FD4;&#x56DE;&#x503C;</strong>&#x76F8;&#x540C;&#x3002;</li>
+<li>&#x83B7;&#x53D6;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x5BF9;&#x8C61; SqlSession &#x529F;&#x80FD;&#x7C7B;&#x4E2D;&#x7684; <strong>getMapper()</strong> &#x65B9;&#x6CD5;&#x3002;</li>
 </ol>
 <h3 class="mume-header" id="%E4%BA%8C-%E5%8A%A8%E6%80%81sql%E8%AF%AD%E5%8F%A5">&#x4E8C;. &#x52A8;&#x6001;sql&#x8BED;&#x53E5;</h3>
 
@@ -883,7 +885,7 @@ pre[data-line] .line-highlight[data-end]:after {
 
 <p>Sql &#x4E2D;&#x53EF;&#x5C06;&#x91CD;&#x590D;&#x7684; sql &#x63D0;&#x53D6;&#x51FA;&#x6765;&#xFF0C;&#x4F7F;&#x7528;&#x65F6;&#x7528; include &#x5F15;&#x7528;&#x5373;&#x53EF;&#xFF0C;&#x6700;&#x7EC8;&#x8FBE;&#x5230; sql &#x91CD;&#x7528;&#x7684;&#x76EE;&#x7684;</p>
 <pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token comment">&lt;!--&#x62BD;&#x53D6;sql&#x7247;&#x6BB5;&#x7B80;&#x5316;&#x7F16;&#x5199;--&gt;</span>
-&lt;sql id=&quot;selectStudent&quot; select * from student<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sql</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sql</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>selectStudent<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>select * from student<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sql</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>findById<span class="token punctuation">&quot;</span></span> <span class="token attr-name">parameterType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>int<span class="token punctuation">&quot;</span></span> <span class="token attr-name">resultType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>student<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span> <span class="token attr-name">refid</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>selectStudent<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">&gt;</span></span> where id=#{id}
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span>
@@ -900,7 +902,6 @@ pre[data-line] .line-highlight[data-end]:after {
 <pre data-role="codeBlock" data-info="xml" class="language-xml">-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sql</span><span class="token punctuation">&gt;</span></span>&#xFF1A;&#x62BD;&#x53D6; SQL &#x8BED;&#x53E5;&#x6807;&#x7B7E;&#x3002; 
 -  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">&gt;</span></span>&#xFF1A;&#x5F15;&#x5165; SQL &#x7247;&#x6BB5;&#x6807;&#x7B7E;&#x3002; 
    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sql</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>&#x7247;&#x6BB5;&#x552F;&#x4E00;&#x6807;&#x8BC6;<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>&#x62BD;&#x53D6;&#x7684; SQL &#x8BED;&#x53E5;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sql</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span> <span class="token attr-name">refid</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>&#x7247;&#x6BB5;&#x552F;&#x4E00;&#x6807;&#x8BC6;<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
- 
 </pre><h3 class="mume-header" id="%E4%B8%89-%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6">&#x4E09;. &#x5206;&#x9875;&#x63D2;&#x4EF6;</h3>
 
 <h4 class="mume-header" id="31-%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6%E4%BB%8B%E7%BB%8D">3.1 &#x5206;&#x9875;&#x63D2;&#x4EF6;&#x4ECB;&#x7ECD;</h4>
@@ -912,7 +913,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <li>MyBatis&#x5206;&#x9875;&#x63D2;&#x4EF6;&#x603B;&#x7ED3;
 <ol>
 <li>&#x5728;&#x4F01;&#x4E1A;&#x7EA7;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x5206;&#x9875;&#x4E5F;&#x662F;&#x4E00;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x6280;&#x672F;&#x3002;&#x800C;&#x76EE;&#x524D;&#x4F7F;&#x7528;&#x7684; MyBatis &#x662F;&#x4E0D;&#x5E26;&#x5206;&#x9875;&#x529F;&#x80FD;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x5B9E;&#x73B0;&#x5206;&#x9875;&#x7684; &#x529F;&#x80FD;&#xFF0C;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x7F16;&#x5199; LIMIT &#x8BED;&#x53E5;&#x3002;&#x4F46;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5B9E;&#x73B0;&#x5206;&#x9875;&#x7684; SQL &#x8BED;&#x53E5;&#x4E5F;&#x662F;&#x4E0D;&#x540C;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x624B;&#x5199;&#x5206;&#x9875; &#x6210;&#x672C;&#x8F83;&#x9AD8;&#x3002;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x5C31;&#x53EF;&#x4EE5;&#x501F;&#x52A9;&#x5206;&#x9875;&#x63D2;&#x4EF6;&#x6765;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x5206;&#x9875;&#x529F;&#x80FD;&#x3002;</li>
-<li>PageHelper&#xFF1A;&#x7B2C;&#x4E09;&#x65B9;&#x5206;&#x9875;&#x52A9;&#x624B;&#x3002;&#x5C06;&#x590D;&#x6742;&#x7684;&#x5206;&#x9875;&#x64CD;&#x4F5C;&#x8FDB;&#x884C;&#x5C01;&#x88C5;&#xFF0C;&#x4ECE;&#x800C;&#x8BA9;&#x5206;&#x9875;&#x529F;&#x80FD;&#x53D8;&#x5F97;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x3002;</li>
+<li><code>PageHelper</code>&#xFF1A;&#x7B2C;&#x4E09;&#x65B9;&#x5206;&#x9875;&#x52A9;&#x624B;&#x3002;&#x5C06;&#x590D;&#x6742;&#x7684;&#x5206;&#x9875;&#x64CD;&#x4F5C;&#x8FDB;&#x884C;&#x5C01;&#x88C5;&#xFF0C;&#x4ECE;&#x800C;&#x8BA9;&#x5206;&#x9875;&#x529F;&#x80FD;&#x53D8;&#x5F97;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x3002;</li>
 </ol>
 </li>
 </ul>
@@ -1061,8 +1062,6 @@ pre[data-line] .line-highlight[data-end]:after {
 </li>
 <li>
 <p>&#x4E00;&#x5BF9;&#x4E00;&#x914D;&#x7F6E;&#x603B;&#x7ED3;:</p>
-</li>
-</ol>
 <pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resultMap</span><span class="token punctuation">&gt;</span></span>&#xFF1A;&#x914D;&#x7F6E;&#x5B57;&#x6BB5;&#x548C;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x6807;&#x7B7E;&#x3002;
     id &#x5C5E;&#x6027;&#xFF1A;&#x552F;&#x4E00;&#x6807;&#x8BC6;
     type &#x5C5E;&#x6027;&#xFF1A;&#x5B9E;&#x4F53;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;
@@ -1073,8 +1072,9 @@ pre[data-line] .line-highlight[data-end]:after {
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>association</span><span class="token punctuation">&gt;</span></span>&#xFF1A;&#x914D;&#x7F6E;&#x88AB;&#x5305;&#x542B;&#x5BF9;&#x8C61;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x6807;&#x7B7E;&#x3002;
     property &#x5C5E;&#x6027;&#xFF1A;&#x88AB;&#x5305;&#x542B;&#x5BF9;&#x8C61;&#x7684;&#x53D8;&#x91CF;&#x540D;
     javaType &#x5C5E;&#x6027;&#xFF1A;&#x88AB;&#x5305;&#x542B;&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;
-</pre><h4 class="mume-header" id="43-%E5%A4%9A%E8%A1%A8%E6%A8%A1%E5%9E%8B%E4%B8%80%E5%AF%B9%E5%A4%9A%E6%93%8D%E4%BD%9C">4.3 &#x591A;&#x8868;&#x6A21;&#x578B;&#x4E00;&#x5BF9;&#x591A;&#x64CD;&#x4F5C;</h4>
-
+</pre></li>
+</ol>
+<h4>4.3 &#x591A;&#x8868;&#x6A21;&#x578B;&#x4E00;&#x5BF9;&#x591A;&#x64CD;&#x4F5C;</h4>
 <ol>
 <li>
 <p>&#x4E00;&#x5BF9;&#x591A;&#x6A21;&#x578B;&#xFF1A; &#x4E00;&#x5BF9;&#x591A;&#x6A21;&#x578B;&#xFF1A;&#x73ED;&#x7EA7;&#x548C;&#x5B66;&#x751F;&#xFF0C;&#x4E00;&#x4E2A;&#x73ED;&#x7EA7;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#x5B66;&#x751F;&#x3002;</p>
@@ -1164,8 +1164,6 @@ pre[data-line] .line-highlight[data-end]:after {
 </li>
 <li>
 <p>&#x4E00;&#x5BF9;&#x591A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x603B;&#x7ED3;&#xFF1A;</p>
-</li>
-</ol>
 <pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resultMap</span><span class="token punctuation">&gt;</span></span>&#xFF1A;&#x914D;&#x7F6E;&#x5B57;&#x6BB5;&#x548C;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x6807;&#x7B7E;&#x3002;
     id &#x5C5E;&#x6027;&#xFF1A;&#x552F;&#x4E00;&#x6807;&#x8BC6;
     type &#x5C5E;&#x6027;&#xFF1A;&#x5B9E;&#x4F53;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;
@@ -1176,8 +1174,9 @@ pre[data-line] .line-highlight[data-end]:after {
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>collection</span><span class="token punctuation">&gt;</span></span>&#xFF1A;&#x914D;&#x7F6E;&#x88AB;&#x5305;&#x542B;&#x96C6;&#x5408;&#x5BF9;&#x8C61;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x6807;&#x7B7E;&#x3002;
     property &#x5C5E;&#x6027;&#xFF1A;&#x88AB;&#x5305;&#x542B;&#x96C6;&#x5408;&#x5BF9;&#x8C61;&#x7684;&#x53D8;&#x91CF;&#x540D;
     ofType &#x5C5E;&#x6027;&#xFF1A;&#x96C6;&#x5408;&#x4E2D;&#x4FDD;&#x5B58;&#x7684;&#x5BF9;&#x8C61;&#x6570;&#x636E;&#x7C7B;&#x578B;
-</pre><h4 class="mume-header" id="44-%E5%A4%9A%E8%A1%A8%E6%A8%A1%E5%9E%8B%E5%A4%9A%E5%AF%B9%E5%A4%9A%E6%93%8D%E4%BD%9C">4.4 &#x591A;&#x8868;&#x6A21;&#x578B;&#x591A;&#x5BF9;&#x591A;&#x64CD;&#x4F5C;</h4>
-
+</pre></li>
+</ol>
+<h4>4.4 &#x591A;&#x8868;&#x6A21;&#x578B;&#x591A;&#x5BF9;&#x591A;&#x64CD;&#x4F5C;</h4>
 <ol>
 <li>
 <p>&#x591A;&#x5BF9;&#x591A;&#x6A21;&#x578B;&#xFF1A;&#x5B66;&#x751F;&#x548C;&#x8BFE;&#x7A0B;&#xFF0C;&#x4E00;&#x4E2A;&#x5B66;&#x751F;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x591A;&#x95E8;&#x8BFE;&#x7A0B;&#x3001;&#x4E00;&#x4E2A;&#x8BFE;&#x7A0B;&#x4E5F;&#x53EF;&#x4EE5;&#x88AB;&#x591A;&#x4E2A;&#x5B66;&#x751F;&#x6240;&#x9009;&#x62E9;&#x3002;</p>
@@ -1268,8 +1267,6 @@ pre[data-line] .line-highlight[data-end]:after {
 </li>
 <li>
 <p>&#x591A;&#x5BF9;&#x591A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x603B;&#x7ED3;&#xFF1A;</p>
-</li>
-</ol>
 <pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resultMap</span><span class="token punctuation">&gt;</span></span>&#xFF1A;&#x914D;&#x7F6E;&#x5B57;&#x6BB5;&#x548C;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x6807;&#x7B7E;&#x3002;
     id &#x5C5E;&#x6027;&#xFF1A;&#x552F;&#x4E00;&#x6807;&#x8BC6;
     type &#x5C5E;&#x6027;&#xFF1A;&#x5B9E;&#x4F53;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;
@@ -1280,22 +1277,10 @@ pre[data-line] .line-highlight[data-end]:after {
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>collection</span><span class="token punctuation">&gt;</span></span>&#xFF1A;&#x914D;&#x7F6E;&#x88AB;&#x5305;&#x542B;&#x96C6;&#x5408;&#x5BF9;&#x8C61;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x6807;&#x7B7E;&#x3002;
     property &#x5C5E;&#x6027;&#xFF1A;&#x88AB;&#x5305;&#x542B;&#x96C6;&#x5408;&#x5BF9;&#x8C61;&#x7684;&#x53D8;&#x91CF;&#x540D;
     ofType &#x5C5E;&#x6027;&#xFF1A;&#x96C6;&#x5408;&#x4E2D;&#x4FDD;&#x5B58;&#x7684;&#x5BF9;&#x8C61;&#x6570;&#x636E;&#x7C7B;&#x578B;
-</pre><h4 class="mume-header" id="45-%E5%A4%9A%E8%A1%A8%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93">4.5 &#x591A;&#x8868;&#x6A21;&#x578B;&#x64CD;&#x4F5C;&#x603B;&#x7ED3;</h4>
-
-<pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resultMap</span><span class="token punctuation">&gt;</span></span>&#xFF1A;&#x914D;&#x7F6E;&#x5B57;&#x6BB5;&#x548C;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x6807;&#x7B7E;&#x3002;
-    id &#x5C5E;&#x6027;&#xFF1A;&#x552F;&#x4E00;&#x6807;&#x8BC6;
-    type &#x5C5E;&#x6027;&#xFF1A;&#x5B9E;&#x4F53;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>&#xFF1A;&#x914D;&#x7F6E;&#x4E3B;&#x952E;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x6807;&#x7B7E;&#x3002;
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>result</span><span class="token punctuation">&gt;</span></span>&#xFF1A;&#x914D;&#x7F6E;&#x975E;&#x4E3B;&#x952E;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x6807;&#x7B7E;&#x3002;
-	column &#x5C5E;&#x6027;&#xFF1A;&#x8868;&#x4E2D;&#x5B57;&#x6BB5;&#x540D;&#x79F0;
-	property &#x5C5E;&#x6027;&#xFF1A; &#x5B9E;&#x4F53;&#x5BF9;&#x8C61;&#x53D8;&#x91CF;&#x540D;&#x79F0;
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>association</span><span class="token punctuation">&gt;</span></span>&#xFF1A;&#x914D;&#x7F6E;&#x88AB;&#x5305;&#x542B;&#x5BF9;&#x8C61;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x6807;&#x7B7E;&#x3002;
-	property &#x5C5E;&#x6027;&#xFF1A;&#x88AB;&#x5305;&#x542B;&#x5BF9;&#x8C61;&#x7684;&#x53D8;&#x91CF;&#x540D;
-	javaType &#x5C5E;&#x6027;&#xFF1A;&#x88AB;&#x5305;&#x542B;&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>collection</span><span class="token punctuation">&gt;</span></span>&#xFF1A;&#x914D;&#x7F6E;&#x88AB;&#x5305;&#x542B;&#x96C6;&#x5408;&#x5BF9;&#x8C61;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x6807;&#x7B7E;&#x3002;
-	property &#x5C5E;&#x6027;&#xFF1A;&#x88AB;&#x5305;&#x542B;&#x96C6;&#x5408;&#x5BF9;&#x8C61;&#x7684;&#x53D8;&#x91CF;&#x540D;
-	ofType &#x5C5E;&#x6027;&#xFF1A;&#x96C6;&#x5408;&#x4E2D;&#x4FDD;&#x5B58;&#x7684;&#x5BF9;&#x8C61;&#x6570;&#x636E;&#x7C7B;&#x578B;
-</pre><h2 class="mume-header" id="mybatis%E8%BF%9B%E9%98%B6">MyBatis&#x8FDB;&#x9636;</h2>
+</pre><p>&#x6574;&#x4F53;&#x4E0E;&#x4E00;&#x5BF9;&#x591A;&#x914D;&#x7F6E;&#x76F8;&#x540C;&#x3002;</p>
+</li>
+</ol>
+<h2 class="mume-header" id="mybatis%E8%BF%9B%E9%98%B6">MyBatis&#x8FDB;&#x9636;</h2>
 
 <h3 class="mume-header" id="%E4%B8%80-mybatis%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91%E5%8D%95%E8%A1%A8%E6%93%8D%E4%BD%9C">&#x4E00;. Mybatis&#x6CE8;&#x89E3;&#x5F00;&#x53D1;&#x5355;&#x8868;&#x64CD;&#x4F5C;</h3>
 
@@ -1481,7 +1466,7 @@ pre[data-line] .line-highlight[data-end]:after {
 
 <h4 class="mume-header" id="21-mybatis%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0%E5%A4%8D%E6%9D%82%E6%98%A0%E5%B0%84%E5%BC%80%E5%8F%91">2.1 MyBatis&#x7684;&#x6CE8;&#x89E3;&#x5B9E;&#x73B0;&#x590D;&#x6742;&#x6620;&#x5C04;&#x5F00;&#x53D1;</h4>
 
-<p>&#x5B9E;&#x73B0;&#x590D;&#x6742;&#x5173;&#x7CFB;&#x6620;&#x5C04;&#x4E4B;&#x524D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x6620;&#x5C04;&#x6587;&#x4EF6;&#x4E2D;&#x901A;&#x8FC7;&#x914D;&#x7F6E;<code>&lt;resultMap&gt;</code>&#x6765;&#x5B9E;&#x73B0;&#xFF0C;&#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x5F00;&#x53D1;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>@Results</code>&#x6CE8;&#x89E3;&#x3001;<code>@Result</code>&#x6CE8;&#x89E3;&#x3001;<code>@One</code>&#x6CE8;&#x89E3;&#x3001;<code>@Many</code>&#x6CE8;&#x89E3;&#x7EC4;&#x5408;&#x5B8C;&#x6210;&#x590D;&#x6742;&#x5173;&#x7CFB;&#x7684;&#x914D;&#x7F6E;</p>
+<p>&#x5B9E;&#x73B0;&#x590D;&#x6742;&#x5173;&#x7CFB;&#x6620;&#x5C04;&#x4E4B;&#x524D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x6620;&#x5C04;&#x6587;&#x4EF6;&#x4E2D;&#x901A;&#x8FC7;&#x914D;&#x7F6E;<code>&lt;resultMap&gt;</code>&#x6765;&#x5B9E;&#x73B0;&#xFF0C;&#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x5F00;&#x53D1;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>@Results</code>&#x6CE8;&#x89E3;&#x3001;<code>@ResultMap</code>&#x6CE8;&#x89E3;&#x3001;<code>@Result</code>&#x6CE8;&#x89E3;&#x3001;<code>@One</code>&#x6CE8;&#x89E3;&#x3001;<code>@Many</code>&#x6CE8;&#x89E3;&#x7EC4;&#x5408;&#x5B8C;&#x6210;&#x590D;&#x6742;&#x5173;&#x7CFB;&#x7684;&#x914D;&#x7F6E;</p>
 <p><img src="./assets/mybatis_Results%E6%B3%A8%E8%A7%A31.png" alt></p>
 <p><img src="./assets/mybatis_Results%E6%B3%A8%E8%A7%A32.png" alt></p>
 <h4 class="mume-header" id="22-%E4%B8%80%E5%AF%B9%E4%B8%80%E6%9F%A5%E8%AF%A2">2.2 &#x4E00;&#x5BF9;&#x4E00;&#x67E5;&#x8BE2;</h4>
@@ -1523,6 +1508,8 @@ pre[data-line] .line-highlight[data-end]:after {
                     one <span class="token operator">=</span> <span class="token annotation punctuation">@One</span><span class="token punctuation">(</span>select <span class="token operator">=</span> <span class="token string">&quot;com.itheima.one_to_one.PersonMapper.selectById&quot;</span><span class="token punctuation">)</span>
             <span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token comment">//&#x6B64;&#x5904;@Results&#x76F8;&#x5F53;&#x4E8E;&#xFF1A;@ResultMap(id=&quot;xxx&quot;, value={...})</span>
+    <span class="token comment">//&#x5982;&#x679C;&#x8FD9;&#x6837;&#x5199;&#xFF0C;&#x53EF;&#x4F7F;&#x5F97;&#x5176;&#x5B83;&#x65B9;&#x6CD5;&#x901A;&#x8FC7;@ResultMap(&quot;xxx&quot;)&#x518D;&#x6B21;&#x8C03;&#x7528;</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-abstract">abstract</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Card</span><span class="token punctuation">&gt;</span></span> <span class="token function">selectAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </pre><h5 class="mume-header" id="225-%E6%B5%8B%E8%AF%95%E7%B1%BB">2.2.5 &#x6D4B;&#x8BD5;&#x7C7B;</h5>
@@ -1557,17 +1544,6 @@ pre[data-line] .line-highlight[data-end]:after {
 
 <span class="token punctuation">}</span>
 
-</pre><h5 class="mume-header" id="226-%E4%B8%80%E5%AF%B9%E4%B8%80%E9%85%8D%E7%BD%AE%E6%80%BB%E7%BB%93">2.2.6  &#x4E00;&#x5BF9;&#x4E00;&#x914D;&#x7F6E;&#x603B;&#x7ED3;</h5>
-
-<pre data-role="codeBlock" data-info="xml" class="language-xml">@Results&#xFF1A;&#x5C01;&#x88C5;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x7684;&#x7236;&#x6CE8;&#x89E3;&#x3002;
-	Result[] value()&#xFF1A;&#x5B9A;&#x4E49;&#x4E86; Result &#x6570;&#x7EC4;
-@Result&#xFF1A;&#x5C01;&#x88C5;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x7684;&#x5B50;&#x6CE8;&#x89E3;&#x3002;
-	column &#x5C5E;&#x6027;&#xFF1A;&#x67E5;&#x8BE2;&#x51FA;&#x7684;&#x8868;&#x4E2D;&#x5B57;&#x6BB5;&#x540D;&#x79F0;
-	property &#x5C5E;&#x6027;&#xFF1A;&#x5B9E;&#x4F53;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x540D;&#x79F0;
-	javaType &#x5C5E;&#x6027;&#xFF1A;&#x88AB;&#x5305;&#x542B;&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;
-	one &#x5C5E;&#x6027;&#xFF1A;&#x4E00;&#x5BF9;&#x4E00;&#x67E5;&#x8BE2;&#x56FA;&#x5B9A;&#x5C5E;&#x6027;
- @One&#xFF1A;&#x4E00;&#x5BF9;&#x4E00;&#x67E5;&#x8BE2;&#x7684;&#x6CE8;&#x89E3;&#x3002;
-	select &#x5C5E;&#x6027;&#xFF1A;&#x6307;&#x5B9A;&#x8C03;&#x7528;&#x67D0;&#x4E2A;&#x63A5;&#x53E3;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;
 </pre><h4 class="mume-header" id="23-%E4%B8%80%E5%AF%B9%E5%A4%9A%E6%9F%A5%E8%AF%A2">2.3 &#x4E00;&#x5BF9;&#x591A;&#x67E5;&#x8BE2;</h4>
 
 <h5 class="mume-header" id="231-%E4%B8%80%E5%AF%B9%E5%A4%9A%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%A8%A1%E5%9E%8B">2.3.1 &#x4E00;&#x5BF9;&#x591A;&#x67E5;&#x8BE2;&#x7684;&#x6A21;&#x578B;</h5>
@@ -1645,17 +1621,6 @@ pre[data-line] .line-highlight[data-end]:after {
 
 <span class="token punctuation">}</span>
 
-</pre><h5 class="mume-header" id="236-%E4%B8%80%E5%AF%B9%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%80%BB%E7%BB%93">2.3.6 &#x4E00;&#x5BF9;&#x591A;&#x914D;&#x7F6E;&#x603B;&#x7ED3;</h5>
-
-<pre data-role="codeBlock" data-info="xml" class="language-xml">@Results&#xFF1A;&#x5C01;&#x88C5;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x7684;&#x7236;&#x6CE8;&#x89E3;&#x3002;
-	Result[] value()&#xFF1A;&#x5B9A;&#x4E49;&#x4E86; Result &#x6570;&#x7EC4;
-@Result&#xFF1A;&#x5C01;&#x88C5;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x7684;&#x5B50;&#x6CE8;&#x89E3;&#x3002;
-	column &#x5C5E;&#x6027;&#xFF1A;&#x67E5;&#x8BE2;&#x51FA;&#x7684;&#x8868;&#x4E2D;&#x5B57;&#x6BB5;&#x540D;&#x79F0;
-	property &#x5C5E;&#x6027;&#xFF1A;&#x5B9E;&#x4F53;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x540D;&#x79F0;
-	javaType &#x5C5E;&#x6027;&#xFF1A;&#x88AB;&#x5305;&#x542B;&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;
-	many &#x5C5E;&#x6027;&#xFF1A;&#x4E00;&#x5BF9;&#x591A;&#x67E5;&#x8BE2;&#x56FA;&#x5B9A;&#x5C5E;&#x6027;
-@Many&#xFF1A;&#x4E00;&#x5BF9;&#x591A;&#x67E5;&#x8BE2;&#x7684;&#x6CE8;&#x89E3;&#x3002;
-	select &#x5C5E;&#x6027;&#xFF1A;&#x6307;&#x5B9A;&#x8C03;&#x7528;&#x67D0;&#x4E2A;&#x63A5;&#x53E3;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;
 </pre><h4 class="mume-header" id="24-%E5%A4%9A%E5%AF%B9%E5%A4%9A%E6%9F%A5%E8%AF%A2">2.4  &#x591A;&#x5BF9;&#x591A;&#x67E5;&#x8BE2;</h4>
 
 <h5 class="mume-header" id="241-%E5%A4%9A%E5%AF%B9%E5%A4%9A%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%A8%A1%E5%9E%8B">2.4.1 &#x591A;&#x5BF9;&#x591A;&#x67E5;&#x8BE2;&#x7684;&#x6A21;&#x578B;</h5>
@@ -1733,17 +1698,6 @@ pre[data-line] .line-highlight[data-end]:after {
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
-</pre><h5 class="mume-header" id="246-%E5%A4%9A%E5%AF%B9%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%80%BB%E7%BB%93">2.4.6 &#x591A;&#x5BF9;&#x591A;&#x914D;&#x7F6E;&#x603B;&#x7ED3;</h5>
-
-<pre data-role="codeBlock" data-info="xml" class="language-xml">@Results&#xFF1A;&#x5C01;&#x88C5;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x7684;&#x7236;&#x6CE8;&#x89E3;&#x3002;
-	Result[] value()&#xFF1A;&#x5B9A;&#x4E49;&#x4E86; Result &#x6570;&#x7EC4;
-@Result&#xFF1A;&#x5C01;&#x88C5;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x7684;&#x5B50;&#x6CE8;&#x89E3;&#x3002;
-	column &#x5C5E;&#x6027;&#xFF1A;&#x67E5;&#x8BE2;&#x51FA;&#x7684;&#x8868;&#x4E2D;&#x5B57;&#x6BB5;&#x540D;&#x79F0;
-	property &#x5C5E;&#x6027;&#xFF1A;&#x5B9E;&#x4F53;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x540D;&#x79F0;
-	javaType &#x5C5E;&#x6027;&#xFF1A;&#x88AB;&#x5305;&#x542B;&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;
-	many &#x5C5E;&#x6027;&#xFF1A;&#x4E00;&#x5BF9;&#x591A;&#x67E5;&#x8BE2;&#x56FA;&#x5B9A;&#x5C5E;&#x6027;
-@Many&#xFF1A;&#x4E00;&#x5BF9;&#x591A;&#x67E5;&#x8BE2;&#x7684;&#x6CE8;&#x89E3;&#x3002;
-	select &#x5C5E;&#x6027;&#xFF1A;&#x6307;&#x5B9A;&#x8C03;&#x7528;&#x67D0;&#x4E2A;&#x63A5;&#x53E3;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;
 </pre><h3 class="mume-header" id="%E4%B8%89-%E6%9E%84%E5%BB%BAsql">&#x4E09;. &#x6784;&#x5EFA;sql</h3>
 
 <h4 class="mume-header" id="31-sql-%E6%9E%84%E5%BB%BA%E5%AF%B9%E8%B1%A1%E4%BB%8B%E7%BB%8D">3.1 SQL &#x6784;&#x5EFA;&#x5BF9;&#x8C61;&#x4ECB;&#x7ECD;</h4>
@@ -1753,11 +1707,17 @@ pre[data-line] .line-highlight[data-end]:after {
 <li>MyBatis &#x7ED9;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;<code>org.apache.ibatis.jdbc.SQL</code>&#x529F;&#x80FD;&#x7C7B;&#xFF0C;&#x4E13;&#x95E8;&#x7528;&#x4E8E;&#x6784;&#x5EFA; SQL &#x8BED;&#x53E5;<br>
 <img src="./assets/mybatis_SQL%E6%9E%84%E5%BB%BA%E6%96%B9%E6%B3%95.png" alt="SQL&#x6784;&#x5EFA;&#x65B9;&#x6CD5;"></li>
 </ul>
-<h4 class="mume-header" id="32-%E6%9F%A5%E8%AF%A2%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">3.2 &#x67E5;&#x8BE2;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;</h4>
+<h4 class="mume-header" id="32-%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">3.2 &#x589E;&#x5220;&#x6539;&#x67E5;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;</h4>
 
 <ul>
 <li>
-<p>&#x5B9A;&#x4E49;&#x529F;&#x80FD;&#x7C7B;&#x5E76;&#x63D0;&#x4F9B;&#x83B7;&#x53D6;&#x67E5;&#x8BE2;&#x7684; SQL &#x8BED;&#x53E5;&#x7684;&#x65B9;&#x6CD5;&#x3002; &#xF06C;</p>
+<p><code>@InsertProvider</code>&#xFF1A;&#x751F;&#x6210;&#x65B0;&#x589E;&#x7528;&#x7684; SQL &#x8BED;&#x53E5;&#x6CE8;&#x89E3;&#x3002;</p>
+</li>
+<li>
+<p><code>@DeleteProvider</code>&#xFF1A;&#x751F;&#x6210;&#x5220;&#x9664;&#x7528;&#x7684; SQL &#x8BED;&#x53E5;&#x6CE8;&#x89E3;&#x3002;</p>
+</li>
+<li>
+<p><code>@UpdateProvider</code>&#xFF1A;&#x751F;&#x6210;&#x4FEE;&#x6539;&#x7528;&#x7684; SQL &#x8BED;&#x53E5;&#x6CE8;&#x89E3;&#x3002;</p>
 </li>
 <li>
 <p><code>@SelectProvider</code>&#xFF1A;&#x751F;&#x6210;&#x67E5;&#x8BE2;&#x7528;&#x7684; SQL &#x8BED;&#x53E5;&#x6CE8;&#x89E3;&#x3002;</p>
@@ -1767,49 +1727,33 @@ pre[data-line] .line-highlight[data-end]:after {
 </ul>
 </li>
 </ul>
-<h4 class="mume-header" id="33-%E6%96%B0%E5%A2%9E%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">3.3 &#x65B0;&#x589E;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;</h4>
+<p>Mapper&#x63A5;&#x53E3;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-interface">interface</span> <span class="token class-name">StudentMapper</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@SelectProvider</span><span class="token punctuation">(</span>type<span class="token operator">=</span><span class="token class-name">SqlProvider</span><span class="token punctuation">.</span><span class="token keyword keyword-class">class</span><span class="token punctuation">,</span> method<span class="token operator">=</span><span class="token string">&quot;selectById&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">Student</span> <span class="token function">getStudent</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p>&#x62FC;&#x88C5;sql&#x7684;&#x7C7B;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">SqlProvider</span> <span class="token punctuation">{</span>
+    <span class="token comment">//&#x5199;&#x6CD5;1</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">selectById</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token keyword keyword-new">new</span> <span class="token function">SQL</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token punctuation">{</span>
+                <span class="token function">SELECT</span><span class="token punctuation">(</span><span class="token string">&quot;*&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">FROM</span><span class="token punctuation">(</span><span class="token string">&quot;student&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">WHERE</span><span class="token punctuation">(</span><span class="token string">&quot;id=#{id}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-<ul>
-<li>
-<p>&#x5B9A;&#x4E49;&#x529F;&#x80FD;&#x7C7B;&#x5E76;&#x63D0;&#x4F9B;&#x83B7;&#x53D6;&#x65B0;&#x589E;&#x7684; SQL &#x8BED;&#x53E5;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
-</li>
-<li>
-<p><code>@InsertProvider</code>&#xFF1A;&#x751F;&#x6210;&#x65B0;&#x589E;&#x7528;&#x7684; SQL &#x8BED;&#x53E5;&#x6CE8;&#x89E3;&#x3002;</p>
-<ul>
-<li>type &#x5C5E;&#x6027;&#xFF1A;&#x751F;&#x6210; SQL &#x8BED;&#x53E5;&#x529F;&#x80FD;&#x7C7B;&#x5BF9;&#x8C61;</li>
-<li>method &#x5C5E;&#x6027;&#xFF1A;&#x6307;&#x5B9A;&#x8C03;&#x7528;&#x65B9;&#x6CD5;</li>
-</ul>
-</li>
-</ul>
-<h4 class="mume-header" id="34-%E4%BF%AE%E6%94%B9%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">3.4 &#x4FEE;&#x6539;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;</h4>
-
-<ul>
-<li>
-<p>&#x5B9A;&#x4E49;&#x529F;&#x80FD;&#x7C7B;&#x5E76;&#x63D0;&#x4F9B;&#x83B7;&#x53D6;&#x4FEE;&#x6539;&#x7684; SQL &#x8BED;&#x53E5;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
-</li>
-<li>
-<p><code>@UpdateProvider</code>&#xFF1A;&#x751F;&#x6210;&#x4FEE;&#x6539;&#x7528;&#x7684; SQL &#x8BED;&#x53E5;&#x6CE8;&#x89E3;&#x3002;</p>
-<ul>
-<li>type &#x5C5E;&#x6027;&#xFF1A;&#x751F;&#x6210; SQL &#x8BED;&#x53E5;&#x529F;&#x80FD;&#x7C7B;&#x5BF9;&#x8C61;</li>
-<li>method &#x5C5E;&#x6027;&#xFF1A;&#x6307;&#x5B9A;&#x8C03;&#x7528;&#x65B9;&#x6CD5;</li>
-</ul>
-</li>
-</ul>
-<h4 class="mume-header" id="35-%E5%88%A0%E9%99%A4%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">3.5 &#x5220;&#x9664;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;</h4>
-
-<ul>
-<li>
-<p>&#x5B9A;&#x4E49;&#x529F;&#x80FD;&#x7C7B;&#x5E76;&#x63D0;&#x4F9B;&#x83B7;&#x53D6;&#x5220;&#x9664;&#x7684; SQL &#x8BED;&#x53E5;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
-</li>
-<li>
-<p><code>@DeleteProvider</code>&#xFF1A;&#x751F;&#x6210;&#x5220;&#x9664;&#x7528;&#x7684; SQL &#x8BED;&#x53E5;&#x6CE8;&#x89E3;&#x3002;</p>
-<ul>
-<li>type &#x5C5E;&#x6027;&#xFF1A;&#x751F;&#x6210; SQL &#x8BED;&#x53E5;&#x529F;&#x80FD;&#x7C7B;&#x5BF9;&#x8C61;</li>
-<li>method &#x5C5E;&#x6027;&#xFF1A;&#x6307;&#x5B9A;&#x8C03;&#x7528;&#x65B9;&#x6CD5;</li>
-</ul>
-</li>
-</ul>
-<h3 class="mume-header" id="%E5%9B%9B-%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B">&#x56DB;. &#x7EFC;&#x5408;&#x6848;&#x4F8B;</h3>
+    <span class="token comment">//&#x5199;&#x6CD5;2</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">selectAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token keyword keyword-new">new</span> <span class="token function">SQL</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">SELECT</span><span class="token punctuation">(</span><span class="token string">&quot;*&quot;</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">FROM</span><span class="token punctuation">(</span><span class="token string">&quot;student&quot;</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="%E5%9B%9B-%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B">&#x56DB;. &#x7EFC;&#x5408;&#x6848;&#x4F8B;</h3>
 
 <h4 class="mume-header" id="41-%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D">4.1 &#x7CFB;&#x7EDF;&#x4ECB;&#x7ECD;</h4>
 
@@ -2137,7 +2081,6 @@ pre[data-line] .line-highlight[data-end]:after {
 <li><a href="#152-%E7%BC%96%E5%86%99%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81">1.5.2 &#x7F16;&#x5199;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;</a></li>
 </ul>
 </li>
-<li><a href="#16-%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93">1.6 &#x77E5;&#x8BC6;&#x5C0F;&#x7ED3;</a></li>
 </ul>
 </li>
 <li><a href="#%E4%BA%8C-mybatis%E7%9A%84%E7%9B%B8%E5%85%B3api">&#x4E8C;. MyBatis&#x7684;&#x76F8;&#x5173;api</a>
@@ -2202,9 +2145,6 @@ pre[data-line] .line-highlight[data-end]:after {
 <ul>
 <li><a href="#41-%E5%A4%9A%E8%A1%A8%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D">4.1 &#x591A;&#x8868;&#x6A21;&#x578B;&#x4ECB;&#x7ECD;</a></li>
 <li><a href="#42-%E5%A4%9A%E8%A1%A8%E6%A8%A1%E5%9E%8B%E4%B8%80%E5%AF%B9%E4%B8%80%E6%93%8D%E4%BD%9C">4.2 &#x591A;&#x8868;&#x6A21;&#x578B;&#x4E00;&#x5BF9;&#x4E00;&#x64CD;&#x4F5C;</a></li>
-<li><a href="#43-%E5%A4%9A%E8%A1%A8%E6%A8%A1%E5%9E%8B%E4%B8%80%E5%AF%B9%E5%A4%9A%E6%93%8D%E4%BD%9C">4.3 &#x591A;&#x8868;&#x6A21;&#x578B;&#x4E00;&#x5BF9;&#x591A;&#x64CD;&#x4F5C;</a></li>
-<li><a href="#44-%E5%A4%9A%E8%A1%A8%E6%A8%A1%E5%9E%8B%E5%A4%9A%E5%AF%B9%E5%A4%9A%E6%93%8D%E4%BD%9C">4.4 &#x591A;&#x8868;&#x6A21;&#x578B;&#x591A;&#x5BF9;&#x591A;&#x64CD;&#x4F5C;</a></li>
-<li><a href="#45-%E5%A4%9A%E8%A1%A8%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93">4.5 &#x591A;&#x8868;&#x6A21;&#x578B;&#x64CD;&#x4F5C;&#x603B;&#x7ED3;</a></li>
 </ul>
 </li>
 </ul>
@@ -2227,7 +2167,6 @@ pre[data-line] .line-highlight[data-end]:after {
 <li><a href="#223-%E5%88%9B%E5%BB%BApersonmapper%E6%8E%A5%E5%8F%A3">2.2.3 &#x521B;&#x5EFA;PersonMapper&#x63A5;&#x53E3;</a></li>
 <li><a href="#224-%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E9%85%8D%E7%BD%AEmapper">2.2.4 &#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x914D;&#x7F6E;Mapper</a></li>
 <li><a href="#225-%E6%B5%8B%E8%AF%95%E7%B1%BB">2.2.5 &#x6D4B;&#x8BD5;&#x7C7B;</a></li>
-<li><a href="#226-%E4%B8%80%E5%AF%B9%E4%B8%80%E9%85%8D%E7%BD%AE%E6%80%BB%E7%BB%93">2.2.6  &#x4E00;&#x5BF9;&#x4E00;&#x914D;&#x7F6E;&#x603B;&#x7ED3;</a></li>
 </ul>
 </li>
 <li><a href="#23-%E4%B8%80%E5%AF%B9%E5%A4%9A%E6%9F%A5%E8%AF%A2">2.3 &#x4E00;&#x5BF9;&#x591A;&#x67E5;&#x8BE2;</a>
@@ -2237,7 +2176,6 @@ pre[data-line] .line-highlight[data-end]:after {
 <li><a href="#233-%E5%88%9B%E5%BB%BAstudentmapper%E6%8E%A5%E5%8F%A3">2.3.3 &#x521B;&#x5EFA;StudentMapper&#x63A5;&#x53E3;</a></li>
 <li><a href="#234-%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E9%85%8D%E7%BD%AEmapper">2.3.4 &#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x914D;&#x7F6E;Mapper</a></li>
 <li><a href="#235-%E6%B5%8B%E8%AF%95%E7%B1%BB">2.3.5 &#x6D4B;&#x8BD5;&#x7C7B;</a></li>
-<li><a href="#236-%E4%B8%80%E5%AF%B9%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%80%BB%E7%BB%93">2.3.6 &#x4E00;&#x5BF9;&#x591A;&#x914D;&#x7F6E;&#x603B;&#x7ED3;</a></li>
 </ul>
 </li>
 <li><a href="#24-%E5%A4%9A%E5%AF%B9%E5%A4%9A%E6%9F%A5%E8%AF%A2">2.4  &#x591A;&#x5BF9;&#x591A;&#x67E5;&#x8BE2;</a>
@@ -2247,7 +2185,6 @@ pre[data-line] .line-highlight[data-end]:after {
 <li><a href="#243-%E6%B7%BB%E5%8A%A0coursemapper-%E6%8E%A5%E5%8F%A3%E6%96%B9%E6%B3%95">2.4.3  &#x6DFB;&#x52A0;CourseMapper &#x63A5;&#x53E3;&#x65B9;&#x6CD5;</a></li>
 <li><a href="#244-%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E9%85%8D%E7%BD%AEmapper">2.4.4 &#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x914D;&#x7F6E;Mapper</a></li>
 <li><a href="#245-%E6%B5%8B%E8%AF%95%E7%B1%BB">2.4.5 &#x6D4B;&#x8BD5;&#x7C7B;</a></li>
-<li><a href="#246-%E5%A4%9A%E5%AF%B9%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%80%BB%E7%BB%93">2.4.6 &#x591A;&#x5BF9;&#x591A;&#x914D;&#x7F6E;&#x603B;&#x7ED3;</a></li>
 </ul>
 </li>
 </ul>
@@ -2255,10 +2192,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <li><a href="#%E4%B8%89-%E6%9E%84%E5%BB%BAsql">&#x4E09;. &#x6784;&#x5EFA;sql</a>
 <ul>
 <li><a href="#31-sql-%E6%9E%84%E5%BB%BA%E5%AF%B9%E8%B1%A1%E4%BB%8B%E7%BB%8D">3.1 SQL &#x6784;&#x5EFA;&#x5BF9;&#x8C61;&#x4ECB;&#x7ECD;</a></li>
-<li><a href="#32-%E6%9F%A5%E8%AF%A2%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">3.2 &#x67E5;&#x8BE2;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;</a></li>
-<li><a href="#33-%E6%96%B0%E5%A2%9E%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">3.3 &#x65B0;&#x589E;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;</a></li>
-<li><a href="#34-%E4%BF%AE%E6%94%B9%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">3.4 &#x4FEE;&#x6539;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;</a></li>
-<li><a href="#35-%E5%88%A0%E9%99%A4%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">3.5 &#x5220;&#x9664;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;</a></li>
+<li><a href="#32-%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">3.2 &#x589E;&#x5220;&#x6539;&#x67E5;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;</a></li>
 </ul>
 </li>
 <li><a href="#%E5%9B%9B-%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B">&#x56DB;. &#x7EFC;&#x5408;&#x6848;&#x4F8B;</a>
