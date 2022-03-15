@@ -265,12 +265,11 @@ pre[data-line] .line-highlight[data-end]:after {
 
 <h2 class="mume-header" id="11-vue%E7%9A%84%E4%BB%8B%E7%BB%8D">1.1&#x3001;Vue&#x7684;&#x4ECB;&#x7ECD;</h2>
 
+<p>Vue&#x662F;&#x4E00;&#x5957;&#x6784;&#x5EFA;&#x7528;&#x6237;&#x754C;&#x9762;&#x7684;<strong>&#x6E10;&#x8FDB;&#x5F0F;&#x524D;&#x7AEF;&#x6846;&#x67B6;</strong>&#x3002;</p>
 <ul>
-<li>Vue&#x662F;&#x4E00;&#x5957;&#x6784;&#x5EFA;&#x7528;&#x6237;&#x754C;&#x9762;&#x7684;&#x6E10;&#x8FDB;&#x5F0F;&#x524D;&#x7AEF;&#x6846;&#x67B6;&#x3002;</li>
-<li>&#x53EA;&#x5173;&#x6CE8;&#x89C6;&#x56FE;&#x5C42;&#xFF0C;&#x5E76;&#x4E14;&#x975E;&#x5E38;&#x5BB9;&#x6613;&#x5B66;&#x4E60;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x4E0E;&#x5176;&#x5B83;&#x5E93;&#x6216;&#x5DF2;&#x6709;&#x9879;&#x76EE;&#x6574;&#x5408;&#x3002;</li>
-<li>&#x901A;&#x8FC7;&#x5C3D;&#x53EF;&#x80FD;&#x7B80;&#x5355;&#x7684;API&#x6765;&#x5B9E;&#x73B0;&#x54CD;&#x5E94;&#x6570;&#x636E;&#x7684;&#x7ED1;&#x5B9A;&#x548C;&#x7EC4;&#x5408;&#x7684;&#x89C6;&#x56FE;&#x7EC4;&#x4EF6;&#x3002;</li>
+<li><strong>&#x53EA;&#x5173;&#x6CE8;&#x89C6;&#x56FE;&#x5C42;</strong>&#xFF0C;&#x5E76;&#x4E14;&#x975E;&#x5E38;&#x5BB9;&#x6613;&#x5B66;&#x4E60;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x4E0E;&#x5176;&#x5B83;&#x5E93;&#x6216;&#x5DF2;&#x6709;&#x9879;&#x76EE;&#x6574;&#x5408;&#x3002;&#x901A;&#x8FC7;&#x5C3D;&#x53EF;&#x80FD;&#x7B80;&#x5355;&#x7684;API&#x6765;&#x5B9E;&#x73B0;&#x54CD;&#x5E94;&#x6570;&#x636E;&#x7684;&#x7ED1;&#x5B9A;&#x548C;&#x7EC4;&#x5408;&#x7684;&#x89C6;&#x56FE;&#x7EC4;&#x4EF6;&#x3002;</li>
 <li>&#x7279;&#x70B9;<br>
-&#x6613;&#x7528;&#xFF1A;&#x5728;&#x6709;HTMLCSSJavaScript&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x5FEB;&#x901F;&#x4E0A;&#x624B;&#x3002;<br>
+&#x6613;&#x7528;&#xFF1A;&#x5728;&#x6709;HTML/CSS/JavaScript&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x5FEB;&#x901F;&#x4E0A;&#x624B;&#x3002;<br>
 &#x7075;&#x6D3B;&#xFF1A;&#x7B80;&#x5355;&#x5C0F;&#x5DE7;&#x7684;&#x6838;&#x5FC3;&#xFF0C;&#x6E10;&#x8FDB;&#x5F0F;&#x6280;&#x672F;&#x6808;&#xFF0C;&#x8DB3;&#x4EE5;&#x5E94;&#x4ED8;&#x4EFB;&#x4F55;&#x89C4;&#x6A21;&#x7684;&#x5E94;&#x7528;&#x3002;<br>
 &#x6027;&#x80FD;&#xFF1A;20kbmin+gzip&#x8FD0;&#x884C;&#x5927;&#x5C0F;&#x3001;&#x8D85;&#x5FEB;&#x865A;&#x62DF;DOM&#x3001;&#x6700;&#x7701;&#x5FC3;&#x7684;&#x4F18;&#x5316;&#x3002;</li>
 </ul>
@@ -318,21 +317,22 @@ pre[data-line] .line-highlight[data-end]:after {
 
 <ul>
 <li>
-<p>Vue &#x6838;&#x5FC3;&#x5BF9;&#x8C61;&#xFF1A;&#x6BCF;&#x4E00;&#x4E2A; Vue &#x7A0B;&#x5E8F;&#x90FD;&#x662F;&#x4ECE;&#x4E00;&#x4E2A; Vue &#x6838;&#x5FC3;&#x5BF9;&#x8C61;&#x5F00;&#x59CB;&#x7684;&#x3002;</p>
-<pre data-role="codeBlock" data-info="tex" class="language-latex">let vm = new Vue(<span class="token punctuation">{</span>
- &#x9009;&#x9879;&#x5217;&#x8868;;
-<span class="token punctuation">}</span>);
+<p><code>Vue</code> &#x6838;&#x5FC3;&#x5BF9;&#x8C61;&#xFF1A;&#x6BCF;&#x4E00;&#x4E2A; Vue &#x7A0B;&#x5E8F;&#x90FD;&#x662F;&#x4ECE;&#x4E00;&#x4E2A; Vue &#x6838;&#x5FC3;&#x5BF9;&#x8C61;&#x5F00;&#x59CB;&#x7684;&#x3002;</p>
+<pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token keyword keyword-let">let</span> vm <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+ &#x9009;&#x9879;&#x5217;&#x8868;<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </pre></li>
 <li>
-<p>&#x9009;&#x9879;&#x5217;&#x8868;<br>
-el&#x9009;&#x9879;&#xFF1A;&#x7528;&#x4E8E;&#x63A5;&#x6536;&#x83B7;&#x53D6;&#x5230;&#x9875;&#x9762;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x3002;(&#x6839;&#x636E;&#x5E38;&#x7528;&#x9009;&#x62E9;&#x5668;&#x83B7;&#x53D6;)&#x3002;<br>
-data&#x9009;&#x9879;&#xFF1A;&#x7528;&#x4E8E;&#x4FDD;&#x5B58;&#x5F53;&#x524D;Vue&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x3002;&#x5728;&#x89C6;&#x56FE;&#x4E2D;&#x58F0;&#x660E;&#x7684;&#x53D8;&#x91CF;&#x9700;&#x8981;&#x5728;&#x6B64;&#x5904;&#x8D4B;&#x503C;&#x3002;<br>
-methods&#x9009;&#x9879;&#xFF1A;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x3002;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x5BF9;&#x8C61;&#x540D;&#x8C03;&#x7528;&#xFF0C;this&#x4EE3;&#x8868;&#x5F53;&#x524D;Vue&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x9009;&#x9879;&#x5217;&#x8868;</p>
+<ul>
+<li><code>el</code>&#x9009;&#x9879;&#xFF1A;&#x7528;&#x4E8E;&#x63A5;&#x6536;&#x83B7;&#x53D6;&#x5230;&#x9875;&#x9762;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x3002;(&#x6839;&#x636E;&#x5E38;&#x7528;&#x9009;&#x62E9;&#x5668;&#x83B7;&#x53D6;)&#x3002;</li>
+<li><code>data</code>&#x9009;&#x9879;&#xFF1A;&#x7528;&#x4E8E;&#x4FDD;&#x5B58;&#x5F53;&#x524D;Vue&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x3002;&#x5728;&#x89C6;&#x56FE;&#x4E2D;&#x58F0;&#x660E;&#x7684;&#x53D8;&#x91CF;&#x9700;&#x8981;&#x5728;&#x6B64;&#x5904;&#x8D4B;&#x503C;&#x3002;</li>
+<li><code>methods</code>&#x9009;&#x9879;&#xFF1A;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x3002;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x5BF9;&#x8C61;&#x540D;&#x8C03;&#x7528;&#xFF0C;<code>this</code>&#x4EE3;&#x8868;&#x5F53;&#x524D;Vue&#x5BF9;&#x8C61;&#x3002;</li>
+</ul>
 </li>
 <li>
 <p>&#x6570;&#x636E;&#x7ED1;&#x5B9A;<br>
-&#x5728;&#x89C6;&#x56FE;&#x90E8;&#x5206;&#x83B7;&#x53D6;&#x811A;&#x672C;&#x90E8;&#x5206;&#x7684;&#x6570;&#x636E;&#x3002;<br>
-{{&#x53D8;&#x91CF;&#x540D;}}</p>
+&#x5728;&#x89C6;&#x56FE;&#x90E8;&#x5206;&#x83B7;&#x53D6;&#x811A;&#x672C;&#x90E8;&#x5206;&#x7684;&#x6570;&#x636E;: <code>{{&#x53D8;&#x91CF;&#x540D;}}</code></p>
 </li>
 </ul>
 <h2 class="mume-header" id="14-vue%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E7%9A%84%E5%8D%87%E7%BA%A7">1.4&#x3001;Vue&#x5FEB;&#x901F;&#x5165;&#x95E8;&#x7684;&#x5347;&#x7EA7;</h2>
@@ -380,50 +380,27 @@ methods&#x9009;&#x9879;&#xFF1A;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&
     <span class="token punctuation">}</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
-</pre><h2 class="mume-header" id="15-vue%E5%B0%8F%E7%BB%93">1.5&#x3001;Vue&#x5C0F;&#x7ED3;</h2>
-
-<ul>
-<li>Vue&#x662F;&#x4E00;&#x5957;&#x6784;&#x5EFA;&#x7528;&#x6237;&#x754C;&#x9762;&#x7684;&#x6E10;&#x8FDB;&#x5F0F;&#x524D;&#x7AEF;&#x6846;&#x67B6;&#x3002;</li>
-<li>Vue&#x7684;&#x7A0B;&#x5E8F;&#x5305;&#x542B;&#x89C6;&#x56FE;&#x548C;&#x811A;&#x672C;&#x4E24;&#x4E2A;&#x6838;&#x5FC3;&#x90E8;&#x5206;&#x3002;</li>
-<li>&#x811A;&#x672C;&#x90E8;&#x5206;
-<ul>
-<li>Vue&#x6838;&#x5FC3;&#x5BF9;&#x8C61;&#x3002;</li>
-<li>&#x9009;&#x9879;&#x5217;&#x8868;
-<ul>
-<li>el&#xFF1A;&#x63A5;&#x6536;&#x83B7;&#x53D6;&#x7684;&#x5143;&#x7D20;&#x3002;</li>
-<li>data&#xFF1A;&#x4FDD;&#x5B58;&#x6570;&#x636E;&#x3002;</li>
-<li>methods&#xFF1A;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x3002;</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>&#x89C6;&#x56FE;&#x90E8;&#x5206;
-<ul>
-<li>&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#xFF1A;{{&#x53D8;&#x91CF;&#x540D;}}</li>
-</ul>
-</li>
-</ul>
-<h1 class="mume-header" id="2-vue-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4">2&#x3001;Vue &#x5E38;&#x7528;&#x6307;&#x4EE4;</h1>
+</pre><h1 class="mume-header" id="2-vue-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4">2&#x3001;Vue &#x5E38;&#x7528;&#x6307;&#x4EE4;</h1>
 
 <h2 class="mume-header" id="21-%E6%8C%87%E4%BB%A4%E4%BB%8B%E7%BB%8D">2.1&#x3001;&#x6307;&#x4EE4;&#x4ECB;&#x7ECD;</h2>
 
 <ul>
 <li>
-<p>&#x6307;&#x4EE4;&#xFF1A;&#x662F;&#x5E26;&#x6709; v- &#x524D;&#x7F00;&#x7684;&#x7279;&#x6B8A;&#x5C5E;&#x6027;&#xFF0C;&#x4E0D;&#x540C;&#x6307;&#x4EE4;&#x5177;&#x6709;&#x4E0D;&#x540C;&#x542B;&#x4E49;&#x3002;&#x4F8B;&#x5982; v-html&#xFF0C;v-if&#xFF0C;v-for&#x3002;</p>
+<p>&#x6307;&#x4EE4;&#xFF1A;&#x662F;&#x5E26;&#x6709; <code>v-</code> &#x524D;&#x7F00;&#x7684;&#x7279;&#x6B8A;&#x5C5E;&#x6027;&#xFF0C;&#x4E0D;&#x540C;&#x6307;&#x4EE4;&#x5177;&#x6709;&#x4E0D;&#x540C;&#x542B;&#x4E49;&#x3002;&#x4F8B;&#x5982; v-html&#xFF0C;v-if&#xFF0C;v-for&#x3002;</p>
 </li>
 <li>
-<p>&#x4F7F;&#x7528;&#x6307;&#x4EE4;&#x65F6;&#xFF0C;&#x901A;&#x5E38;&#x7F16;&#x5199;&#x5728;&#x6807;&#x7B7E;&#x7684;&#x5C5E;&#x6027;&#x4E0A;&#xFF0C;&#x503C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; JS &#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x6307;&#x4EE4;&#x65F6;&#xFF0C;<strong>&#x901A;&#x5E38;&#x7F16;&#x5199;&#x5728;&#x6807;&#x7B7E;&#x7684;&#x5C5E;&#x6027;&#x4E0A;</strong>&#xFF0C;&#x503C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; JS &#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x3002;</p>
 </li>
 <li>
 <p>&#x5E38;&#x7528;&#x6307;&#x4EE4;</p>
-<p><img src=".%5Cimg%5C%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4-%E6%8C%87%E4%BB%A4%E4%BB%8B%E7%BB%8D.png" alt></p>
+<p><img src="./img/%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4-%E6%8C%87%E4%BB%A4%E4%BB%8B%E7%BB%8D.png" alt></p>
 </li>
 </ul>
 <h2 class="mume-header" id="22-%E6%96%87%E6%9C%AC%E6%8F%92%E5%80%BC">2.2&#x3001;&#x6587;&#x672C;&#x63D2;&#x503C;</h2>
 
 <ul>
 <li>
-<p>v-html&#xFF1A;&#x628A;&#x6587;&#x672C;&#x89E3;&#x6790;&#x4E3A; HTML &#x4EE3;&#x7801;&#x3002;</p>
+<p><code>v-html=</code>&#xFF1A;&#x628A;&#x6587;&#x672C;&#x89E3;&#x6790;&#x4E3A; HTML &#x4EE3;&#x7801;&#x3002;</p>
 <pre data-role="codeBlock" data-info="html" class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>en<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
@@ -453,7 +430,7 @@ methods&#x9009;&#x9879;&#xFF1A;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&
 
 <ul>
 <li>
-<p>v-bind&#xFF1A;&#x4E3A; HTML &#x6807;&#x7B7E;&#x7ED1;&#x5B9A;&#x5C5E;&#x6027;&#x503C;&#x3002;</p>
+<p><code>[v-bind:]</code>&#xFF1A;&#x4E3A; HTML &#x6807;&#x7B7E;&#x7ED1;&#x5B9A;&#x5C5E;&#x6027;&#x503C;&#x3002;</p>
 <pre data-role="codeBlock" data-info="html" class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>en<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
@@ -492,16 +469,10 @@ methods&#x9009;&#x9879;&#xFF1A;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&
 
 <ul>
 <li>
-<p>v-if&#xFF1A;&#x6761;&#x4EF6;&#x6027;&#x7684;&#x6E32;&#x67D3;&#x67D0;&#x5143;&#x7D20;&#xFF0C;&#x5224;&#x5B9A;&#x4E3A;&#x771F;&#x65F6;&#x6E32;&#x67D3;,&#x5426;&#x5219;&#x4E0D;&#x6E32;&#x67D3;&#x3002;</p>
+<p><code>v-if=</code>/<code>v-else-if=</code>/<code>v-else=</code>&#xFF1A;&#x6761;&#x4EF6;&#x6027;&#x7684;&#x6E32;&#x67D3;&#x67D0;&#x5143;&#x7D20;&#xFF0C;&#x5224;&#x5B9A;&#x4E3A;&#x771F;&#x65F6;&#x6E32;&#x67D3;&#xFF0C;&#x5426;&#x5219;&#x4E0D;&#x6E32;&#x67D3;&#x3002;</p>
 </li>
 <li>
-<p>v-else&#xFF1A;&#x6761;&#x4EF6;&#x6027;&#x7684;&#x6E32;&#x67D3;&#x3002;</p>
-</li>
-<li>
-<p>v-else-if&#xFF1A;&#x6761;&#x4EF6;&#x6027;&#x7684;&#x6E32;&#x67D3;&#x3002;</p>
-</li>
-<li>
-<p>v-show&#xFF1A;&#x6839;&#x636E;&#x6761;&#x4EF6;&#x5C55;&#x793A;&#x67D0;&#x5143;&#x7D20;&#xFF0C;&#x533A;&#x522B;&#x5728;&#x4E8E;&#x5207;&#x6362;&#x7684;&#x662F;display&#x5C5E;&#x6027;&#x7684;&#x503C;&#x3002;</p>
+<p><code>v-show=</code>&#xFF1A;&#x6839;&#x636E;&#x6761;&#x4EF6;&#x5C55;&#x793A;&#x67D0;&#x5143;&#x7D20;&#xFF0C;&#x533A;&#x522B;&#x5728;&#x4E8E;&#x5207;&#x6362;&#x7684;&#x662F;display&#x5C5E;&#x6027;&#x7684;&#x503C;&#x3002;</p>
 <pre data-role="codeBlock" data-info="html" class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>en<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
@@ -515,7 +486,6 @@ methods&#x9009;&#x9879;&#xFF1A;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>num % 3 == 0<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>div1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-else-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>num % 3 == 1<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>div2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-else</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>num % 3 == 2<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>div3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-show</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>flag<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>div4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
@@ -536,7 +506,7 @@ methods&#x9009;&#x9879;&#xFF1A;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&
 
 <ul>
 <li>
-<p>v-for&#xFF1A;&#x5217;&#x8868;&#x6E32;&#x67D3;&#xFF0C;&#x904D;&#x5386;&#x5BB9;&#x5668;&#x7684;&#x5143;&#x7D20;&#x6216;&#x8005;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x3002;</p>
+<p><code>v-for=</code>&#xFF1A;&#x5217;&#x8868;&#x6E32;&#x67D3;&#xFF0C;&#x904D;&#x5386;&#x5BB9;&#x5668;&#x7684;&#x5143;&#x7D20;&#x6216;&#x8005;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x3002;</p>
 <pre data-role="codeBlock" data-info="html" class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>en<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
@@ -576,7 +546,7 @@ methods&#x9009;&#x9879;&#xFF1A;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&
 
 <ul>
 <li>
-<p>v-on&#xFF1A;&#x4E3A; HTML &#x6807;&#x7B7E;&#x7ED1;&#x5B9A;&#x4E8B;&#x4EF6;&#x3002;</p>
+<p><code>v-on:&#x4E8B;&#x4EF6;&#x540D;=</code>/<code>@&#x4E8B;&#x4EF6;&#x540D;=</code>&#xFF1A;&#x4E3A; HTML &#x6807;&#x7B7E;&#x7ED1;&#x5B9A;&#x4E8B;&#x4EF6;&#x3002;</p>
 <pre data-role="codeBlock" data-info="html" class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>en<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
@@ -614,8 +584,7 @@ methods&#x9009;&#x9879;&#xFF1A;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&
 
 <ul>
 <li>
-<p><strong>&#x8868;&#x5355;&#x7ED1;&#x5B9A;</strong><br>
-v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&#x53CC;&#x5411;&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#x3002;</p>
+<p><code>v-model=</code>&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&#x53CC;&#x5411;&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#x3002;</p>
 </li>
 <li>
 <p><strong>&#x53CC;&#x5411;&#x6570;&#x636E;&#x7ED1;&#x5B9A;</strong><br>
@@ -627,7 +596,7 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
 &#x5728;&#x524D;&#x7AEF;&#x9875;&#x9762;&#x4E2D;&#xFF0C;JS&#x5BF9;&#x8C61;&#x8868;&#x793A;Model&#xFF0C;&#x9875;&#x9762;&#x8868;&#x793A;View&#xFF0C;&#x4E24;&#x8005;&#x505A;&#x5230;&#x4E86;&#x6700;&#x5927;&#x9650;&#x5EA6;&#x7684;&#x5206;&#x79BB;&#x3002;<br>
 &#x5C06;Model&#x548C;View&#x5173;&#x8054;&#x8D77;&#x6765;&#x7684;&#x5C31;&#x662F;ViewModel&#xFF0C;&#x5B83;&#x662F;&#x6865;&#x6881;&#x3002;<br>
 ViewModel&#x8D1F;&#x8D23;&#x628A;Model&#x7684;&#x6570;&#x636E;&#x540C;&#x6B65;&#x5230;View&#x663E;&#x793A;&#x51FA;&#x6765;&#xFF0C;&#x8FD8;&#x8D1F;&#x8D23;&#x628A;View&#x4FEE;&#x6539;&#x7684;&#x6570;&#x636E;&#x540C;&#x6B65;&#x56DE;Model&#x3002;</p>
-<p><img src=".%5Cimg%5CMVVM%E6%A8%A1%E5%9E%8B.png" alt></p>
+<p><img src="./img/MVVM%E6%A8%A1%E5%9E%8B.png" alt></p>
 <pre data-role="codeBlock" data-info="html" class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>en<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
@@ -696,11 +665,11 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
 </li>
 <li>
 <p>&#x81EA;&#x5DF1;&#x5B8C;&#x6210;&#x7684;&#x6309;&#x94AE;</p>
-<p><img src=".%5Cimg%5C%E6%88%91%E6%98%AF%E6%8C%89%E9%92%AE.png" alt></p>
+<p><img src="./img/%E6%88%91%E6%98%AF%E6%8C%89%E9%92%AE.png" alt></p>
 </li>
 <li>
 <p>Element &#x63D0;&#x4F9B;&#x7684;&#x6309;&#x94AE;</p>
-<p><img src=".%5Cimg%5Celement%E6%8F%90%E4%BE%9B%E7%9A%84%E6%8C%89%E9%92%AE.png" alt></p>
+<p><img src="./img/element%E6%8F%90%E4%BE%9B%E7%9A%84%E6%8C%89%E9%92%AE.png" alt></p>
 </li>
 </ul>
 <h2 class="mume-header" id="32-element%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8">3.2&#x3001;Element&#x5FEB;&#x901F;&#x5165;&#x95E8;</h2>
@@ -781,7 +750,7 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
 <h2 class="mume-header" id="33-%E5%9F%BA%E7%A1%80%E5%B8%83%E5%B1%80">3.3&#x3001;&#x57FA;&#x7840;&#x5E03;&#x5C40;</h2>
 
 <p>&#x5C06;&#x9875;&#x9762;&#x5206;&#x6210;&#x6700;&#x591A; 24 &#x4E2A;&#x90E8;&#x5206;&#xFF0C;&#x81EA;&#x7531;&#x5207;&#x5206;&#x3002;</p>
-<p><img src=".%5Cimg%5C%E5%9F%BA%E7%A1%80%E5%B8%83%E5%B1%80.png" alt></p>
+<p><img src="./img/%E5%9F%BA%E7%A1%80%E5%B8%83%E5%B1%80.png" alt></p>
 <ul>
 <li>
 <p><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</strong></p>
@@ -857,7 +826,7 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
 <h2 class="mume-header" id="34-%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80">3.4&#x3001;&#x5BB9;&#x5668;&#x5E03;&#x5C40;</h2>
 
 <p>&#x5C06;&#x9875;&#x9762;&#x5206;&#x6210;&#x5934;&#x90E8;&#x533A;&#x57DF;&#x3001;&#x4FA7;&#x8FB9;&#x680F;&#x533A;&#x57DF;&#x3001;&#x4E3B;&#x533A;&#x57DF;&#x3001;&#x5E95;&#x90E8;&#x533A;&#x57DF;&#x3002;</p>
-<p><img src=".%5Cimg%5C%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80.png" alt></p>
+<p><img src="./img/%E5%AE%B9%E5%99%A8%E5%B8%83%E5%B1%80.png" alt></p>
 <ul>
 <li>
 <p><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</strong></p>
@@ -916,6 +885,7 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
 <h2 class="mume-header" id="35-%E8%A1%A8%E5%8D%95%E7%BB%84%E4%BB%B6">3.5&#x3001;&#x8868;&#x5355;&#x7EC4;&#x4EF6;</h2>
 
 <p>&#x7531;&#x8F93;&#x5165;&#x6846;&#x3001;&#x4E0B;&#x62C9;&#x5217;&#x8868;&#x3001;&#x5355;&#x9009;&#x6846;&#x3001;&#x591A;&#x9009;&#x6846;&#x7B49;&#x63A7;&#x4EF6;&#x7EC4;&#x6210;&#xFF0C;&#x7528;&#x4EE5;&#x6536;&#x96C6;&#x3001;&#x6821;&#x9A8C;&#x3001;&#x63D0;&#x4EA4;&#x6570;&#x636E;&#x3002;</p>
+<p><img src="./img/%E8%A1%A8%E5%8D%95%E7%BB%84%E4%BB%B6.png" alt></p>
 <ul>
 <li>
 <p><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</strong></p>
@@ -1043,6 +1013,7 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
 <h2 class="mume-header" id="36-%E8%A1%A8%E6%A0%BC%E7%BB%84%E4%BB%B6">3.6&#x3001;&#x8868;&#x683C;&#x7EC4;&#x4EF6;</h2>
 
 <p>&#x7528;&#x4E8E;&#x5C55;&#x793A;&#x591A;&#x6761;&#x7ED3;&#x6784;&#x7C7B;&#x4F3C;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x7F16;&#x8F91;&#x3001;&#x5220;&#x9664;&#x6216;&#x5176;&#x4ED6;&#x81EA;&#x5B9A;&#x4E49;&#x64CD;&#x4F5C;&#x3002;</p>
+<p><img src="./img/%E8%A1%A8%E6%A0%BC%E7%BB%84%E4%BB%B6.png" alt></p>
 <ul>
 <li>
 <p><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</strong></p>
@@ -1116,7 +1087,7 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
 </ul>
 <h2 class="mume-header" id="37-%E9%A1%B6%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F%E7%BB%84%E4%BB%B6">3.7&#x3001;&#x9876;&#x90E8;&#x5BFC;&#x822A;&#x680F;&#x7EC4;&#x4EF6;</h2>
 
-<p><img src=".%5Cimg%5C%E9%A1%B6%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F.png" alt></p>
+<p><img src="./img/%E9%A1%B6%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F.png" alt></p>
 <ul>
 <li>
 <p><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</strong></p>
@@ -1168,7 +1139,7 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
 </ul>
 <h2 class="mume-header" id="38-%E4%BE%A7%E8%BE%B9%E5%AF%BC%E8%88%AA%E6%A0%8F%E7%BB%84%E4%BB%B6">3.8&#x3001;&#x4FA7;&#x8FB9;&#x5BFC;&#x822A;&#x680F;&#x7EC4;&#x4EF6;</h2>
 
-<p><img src=".%5Cimg%5C%E4%BE%A7%E8%BE%B9%E5%AF%BC%E8%88%AA%E6%A0%8F.png" alt></p>
+<p><img src="./img/%E4%BE%A7%E8%BE%B9%E5%AF%BC%E8%88%AA%E6%A0%8F.png" alt></p>
 <ul>
 <li>
 <p><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</strong></p>
@@ -1254,19 +1225,9 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
 
 <h2 class="mume-header" id="41-%E6%A1%88%E4%BE%8B%E6%95%88%E6%9E%9C%E5%92%8C%E5%88%86%E6%9E%90">4.1&#x3001;&#x6848;&#x4F8B;&#x6548;&#x679C;&#x548C;&#x5206;&#x6790;</h2>
 
-<p><img src=".%5Cimg%5C%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B-%E6%95%88%E6%9E%9C%E5%9B%BE.png" alt></p>
+<p><img src="./img/%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B-%E6%95%88%E6%9E%9C%E5%9B%BE.png" alt></p>
 <h2 class="mume-header" id="42-%E5%A4%B4%E9%83%A8%E5%8C%BA%E5%9F%9F%E7%9A%84%E5%AE%9E%E7%8E%B0">4.2&#x3001;&#x5934;&#x90E8;&#x533A;&#x57DF;&#x7684;&#x5B9E;&#x73B0;</h2>
 
-<ul>
-<li>
-<p><strong>&#x5B9E;&#x73B0;&#x601D;&#x8DEF;</strong></p>
-<ul>
-<li>&#x5934;&#x90E8;&#x6548;&#x679C;&#x5B9E;&#x73B0;&#x3002;</li>
-<li>&#x4FA7;&#x8FB9;&#x680F;&#x548C;&#x4E3B;&#x533A;&#x57DF;&#x6548;&#x679C;&#x5B9E;&#x73B0;&#x3002;</li>
-</ul>
-</li>
-<li>
-<p><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</strong></p>
 <pre data-role="codeBlock" data-info="html" class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>en<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
@@ -1277,25 +1238,25 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>js/vue.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>element-ui/lib/index.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
-      <span class="token selector"><span class="token class">.el-header</span></span><span class="token punctuation">{</span>
+    <span class="token selector"><span class="token class">.el-header</span></span><span class="token punctuation">{</span>
         <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode color">#545c64</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-      <span class="token selector"><span class="token class">.header-img</span></span><span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+    <span class="token selector"><span class="token class">.header-img</span></span><span class="token punctuation">{</span>
         <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">100</span><span class="token unit">px</span><span class="token punctuation">;</span>
         <span class="token property">margin-top</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token unit">px</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
     </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>div<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>div<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-container</span><span class="token punctuation">&gt;</span></span>
-      <span class="token comment">&lt;!-- &#x5934;&#x90E8; --&gt;</span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-header</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>el-header<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- &#x5934;&#x90E8; --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-header</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>el-header<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-container</span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-image</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>img/export.png<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>header-img<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-image</span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-menu</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-menu</span>
             <span class="token attr-name">:default-active</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>activeIndex2<span class="token punctuation">&quot;</span></span>
             <span class="token attr-name">mode</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>horizontal<span class="token punctuation">&quot;</span></span>
             <span class="token attr-name">@select</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>handleSelect<span class="token punctuation">&quot;</span></span>
@@ -1305,17 +1266,17 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
             <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span><span class="token value css language-css"><span class="token property">margin-left</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span></span><span class="token punctuation">&quot;</span></span></span><span class="token punctuation">&gt;</span></span>
             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-menu-item</span> <span class="token attr-name">index</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>1<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>&#x5904;&#x7406;&#x4E2D;&#x5FC3;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-menu-item</span><span class="token punctuation">&gt;</span></span>
             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-submenu</span> <span class="token attr-name">index</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
-              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>title<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>&#x6211;&#x7684;&#x5DE5;&#x4F5C;&#x53F0;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
-              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-menu-item</span> <span class="token attr-name">index</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2-1<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>&#x9009;&#x9879;1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-menu-item</span><span class="token punctuation">&gt;</span></span>
-              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-menu-item</span> <span class="token attr-name">index</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2-2<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>&#x9009;&#x9879;2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-menu-item</span><span class="token punctuation">&gt;</span></span>
-              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-menu-item</span> <span class="token attr-name">index</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2-3<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>&#x9009;&#x9879;3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-menu-item</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>title<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>&#x6211;&#x7684;&#x5DE5;&#x4F5C;&#x53F0;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-menu-item</span> <span class="token attr-name">index</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2-1<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>&#x9009;&#x9879;1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-menu-item</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-menu-item</span> <span class="token attr-name">index</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2-2<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>&#x9009;&#x9879;2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-menu-item</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-menu-item</span> <span class="token attr-name">index</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2-3<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>&#x9009;&#x9879;3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-menu-item</span><span class="token punctuation">&gt;</span></span>
             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-submenu</span><span class="token punctuation">&gt;</span></span>
             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-menu-item</span> <span class="token attr-name">index</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>3<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>&#x5B66;&#x751F;&#x5217;&#x8868;.html<span class="token punctuation">&quot;</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>_self<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>&#x9996;&#x9875;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-menu-item</span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-menu</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-menu</span><span class="token punctuation">&gt;</span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-container</span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-header</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-header</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-container</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
     <span class="token keyword keyword-new">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -1323,9 +1284,7 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
-</pre></li>
-</ul>
-<h2 class="mume-header" id="43-%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%8C%BA%E5%9F%9F%E7%9A%84%E5%AE%9E%E7%8E%B0">4.3&#x3001;&#x4FA7;&#x8FB9;&#x680F;&#x533A;&#x57DF;&#x7684;&#x5B9E;&#x73B0;</h2>
+</pre><h2 class="mume-header" id="43-%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%8C%BA%E5%9F%9F%E7%9A%84%E5%AE%9E%E7%8E%B0">4.3&#x3001;&#x4FA7;&#x8FB9;&#x680F;&#x533A;&#x57DF;&#x7684;&#x5B9E;&#x73B0;</h2>
 
 <pre data-role="codeBlock" data-info="html" class="language-html"><span class="token comment">&lt;!-- &#x4FA7;&#x8FB9;&#x680F;&#x533A;&#x57DF; --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-container</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span><span class="token value css language-css"><span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">580</span><span class="token unit">px</span><span class="token punctuation">;</span> <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token unit">px</span> solid <span class="token hexcode color">#eee</span></span><span class="token punctuation">&quot;</span></span></span><span class="token punctuation">&gt;</span></span>
@@ -1414,18 +1373,18 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
 
 <ul>
 <li>
-<p>&#x5B66;&#x5B8C;&#x4E86; Element &#x7EC4;&#x4EF6;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;&#x7EC4;&#x4EF6;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6807;&#x7B7E;&#x3002;&#x4F8B;&#x5982; &#x5C31;&#x662F;&#x5BF9;&#x7684;&#x5C01;&#x88C5;&#x3002;</p>
+<p>&#x5B66;&#x5B8C;&#x4E86; Element &#x7EC4;&#x4EF6;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;&#x7EC4;&#x4EF6;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6807;&#x7B7E;&#x3002;</p>
 </li>
 <li>
-<p>&#x672C;&#x8D28;&#x4E0A;&#xFF0C;&#x7EC4;&#x4EF6;&#x662F;&#x5E26;&#x6709;&#x4E00;&#x4E2A;&#x540D;&#x5B57;&#x4E14;&#x53EF;&#x590D;&#x7528;&#x7684; Vue &#x5B9E;&#x4F8B;&#xFF0C;&#x6211;&#x4EEC;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x3002;</p>
+<p>&#x672C;&#x8D28;&#x4E0A;&#xFF0C;<strong>&#x7EC4;&#x4EF6;&#x662F;&#x5E26;&#x6709;&#x4E00;&#x4E2A;&#x540D;&#x5B57;&#x4E14;&#x53EF;&#x590D;&#x7528;&#x7684; Vue &#x5B9E;&#x4F8B;</strong>&#xFF0C;&#x6211;&#x4EEC;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x3002;</p>
 </li>
 <li>
 <p>&#x5B9A;&#x4E49;&#x683C;&#x5F0F;</p>
-<pre data-role="codeBlock" data-info="tex" class="language-latex">Vue.component(&#x7EC4;&#x4EF6;&#x540D;&#x79F0;, <span class="token punctuation">{</span>
- props:&#x7EC4;&#x4EF6;&#x7684;&#x5C5E;&#x6027;,
- data: &#x7EC4;&#x4EF6;&#x7684;&#x6570;&#x636E;&#x51FD;&#x6570;,
- template: &#x7EC4;&#x4EF6;&#x89E3;&#x6790;&#x7684;&#x6807;&#x7B7E;&#x6A21;&#x677F;
-<span class="token punctuation">}</span>)
+<pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token maybe-class-name">Vue</span><span class="token punctuation">.</span><span class="token method function property-access">component</span><span class="token punctuation">(</span>&#x7EC4;&#x4EF6;&#x540D;&#x79F0;<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+ props<span class="token operator">:</span>&#x7EC4;&#x4EF6;&#x7684;&#x5C5E;&#x6027;<span class="token punctuation">,</span>
+ data<span class="token operator">:</span> &#x7EC4;&#x4EF6;&#x7684;&#x6570;&#x636E;&#x51FD;&#x6570;<span class="token punctuation">,</span>
+ template<span class="token operator">:</span> &#x7EC4;&#x4EF6;&#x89E3;&#x6790;&#x7684;&#x6807;&#x7B7E;&#x6A21;&#x677F;
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </pre></li>
 <li>
 <p><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</strong></p>
@@ -1468,11 +1427,11 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
 <ul>
 <li><strong>&#x751F;&#x547D;&#x5468;&#x671F;</strong></li>
 </ul>
-<p><img src=".%5Cimg%5CVue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt></p>
+<p><img src="./img/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt></p>
 <ul>
 <li>
 <p><strong>&#x751F;&#x547D;&#x5468;&#x671F;&#x7684;&#x516B;&#x4E2A;&#x9636;&#x6BB5;</strong></p>
-<p><img src=".%5Cimg%5C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E5%85%AB%E4%B8%AA%E9%98%B6%E6%AE%B5.png" alt></p>
+<p><img src="./img/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E5%85%AB%E4%B8%AA%E9%98%B6%E6%AE%B5.png" alt></p>
 </li>
 <li>
 <p><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</strong></p>
@@ -1490,78 +1449,76 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
-    <span class="token keyword keyword-let">let</span> vm <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-				el<span class="token operator">:</span> <span class="token string">&apos;#app&apos;</span><span class="token punctuation">,</span>
-				data<span class="token operator">:</span> <span class="token punctuation">{</span>
-					message<span class="token operator">:</span> <span class="token string">&apos;Vue&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&apos;</span>
-				<span class="token punctuation">}</span><span class="token punctuation">,</span>
-				<span class="token function-variable function">beforeCreate</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">group</span><span class="token punctuation">(</span><span class="token string">&apos;------beforeCreate&#x521B;&#x5EFA;&#x524D;&#x72B6;&#x6001;------&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;el     : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//undefined</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;data   : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//undefined </span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;message: &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//undefined</span>
-				<span class="token punctuation">}</span><span class="token punctuation">,</span>
-				<span class="token function-variable function">created</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">group</span><span class="token punctuation">(</span><span class="token string">&apos;------created&#x521B;&#x5EFA;&#x5B8C;&#x6BD5;&#x72B6;&#x6001;------&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;el     : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//undefined</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;data   : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316; </span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;message: &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316;</span>
-				<span class="token punctuation">}</span><span class="token punctuation">,</span>
-				<span class="token function-variable function">beforeMount</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">group</span><span class="token punctuation">(</span><span class="token string">&apos;------beforeMount&#x6302;&#x8F7D;&#x524D;&#x72B6;&#x6001;------&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;el     : &quot;</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;data   : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316;  </span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;message: &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316;  </span>
-				<span class="token punctuation">}</span><span class="token punctuation">,</span>
-				<span class="token function-variable function">mounted</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">group</span><span class="token punctuation">(</span><span class="token string">&apos;------mounted &#x6302;&#x8F7D;&#x7ED3;&#x675F;&#x72B6;&#x6001;------&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;el     : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;data   : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;message: &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316; </span>
-				<span class="token punctuation">}</span><span class="token punctuation">,</span>
-				<span class="token function-variable function">beforeUpdate</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">group</span><span class="token punctuation">(</span><span class="token string">&apos;beforeUpdate &#x66F4;&#x65B0;&#x524D;&#x72B6;&#x6001;===============&#x300B;&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token keyword keyword-let">let</span> dom <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;app&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access">innerHTML</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>dom<span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;el     : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;data   : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;message: &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-				<span class="token punctuation">}</span><span class="token punctuation">,</span>
-				<span class="token function-variable function">updated</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">group</span><span class="token punctuation">(</span><span class="token string">&apos;updated &#x66F4;&#x65B0;&#x5B8C;&#x6210;&#x72B6;&#x6001;===============&#x300B;&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token keyword keyword-let">let</span> dom <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;app&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access">innerHTML</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>dom<span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;el     : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;data   : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;message: &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-				<span class="token punctuation">}</span><span class="token punctuation">,</span>
-				<span class="token function-variable function">beforeDestroy</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">group</span><span class="token punctuation">(</span><span class="token string">&apos;beforeDestroy &#x9500;&#x6BC1;&#x524D;&#x72B6;&#x6001;===============&#x300B;&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;el     : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;data   : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;message: &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-				<span class="token punctuation">}</span><span class="token punctuation">,</span>
-				<span class="token function-variable function">destroyed</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">group</span><span class="token punctuation">(</span><span class="token string">&apos;destroyed &#x9500;&#x6BC1;&#x5B8C;&#x6210;&#x72B6;&#x6001;===============&#x300B;&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;el     : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;data   : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;message: &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-				<span class="token punctuation">}</span>
-			<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-let">let</span> vm <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      el<span class="token operator">:</span> <span class="token string">&apos;#app&apos;</span><span class="token punctuation">,</span>
+      data<span class="token operator">:</span> <span class="token punctuation">{</span>
+          message<span class="token operator">:</span> <span class="token string">&apos;Vue&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&apos;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">beforeCreate</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">group</span><span class="token punctuation">(</span><span class="token string">&apos;------beforeCreate&#x521B;&#x5EFA;&#x524D;&#x72B6;&#x6001;------&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;el     : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//undefined</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;data   : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//undefined </span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;message: &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//undefined</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">created</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">group</span><span class="token punctuation">(</span><span class="token string">&apos;------created&#x521B;&#x5EFA;&#x5B8C;&#x6BD5;&#x72B6;&#x6001;------&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;el     : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//undefined</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;data   : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316; </span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;message: &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">beforeMount</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">group</span><span class="token punctuation">(</span><span class="token string">&apos;------beforeMount&#x6302;&#x8F7D;&#x524D;&#x72B6;&#x6001;------&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;el     : &quot;</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;data   : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316;  </span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;message: &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316;  </span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">mounted</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">group</span><span class="token punctuation">(</span><span class="token string">&apos;------mounted &#x6302;&#x8F7D;&#x7ED3;&#x675F;&#x72B6;&#x6001;------&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;el     : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;data   : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;message: &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316; </span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">beforeUpdate</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">group</span><span class="token punctuation">(</span><span class="token string">&apos;beforeUpdate &#x66F4;&#x65B0;&#x524D;&#x72B6;&#x6001;===============&#x300B;&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword keyword-let">let</span> dom <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;app&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access">innerHTML</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>dom<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;el     : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;data   : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;message: &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">updated</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">group</span><span class="token punctuation">(</span><span class="token string">&apos;updated &#x66F4;&#x65B0;&#x5B8C;&#x6210;&#x72B6;&#x6001;===============&#x300B;&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword keyword-let">let</span> dom <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;app&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access">innerHTML</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>dom<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;el     : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;data   : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;message: &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">beforeDestroy</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">group</span><span class="token punctuation">(</span><span class="token string">&apos;beforeDestroy &#x9500;&#x6BC1;&#x524D;&#x72B6;&#x6001;===============&#x300B;&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;el     : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;data   : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;message: &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">destroyed</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">group</span><span class="token punctuation">(</span><span class="token string">&apos;destroyed &#x9500;&#x6BC1;&#x5B8C;&#x6210;&#x72B6;&#x6001;===============&#x300B;&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;el     : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$el</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;data   : &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;%c%s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;color:red&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;message: &quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// &#x9500;&#x6BC1;Vue&#x5BF9;&#x8C61;</span>
+  <span class="token comment">//vm.$destroy();</span>
+  <span class="token comment">//vm.message = &quot;hehe&quot;;	// &#x9500;&#x6BC1;&#x540E; Vue &#x5B9E;&#x4F8B;&#x4F1A;&#x89E3;&#x7ED1;&#x6240;&#x6709;&#x5185;&#x5BB9;</span>
 
-		
-			<span class="token comment">// &#x9500;&#x6BC1;Vue&#x5BF9;&#x8C61;</span>
-			<span class="token comment">//vm.$destroy();</span>
-			<span class="token comment">//vm.message = &quot;hehe&quot;;	// &#x9500;&#x6BC1;&#x540E; Vue &#x5B9E;&#x4F8B;&#x4F1A;&#x89E3;&#x7ED1;&#x6240;&#x6709;&#x5185;&#x5BB9;</span>
-
-			<span class="token comment">// &#x8BBE;&#x7F6E;data&#x4E2D;message&#x6570;&#x636E;&#x503C;</span>
-			vm<span class="token punctuation">.</span><span class="token property-access">message</span> <span class="token operator">=</span> <span class="token string">&quot;good...&quot;</span><span class="token punctuation">;</span>
+  <span class="token comment">// &#x8BBE;&#x7F6E;data&#x4E2D;message&#x6570;&#x636E;&#x503C;</span>
+  vm<span class="token punctuation">.</span><span class="token property-access">message</span> <span class="token operator">=</span> <span class="token string">&quot;good...&quot;</span><span class="token punctuation">;</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
 </pre></li>
@@ -1580,7 +1537,7 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
 </li>
 <li>
 <p><strong>axios&#x5E38;&#x7528;&#x65B9;&#x6CD5;</strong></p>
-<p><img src=".%5Cimg%5Caxios%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95.png" alt></p>
+<p><img src="./img/axios%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95.png" alt></p>
 </li>
 <li>
 <p><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</strong></p>
@@ -1670,11 +1627,11 @@ v-model&#xFF1A;&#x5728;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0A;&#x521B;&#x5EFA;&
 <ul>
 <li>
 <p>&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#xFF1A;&#x672C;&#x8D28;&#x4E0A;&#xFF0C;&#x7EC4;&#x4EF6;&#x662F;&#x5E26;&#x6709;&#x4E00;&#x4E2A;&#x540D;&#x5B57;&#x4E14;&#x53EF;&#x590D;&#x7528;&#x7684; Vue &#x5B9E;&#x4F8B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x6765;&#x5B9A;&#x4E49;&#x3002;</p>
-<pre data-role="codeBlock" data-info="tex" class="language-latex">Vue.component(&#x7EC4;&#x4EF6;&#x540D;&#x79F0;, <span class="token punctuation">{</span>
- props:&#x7EC4;&#x4EF6;&#x7684;&#x5C5E;&#x6027;,
- data: &#x7EC4;&#x4EF6;&#x7684;&#x6570;&#x636E;&#x51FD;&#x6570;,
- template: &#x7EC4;&#x4EF6;&#x89E3;&#x6790;&#x7684;&#x6807;&#x7B7E;&#x6A21;&#x677F;
-<span class="token punctuation">}</span>)
+<pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token maybe-class-name">Vue</span><span class="token punctuation">.</span><span class="token method function property-access">component</span><span class="token punctuation">(</span>&#x7EC4;&#x4EF6;&#x540D;&#x79F0;<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+ props<span class="token operator">:</span>&#x7EC4;&#x4EF6;&#x7684;&#x5C5E;&#x6027;<span class="token punctuation">,</span>
+ data<span class="token operator">:</span> &#x7EC4;&#x4EF6;&#x7684;&#x6570;&#x636E;&#x51FD;&#x6570;<span class="token punctuation">,</span>
+ template<span class="token operator">:</span> &#x7EC4;&#x4EF6;&#x89E3;&#x6790;&#x7684;&#x6807;&#x7B7E;&#x6A21;&#x677F;
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </pre></li>
 <li>
 <p>&#x751F;&#x547D;&#x5468;&#x671F;&#xFF1A;&#x6838;&#x5FC3;&#x516B;&#x4E2A;&#x9636;&#x6BB5;<br>
@@ -1689,56 +1646,47 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
 </li>
 <li>
 <p>&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#xFF1A;&#x901A;&#x8FC7; axios &#x63D2;&#x4EF6;&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
-<p><img src=".%5Cimg%5Caxios%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95.png" alt></p>
+<p><img src="./img/axios%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95.png" alt></p>
 </li>
 </ul>
 <h1 class="mume-header" id="6-%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B-%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F">6&#x3001;&#x7EFC;&#x5408;&#x6848;&#x4F8B; &#x5B66;&#x751F;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;</h1>
 
 <h2 class="mume-header" id="61-%E6%95%88%E6%9E%9C%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%8B%E7%BB%8D">6.1&#x3001;&#x6548;&#x679C;&#x73AF;&#x5883;&#x7684;&#x4ECB;&#x7ECD;</h2>
 
-<p><img src=".%5Cimg%5C%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B-%E7%99%BB%E5%BD%95.png" alt></p>
-<p><img src=".%5Cimg%5C%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B-%E9%A6%96%E9%A1%B5.png" alt></p>
+<p><img src="./img/%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B-%E7%99%BB%E5%BD%95.png" alt></p>
+<p><img src="./img/%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B-%E9%A6%96%E9%A1%B5.png" alt></p>
 <h2 class="mume-header" id="62-%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">6.2&#x3001;&#x767B;&#x5F55;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;</h2>
 
 <ul>
 <li>
-<p><strong>&#x73AF;&#x5883;&#x642D;&#x5EFA;</strong></p>
-<ul>
-<li>&#x4ECE;&#x5F53;&#x5929;&#x7684;&#x8D44;&#x6599;&#x4E2D;&#x89E3;&#x538B;&#x300A;&#x5B66;&#x751F;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;&#x539F;&#x59CB;&#x9879;&#x76EE;&#x300B;&#xFF0C;&#x5E76;&#x5BFC;&#x5165;&#x3002;</li>
-</ul>
-</li>
-<li>
-<p><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</strong></p>
-<ul>
-<li>
 <p><strong>html&#x4EE3;&#x7801;</strong></p>
 <pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token function">onSubmit</span><span class="token punctuation">(</span><span class="token parameter">formName</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token comment">// &#x4E3A;&#x8868;&#x5355;&#x7ED1;&#x5B9A;&#x9A8C;&#x8BC1;&#x529F;&#x80FD;</span>
-                <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$refs</span><span class="token punctuation">[</span>formName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token method function property-access">validate</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">valid</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
-                    <span class="token keyword control-flow keyword-if">if</span> <span class="token punctuation">(</span>valid<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                        <span class="token comment">//&#x8BF7;&#x6C42;&#x670D;&#x52A1;&#x5668;&#x5B8C;&#x6210;&#x767B;&#x5F55;&#x529F;&#x80FD;</span>
-                        axios<span class="token punctuation">.</span><span class="token method function property-access">post</span><span class="token punctuation">(</span><span class="token string">&quot;userServlet&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;username=&quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">form</span><span class="token punctuation">.</span><span class="token property-access">username</span> <span class="token operator">+</span> <span class="token string">&quot;&amp;password=&quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">form</span><span class="token punctuation">.</span><span class="token property-access">password</span><span class="token punctuation">)</span>
-                            <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token parameter">resp</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
-                                <span class="token keyword control-flow keyword-if">if</span><span class="token punctuation">(</span>resp<span class="token punctuation">.</span><span class="token property-access">data</span> <span class="token operator">==</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                                    <span class="token comment">//&#x767B;&#x5F55;&#x6210;&#x529F;&#xFF0C;&#x8DF3;&#x8F6C;&#x5230;&#x9996;&#x9875;</span>
-                                    <span class="token dom variable">location</span><span class="token punctuation">.</span><span class="token property-access">href</span> <span class="token operator">=</span> <span class="token string">&quot;index.html&quot;</span><span class="token punctuation">;</span>
-                                <span class="token punctuation">}</span><span class="token keyword control-flow keyword-else">else</span> <span class="token punctuation">{</span>
-                                    <span class="token comment">//&#x767B;&#x5F55;&#x5931;&#x8D25;&#xFF0C;&#x8DF3;&#x8F6C;&#x5230;&#x767B;&#x5F55;&#x9875;&#x9762;</span>
-                                    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">&quot;&#x767B;&#x5F55;&#x5931;&#x8D25;&#xFF0C;&#x8BF7;&#x68C0;&#x67E5;&#x7528;&#x6237;&#x540D;&#x548C;&#x5BC6;&#x7801;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                                    <span class="token dom variable">location</span><span class="token punctuation">.</span><span class="token property-access">href</span> <span class="token operator">=</span> <span class="token string">&quot;login.html&quot;</span><span class="token punctuation">;</span>
-                                <span class="token punctuation">}</span>
-                            <span class="token punctuation">}</span><span class="token punctuation">)</span>
-                    <span class="token punctuation">}</span> <span class="token keyword control-flow keyword-else">else</span> <span class="token punctuation">{</span>
-                        <span class="token keyword control-flow keyword-return">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token comment">// &#x4E3A;&#x8868;&#x5355;&#x7ED1;&#x5B9A;&#x9A8C;&#x8BC1;&#x529F;&#x80FD;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">$refs</span><span class="token punctuation">[</span>formName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token method function property-access">validate</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">valid</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword control-flow keyword-if">if</span> <span class="token punctuation">(</span>valid<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">//&#x8BF7;&#x6C42;&#x670D;&#x52A1;&#x5668;&#x5B8C;&#x6210;&#x767B;&#x5F55;&#x529F;&#x80FD;</span>
+            axios<span class="token punctuation">.</span><span class="token method function property-access">post</span><span class="token punctuation">(</span><span class="token string">&quot;userServlet&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;username=&quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">form</span><span class="token punctuation">.</span><span class="token property-access">username</span> <span class="token operator">+</span> <span class="token string">&quot;&amp;password=&quot;</span> <span class="token operator">+</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token property-access">form</span><span class="token punctuation">.</span><span class="token property-access">password</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token parameter">resp</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+                    <span class="token keyword control-flow keyword-if">if</span><span class="token punctuation">(</span>resp<span class="token punctuation">.</span><span class="token property-access">data</span> <span class="token operator">==</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token comment">//&#x767B;&#x5F55;&#x6210;&#x529F;&#xFF0C;&#x8DF3;&#x8F6C;&#x5230;&#x9996;&#x9875;</span>
+                        <span class="token dom variable">location</span><span class="token punctuation">.</span><span class="token property-access">href</span> <span class="token operator">=</span> <span class="token string">&quot;index.html&quot;</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span><span class="token keyword control-flow keyword-else">else</span> <span class="token punctuation">{</span>
+                        <span class="token comment">//&#x767B;&#x5F55;&#x5931;&#x8D25;&#xFF0C;&#x8DF3;&#x8F6C;&#x5230;&#x767B;&#x5F55;&#x9875;&#x9762;</span>
+                        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">&quot;&#x767B;&#x5F55;&#x5931;&#x8D25;&#xFF0C;&#x8BF7;&#x68C0;&#x67E5;&#x7528;&#x6237;&#x540D;&#x548C;&#x5BC6;&#x7801;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token dom variable">location</span><span class="token punctuation">.</span><span class="token property-access">href</span> <span class="token operator">=</span> <span class="token string">&quot;login.html&quot;</span><span class="token punctuation">;</span>
                     <span class="token punctuation">}</span>
-                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword control-flow keyword-else">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword control-flow keyword-return">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </pre></li>
 <li>
 <p><strong>java&#x4EE3;&#x7801;</strong></p>
-<ul>
-<li><strong>UserServlet.java</strong></li>
-</ul>
+</li>
+<li>
+<p><strong>UserServlet.java</strong></p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-package">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>controller</span><span class="token punctuation">;</span>
 
 <span class="token keyword keyword-import">import</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>bean<span class="token punctuation">.</span></span><span class="token class-name">User</span><span class="token punctuation">;</span>
@@ -1789,9 +1737,9 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
         <span class="token function">doGet</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span>resp<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</pre><ul>
-<li><strong>UserService.java</strong></li>
-</ul>
+</pre></li>
+<li>
+<p><strong>UserService.java</strong></p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-package">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>service</span><span class="token punctuation">;</span>
 
 <span class="token keyword keyword-import">import</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>bean<span class="token punctuation">.</span></span><span class="token class-name">User</span><span class="token punctuation">;</span>
@@ -1799,16 +1747,16 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
 <span class="token keyword keyword-import">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span><span class="token punctuation">;</span>
 <span class="token comment">/*
     &#x4E1A;&#x52A1;&#x5C42;&#x7EA6;&#x675F;&#x63A5;&#x53E3;
- */</span>
+    */</span>
 <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-interface">interface</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span>
     <span class="token comment">/*
         &#x767B;&#x5F55;&#x65B9;&#x6CD5;
-     */</span>
+        */</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-abstract">abstract</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> <span class="token function">login</span><span class="token punctuation">(</span><span class="token class-name">User</span> user<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</pre><ul>
-<li><strong>UserServiceImpl.java</strong></li>
-</ul>
+</pre></li>
+<li>
+<p><strong>UserServiceImpl.java</strong></p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-package">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>service<span class="token punctuation">.</span>impl</span><span class="token punctuation">;</span>
 
 <span class="token keyword keyword-import">import</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>bean<span class="token punctuation">.</span></span><span class="token class-name">User</span><span class="token punctuation">;</span>
@@ -1864,9 +1812,9 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
         <span class="token keyword keyword-return">return</span> list<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</pre><ul>
-<li><strong>UserMapper.java</strong></li>
-</ul>
+</pre></li>
+<li>
+<p><strong>UserMapper.java</strong></p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-package">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>mapper</span><span class="token punctuation">;</span>
 
 <span class="token keyword keyword-import">import</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>bean<span class="token punctuation">.</span></span><span class="token class-name">User</span><span class="token punctuation">;</span>
@@ -1877,19 +1825,14 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
 <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-interface">interface</span> <span class="token class-name">UserMapper</span> <span class="token punctuation">{</span>
     <span class="token comment">/*
         &#x767B;&#x5F55;&#x65B9;&#x6CD5;
-     */</span>
+        */</span>
     <span class="token annotation punctuation">@Select</span><span class="token punctuation">(</span><span class="token string">&quot;SELECT * FROM user WHERE username=#{username} AND password=#{password}&quot;</span><span class="token punctuation">)</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-abstract">abstract</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> <span class="token function">login</span><span class="token punctuation">(</span><span class="token class-name">User</span> user<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </pre></li>
 </ul>
-</li>
-</ul>
 <h2 class="mume-header" id="63-%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">6.3&#x3001;&#x5206;&#x9875;&#x67E5;&#x8BE2;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;</h2>
 
-<ul>
-<li>
-<p><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</strong></p>
 <ul>
 <li>
 <p><strong>html&#x4EE3;&#x7801;</strong></p>
@@ -1985,9 +1928,9 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
 </pre></li>
 <li>
 <p><strong>java&#x4EE3;&#x7801;</strong></p>
-<ul>
-<li><strong>1&#x3001;&#x521B;&#x5EFA;StudentServlet.java</strong></li>
-</ul>
+</li>
+<li>
+<p><strong>1&#x3001;&#x521B;&#x5EFA;StudentServlet.java</strong></p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-package">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>controller</span><span class="token punctuation">;</span>
 
 <span class="token keyword keyword-import">import</span> <span class="token namespace">com<span class="token punctuation">.</span>fasterxml<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>databind<span class="token punctuation">.</span></span><span class="token class-name">ObjectMapper</span><span class="token punctuation">;</span>
@@ -2056,9 +1999,9 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
         <span class="token function">doGet</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span>resp<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</pre><ul>
-<li><strong>2&#x3001;&#x521B;&#x5EFA;StudentService.java</strong></li>
-</ul>
+</pre></li>
+<li>
+<p><strong>2&#x3001;&#x521B;&#x5EFA;StudentService.java</strong></p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-package">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>service</span><span class="token punctuation">;</span>
 
 <span class="token keyword keyword-import">import</span> <span class="token namespace">com<span class="token punctuation">.</span>github<span class="token punctuation">.</span>pagehelper<span class="token punctuation">.</span></span><span class="token class-name">Page</span><span class="token punctuation">;</span>
@@ -2073,9 +2016,9 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
      */</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-abstract">abstract</span> <span class="token class-name">Page</span> <span class="token function">selectByPage</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> currentPage<span class="token punctuation">,</span> <span class="token class-name">Integer</span> pageSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</pre><ul>
-<li><strong>3&#x3001;&#x521B;&#x5EFA;StudentServiceImpl.java</strong></li>
-</ul>
+</pre></li>
+<li>
+<p><strong>3&#x3001;&#x521B;&#x5EFA;StudentServiceImpl.java</strong></p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-package">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>service<span class="token punctuation">.</span>impl</span><span class="token punctuation">;</span>
 
 <span class="token keyword keyword-import">import</span> <span class="token namespace">com<span class="token punctuation">.</span>github<span class="token punctuation">.</span>pagehelper<span class="token punctuation">.</span></span><span class="token class-name">Page</span><span class="token punctuation">;</span>
@@ -2137,9 +2080,9 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
         <span class="token keyword keyword-return">return</span> page<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</pre><ul>
-<li><strong>4&#x3001;&#x521B;&#x5EFA;StudentMapper.java</strong></li>
-</ul>
+</pre></li>
+<li>
+<p><strong>4&#x3001;&#x521B;&#x5EFA;StudentMapper.java</strong></p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-package">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>mapper</span><span class="token punctuation">;</span>
 
 <span class="token keyword keyword-import">import</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>bean<span class="token punctuation">.</span></span><span class="token class-name">Student</span><span class="token punctuation">;</span>
@@ -2163,13 +2106,8 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
 
 </pre></li>
 </ul>
-</li>
-</ul>
 <h2 class="mume-header" id="64-%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">6.4&#x3001;&#x6DFB;&#x52A0;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;</h2>
 
-<ul>
-<li>
-<p><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</strong></p>
 <ul>
 <li>
 <p><strong>html&#x4EE3;&#x7801;</strong></p>
@@ -2195,9 +2133,9 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
 </pre></li>
 <li>
 <p><strong>java&#x4EE3;&#x7801;</strong></p>
-<ul>
-<li>1&#x3001;&#x5728;StudentServlet.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x6DFB;&#x52A0;&#x529F;&#x80FD;&#x201D;&#x4EE3;&#x7801;-addStu</li>
-</ul>
+</li>
+<li>
+<p>1&#x3001;&#x5728;StudentServlet.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x6DFB;&#x52A0;&#x529F;&#x80FD;&#x201D;&#x4EE3;&#x7801;-addStu</p>
 <pre data-role="codeBlock" data-info="java" class="language-java">	<span class="token comment">/*
 	*1&#x3001;&#x76F4;&#x63A5;&#x590D;&#x5236;&#x4F1A;&#x62A5;&#x9519;
 	*2&#x3001;&#x9700;&#x8981;&#x5C06;&#x6B64;&#x884C;&#x4EE3;&#x7801;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x5230;&#x201C;doGet&#x201D;&#x65B9;&#x6CD5;&#x4E2D;
@@ -2257,16 +2195,16 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token class-name">Date</span><span class="token punctuation">.</span><span class="token keyword keyword-class">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-</pre><ul>
-<li>2&#x3001;&#x5728;StudentService.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x6DFB;&#x52A0;&#x529F;&#x80FD;&#x201D;-addStu</li>
-</ul>
+</pre></li>
+<li>
+<p>2&#x3001;&#x5728;StudentService.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x6DFB;&#x52A0;&#x529F;&#x80FD;&#x201D;-addStu</p>
 <pre data-role="codeBlock" data-info="java" class="language-java">    <span class="token comment">/*
         &#x6DFB;&#x52A0;&#x6570;&#x636E;&#x65B9;&#x6CD5;
      */</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-abstract">abstract</span> <span class="token keyword keyword-void">void</span> <span class="token function">addStu</span><span class="token punctuation">(</span><span class="token class-name">Student</span> stu<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</pre><ul>
-<li>3&#x3001;StudentServiceImpl.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x6DFB;&#x52A0;&#x529F;&#x80FD;&#x201D;-addStu</li>
-</ul>
+</pre></li>
+<li>
+<p>3&#x3001;StudentServiceImpl.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x6DFB;&#x52A0;&#x529F;&#x80FD;&#x201D;-addStu</p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">/*
         &#x6DFB;&#x52A0;&#x6570;&#x636E;&#x65B9;&#x6CD5;
      */</span>
@@ -2301,9 +2239,9 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-</pre><ul>
-<li>4&#x3001;StudentMapper.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x6DFB;&#x52A0;&#x529F;&#x80FD;&#x201D;-addStu</li>
-</ul>
+</pre></li>
+<li>
+<p>4&#x3001;StudentMapper.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x6DFB;&#x52A0;&#x529F;&#x80FD;&#x201D;-addStu</p>
 <pre data-role="codeBlock" data-info="java" class="language-java">    <span class="token comment">/*
         &#x6DFB;&#x52A0;&#x6570;&#x636E;&#x65B9;&#x6CD5;
      */</span>
@@ -2311,13 +2249,8 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-abstract">abstract</span> <span class="token keyword keyword-void">void</span> <span class="token function">addStu</span><span class="token punctuation">(</span><span class="token class-name">Student</span> stu<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </pre></li>
 </ul>
-</li>
-</ul>
 <h2 class="mume-header" id="65-%E4%BF%AE%E6%94%B9%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">6.5&#x3001;&#x4FEE;&#x6539;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;</h2>
 
-<ul>
-<li>
-<p><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</strong></p>
 <ul>
 <li>
 <p><strong>html&#x4EE3;&#x7801;</strong></p>
@@ -2343,9 +2276,9 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
 </pre></li>
 <li>
 <p><strong>java&#x4EE3;&#x7801;</strong></p>
-<ul>
-<li>1&#x3001;&#x5728;StudentServlet.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x4FEE;&#x6539;&#x529F;&#x80FD;&#x201D;-updateStu</li>
-</ul>
+</li>
+<li>
+<p>1&#x3001;&#x5728;StudentServlet.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x4FEE;&#x6539;&#x529F;&#x80FD;&#x201D;-updateStu</p>
 <pre data-role="codeBlock" data-info="java" class="language-java">    <span class="token comment">/*
         &#x4FEE;&#x6539;&#x6570;&#x636E;&#x529F;&#x80FD;
      */</span>
@@ -2377,16 +2310,16 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
             e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-</pre><ul>
-<li>2&#x3001;&#x5728;StudentService.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x4FEE;&#x6539;&#x529F;&#x80FD;&#x201D;-updateStu</li>
-</ul>
+</pre></li>
+<li>
+<p>2&#x3001;&#x5728;StudentService.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x4FEE;&#x6539;&#x529F;&#x80FD;&#x201D;-updateStu</p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">/*
         &#x4FEE;&#x6539;&#x6570;&#x636E;&#x65B9;&#x6CD5;
      */</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-abstract">abstract</span> <span class="token keyword keyword-void">void</span> <span class="token function">updateStu</span><span class="token punctuation">(</span><span class="token class-name">Student</span> stu<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</pre><ul>
-<li>3&#x3001;StudentServiceImpl.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x4FEE;&#x6539;&#x529F;&#x80FD;&#x201D;-updateStu</li>
-</ul>
+</pre></li>
+<li>
+<p>3&#x3001;StudentServiceImpl.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x4FEE;&#x6539;&#x529F;&#x80FD;&#x201D;-updateStu</p>
 <pre data-role="codeBlock" data-info="java" class="language-java">	<span class="token comment">/*
 	*1&#x3001;&#x76F4;&#x63A5;&#x590D;&#x5236;&#x4F1A;&#x62A5;&#x9519;
 	*2&#x3001;&#x9700;&#x8981;&#x5C06;&#x6B64;&#x884C;&#x4EE3;&#x7801;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x5230;&#x201C;doGet&#x201D;&#x65B9;&#x6CD5;&#x4E2D;
@@ -2432,9 +2365,9 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-</pre><ul>
-<li>4&#x3001;StudentMapper.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x4FEE;&#x6539;&#x529F;&#x80FD;&#x201D;-updateStu</li>
-</ul>
+</pre></li>
+<li>
+<p>4&#x3001;StudentMapper.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x4FEE;&#x6539;&#x529F;&#x80FD;&#x201D;-updateStu</p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">/*
         &#x4FEE;&#x6539;&#x6570;&#x636E;&#x65B9;&#x6CD5;
      */</span>
@@ -2442,13 +2375,8 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-abstract">abstract</span> <span class="token keyword keyword-void">void</span> <span class="token function">updateStu</span><span class="token punctuation">(</span><span class="token class-name">Student</span> stu<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </pre></li>
 </ul>
-</li>
-</ul>
 <h2 class="mume-header" id="66-%E5%88%A0%E9%99%A4%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">6.6&#x3001;&#x5220;&#x9664;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;</h2>
 
-<ul>
-<li>
-<p><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</strong></p>
 <ul>
 <li>
 <p><strong>html&#x4EE3;&#x7801;</strong></p>
@@ -2473,9 +2401,9 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
 </pre></li>
 <li>
 <p><strong>java&#x4EE3;&#x7801;</strong></p>
-<ul>
-<li>1&#x3001;&#x5728;StudentServlet.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x5220;&#x9664;&#x529F;&#x80FD;&#x201D;-</li>
-</ul>
+</li>
+<li>
+<p>1&#x3001;&#x5728;StudentServlet.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x5220;&#x9664;&#x529F;&#x80FD;&#x201D;-</p>
 <pre data-role="codeBlock" data-info="java" class="language-java">	<span class="token comment">/*
 	*1&#x3001;&#x76F4;&#x63A5;&#x590D;&#x5236;&#x4F1A;&#x62A5;&#x9519;
 	*2&#x3001;&#x9700;&#x8981;&#x5C06;&#x6B64;&#x884C;&#x4EE3;&#x7801;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x5230;&#x201C;doGet&#x201D;&#x65B9;&#x6CD5;&#x4E2D;
@@ -2507,16 +2435,16 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
             e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-</pre><ul>
-<li>2&#x3001;&#x5728;StudentService.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x5220;&#x9664;&#x529F;&#x80FD;&#x201D;-</li>
-</ul>
+</pre></li>
+<li>
+<p>2&#x3001;&#x5728;StudentService.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x5220;&#x9664;&#x529F;&#x80FD;&#x201D;-</p>
 <pre data-role="codeBlock" data-info="java" class="language-java">    <span class="token comment">/*
         &#x5220;&#x9664;&#x6570;&#x636E;&#x65B9;&#x6CD5;
      */</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-abstract">abstract</span> <span class="token keyword keyword-void">void</span> <span class="token function">deleteStu</span><span class="token punctuation">(</span><span class="token class-name">String</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</pre><ul>
-<li>3&#x3001;StudentServiceImpl.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x5220;&#x9664;&#x529F;&#x80FD;&#x201D;-</li>
-</ul>
+</pre></li>
+<li>
+<p>3&#x3001;StudentServiceImpl.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x5220;&#x9664;&#x529F;&#x80FD;&#x201D;-</p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">/*
         &#x5220;&#x9664;&#x6570;&#x636E;&#x65B9;&#x6CD5;
      */</span>
@@ -2551,17 +2479,15 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-</pre><ul>
-<li>4&#x3001;StudentMapper.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x5220;&#x9664;&#x529F;&#x80FD;&#x201D;-</li>
-</ul>
+</pre></li>
+<li>
+<p>4&#x3001;StudentMapper.java&#x4E2D;&#x589E;&#x52A0;&#x201C;&#x5220;&#x9664;&#x529F;&#x80FD;&#x201D;-</p>
 <pre data-role="codeBlock" data-info="java" class="language-java">    <span class="token comment">/*
         &#x5220;&#x9664;&#x6570;&#x636E;&#x65B9;&#x6CD5;
      */</span>
     <span class="token annotation punctuation">@Delete</span><span class="token punctuation">(</span><span class="token string">&quot;DELETE FROM student WHERE number=#{number}&quot;</span><span class="token punctuation">)</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-abstract">abstract</span> <span class="token keyword keyword-void">void</span> <span class="token function">deleteStu</span><span class="token punctuation">(</span><span class="token class-name">String</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </pre></li>
-</ul>
-</li>
 </ul>
 
       </div>
@@ -2572,7 +2498,6 @@ destroyed&#xFF1A;&#x9500;&#x6BC1;&#x540E;</p>
 <li><a href="#12-vue%E7%9A%84%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8">1.2&#x3001;Vue&#x7684;&#x5FEB;&#x901F;&#x5165;&#x95E8;</a></li>
 <li><a href="#13-vue%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E8%AF%A6%E8%A7%A3">1.3&#x3001;Vue&#x5FEB;&#x901F;&#x5165;&#x95E8;&#x8BE6;&#x89E3;</a></li>
 <li><a href="#14-vue%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E7%9A%84%E5%8D%87%E7%BA%A7">1.4&#x3001;Vue&#x5FEB;&#x901F;&#x5165;&#x95E8;&#x7684;&#x5347;&#x7EA7;</a></li>
-<li><a href="#15-vue%E5%B0%8F%E7%BB%93">1.5&#x3001;Vue&#x5C0F;&#x7ED3;</a></li>
 </ul>
 </li>
 <li><a href="#2-vue-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4">2&#x3001;Vue &#x5E38;&#x7528;&#x6307;&#x4EE4;</a>

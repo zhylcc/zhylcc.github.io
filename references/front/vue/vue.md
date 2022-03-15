@@ -2,11 +2,10 @@
 
 ## 1.1、Vue的介绍
 
-- Vue是一套构建用户界面的渐进式前端框架。
-- 只关注视图层，并且非常容易学习，还可以很方便的与其它库或已有项目整合。
-- 通过尽可能简单的API来实现响应数据的绑定和组合的视图组件。
+Vue是一套构建用户界面的**渐进式前端框架**。
+- **只关注视图层**，并且非常容易学习，还可以很方便的与其它库或已有项目整合。通过尽可能简单的API来实现响应数据的绑定和组合的视图组件。
 - 特点
-  易用：在有HTMLCSSJavaScript的基础上，快速上手。
+  易用：在有HTML/CSS/JavaScript的基础上，快速上手。
   灵活：简单小巧的核心，渐进式技术栈，足以应付任何规模的应用。
   性能：20kbmin+gzip运行大小、超快虚拟DOM、最省心的优化。
 
@@ -50,22 +49,21 @@
 
 ## 1.3、Vue快速入门详解
 
-- Vue 核心对象：每一个 Vue 程序都是从一个 Vue 核心对象开始的。
+- `Vue` 核心对象：每一个 Vue 程序都是从一个 Vue 核心对象开始的。
 
-  ```tex
+  ```js
   let vm = new Vue({
    选项列表;
   });
   ```
 
 - 选项列表
-  el选项：用于接收获取到页面中的元素。(根据常用选择器获取)。
-  data选项：用于保存当前Vue对象中的数据。在视图中声明的变量需要在此处赋值。
-  methods选项：用于定义方法。方法可以直接通过对象名调用，this代表当前Vue对象。
+  - `el`选项：用于接收获取到页面中的元素。(根据常用选择器获取)。
+  - `data`选项：用于保存当前Vue对象中的数据。在视图中声明的变量需要在此处赋值。
+  - `methods`选项：用于定义方法。方法可以直接通过对象名调用，`this`代表当前Vue对象。
 
 - 数据绑定
-  在视图部分获取脚本部分的数据。
-  {{变量名}}
+  在视图部分获取脚本部分的数据: `{{变量名}}`
 
 ## 1.4、Vue快速入门的升级
 
@@ -115,34 +113,22 @@
 </html>
 ```
 
-## 1.5、Vue小结
-
-- Vue是一套构建用户界面的渐进式前端框架。
-- Vue的程序包含视图和脚本两个核心部分。
-- 脚本部分
-  - Vue核心对象。
-  - 选项列表
-    - el：接收获取的元素。
-    - data：保存数据。
-    - methods：定义方法。
-- 视图部分
-  - 数据绑定：{{变量名}}
 
 # 2、Vue 常用指令
 
 ## 2.1、指令介绍
 
-- 指令：是带有 v- 前缀的特殊属性，不同指令具有不同含义。例如 v-html，v-if，v-for。
+- 指令：是带有 `v-` 前缀的特殊属性，不同指令具有不同含义。例如 v-html，v-if，v-for。
 
-- 使用指令时，通常编写在标签的属性上，值可以使用 JS 的表达式。
+- 使用指令时，**通常编写在标签的属性上**，值可以使用 JS 的表达式。
 
 - 常用指令
 
-  ![](.\img\常用指令-指令介绍.png)
+  ![](./img/常用指令-指令介绍.png)
 
 ## 2.2、文本插值
 
-- v-html：把文本解析为 HTML 代码。
+- `v-html=`：把文本解析为 HTML 代码。
 
   ```html
   <!DOCTYPE html>
@@ -172,7 +158,7 @@
 
 ## 2.3、绑定属性
 
-- v-bind：为 HTML 标签绑定属性值。
+- `[v-bind:]`：为 HTML 标签绑定属性值。
 
   ```html
   <!DOCTYPE html>
@@ -211,13 +197,9 @@
 
 ## 2.4、条件渲染
 
-- v-if：条件性的渲染某元素，判定为真时渲染,否则不渲染。
+- `v-if=`/`v-else-if=`/`v-else=`：条件性的渲染某元素，判定为真时渲染，否则不渲染。
 
-- v-else：条件性的渲染。
-
-- v-else-if：条件性的渲染。
-
-- v-show：根据条件展示某元素，区别在于切换的是display属性的值。
+- `v-show=`：根据条件展示某元素，区别在于切换的是display属性的值。
 
   ```html
   <!DOCTYPE html>
@@ -233,7 +215,6 @@
           <div v-if="num % 3 == 0">div1</div>
           <div v-else-if="num % 3 == 1">div2</div>
           <div v-else="num % 3 == 2">div3</div>
-  
           <div v-show="flag">div4</div>
       </div>
   </body>
@@ -252,7 +233,7 @@
 
 ## 2.5、列表渲染
 
-- v-for：列表渲染，遍历容器的元素或者对象的属性。
+- `v-for=`：列表渲染，遍历容器的元素或者对象的属性。
 
   ```html
   <!DOCTYPE html>
@@ -292,7 +273,7 @@
 
 ## 2.6、事件绑定
 
-- v-on：为 HTML 标签绑定事件。
+- `v-on:事件名=`/`@事件名=`：为 HTML 标签绑定事件。
 
   ```html
   <!DOCTYPE html>
@@ -330,8 +311,7 @@
 
 ## 2.7、表单绑定
 
-- **表单绑定**
-  v-model：在表单元素上创建双向数据绑定。
+- `v-model=`：在表单元素上创建双向数据绑定。
 
 - **双向数据绑定**
   更新data数据，页面中的数据也会更新。
@@ -342,7 +322,7 @@
   将Model和View关联起来的就是ViewModel，它是桥梁。
   ViewModel负责把Model的数据同步到View显示出来，还负责把View修改的数据同步回Model。
 
-  ![](.\img\MVVM模型.png)
+  ![](./img/MVVM模型.png)
 
   ```html
   <!DOCTYPE html>
@@ -407,11 +387,11 @@
 
 - 自己完成的按钮
 
-  ![](.\img\我是按钮.png)
+  ![](./img/我是按钮.png)
 
 - Element 提供的按钮
 
-  ![](.\img\element提供的按钮.png)
+  ![](./img/element提供的按钮.png)
 
 ## 3.2、Element快速入门
 
@@ -490,7 +470,7 @@
 
 将页面分成最多 24 个部分，自由切分。
 
-![](.\img\基础布局.png)
+![](./img/基础布局.png)
 
 - **代码实现**
 
@@ -568,7 +548,7 @@
 
 将页面分成头部区域、侧边栏区域、主区域、底部区域。
 
-![](.\img\容器布局.png)
+![](./img/容器布局.png)
 
 - **代码实现**
 
@@ -628,6 +608,8 @@
 ## 3.5、表单组件
 
 由输入框、下拉列表、单选框、多选框等控件组成，用以收集、校验、提交数据。
+
+![](./img/表单组件.png)
 
 - **代码实现**
 
@@ -757,6 +739,8 @@
 
 用于展示多条结构类似的数据，可对数据进行编辑、删除或其他自定义操作。
 
+![](./img/表格组件.png)
+
 - **代码实现**
 
   ```html
@@ -830,7 +814,7 @@
 
 ## 3.7、顶部导航栏组件
 
-![](.\img\顶部导航栏.png)
+![](./img/顶部导航栏.png)
 
 - **代码实现**
 
@@ -883,7 +867,7 @@
 
 ## 3.8、侧边导航栏组件
 
-![](.\img\侧边导航栏.png)
+![](./img/侧边导航栏.png)
 
 - **代码实现**
 
@@ -969,75 +953,68 @@
 
 ## 4.1、案例效果和分析
 
-![](.\img\综合案例-效果图.png)
+![](./img/综合案例-效果图.png)
 
 ## 4.2、头部区域的实现
 
-- **实现思路**
-
-  - 头部效果实现。
-  - 侧边栏和主区域效果实现。
-
-- **代码实现**
-
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>学生列表</title>
-      <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
-      <script src="js/vue.js"></script>
-      <script src="element-ui/lib/index.js"></script>
-      <style>
-        .el-header{
-          background-color: #545c64;
-        }
-        .header-img{
-          width: 100px;
-          margin-top: 20px;
-        }
-      </style>
-  </head>
-  <body>
-    <div id="div">
-      <el-container>
-        <!-- 头部 -->
-        <el-header class="el-header">
-          <el-container>
-            <div>
-              <el-image src="img/export.png" class="header-img"></el-image>
-            </div>
-            <el-menu
-              :default-active="activeIndex2"
-              mode="horizontal"
-              @select="handleSelect"
-              background-color="#545c64"
-              text-color="white"
-              active-text-color="#ffd04b"
-              style="margin-left: auto;">
-              <el-menu-item index="1">处理中心</el-menu-item>
-              <el-submenu index="2">
-                <template slot="title">我的工作台</template>
-                <el-menu-item index="2-1">选项1</el-menu-item>
-                <el-menu-item index="2-2">选项2</el-menu-item>
-                <el-menu-item index="2-3">选项3</el-menu-item>
-              </el-submenu>
-              <el-menu-item index="3"><a href="学生列表.html" target="_self">首页</a></el-menu-item>
-            </el-menu>
-          </el-container>
-        </el-header>
-      </el-container>
-    </div>
-  </body>
-  <script>
-      new Vue({
-          el:"#div"
-      });
-  </script>
-  </html>
-  ```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生列表</title>
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+    <script src="js/vue.js"></script>
+    <script src="element-ui/lib/index.js"></script>
+    <style>
+    .el-header{
+        background-color: #545c64;
+    }
+    .header-img{
+        width: 100px;
+        margin-top: 20px;
+    }
+    </style>
+</head>
+<body>
+<div id="div">
+    <el-container>
+    <!-- 头部 -->
+    <el-header class="el-header">
+        <el-container>
+        <div>
+            <el-image src="img/export.png" class="header-img"></el-image>
+        </div>
+        <el-menu
+            :default-active="activeIndex2"
+            mode="horizontal"
+            @select="handleSelect"
+            background-color="#545c64"
+            text-color="white"
+            active-text-color="#ffd04b"
+            style="margin-left: auto;">
+            <el-menu-item index="1">处理中心</el-menu-item>
+            <el-submenu index="2">
+            <template slot="title">我的工作台</template>
+            <el-menu-item index="2-1">选项1</el-menu-item>
+            <el-menu-item index="2-2">选项2</el-menu-item>
+            <el-menu-item index="2-3">选项3</el-menu-item>
+            </el-submenu>
+            <el-menu-item index="3"><a href="学生列表.html" target="_self">首页</a></el-menu-item>
+        </el-menu>
+        </el-container>
+    </el-header>
+    </el-container>
+</div>
+</body>
+<script>
+    new Vue({
+        el:"#div"
+    });
+</script>
+</html>
+```
 
 ## 4.3、侧边栏区域的实现
 
@@ -1137,13 +1114,13 @@
 
 ## 5.1、自定义组件
 
-- 学完了 Element 组件后，我们会发现组件其实就是自定义的标签。例如 就是对的封装。 
+- 学完了 Element 组件后，我们会发现组件其实就是自定义的标签。
 
-- 本质上，组件是带有一个名字且可复用的 Vue 实例，我们完全可以自己定义。
+- 本质上，**组件是带有一个名字且可复用的 Vue 实例**，我们完全可以自己定义。
 
 - 定义格式
 
-  ```tex
+  ```js
   Vue.component(组件名称, {
    props:组件的属性,
    data: 组件的数据函数,
@@ -1192,13 +1169,13 @@
 
 - **生命周期**
 
-![](.\img\Vue生命周期.png)
+![](./img/Vue生命周期.png)
 
 
 
 - **生命周期的八个阶段**
 
-  ![](.\img\生命周期的八个阶段.png)
+  ![](./img/生命周期的八个阶段.png)
 
 - **代码实现**
 
@@ -1217,78 +1194,76 @@
       </div>
   </body>
   <script>
-      let vm = new Vue({
-  				el: '#app',
-  				data: {
-  					message: 'Vue的生命周期'
-  				},
-  				beforeCreate: function() {
-  					console.group('------beforeCreate创建前状态------');
-  					console.log("%c%s", "color:red", "el     : " + this.$el); //undefined
-  					console.log("%c%s", "color:red", "data   : " + this.$data); //undefined 
-  					console.log("%c%s", "color:red", "message: " + this.message);//undefined
-  				},
-  				created: function() {
-  					console.group('------created创建完毕状态------');
-  					console.log("%c%s", "color:red", "el     : " + this.$el); //undefined
-  					console.log("%c%s", "color:red", "data   : " + this.$data); //已被初始化 
-  					console.log("%c%s", "color:red", "message: " + this.message); //已被初始化
-  				},
-  				beforeMount: function() {
-  					console.group('------beforeMount挂载前状态------');
-  					console.log("%c%s", "color:red", "el     : " + (this.$el)); //已被初始化
-  					console.log(this.$el);
-  					console.log("%c%s", "color:red", "data   : " + this.$data); //已被初始化  
-  					console.log("%c%s", "color:red", "message: " + this.message); //已被初始化  
-  				},
-  				mounted: function() {
-  					console.group('------mounted 挂载结束状态------');
-  					console.log("%c%s", "color:red", "el     : " + this.$el); //已被初始化
-  					console.log(this.$el);
-  					console.log("%c%s", "color:red", "data   : " + this.$data); //已被初始化
-  					console.log("%c%s", "color:red", "message: " + this.message); //已被初始化 
-  				},
-  				beforeUpdate: function() {
-  					console.group('beforeUpdate 更新前状态===============》');
-  					let dom = document.getElementById("app").innerHTML;
-  					console.log(dom);
-  					console.log("%c%s", "color:red", "el     : " + this.$el);
-  					console.log(this.$el);
-  					console.log("%c%s", "color:red", "data   : " + this.$data);
-  					console.log("%c%s", "color:red", "message: " + this.message);
-  				},
-  				updated: function() {
-  					console.group('updated 更新完成状态===============》');
-  					let dom = document.getElementById("app").innerHTML;
-  					console.log(dom);
-  					console.log("%c%s", "color:red", "el     : " + this.$el);
-  					console.log(this.$el);
-  					console.log("%c%s", "color:red", "data   : " + this.$data);
-  					console.log("%c%s", "color:red", "message: " + this.message);
-  				},
-  				beforeDestroy: function() {
-  					console.group('beforeDestroy 销毁前状态===============》');
-  					console.log("%c%s", "color:red", "el     : " + this.$el);
-  					console.log(this.$el);
-  					console.log("%c%s", "color:red", "data   : " + this.$data);
-  					console.log("%c%s", "color:red", "message: " + this.message);
-  				},
-  				destroyed: function() {
-  					console.group('destroyed 销毁完成状态===============》');
-  					console.log("%c%s", "color:red", "el     : " + this.$el);
-  					console.log(this.$el);
-  					console.log("%c%s", "color:red", "data   : " + this.$data);
-  					console.log("%c%s", "color:red", "message: " + this.message);
-  				}
-  			});
-  
-  		
-  			// 销毁Vue对象
-  			//vm.$destroy();
-  			//vm.message = "hehe";	// 销毁后 Vue 实例会解绑所有内容
-  
-  			// 设置data中message数据值
-  			vm.message = "good...";
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'Vue的生命周期'
+        },
+        beforeCreate: function() {
+            console.group('------beforeCreate创建前状态------');
+            console.log("%c%s", "color:red", "el     : " + this.$el); //undefined
+            console.log("%c%s", "color:red", "data   : " + this.$data); //undefined 
+            console.log("%c%s", "color:red", "message: " + this.message);//undefined
+        },
+        created: function() {
+            console.group('------created创建完毕状态------');
+            console.log("%c%s", "color:red", "el     : " + this.$el); //undefined
+            console.log("%c%s", "color:red", "data   : " + this.$data); //已被初始化 
+            console.log("%c%s", "color:red", "message: " + this.message); //已被初始化
+        },
+        beforeMount: function() {
+            console.group('------beforeMount挂载前状态------');
+            console.log("%c%s", "color:red", "el     : " + (this.$el)); //已被初始化
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data); //已被初始化  
+            console.log("%c%s", "color:red", "message: " + this.message); //已被初始化  
+        },
+        mounted: function() {
+            console.group('------mounted 挂载结束状态------');
+            console.log("%c%s", "color:red", "el     : " + this.$el); //已被初始化
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data); //已被初始化
+            console.log("%c%s", "color:red", "message: " + this.message); //已被初始化 
+        },
+        beforeUpdate: function() {
+            console.group('beforeUpdate 更新前状态===============》');
+            let dom = document.getElementById("app").innerHTML;
+            console.log(dom);
+            console.log("%c%s", "color:red", "el     : " + this.$el);
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data);
+            console.log("%c%s", "color:red", "message: " + this.message);
+        },
+        updated: function() {
+            console.group('updated 更新完成状态===============》');
+            let dom = document.getElementById("app").innerHTML;
+            console.log(dom);
+            console.log("%c%s", "color:red", "el     : " + this.$el);
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data);
+            console.log("%c%s", "color:red", "message: " + this.message);
+        },
+        beforeDestroy: function() {
+            console.group('beforeDestroy 销毁前状态===============》');
+            console.log("%c%s", "color:red", "el     : " + this.$el);
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data);
+            console.log("%c%s", "color:red", "message: " + this.message);
+        },
+        destroyed: function() {
+            console.group('destroyed 销毁完成状态===============》');
+            console.log("%c%s", "color:red", "el     : " + this.$el);
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data);
+            console.log("%c%s", "color:red", "message: " + this.message);
+        }
+    });
+    // 销毁Vue对象
+    //vm.$destroy();
+    //vm.message = "hehe";	// 销毁后 Vue 实例会解绑所有内容
+
+    // 设置data中message数据值
+    vm.message = "good...";
   </script>
   </html>
   ```
@@ -1304,7 +1279,7 @@
 
 - **axios常用方法**
 
-  ![](.\img\axios常用方法.png)
+  ![](./img/axios常用方法.png)
 
 - **代码实现**
 
@@ -1395,7 +1370,7 @@
 
 - 自定义组件：本质上，组件是带有一个名字且可复用的 Vue 实例，我们可以自己来定义。
 
-  ```tex
+  ```js
   Vue.component(组件名称, {
    props:组件的属性,
    data: 组件的数据函数,
@@ -1415,61 +1390,55 @@
 
 - 异步操作：通过 axios 插件来实现。
 
-  ![](.\img\axios常用方法.png)
+  ![](./img/axios常用方法.png)
 
 # 6、综合案例 学生管理系统
 
 ## 6.1、效果环境的介绍
 
-![](.\img\综合案例-登录.png)
+![](./img/综合案例-登录.png)
 
-![](.\img\综合案例-首页.png)
+![](./img/综合案例-首页.png)
 
 ## 6.2、登录功能的实现
 
-- **环境搭建**
-
-  - 从当天的资料中解压《学生管理系统原始项目》，并导入。
-
-- **代码实现**
-
-  - **html代码**
+- **html代码**
 
     ```js
     onSubmit(formName) {
-                    // 为表单绑定验证功能
-                    this.$refs[formName].validate((valid) => {
-                        if (valid) {
-                            //请求服务器完成登录功能
-                            axios.post("userServlet","username=" + this.form.username + "&password=" + this.form.password)
-                                .then(resp => {
-                                    if(resp.data == true) {
-                                        //登录成功，跳转到首页
-                                        location.href = "index.html";
-                                    }else {
-                                        //登录失败，跳转到登录页面
-                                        alert("登录失败，请检查用户名和密码");
-                                        location.href = "login.html";
-                                    }
-                                })
-                        } else {
-                            return false;
+        // 为表单绑定验证功能
+        this.$refs[formName].validate((valid) => {
+            if (valid) {
+                //请求服务器完成登录功能
+                axios.post("userServlet","username=" + this.form.username + "&password=" + this.form.password)
+                    .then(resp => {
+                        if(resp.data == true) {
+                            //登录成功，跳转到首页
+                            location.href = "index.html";
+                        }else {
+                            //登录失败，跳转到登录页面
+                            alert("登录失败，请检查用户名和密码");
+                            location.href = "login.html";
                         }
-                    });
-                }
+                    })
+            } else {
+                return false;
+            }
+        });
+    }
     ```
 
-  - **java代码**
+- **java代码**
 
-    - **UserServlet.java**
+- **UserServlet.java**
 
     ```java
     package com.itheima.controller;
-    
+
     import com.itheima.bean.User;
     import com.itheima.service.UserService;
     import com.itheima.service.impl.UserServiceImpl;
-    
+
     import javax.servlet.ServletException;
     import javax.servlet.annotation.WebServlet;
     import javax.servlet.http.HttpServlet;
@@ -1477,7 +1446,7 @@
     import javax.servlet.http.HttpServletResponse;
     import java.io.IOException;
     import java.util.List;
-    
+
     @WebServlet("/userServlet")
     public class UserServlet extends HttpServlet {
         private UserService service = new UserServiceImpl();
@@ -1486,17 +1455,17 @@
             //设置请求和响应编码
             req.setCharacterEncoding("UTF-8");
             resp.setContentType("text/html;charset=UTF-8");
-    
+
             //1.获取请求参数
             String username = req.getParameter("username");
             String password = req.getParameter("password");
-    
+
             //2.封装User对象
             User user = new User(username,password);
-    
+
             //3.调用业务层的登录方法
             List<User> list = service.login(user);
-    
+
             //4.判断是否查询出结果
             if(list.size() != 0) {
                 //将用户名存入会话域当中
@@ -1508,7 +1477,7 @@
                 resp.getWriter().write("false");
             }
         }
-    
+
         @Override
         protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             doGet(req,resp);
@@ -1516,30 +1485,30 @@
     }
     ```
 
-    - **UserService.java**
+- **UserService.java**
 
     ```java
     package com.itheima.service;
-    
+
     import com.itheima.bean.User;
-    
+
     import java.util.List;
     /*
         业务层约束接口
-     */
+        */
     public interface UserService {
         /*
             登录方法
-         */
+            */
         public abstract List<User> login(User user);
     }
     ```
 
-    - **UserServiceImpl.java**
+- **UserServiceImpl.java**
 
     ```java
     package com.itheima.service.impl;
-    
+
     import com.itheima.bean.User;
     import com.itheima.mapper.UserMapper;
     import com.itheima.service.UserService;
@@ -1547,11 +1516,11 @@
     import org.apache.ibatis.session.SqlSession;
     import org.apache.ibatis.session.SqlSessionFactory;
     import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-    
+
     import java.io.IOException;
     import java.io.InputStream;
     import java.util.List;
-    
+
     public class UserServiceImpl implements UserService {
         @Override
         public List<User> login(User user) {
@@ -1561,19 +1530,19 @@
             try{
                 //1.加载核心配置文件
                 is = Resources.getResourceAsStream("MyBatisConfig.xml");
-    
+
                 //2.获取SqlSession工厂对象
                 SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
-    
+
                 //3.通过SqlSession工厂对象获取SqlSession对象
                 sqlSession = sqlSessionFactory.openSession(true);
-    
+
                 //4.获取UserMapper接口的实现类对象
                 UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-    
+
                 //5.调用实现类对象的登录方法
                 list = mapper.login(user);
-    
+
             }catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -1595,20 +1564,20 @@
     }
     ```
 
-    - **UserMapper.java**
+- **UserMapper.java**
 
     ```java
     package com.itheima.mapper;
-    
+
     import com.itheima.bean.User;
     import org.apache.ibatis.annotations.Select;
-    
+
     import java.util.List;
-    
+
     public interface UserMapper {
         /*
             登录方法
-         */
+            */
         @Select("SELECT * FROM user WHERE username=#{username} AND password=#{password}")
         public abstract List<User> login(User user);
     }
@@ -1616,9 +1585,7 @@
 
 ## 6.3、分页查询功能的实现
 
-- **代码实现**
-
-  - **html代码**
+- **html代码**
 
     ```js
     <script>
@@ -1694,7 +1661,7 @@
                 showEditStu(row) {
                     //1. 弹出窗口
                     this.dialogTableVisible4edit = true;
-    
+
                     //2. 显示表单数据
                     this.editFormData = {
                         number:row.number,
@@ -1712,9 +1679,9 @@
     </script>
     ```
 
-  - **java代码**
+- **java代码**
 
-    - **1、创建StudentServlet.java**
+- **1、创建StudentServlet.java**
 
     ```java
     package com.itheima.controller;
@@ -1787,7 +1754,7 @@
     }
     ```
 
-    - **2、创建StudentService.java**
+- **2、创建StudentService.java**
 
     ```java
     package com.itheima.service;
@@ -1806,7 +1773,7 @@
     }
     ```
 
-    - **3、创建StudentServiceImpl.java**
+- **3、创建StudentServiceImpl.java**
 
     ```java
     package com.itheima.service.impl;
@@ -1872,7 +1839,7 @@
     }
     ```
 
-    - **4、创建StudentMapper.java**
+- **4、创建StudentMapper.java**
 
     ```java
     package com.itheima.mapper;
@@ -1900,9 +1867,8 @@
 
 ## 6.4、添加功能的实现
 
-- **代码实现**
 
-  - **html代码**
+- **html代码**
 
     在stuList.html中增加“添加功能”代码
 
@@ -1927,9 +1893,9 @@
                 }
     ```
 
-  - **java代码**
+- **java代码**
 
-    - 1、在StudentServlet.java中增加“添加功能”代码-addStu
+- 1、在StudentServlet.java中增加“添加功能”代码-addStu
 
     ```java
     	/*
@@ -1993,7 +1959,7 @@
         }
     ```
 
-    - 2、在StudentService.java中增加“添加功能”-addStu
+- 2、在StudentService.java中增加“添加功能”-addStu
 
     ```java
         /*
@@ -2002,7 +1968,7 @@
         public abstract void addStu(Student stu);
     ```
 
-    - 3、StudentServiceImpl.java中增加“添加功能”-addStu
+- 3、StudentServiceImpl.java中增加“添加功能”-addStu
 
     ```java
     /*
@@ -2041,7 +2007,7 @@
         }
     ```
 
-    - 4、StudentMapper.java中增加“添加功能”-addStu
+- 4、StudentMapper.java中增加“添加功能”-addStu
 
     ```java
         /*
@@ -2053,9 +2019,8 @@
 
 ## 6.5、修改功能的实现
 
-- **代码实现**
 
-  - **html代码**
+- **html代码**
 
     在stuList.html中增加“修改功能”代码
 
@@ -2080,9 +2045,9 @@
                 }
     ```
 
-  - **java代码**
+- **java代码**
 
-    - 1、在StudentServlet.java中增加“修改功能”-updateStu
+- 1、在StudentServlet.java中增加“修改功能”-updateStu
 
     ```java
         /*
@@ -2118,7 +2083,7 @@
         }
     ```
 
-    - 2、在StudentService.java中增加“修改功能”-updateStu
+- 2、在StudentService.java中增加“修改功能”-updateStu
 
     ```java
     /*
@@ -2127,7 +2092,7 @@
         public abstract void updateStu(Student stu);
     ```
 
-    - 3、StudentServiceImpl.java中增加“修改功能”-updateStu
+- 3、StudentServiceImpl.java中增加“修改功能”-updateStu
 
     ```java
     	/*
@@ -2177,7 +2142,7 @@
         }
     ```
 
-    - 4、StudentMapper.java中增加“修改功能”-updateStu
+- 4、StudentMapper.java中增加“修改功能”-updateStu
 
     ```java
     /*
@@ -2189,9 +2154,8 @@
 
 ## 6.6、删除功能的实现
 
-- **代码实现**
 
-  - **html代码**
+- **html代码**
 
     在stuList.html中增加“删除功能”代码
 
@@ -2215,9 +2179,9 @@
                 }
     ```
 
-  - **java代码**
+- **java代码**
 
-    - 1、在StudentServlet.java中增加“删除功能”-
+- 1、在StudentServlet.java中增加“删除功能”-
 
     ```java
     	/*
@@ -2253,7 +2217,7 @@
         }
     ```
 
-    - 2、在StudentService.java中增加“删除功能”-
+- 2、在StudentService.java中增加“删除功能”-
 
     ```java
         /*
@@ -2262,7 +2226,7 @@
         public abstract void deleteStu(String number);
     ```
 
-    - 3、StudentServiceImpl.java中增加“删除功能”-
+- 3、StudentServiceImpl.java中增加“删除功能”-
 
     ```java
     /*
@@ -2301,7 +2265,7 @@
         }
     ```
 
-    - 4、StudentMapper.java中增加“删除功能”-
+- 4、StudentMapper.java中增加“删除功能”-
 
     ```java
         /*
