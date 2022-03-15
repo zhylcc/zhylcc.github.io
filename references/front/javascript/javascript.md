@@ -8,7 +8,7 @@
 
 - 核心功能就是增强用户和 HTML 页面的交互过程，让页面有一些动态效果。以此来增强用户的体验！
 
-  ![](.\img\javaScript表格介绍.png)
+  ![](./img/javaScript表格介绍.png)
   
   ```tex
   1995 年，NetScape (网景)公司，开发的一门客户端脚本语言：LiveScript。后来，请来 SUN 公司的专家来 进行修改，后命名为：JavaScript。
@@ -16,7 +16,7 @@
   1997 年，ECMA (欧洲计算机制造商协会)，制定出客户端脚本语言的标准：ECMAScript，统一了所有客户 端脚本语言的编码方式。
   ```
   
-  ![](.\img\javaScript介绍.png)
+  ![](./img/javaScript介绍.png)
 
 ## 1.2、快速入门
 
@@ -68,15 +68,7 @@
   <script src="js/my.js"></script>
   ```
 
-## 1.3、开发环境搭建
-
-- **Node.js:JavaScript 运行环境**
-
-- **VSCode：编写前端技术的开发工具**
-
-  根据《安装工具.pdf》文档安装Node.js和VSCode。相关资料都在“资料”文件夹中。
-
-## 1.4、快速入门总结
+## 1.3、快速入门总结
 
 - JavaScript 是一种客户端脚本语言。
 
@@ -131,6 +123,10 @@
   document.write(name + "," + age +"<br>");
   ```
 
+  补充说明：
+  - `let`是ES6新增的命令，具有**块作用域**
+  - 在此之前，JS只有全局作用域和函数作用域，使用`var`声明**函数作用域**变量
+
 - 定义全局变量 变量名 = 值; 
 
   ```js
@@ -156,7 +152,7 @@
 
 ### 2.4.1、原始数据类型
 
-![](.\img\原始数据类型.png)
+![](./img/原始数据类型.png)
 
 ### 2.4.2、typeof
 
@@ -167,35 +163,29 @@ let age = 18;
 document.write(typeof(age)); // number
 ```
 
+未定义变量使用typeof返回`undefined`
+
 ## 2.5、运算符
 
 - **算数运算符**
 
-  ![](.\img\算术运算符.png)
+  ![](./img/算术运算符.png)
 
 - **赋值运算符**
 
-  ![](.\img\赋值运算符.png)
+  ![](./img/赋值运算符.png)
 
 - **比较运算符**
 
-  ![](.\img\比较运算符.png)
+  ![](./img/比较运算符.png)
 
 - 逻辑运算符
 
-  ![](.\img\逻辑运算符.png)
+  ![](./img/逻辑运算符.png)
 
 - **三元运算符**
 
-  - 三元运算符格式
-
-    (比较表达式) ? 表达式1 : 表达式2; 
-
-  - 执行流程
-
-    如果比较表达式为true，则取表达式1
-
-    如果比较表达式为false，则取表达式2
+    `(比较表达式) ? true时表达式1 : false时表达式2;` 
 
 ## 2.6、流程控制和循环语句
 
@@ -249,7 +239,7 @@ document.write(typeof(age)); // number
           break;
   }
   
-  document.write("<br>");**for 循环**
+  document.write("<br>");
   ```
 
 - **for循环**
@@ -278,9 +268,9 @@ document.write(typeof(age)); // number
 
 - 定义格式
   
-  - let 数组名 = [元素1,元素2,…];
+  - `let 数组名 = [元素1,元素2,…];
   
-  - ```js
+    ```js
     let arr = [10,20,30];
     ```
   
@@ -292,7 +282,7 @@ document.write(typeof(age)); // number
   
   - 数组名.length
   
-  - ```js
+    ```js
     for(let i = 0; i < arr.length; i++) {
         document.write(arr[i] + "<br>");
     }
@@ -371,18 +361,6 @@ document.write(typeof(age)); // number
   }
   ```
 
-## 2.9、小结
-
-- 注释：单行// 多行/**/
-- 输入输出语句：prompt()、alert()、console.log()、document.write()
-- 变量和常量：let、const 
-- 数据类型：boolean、null、undefined、number、string、bigint
-- typeof 关键字：用于判断变量的数据类型 
-- 运算符：算数、赋值、逻辑、比较、三元运算符 
--  流程控制和循环语句：if、switch、for、while
-- 数组：数据类型和长度没有限制，let 数组名 = [长度/元素]
--  函数：类似方法，抽取代码，提高复用性
-
 # 3、JavaScript DOM
 
 ## 3.1、DOM介绍
@@ -390,13 +368,13 @@ document.write(typeof(age)); // number
 - DOM(Document Object Model)：文档对象模型。
 - 将 HTML 文档的各个组成部分，封装为对象。借助这些对象，可以对 HTML 文档进行增删改查的动态操作。
 
-![](.\img\DOM介绍.png)
+![](./img/DOM介绍.png)
 
 ## 3.2、Element元素的获取操作
 
 - 具体方法
 
-![](.\img\DOM的获取方式.png)
+![](./img/DOM的获取方式.png)
 
 - 代码实现
 
@@ -443,7 +421,7 @@ document.write(typeof(age)); // number
 
 - **具体方法**
 
-  ![](.\img\DOM的增删改.png)
+  ![](./img/DOM的增删改.png)
 
 - **代码实现**
 
@@ -489,7 +467,7 @@ document.write(typeof(age)); // number
 
 - **具体方法**
 
-  ![](.\img\Attribute属性的操作.png)
+  ![](./img/Attribute属性的操作.png)
 
 - **代码实现**
 
@@ -535,7 +513,7 @@ document.write(typeof(age)); // number
 
 - **具体方法**
 
-  ![](.\img\Text文本的操作.png)
+  ![](./img/Text文本的操作.png)
 
 - **代码实现**
 
@@ -598,11 +576,11 @@ document.write(typeof(age)); // number
 
 - **常用的事件**
 
-![](.\img\常用的事件.png)
+![](./img/常用的事件.png)
 
 - **了解的事件**
 
-![](.\img\了解的事件.png)
+![](./img/了解的事件.png)
 
 ## 4.2、事件操作
 
@@ -624,13 +602,6 @@ document.write(typeof(age)); // number
   document.getElementById("btn").onclick = 执行的功能
   ```
 
-## 4.3、事件小结
-
-- 事件指的就是当某些组件执行了某些操作后，会触发某些代码的执行。
-- 常用的事件 onload onsubmit onclick ondblclick onblur onfocus onchange
-- 绑定事件方式
-  - 方式一：通过标签中的事件属性进行绑定。
-  - 方式二：通过 DOM 元素属性绑定。
 
 # 5、JavaScript综合案例
 
@@ -638,7 +609,7 @@ document.write(typeof(age)); // number
 
 - 在“姓名、年龄、性别”三个文本框中填写信息后，添加到“学生信息表”列表（表格）中。
 
-![](.\img\综合案例-添加功能分析.png)
+![](./img/综合案例-添加功能分析.png)
 
 ## 5.2、添加功能的分析
 
@@ -763,7 +734,7 @@ document.write(typeof(age)); // number
 
 - **删除功能介绍**
 
-![](.\img\综合案例-删除功能分析.png)
+![](./img/综合案例-删除功能分析.png)
 
 - **删除功能分析**
 
@@ -780,12 +751,12 @@ document.write(typeof(age)); // number
 //1.为每个删除超链接标签添加单击事件的属性
 //2.定义删除的方法
 function drop(obj){
-//3.获取table元素
-let table = obj.parentElement.parentElement.parentElement;
-//4.获取tr元素
-let tr = obj.parentElement.parentElement;
-//5.通过table删除tr
-table.removeChild(tr);
+    //3.获取table元素
+    let table = obj.parentElement.parentElement.parentElement;
+    //4.获取tr元素
+    let tr = obj.parentElement.parentElement;
+    //5.通过table删除tr
+    table.removeChild(tr);
 }
 ```
 
@@ -796,13 +767,13 @@ table.removeChild(tr);
 
 ​		在 Java 中我们学习过面向对象，核心思想是万物皆对象。在 JavaScript 中同样也有面向对象。思想类似。
 
-​		![](.\img\面向对象介绍.png)
+​		![](./img/面向对象介绍.png)
 
 ## 6.2、类的定义和使用
 
 - **结构说明**
 
-![](.\img\类的定义和使用.png)
+    ![](./img/类的定义和使用.png)
 
 - **代码实现**
 
@@ -849,7 +820,7 @@ table.removeChild(tr);
 
 - **结构说明**
 
-![](.\img\字面量定义类和使用.png)
+    ![](./img/字面量定义类和使用.png)
 
 - **代码实现**
 
@@ -887,9 +858,9 @@ table.removeChild(tr);
 
 - 继承：让类与类产生子父类的关系，子类可以使用父类有权限的成员。
 
-- 继承关键字：extends
+- 继承关键字：`extends`
 
-- 顶级父类：Object
+- 顶级父类：`Object`
 
   ```html
   <!DOCTYPE html>
@@ -937,27 +908,6 @@ table.removeChild(tr);
   </html>
   ```
 
-## 6.6、小结
-
-- **面向对象**
-
-  把相关的数据和方法组织为一个整体来看待，从更高的层次来进行系统建模，更贴近事物的自然运行模式。
-
-- **类的定义**
-
-  class 类{} 字面量定义
-
-- **类的使用**
-
-  let 对象名 = new 类名(); 对象名.变量名 对象名.方法名() 
-
-- **继承**
-
-  让类和类产生子父类关系，提高代码的复用性和维护性。
-
-  子类 extends 父类 
-
-  Object 顶级父类
 
 # 7、JavaScript内置对象
 
@@ -965,7 +915,7 @@ table.removeChild(tr);
 
 - **方法介绍**
 
-![](.\img\Number.png)
+    ![](./img/Number.png)
 
 - **代码实现**
 
@@ -996,7 +946,7 @@ table.removeChild(tr);
 
 - **方法介绍**
 
-![](.\img\Math.png)
+    ![](./img/Math.png)
 
 - **代码实现**
 
@@ -1037,54 +987,59 @@ table.removeChild(tr);
 
   - **构造方法**
 
-  ![](.\img\Date.png)
+    ![](./img/Date.png)
+
+    - 传入月份如果超过11，会自动计入下一年，如`new Date(2022,12)`表示2023年1月；
+    - 同理如果小于0，会自动计入上一年，如`new Date(2022,-1)`表示2021年12月
 
   - **成员方法**
 
-  ![](.\img\Date-2.png)
+    ![](./img/Date-2.png)
+
+    `getMonth()`返回值也是0~11
 
 - **代码实现**
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Date</title>
-</head>
-<body>
-    
-</body>
-<script>
-    //构造方法
-    //1. Date()  根据当前时间创建对象
-    let d1 = new Date();
-    document.write(d1 + "<br>");
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Date</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        //构造方法
+        //1. Date()  根据当前时间创建对象
+        let d1 = new Date();
+        document.write(d1 + "<br>");
 
-    //2. Date(value) 根据指定毫秒值创建对象
-    let d2 = new Date(10000);
-    document.write(d2 + "<br>");
+        //2. Date(value) 根据指定毫秒值创建对象
+        let d2 = new Date(10000);
+        document.write(d2 + "<br>");
 
-    //3. Date(year,month,[day,hours,minutes,seconds,milliseconds]) 根据指定字段创建对象(月份是0~11)
-    let d3 = new Date(2222,2,2,20,20,20);
-    document.write(d3 + "<br>");
+        //3. Date(year,month,[day,hours,minutes,seconds,milliseconds]) 根据指定字段创建对象(月份是0~11)
+        let d3 = new Date(2222,2,2,20,20,20);
+        document.write(d3 + "<br>");
 
-    //成员方法
-    //1. getFullYear() 获取年份
-    document.write(d3.getFullYear() + "<br>");
+        //成员方法
+        //1. getFullYear() 获取年份
+        document.write(d3.getFullYear() + "<br>");
 
-    //2. getMonth() 获取月份
-    document.write(d3.getMonth() + "<br>");
+        //2. getMonth() 获取月份
+        document.write(d3.getMonth() + "<br>");
 
-    //3. getDate() 获取天数
-    document.write(d3.getDate() + "<br>");
+        //3. getDate() 获取天数
+        document.write(d3.getDate() + "<br>");
 
-    //4. toLocaleString() 返回本地日期格式的字符串
-    document.write(d3.toLocaleString());
-</script>
-</html>
-```
+        //4. toLocaleString() 返回本地日期格式的字符串
+        document.write(d3.toLocaleString());
+    </script>
+    </html>
+    ```
 
 ## 7.4、String
 
@@ -1092,11 +1047,11 @@ table.removeChild(tr);
 
   - **构造方法**
 
-  ![](.\img\String.png)
+    ![](./img/String.png)
 
   - **成员方法**
 
-  ![](.\img\String-2.png)
+    ![](./img/String-2.png)
 
 - **代码实现**
 
@@ -1153,94 +1108,92 @@ table.removeChild(tr);
 
 正则表达式：是一种对字符串进行匹配的规则。
 
-![](.\img\RegExp.png)
-
 - **方法说明**
 
   - 构造方法&成员方法
 
-  ![](.\img\RegExp-2.png)
+    ![](./img/RegExp-2.png)
 
   - 规则
 
-  ![](.\img\RegExp-3.png)
+    ![](./img/RegExp-3.png)
 
 - **代码实现**
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RegExp</title>
-</head>
-<body>
-    
-</body>
-<script>
-    //1.验证手机号
-    //规则：第一位1，第二位358，第三到十一位必须是数字。总长度11
-    let reg1 = /^[1][358][0-9]{9}$/;
-    document.write(reg1.test("18688888888") + "<br>");
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RegExp</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        //1.验证手机号
+        //规则：第一位1，第二位358，第三到十一位必须是数字。总长度11
+        let reg1 = /^[1][358][0-9]{9}$/;
+        document.write(reg1.test("18688888888") + "<br>");
 
-    //2.验证用户名
-    //规则：字母、数字、下划线组成。总长度4~16
-    let reg2 = /^[a-zA-Z_0-9]{4,16}$/;
-    document.write(reg2.test("zhang_san123"));
-</script>
-</html>
-```
+        //2.验证用户名
+        //规则：字母、数字、下划线组成。总长度4~16
+        let reg2 = /^[a-zA-Z_0-9]{4,16}$/;
+        document.write(reg2.test("zhang_san123"));
+    </script>
+    </html>
+    ```
 
 ## 7.6、Array
 
 - **成员方法**
 
-![](.\img\Array.png)
+    ![](./img/Array.png)
 
 - **代码实现**
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Array</title>
-</head>
-<body>
-    
-</body>
-<script>
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Array</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>
 
-    let arr = [1,2,3,4,5];
+        let arr = [1,2,3,4,5];
 
-    //1. push(元素)    添加元素到数组的末尾
-    arr.push(6);
-    document.write(arr + "<br>");
+        //1. push(元素)    添加元素到数组的末尾
+        arr.push(6);
+        document.write(arr + "<br>");
 
-    //2. pop()         删除数组末尾的元素
-    arr.pop();
-    document.write(arr + "<br>");
+        //2. pop()         删除数组末尾的元素
+        arr.pop();
+        document.write(arr + "<br>");
 
-    //3. shift()       删除数组最前面的元素
-    arr.shift();
-    document.write(arr + "<br>");
+        //3. shift()       删除数组最前面的元素
+        arr.shift();
+        document.write(arr + "<br>");
 
-    //4. includes(元素)  判断数组中是否包含指定的元素
-    document.write(arr.includes(2) + "<br>");
+        //4. includes(元素)  判断数组中是否包含指定的元素
+        document.write(arr.includes(2) + "<br>");
 
-    //5. reverse()      反转数组元素
-    arr.reverse();
-    document.write(arr + "<br>");
+        //5. reverse()      反转数组元素
+        arr.reverse();
+        document.write(arr + "<br>");
 
-    //6. sort()         对数组元素排序
-    arr.sort();
-    document.write(arr + "<br>");
+        //6. sort()         对数组元素排序
+        arr.sort();
+        document.write(arr + "<br>");
 
-</script>
-</html>
-```
+    </script>
+    </html>
+    ```
 
 ## 7.7、Set
 
@@ -1248,49 +1201,49 @@ JavaScript 中的 Set 集合，元素唯一，存取顺序一致。
 
 - **方法说明**
 
-![](.\img\Set.png)
+    ![](./img/Set.png)
 
 - **代码实现**
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Set</title>
-</head>
-<body>
-    
-</body>
-<script>
-    // Set()   创建集合对象
-    let s = new Set();
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Set</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        // Set()   创建集合对象
+        let s = new Set();
 
-    // add(元素)   添加元素
-    s.add("a");
-    s.add("b");
-    s.add("c");
-    s.add("c");
+        // add(元素)   添加元素
+        s.add("a");
+        s.add("b");
+        s.add("c");
+        s.add("c");
 
-    // size属性    获取集合的长度
-    document.write(s.size + "<br>");    // 3
+        // size属性    获取集合的长度
+        document.write(s.size + "<br>");    // 3
 
-    // keys()      获取迭代器对象
-    let st = s.keys();
-    for(let i = 0; i < s.size; i++){
-        document.write(st.next().value + "<br>");
-    }
+        // keys()      获取迭代器对象
+        let st = s.keys();
+        for(let i = 0; i < s.size; i++){
+            document.write(st.next().value + "<br>");
+        }
 
-    // delete(元素) 删除指定元素
-    document.write(s.delete("c") + "<br>");
-    let st2 = s.keys();
-    for(let i = 0; i < s.size; i++){
-        document.write(st2.next().value + "<br>");
-    }
-</script>
-</html>
-```
+        // delete(元素) 删除指定元素
+        document.write(s.delete("c") + "<br>");
+        let st2 = s.keys();
+        for(let i = 0; i < s.size; i++){
+            document.write(st2.next().value + "<br>");
+        }
+    </script>
+    </html>
+    ```
 
 ## 7.8、Map
 
@@ -1298,51 +1251,51 @@ JavaScript 中的 Map 集合，key 唯一，存取顺序一致。
 
 - **方法说明**
 
-![](.\img\Map.png)
+    ![](./img/Map.png)
 
 - **代码实现**
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map</title>
-</head>
-<body>
-    
-</body>
-<script>
-    // Map()   创建Map集合对象
-    let map = new Map();
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Map</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        // Map()   创建Map集合对象
+        let map = new Map();
 
-    // set(key,value)  添加元素
-    map.set("张三",23);
-    map.set("李四",24);
-    map.set("李四",25);
+        // set(key,value)  添加元素
+        map.set("张三",23);
+        map.set("李四",24);
+        map.set("李四",25);
 
-    // size属性     获取集合的长度
-    document.write(map.size + "<br>");
+        // size属性     获取集合的长度
+        document.write(map.size + "<br>");
 
-    // get(key)     根据key获取value
-    document.write(map.get("李四") + "<br>");
+        // get(key)     根据key获取value
+        document.write(map.get("李四") + "<br>");
 
-    // entries()    获取迭代器对象
-    let et = map.entries();
-    for(let i = 0; i < map.size; i++){
-        document.write(et.next().value + "<br>");
-    }
+        // entries()    获取迭代器对象
+        let et = map.entries();
+        for(let i = 0; i < map.size; i++){
+            document.write(et.next().value + "<br>");
+        }
 
-    // delete(key)  根据key删除键值对
-    document.write(map.delete("李四") + "<br>");
-    let et2 = map.entries();
-    for(let i = 0; i < map.size; i++){
-        document.write(et2.next().value + "<br>");
-    }
-</script>
-</html>
-```
+        // delete(key)  根据key删除键值对
+        document.write(map.delete("李四") + "<br>");
+        let et2 = map.entries();
+        for(let i = 0; i < map.size; i++){
+            document.write(et2.next().value + "<br>");
+        }
+    </script>
+    </html>
+    ```
 
 ## 7.9、Json
 
@@ -1350,107 +1303,107 @@ JavaScript 中的 Map 集合，key 唯一，存取顺序一致。
   - 它是基于 ECMAScript 规范的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。
   - 简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。易于人阅读和编写，同时也易于计算机解析和 生成，并有效的提升网络传输效率。
 
-  ![](.\img\json-2.png)
+  ![](./img/json-2.png)
 
 - **方法说明**
 
-![](.\img\json-常用方法.png)
+    ![](./img/json-常用方法.png)
 
 - **代码实现**
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON</title>
-</head>
-<body>
-    
-</body>
-<script>
-    //定义天气对象
-    let weather = {
-        city : "北京",
-        date : "2088-08-08",
-        wendu : "10° ~ 23°",
-        shidu : "22%"
-    };
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JSON</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        //定义天气对象
+        let weather = {
+            city : "北京",
+            date : "2088-08-08",
+            wendu : "10° ~ 23°",
+            shidu : "22%"
+        };
 
-    //1.将天气对象转换为JSON格式的字符串
-    let str = JSON.stringify(weather);
-    document.write(str + "<br>");
+        //1.将天气对象转换为JSON格式的字符串
+        let str = JSON.stringify(weather);
+        document.write(str + "<br>");
 
-    //2.将JSON格式字符串解析成JS对象
-    let weather2 = JSON.parse(str);
-    document.write("城市：" + weather2.city + "<br>");
-    document.write("日期：" + weather2.date + "<br>");
-    document.write("温度：" + weather2.wendu + "<br>");
-    document.write("湿度：" + weather2.shidu + "<br>");
-</script>
-</html>
-```
+        //2.将JSON格式字符串解析成JS对象
+        let weather2 = JSON.parse(str);
+        document.write("城市：" + weather2.city + "<br>");
+        document.write("日期：" + weather2.date + "<br>");
+        document.write("温度：" + weather2.wendu + "<br>");
+        document.write("湿度：" + weather2.shidu + "<br>");
+    </script>
+    </html>
+    ```
 
 ## 7.10、表单校验
 
 - **案例说明**
 
-![](.\img\案例-表单校验.png)
+    ![](./img/案例-表单校验.png)
 
 - **代码实现**
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>表单校验</title>
-    <link rel="stylesheet" href="css/style.css"></link>
-</head>
-<body>
-    <div class="login-form-wrap">
-        <h1>黑马程序员</h1>
-        <form class="login-form" action="#" id="regist" method="get" autocomplete="off">
-            <label>
-                <input type="text" id="username" name="username" placeholder="Username..." value="">
-            </label>
-            <label>
-                <input type="password" id="password" name="password" placeholder="Password..." value="">
-            </label>
-            <input type="submit" value="注册">
-        </form>
-    </div>
-</body>
-<script>
-    //1.为表单绑定提交事件
-    document.getElementById("regist").onsubmit = function() {
-        //2.获取填写的用户名和密码
-        let username = document.getElementById("username").value;
-        let password = document.getElementById("password").value;
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>表单校验</title>
+        <link rel="stylesheet" href="css/style.css"></link>
+    </head>
+    <body>
+        <div class="login-form-wrap">
+            <h1>黑马程序员</h1>
+            <form class="login-form" action="#" id="regist" method="get" autocomplete="off">
+                <label>
+                    <input type="text" id="username" name="username" placeholder="Username..." value="">
+                </label>
+                <label>
+                    <input type="password" id="password" name="password" placeholder="Password..." value="">
+                </label>
+                <input type="submit" value="注册">
+            </form>
+        </div>
+    </body>
+    <script>
+        //1.为表单绑定提交事件
+        document.getElementById("regist").onsubmit = function() {
+            //2.获取填写的用户名和密码
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
 
-        //3.判断用户名是否符合规则  4~16位纯字母
-        let reg1 = /^[a-zA-Z]{4,16}$/;
-        if(!reg1.test(username)) {
-            alert("用户名不符合规则，请输入4到16位的纯字母！");
-            return false;
+            //3.判断用户名是否符合规则  4~16位纯字母
+            let reg1 = /^[a-zA-Z]{4,16}$/;
+            if(!reg1.test(username)) {
+                alert("用户名不符合规则，请输入4到16位的纯字母！");
+                return false;
+            }
+
+            //4.判断密码是否符合规则  6位纯数字
+            let reg2 = /^[\d]{6}$/;
+            if(!reg2.test(password)) {
+                alert("密码不符合规则，请输入6位纯数字的密码！");
+                return false;
+            }
+
+            //5.如果所有条件都不满足，则提交表单
+            return true;
         }
-
-        //4.判断密码是否符合规则  6位纯数字
-        let reg2 = /^[\d]{6}$/;
-        if(!reg2.test(password)) {
-            alert("密码不符合规则，请输入6位纯数字的密码！");
-            return false;
-        }
-
-        //5.如果所有条件都不满足，则提交表单
-        return true;
-    }
-    
-</script>
-</html>
-```
+        
+    </script>
+    </html>
+    ```
 
 ## 7.11、小结
 
@@ -1465,74 +1418,74 @@ JavaScript 中的 Map 集合，key 唯一，存取顺序一致。
 - BOM(Browser Object Model)：浏览器对象模型。
 - 将浏览器的各个组成部分封装成不同的对象，方便我们进行操作。
 
-![](.\img\BOM介绍.png)
+    ![](./img/BOM介绍.png)
 
 ## 8.1、Windows窗口对象
 
 - **定时器**
-  - 唯一标识 setTimeout(功能，毫秒值)：设置一次性定时器。
-  - clearTimeout(标识)：取消一次性定时器。
-  - 唯一标识 setInterval(功能，毫秒值)：设置循环定时器。
-  - clearInterval(标识)：取消循环定时器。
+  - `唯一标识 setTimeout(功能, 毫秒值)`：设置一次性定时器。
+  - `clearTimeout(标识)`：取消一次性定时器。
+  - `唯一标识 setInterval(功能, 毫秒值)`：设置循环定时器。
+  - `clearInterval(标识)`：取消循环定时器。
 - **加载事件**
-  - window.onload：在页面加载完毕后触发此事件的功能。
+  - `window.onload`：在页面加载完毕后触发此事件的功能。
 - **代码实现**
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>window窗口对象</title>
-    <script>
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>window窗口对象</title>
+        <script>
+            //一、定时器
+            function fun(){
+                alert("该起床了！");
+            }
+        
+            //设置一次性定时器
+            //let d1 = setTimeout("fun()",3000);
+            //取消一次性定时器
+            //clearTimeout(d1);
+        
+            //设置循环定时器
+            //let d2 = setInterval("fun()",3000);
+            //取消循环定时器
+            //clearInterval(d2);
+        
+            //加载事件
+            window.onload = function(){
+                let div = document.getElementById("div");
+                alert(div);
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div">dddd</div>
+    </body>
+    <!-- <script>
         //一、定时器
         function fun(){
             alert("该起床了！");
         }
-    
+
         //设置一次性定时器
         //let d1 = setTimeout("fun()",3000);
         //取消一次性定时器
         //clearTimeout(d1);
-    
+
         //设置循环定时器
         //let d2 = setInterval("fun()",3000);
         //取消循环定时器
         //clearInterval(d2);
-    
+
         //加载事件
-        window.onload = function(){
-            let div = document.getElementById("div");
-            alert(div);
-        }
-    </script>
-</head>
-<body>
-    <div id="div">dddd</div>
-</body>
-<!-- <script>
-    //一、定时器
-    function fun(){
-        alert("该起床了！");
-    }
-
-    //设置一次性定时器
-    //let d1 = setTimeout("fun()",3000);
-    //取消一次性定时器
-    //clearTimeout(d1);
-
-    //设置循环定时器
-    //let d2 = setInterval("fun()",3000);
-    //取消循环定时器
-    //clearInterval(d2);
-
-    //加载事件
-    let div = document.getElementById("div");
-    alert(div);
-</script> -->
-</html>
-```
+        let div = document.getElementById("div");
+        alert(div);
+    </script> -->
+    </html>
+    ```
 
 ## 8.2、Location地址栏对象
 
@@ -1540,51 +1493,51 @@ JavaScript 中的 Map 集合，key 唯一，存取顺序一致。
 
   就是浏览器的地址栏。我们可以通过为该属性设置新的 URL，使浏览器读取并显示新的 URL 的内容。
 
-  ![](.\img\Location-注册成功.png)
+  ![](./img/Location-注册成功.png)
 
 - **代码实现**
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>location地址栏对象</title>
-    <style>
-        p{
-            text-align: center;
-        }
-        span{
-            color: red;
-        }
-    </style>
-</head>
-<body>
-    <p>
-        注册成功！<span id="time">5</span>秒之后自动跳转到首页...
-    </p>
-</body>
-<script>
-    //1.定义方法。改变秒数，跳转页面
-    let num = 5;
-    function showTime() {
-        num--;
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>location地址栏对象</title>
+        <style>
+            p{
+                text-align: center;
+            }
+            span{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+            注册成功！<span id="time">5</span>秒之后自动跳转到首页...
+        </p>
+    </body>
+    <script>
+        //1.定义方法。改变秒数，跳转页面
+        let num = 5;
+        function showTime() {
+            num--;
 
-        if(num <= 0) {
-            //跳转首页
-            location.href = "index.html";
+            if(num <= 0) {
+                //跳转首页
+                location.href = "index.html";
+            }
+
+            let span = document.getElementById("time");
+            span.innerHTML = num;
         }
 
-        let span = document.getElementById("time");
-        span.innerHTML = num;
-    }
-
-    //2.设置循环定时器，每1秒钟执行showTime方法
-    setInterval("showTime()",1000);
-</script>
-</html>
-```
+        //2.设置循环定时器，每1秒钟执行showTime方法
+        setInterval("showTime()",1000);
+    </script>
+    </html>
+    ```
 
 ## 8.3、案例-动态广告
 
@@ -1616,14 +1569,14 @@ setTimeout(function(){
 ```js
 //2.设置定时器，3秒后隐藏广告图片
 setTimeout(function(){
-let img = document.getElementById("ad_big");
-img.style.display = "none";
+    let img = document.getElementById("ad_big");
+    img.style.display = "none";
 },6000);
 ```
 
 ## 8.4、小结
 
-- **BOM(Browser Object Model)：**浏览器对象模型。
+- **BOM(Browser Object Model)：** 浏览器对象模型。
 - **将浏览器的各个组成部分封装成不同的对象，方便我们进行操作。**
   - Window：窗口对象 
   - Location：地址栏对象 
@@ -1640,13 +1593,13 @@ img.style.display = "none";
 
 **封装思想**
 
-- **封装：**将复杂的操作进行封装隐藏，对外提供更加简单的操作。
+- **封装：** 将复杂的操作进行封装隐藏，对外提供更加简单的操作。
 
 - **获取元素的方法**
 
-  - document.getElementById(id值)：根据 id 值获取元素 
-  - document.getElementsByName(name值)：根据 name 属性值获取元素们 
-  - document.getElementsByTagName(标签名)：根据标签名获取元素们
+  - `document.getElementById(id值)`：根据 id 值获取**元素**
+  - `document.getElementsByName(name值)`：根据 name 属性值获取**元素列表**
+  - `document.getElementsByTagName(标签名)`：根据标签名获取**元素列表**
 
 - **代码实现**
 
