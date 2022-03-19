@@ -36,15 +36,14 @@ Spring是分层的JavaSE/EE应用full-stack轻量级开源框架
 
 ### 1.6)Spring优势
 
-| Spring的优势             |          |
-| ------------------------ | -------- |
-| 方便解耦，简化开发       | 第一天   |
-| 方便集成各种优秀框架     | 第一天   |
-| 方便程序的测试           | 第二天   |
-| AOP编程的支持            | 第三天   |
-| 声明式事务的支持         | 第四天   |
-| 降低JavaEE API的使用难度 | 第四天   |
-| Java源码是经典学习范例   | 长期学习 |
+| Spring的优势             |
+| ------------------------ |
+| 方便解耦，简化开发       |
+| 方便集成各种优秀框架     |
+| 方便程序的测试           |
+| AOP编程的支持            |
+| 声明式事务的支持         |
+| 降低JavaEE API的使用难度 |
 
 ## 2)IoC简介
 
@@ -60,7 +59,7 @@ Spring是分层的JavaSE/EE应用full-stack轻量级开源框架
 
 ![1590636557953](./assets/1590636557953.png)
 
-- 程序书写的目标：高内聚，低耦合
+- 程序书写的目标：**高内聚，低耦合**
   - 就是同一个模块内的各个元素之间要高度紧密，但是各个模块之间的相互依存度却不要那么紧密
 
 ### 2.3)工厂模式发展史
@@ -77,13 +76,11 @@ Spring是分层的JavaSE/EE应用full-stack轻量级开源框架
 
 ### 2.5)IoC
 
-- IoC（Inversion Of Control）控制反转，Spring反向控制应用程序所需要使用的外部资源
+- IoC（Inversion Of Control）控制反转，**Spring反向控制应用程序所需要使用的外部资源**
 
 - Spring控制的资源全部放置在Spring容器中，该容器称为IoC容器
 
   ![1590636750876](./assets/1590636750876.png)
-
-
 
 
 
@@ -99,15 +96,15 @@ Spring是分层的JavaSE/EE应用full-stack轻量级开源框架
 
 ### 3.2)IoC入门案例制作步骤
 
-1.导入spring坐标（5.1.9.release）
+1. 导入spring坐标（5.1.9.release）
 
-2.编写业务层与表现层（模拟）接口与实现类
+2. 编写业务层与表现层（模拟）接口与实现类
 
-3.建立spring配置文件
+3. 建立spring配置文件
 
-4.配置所需资源（Service）为spring控制的资源
+4. 配置所需资源（Service）为spring控制的资源
 
-5.表现层（App）通过spring获取资源（Service实例）
+5. 表现层（App）通过spring获取资源（Service实例）
 
 ![1590637353510](./assets/1590637353510.png)
 
@@ -171,7 +168,7 @@ public class UserApp {
 
 ### 4.1)bean
 
-- 名称：bean
+- 名称：`bean`
 
 - 类型：**标签**
 
@@ -193,15 +190,15 @@ public class UserApp {
   <bean id="beanId" name="beanName1,beanName2" class="ClassName"></bean>
   ```
 
-  ​	id：bean的名称，通过id值获取bean
+  ​	`id`：bean的名称，通过id值获取bean
 
-  ​	class：bean的类型
+  ​	`class`：bean的类型
 
-  ​	name：bean的名称，可以通过name值获取bean，用于多人配合时给bean起别名
+  ​	`name`：bean的名称，可以通过name值获取bean，用于多人配合时给bean起别名
 
 ### 4.2)bean属性scope
 
-- 名称：scope
+- 名称：`scope`
 
 - 类型：**属性**
 
@@ -217,13 +214,14 @@ public class UserApp {
 
 - 取值：
 
-  - singleton：设定创建出的对象保存在spring容器中，是一个单例的对象
-  - prototype：设定创建出的对象保存在spring容器中，是一个非单例的对象
-  - request、session、application、 websocket ：设定创建出的对象放置在web容器对应的位置
+  - `singleton`：设定创建出的对象保存在spring容器中，是一个单例的对象，默认值
+  - `prototype`：设定创建出的对象保存在spring容器中，是一个非单例的对象
+  > 单例在加载容器时创建，非单例在获取对象时创建
+  - `request`、`session`、`application`、 `websocket` ：设定创建出的对象放置在web容器对应的位置
 
 ### 4.3)bean生命周期
 
-- 名称：init-method，destroy-method
+- 名称：`init-method`，`destroy-method`
 
 - 类型：**属性**
 
@@ -251,7 +249,7 @@ public class UserApp {
 
 ### 4.4)bean对象创建方式（了解）
 
-(1)factory-bean
+(1)`factory-bean`
 
 - 名称：factory-bean
 
@@ -259,7 +257,7 @@ public class UserApp {
 
 - 归属：bean标签
 
-- 作用：定义bean对象创建方式，使用静态工厂的形式创建bean，兼容早期遗留系统的升级工作
+- 作用：定义bean对象创建方式，使用**静态工厂**的形式创建bean，兼容早期遗留系统的升级工作
 
 - 格式：
 
@@ -273,7 +271,7 @@ public class UserApp {
   
   - class属性必须配置成静态工厂的类名
 
-(2)factory-bean，factory-method
+(2)`factory-bean`，`factory-method`
 
 - 名称：factory-bean，factory-method
 
@@ -281,7 +279,7 @@ public class UserApp {
 
 - 归属：bean标签
 
-- 作用：定义bean对象创建方式，使用实例工厂的形式创建bean，兼容早期遗留系统的升级工作
+- 作用：定义bean对象创建方式，使用**实例工厂**的形式创建bean，兼容早期遗留系统的升级工作
 
 - 格式：
 
@@ -305,21 +303,11 @@ public class UserApp {
 
 ![1590659778689](./assets/1590659778689.png)
 
-IoC与DI的关系
-
 - IoC与DI是同一件事站在不同角度看待问题
-
-- 半杯水
-
-- 
-
-- 
-
-  ![1590659854696](./assets/1590659854696.png)set注入（主流）
 
 ### 4.6)set注入（主流）
 
-- 名称：property
+- 名称：`property`
 
 - 类型：**标签**
 
@@ -329,7 +317,7 @@ IoC与DI的关系
 
 - 格式：
 
-  ```java
+  ```xml
   <bean>
   	<property />
   </bean>
@@ -341,17 +329,17 @@ IoC与DI的关系
   <property name="propertyName" value="propertyValue" ref="beanId"/>
   ```
 
-​	name：对应bean中的属性名，要求该属性必须提供可访问的set方法（严格规范为此名称是set方法对应名称）
+​	`name`：对应bean中的属性名，要求该属性必须提供可访问的set方法（严格规范为此名称是set方法对应名称）
 
-​	value：设定非引用类型属性对应的值，不能与ref同时使用
+​	`value`：设定非引用类型属性对应的值，不能与ref同时使用
 
-​	ref：设定引用类型属性对应bean的id ，不能与value同时使用
+​	`ref`：设定引用类型属性对应bean的id ，不能与value同时使用
 
-- 注意：一个bean可以有多个property标签
+- 注意：一个bean可以有多个property标签；此外，**使用set注入需要有无参构造方法**。
 
 ### 4.7)构造器注入（了解）
 
-- 名称：constructor-arg
+- 名称：`constructor-arg`
 
 - 类型：**标签**
 
@@ -373,21 +361,21 @@ IoC与DI的关系
   <constructor-arg name="argsName" value="argsValue />
   ```
 
-​	name：对应bean中的构造方法所携带的参数名
+​	`name`：对应bean中的构造方法所携带的参数名
 
-​	value：设定非引用类型构造方法参数对应的值，不能与ref同时使用
+​	`value`：设定非引用类型构造方法参数对应的值，不能与ref同时使用
 
-其他属性：
+- 其他属性：
 
-```xml
-<constructor-arg index="arg-index" type="arg-type" ref="beanId"/>
-```
+  ```xml
+  <constructor-arg index="arg-index" type="arg-type" ref="beanId"/>
+  ```
 
-​	ref：设定引用类型构造方法参数对应bean的id ，不能与value同时使用
+​	`ref`：设定引用类型构造方法参数对应bean的id ，不能与value同时使用
 
-​	type ：设定构造方法参数的类型，用于按类型匹配参数或进行类型校验
+​	`type` ：设定构造方法参数的类型，用于按类型匹配参数或进行类型校验
 
-​	index ：设定构造方法参数的位置，用于按位置匹配参数，参数index值从0开始计数
+​	`index` ：设定构造方法参数的位置，用于按位置匹配参数，参数index值从0开始计数
 
 - 注意：一个bean可以有多个constructor-arg标签
 
@@ -409,7 +397,7 @@ IoC与DI的关系
   </property>
   ```
 
-(1)集合类型数据注入——list
+(1)集合类型数据注入——`list`
 
 ```xml
 <property name="al">
@@ -420,7 +408,7 @@ IoC与DI的关系
 </property>
 ```
 
-(2)集合类型数据注入——props
+(2)集合类型数据注入——`props`
 
 ```xml
 <property name="properties">
@@ -431,7 +419,7 @@ IoC与DI的关系
 </property>
 ```
 
-(3)集合类型数据注入——array （了解）
+(3)集合类型数据注入——`array` （了解）
 
 ```xml
 <property name="arr">
@@ -442,7 +430,7 @@ IoC与DI的关系
 </property>
 ```
 
-(4)集合类型数据注入——set（了解）
+(4)集合类型数据注入——`set`（了解）
 
 ```xml
  <property name="hs">
@@ -453,7 +441,7 @@ IoC与DI的关系
 </property>
 ```
 
-(5)集合类型数据注入——map（了解）
+(5)集合类型数据注入——`map`（了解）
 
 ```xml
 <property name="hm">
@@ -466,7 +454,7 @@ IoC与DI的关系
 
 ### 4.9)使用p命名空间简化配置（了解）
 
-- 名称：p:propertyName，p:propertyName-ref
+- 名称：`p:propertyName`，`p:propertyName-ref`
 
 - 类型：**属性**
 
@@ -499,8 +487,6 @@ IoC与DI的关系
          />
   ```
 
-  
-
 ### 4.10)SpEL （了解）
 
 - Spring提供了对EL表达式的支持，统一属性注入格式
@@ -519,23 +505,23 @@ IoC与DI的关系
 
 - 注意：所有属性值不区分是否引用类型，统一使用value赋值
 
-- 所有格式统一使用  value=“********”
+- 所有格式统一使用  `value="..."`
 
-  - 常量  #{10}  #{3.14}  #{2e5}  #{‘itcast’}
+  - 常量:  `#{10}`  `#{3.14}`  `#{2e5}`  `#{'itcast'}`
 
-  - 引用bean  #{beanId}    
+  - 引用bean:  `#{beanId}`  
 
-  - 引用bean属性  #{beanId.propertyName}
+  - 引用bean属性:  `#{beanId.propertyName}`
 
-  - 引用bean方法  beanId.methodName().method2()
+  - 引用bean方法:  `beanId.methodName().method2()`
 
-  - 引用静态方法  T(java.lang.Math).PI
+  - 引用静态方法:  `T(java.lang.Math).PI`
 
-  - 运算符支持  #{3 lt 4 == 4 ge 3}
+  - 运算符支持:  `#{3 lt 4 == 4 ge 3}`
 
-  - 正则表达式支持  #{user.name matches‘[a-z]{6,}’}
+  - 正则表达式支持:  `#{user.name matches'[a-z]{6,}'}`
 
-  - 集合支持  #{likes[3]}
+  - 集合支持:  `#{likes[3]}`
 
 - 案例：
 
@@ -554,33 +540,40 @@ IoC与DI的关系
 
 - 操作步骤
 
-  1.准备外部properties文件
+  1. 准备外部properties文件
 
-  2.开启context命名空间支持
+  2. 开启context命名空间支持
+
+    ```xml
+    <beans ... xmlns:context="http://www.springframework.org/schema/context" ...>  
+    ```
+
+  3. 加载指定的properties文件
+
+    ```xml
+    <context:property-placeholder location="classpath:filename.properties">
+    ```
+
+  4. 使用加载的数据
 
   ```xml
-  xmlns:context="http://www.springframework.org/schema/context"
+  <property name="propertyName" value="${propertiesName}"/>
   ```
 
-​		3.加载指定的properties文件
+- 注意：
+  - 开启命名空间还需要增加如下内容：
+    ```xml
+    <beans ... xsl:schemaLocation="... 
+      http://www.springframework.org/schema/context
+      https://www.springframework.org/schema/context/spring-context.xsd ...">
+    ```
+  - `location`中的classpath是固定前缀，如果需要加载所有的properties文件，可以使用`*.properties`表示加载所有的properties文件
 
-```xml
-<context:property-placeholder location="classpath:filename.properties">
-```
-
-​		4.使用加载的数据
-
-```xml
-<property name="propertyName" value="${propertiesName}"/>
-```
-
-- 注意：如果需要加载所有的properties文件，可以使用`*.properties`表示加载所有的properties文件
-
-- 注意：读取数据使用**${propertiesName}**格式进行，其中**propertiesName**指properties文件中的属性名
+  - 读取数据使用`${propertiesName}`格式进行，其中**propertiesName**指properties文件中的属性名
 
 ### 4.12)团队开发
 
-- 名称：import
+- 名称：`import`
 
 - 类型：**标签**
 
@@ -602,7 +595,7 @@ IoC与DI的关系
   <import resource=“config.xml"/>
   ```
 
-​	resource：加载的配置文件名
+​	`resource`：加载的配置文件名
 
 - Spring容器加载多个配置文件
 
@@ -620,21 +613,21 @@ IoC与DI的关系
 
 ### 4.13)ApplicationContext
 
-1.ApplicationContext是一个接口，提供了访问spring容器的API
+1. `ApplicationContext`是一个接口，提供了访问spring容器的API
 
-2.ClassPathXmlApplicationContext是一个类，实现了上述功能
+2. `ClassPathXmlApplicationContext`是一个类，实现了上述功能
 
-3.ApplicationContext的顶层接口是BeanFactory
+3. ApplicationContext的顶层接口是`BeanFactory`
 
-4.BeanFactory定义了bean相关的最基本操作
+4. BeanFactory定义了bean相关的最基本操作
 
-5.ApplicationContext在BeanFactory基础上追加了若干新功能
+5. ApplicationContext在BeanFactory基础上追加了若干新功能
 
 **对比BeanFactory**
 
-1.BeanFactory创建的bean采用延迟加载形式，使用才创建
+1. BeanFactory创建的bean采用**延迟加载**形式，使用才创建(如调用getBean)
 
-2.ApplicationContext创建的bean默认采用立即加载形式
+2. ApplicationContext创建的bean默认采用**立即加载**形式(单例)
 
 **FileSystemXmlApplicationContext**
 
@@ -680,99 +673,91 @@ UserService userService = (UserService)bf.getBean("userService");
 
 ### **5.2)案例分析**
 
-非spring环境
+**非spring环境**
 
-1.实体类与表
+1. 实体类与表
 
-2.业务层接口与实现
+2. 业务层接口与实现
 
-3.数据层接口
+3. 数据层接口
 
-4.Mybatis核心配置
+4. Mybatis核心配置
 
-5.Mybatis映射配置
+5. Mybatis映射配置
 
-6.客户端程序测试功能
+6. 客户端程序测试功能
 
 
 
-spring环境
+**spring环境**
 
-1.实体类与表
+1. 实体类与表
 
-2.业务层接口与实现（提供数据层接口的注入操作）
+2. 业务层接口与实现（提供数据层接口的注入操作）
 
-3.数据层接口
+3. 数据层接口
 
-4.Mybatis核心配置（交给spring控制，该文件省略）
+4. Mybatis核心配置（交给spring控制，该文件省略）
 
-5.Mybatis映射配置
+5. Mybatis映射配置
 
-6.客户端程序测试功能（使用spring方式获取bean）
+6. 客户端程序测试功能（使用spring方式获取bean）
 
-7.Spring核心配置文件
+7. Spring核心配置文件
 
-8.Druid数据源的应用（可选）
+8. Druid数据源的应用（可选）
 
-9.Spring整合MyBatis
+9. Spring整合MyBatis
 
 
 
 ### 5.3)案例制作步骤——基础准备工作
 
-- 环境准备
+**环境准备**
 
-1.导入Spring坐标，MyBatis坐标，MySQL坐标，Druid坐标
+1. 导入Spring坐标，MyBatis坐标，MySQL坐标，Druid坐标
 
-- 业务类与接口准备
+**业务类与接口准备**
 
-2.创建数据库表，并制作相应的实体类Account
+2. 创建数据库表，并制作相应的实体类Account
 
-3.定义业务层接口与数据层接口
+3. 定义业务层接口与数据层接口
 
-4.在业务层调用数据层接口，并实现业务方法的调用
+4. 在业务层调用数据层接口，并实现业务方法的调用
 
-- 基础配置文件
+**基础配置文件**
 
-5.jdbc.properties
+5. jdbc.properties
 
-6.MyBatis映射配置文件
+6. MyBatis映射配置文件
 
 ### 5.4)案例制作步骤——整合准备工作
 
-- 整合前基础准备工作
+**整合前基础准备工作**
 
-1.spring配置文件，加上context命名空间，用于加载properties文件
+1. spring配置文件，加上context命名空间，用于加载properties文件
 
-2.开启加载properties文件
+2. 开启加载properties文件
 
-3.配置数据源druid（备用）
+3. 配置数据源druid（备用）
 
-4.定义service层bean，注入dao层bean
+4. 定义service层bean，注入dao层bean
 
-5.dao的bean无需定义，使用代理自动生成
+5. dao的bean无需定义，使用代理自动生成
 
 ### 5.5)案例制作步骤——整合工作
 
-- 整合工作
+**整合工作**
 
-1.导入Spring整合MyBatis坐标
+1. 导入Spring整合MyBatis坐标
 
-2.将mybatis配置成spring管理的bean（SqlSessionFactoryBean）
+2. 将mybatis配置成spring管理的bean
+​ - 数据源转换和类型别名（SqlSessionFactoryBean）
+​ - 映射转换（MapperScannerConfigurer）
 
-​	-将原始配置文件中的所有项，转入到当前配置中
+3. 通过spring加载（自动）mybatis的映射配置文件到spring环境中
 
-​	数据源转换
-
-​	映射转换
-
-3.通过spring加载mybatis的映射配置文件到spring环境中
-
-4.设置类型别名
-
-- 测试结果
-
-5.使用spring环境加载业务层bean，执行操作
+4. 使用spring环境加载业务层bean，执行操作
 
 ### **小节**
 
