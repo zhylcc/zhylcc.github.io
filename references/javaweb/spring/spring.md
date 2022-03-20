@@ -83,7 +83,6 @@ Spring是分层的JavaSE/EE应用full-stack轻量级开源框架
   ![1590636750876](./assets/1590636750876.png)
 
 
-
 ## 3)入门案例
 
 ### 3.1)案例环境说明
@@ -324,16 +323,18 @@ public class UserApp {
   ```
 
 - 基本属性：
+  
+  ​`name`：对应bean中的属性名，要求该属性必须提供可访问的set方法（严格规范为此名称是set方法对应名称）。
+
+  `value`：设定非引用类型属性对应的值，不能与ref同时使用。
+
+  ​`ref`：设定引用类型属性对应bean的id ，不能与value同时使用。
 
   ```xml
-  <property name="propertyName" value="propertyValue" ref="beanId"/>
+  <bean>
+    <property name="propertyName" value="propertyValue" ref="beanId" />
+  </bean>
   ```
-
-​	`name`：对应bean中的属性名，要求该属性必须提供可访问的set方法（严格规范为此名称是set方法对应名称）
-
-​	`value`：设定非引用类型属性对应的值，不能与ref同时使用
-
-​	`ref`：设定引用类型属性对应bean的id ，不能与value同时使用
 
 - 注意：一个bean可以有多个property标签；此外，**使用set注入需要有无参构造方法**。
 
@@ -361,9 +362,9 @@ public class UserApp {
   <constructor-arg name="argsName" value="argsValue />
   ```
 
-​	`name`：对应bean中的构造方法所携带的参数名
+  ​`name`：对应bean中的构造方法所携带的参数名
 
-​	`value`：设定非引用类型构造方法参数对应的值，不能与ref同时使用
+  ​`value`：设定非引用类型构造方法参数对应的值，不能与ref同时使用
 
 - 其他属性：
 
@@ -371,13 +372,14 @@ public class UserApp {
   <constructor-arg index="arg-index" type="arg-type" ref="beanId"/>
   ```
 
-​	`ref`：设定引用类型构造方法参数对应bean的id ，不能与value同时使用
+  ​`ref`：设定引用类型构造方法参数对应bean的id ，不能与value同时使用
 
-​	`type` ：设定构造方法参数的类型，用于按类型匹配参数或进行类型校验
+  ​`type` ：设定构造方法参数的类型，用于按类型匹配参数或进行类型校验
 
-​	`index` ：设定构造方法参数的位置，用于按位置匹配参数，参数index值从0开始计数
+  ​`index` ：设定构造方法参数的位置，用于按位置匹配参数，参数index值从0开始计数
 
 - 注意：一个bean可以有多个constructor-arg标签
+
 
 ### 4.8)集合类型数据注入
 
@@ -465,13 +467,17 @@ public class UserApp {
 - 格式：
 
   ```xml
-  <bean p:propertyName="propertyValue" p:propertyName-ref="beanId"/>
+  <beans>
+    <bean p:propertyName="propertyValue" p:propertyName-ref="beanId"/>
+  </beans>
   ```
 
 - 注意：使用p命令空间需要先开启spring对p命令空间的的支持，在beans标签中添加对应空间支持
 
   ```xml
   <beans xmlns="http://www.springframework.org/schema/beans"    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    xmlns:p="http://www.springframework.org/schema/p"       xsi:schemaLocation="http://www.springframework.org/schema/beans     https://www.springframework.org/schema/beans/spring-beans.xsd">
+  <!-- ... -->
+  </beans>
   ```
 
   后续课程中还将开启其他的命名空间，方式同上
@@ -479,13 +485,14 @@ public class UserApp {
 - 案例：
 
   ```xml
-   <bean
-         id="userService"
-         class="com.itheima.service.impl.UserServiceImpl"
-         p:userDao-ref="userDao"
-         p:bookDao-ref="bookDao"
-         />
+  <bean
+    id="userService"
+    class="com.itheima.service.impl.UserServiceImpl"
+    p:userDao-ref="userDao"
+    p:bookDao-ref="bookDao"
+    />
   ```
+
 
 ### 4.10)SpEL （了解）
 
@@ -500,7 +507,7 @@ public class UserApp {
 - 格式：
 
   ```xml
-  <property value="EL"></bean>
+  <bean><property value="EL"></bean>
   ```
 
 - 注意：所有属性值不区分是否引用类型，统一使用value赋值
@@ -566,6 +573,8 @@ public class UserApp {
     <beans ... xsl:schemaLocation="... 
       http://www.springframework.org/schema/context
       https://www.springframework.org/schema/context/spring-context.xsd ...">
+    <!-- ... -->
+    </beans>
     ```
   - `location`中的classpath是固定前缀，如果需要加载所有的properties文件，可以使用`*.properties`表示加载所有的properties文件
 
@@ -659,7 +668,7 @@ UserService userService = (UserService)bf.getBean("userService");
 
 ## 5)综合案例
 
-### **5.1)案例介绍**
+### 5.1)案例介绍
 
 - 使用spring整合mybatis技术，完成账户模块（Account）的基础增删改查功能
 
@@ -671,7 +680,7 @@ UserService userService = (UserService)bf.getBean("userService");
 
   - 余额：money
 
-### **5.2)案例分析**
+### 5.2)案例分析
 
 **非spring环境**
 
@@ -759,7 +768,7 @@ UserService userService = (UserService)bf.getBean("userService");
 
 4. 使用spring环境加载业务层bean，执行操作
 
-### **小节**
+### 小节
 
 - 需要专用的spring整合mybatis的jar包
 
@@ -1166,7 +1175,7 @@ UserService userService = (UserService)bf.getBean("userService");
   }
   ```
 
-### **3.2)依赖加载应用场景**
+### 3.2)依赖加载应用场景
 
 @DependsOn
 
@@ -1255,13 +1264,13 @@ public class UserServiceTest {
 
 ![1591024936518](./assets/1591024936518.png)
 
-### **5.2)组件扫描器**
+### 5.2)组件扫描器
 
 - 开发过程中，需要根据需求加载必要的bean，排除指定bean
 
 ![1591024975438](./assets/1591024975438.png)
 
-### **5.3)设定组件扫描加载过滤器**
+### 5.3)设定组件扫描加载过滤器
 
 - 名称：@ComponentScan
 
@@ -1289,7 +1298,7 @@ public class UserServiceTest {
 
 ​	`type`：设置过滤器类型
 
-### **5.4)自定义组件过滤器**
+### 5.4)自定义组件过滤器
 
 - 名称：`TypeFilter`
 
@@ -1312,7 +1321,7 @@ public class UserServiceTest {
   }
   ```
 
-### **5.5)自定义导入器**
+### 5.5)自定义导入器
 
 - bean只有通过配置才可以进入spring容器，被spring加载并控制
 
@@ -1350,7 +1359,7 @@ public class UserServiceTest {
   }
   ```
 
-### **5.6)自定义注册器**
+### 5.6)自定义注册器
 
 - 名称：`ImportBeanDefinitionRegistrar`
 
@@ -1505,13 +1514,13 @@ public class UserServiceTest {
 
   - 当监控到**切入点**方法被运行，使用**代理**机制，动态创建**目标对象**的**代理对象**，根据**通知类别**，在**代理对象**的对应位置将**通知**对应的功能**织入**，完成完整的代码逻辑并运行
 
-### 2.2)AOP开发方式
+- AOP开发方式
 
-- XML方式
+  - XML方式
 
-- XML+注解方式
+  - XML+注解方式
 
-- 注解方式
+  - 注解方式
 
 ### 2.3)入门案例制作分析
 
@@ -1524,7 +1533,6 @@ public class UserServiceTest {
 4. 使用配置的方式描述被抽取功能的位置，并描述被抽取功能与对应位置的关系
 
 5. 运行程序
-
 
 
 **步骤一 导入坐标**
@@ -1563,7 +1571,7 @@ public class UserServiceTest {
 
 ## 3)AOP配置（XML）
 
-### 3.1)**AspectJ**
+### 3.1)AspectJ
 
 - Aspect（切面）用于描述切入点与通知间的关系，是AOP编程中的一个概念
 
@@ -1648,13 +1656,13 @@ public class UserServiceTest {
 
   - `expression` ：切入点表达式
 
-### **3.3)切入点**
+### 3.3)切入点
 
 - 切入点描述的是某个方法
 
 - 切入点表达式是一个快速匹配方法描述的通配格式，类似于正则表达式
 
-### **3.4)切入点表达式的组成**
+### 3.4)切入点表达式的组成
 
 - 切入点描述的是某个方法
 
@@ -1702,7 +1710,7 @@ public class UserServiceTest {
 
 - reference pointcut ：……
 
-#### 3.4.2)切入点表达式——**通配符**
+#### 3.4.2)切入点表达式——通配符
 
 - *：单个独立的任意符号，可以独立出现，也可以作为前缀或者后缀的匹配符出现
 
@@ -1760,7 +1768,7 @@ execution(public User com.itheima.service.UserService.findById())
 execution(List com.itheima.service.*Service+.findAll(..))
 ```
 
-### **3.5)切入点的三种配置方式**
+### 3.5)切入点的三种配置方式
 
 ```xml
 <aop:config>
@@ -1779,7 +1787,7 @@ execution(List com.itheima.service.*Service+.findAll(..))
 </aop:config>
 ```
 
-### **3.6)切入点配置经验**
+### 3.6)切入点配置经验
 
 - 企业开发命名规范严格遵循规范文档进行
 
@@ -1799,7 +1807,7 @@ execution(List com.itheima.service.*Service+.findAll(..))
 
 （以上规则适用于XML配置格式）
 
-### **3.7)通知类型**
+### 3.7)通知类型
 
 AOP的通知类型共5种
 
@@ -1899,11 +1907,11 @@ AOP的通知类型共5种
 
   - 使用proceed()方法调用原始方法时，因无法预知原始方法运行过程中是否会出现异常，强制抛出Throwable对象，封装原始方法中可能出现的异常信息
 
-### **3.8)通知顺序（了解）**
+### 3.8)通知顺序（了解）
 
 当同一个切入点配置了多个通知时，通知会存在运行的先后顺序，**该顺序以通知配置的顺序为准**
 
-### **3.9)通知获取数据**
+### 3.9)通知获取数据
 
 - 参数
 
@@ -1911,7 +1919,7 @@ AOP的通知类型共5种
 
 - 异常
 
-#### **3.9.1)通知获取参数数据**
+#### 3.9.1)通知获取参数数据
 
 **第一种情况：**
 
@@ -1941,7 +1949,7 @@ AOP的通知类型共5种
 
 ![1591284429541](./assets/1591284429541.png)
 
-#### **3.9.2)通知获取返回值数据**
+#### 3.9.2)通知获取返回值数据
 
 **第一种：**
 
@@ -2009,7 +2017,7 @@ AOP的通知类型共5种
 - 适用于环绕通知（around）
   > void方法返回值为null: `return null;`
 
-#### **3.9.3)通知获取异常数据**
+#### 3.9.3)通知获取异常数据
 
 **第一种：**
 
@@ -2301,7 +2309,7 @@ AOP的通知类型共5种
 
 ## 5)综合案例
 
-### **5.1)案例介绍**
+### 5.1)案例介绍
 
 对项目进行业务层接口执行监控，测量业务层接口的执行效率
 
@@ -2315,7 +2323,7 @@ public interface AccountService {
 }
 ```
 
-### **5.2)案例分析**
+### 5.2)案例分析
 
 - 测量接口执行效率：接口方法执行前后获取执行时间，求出执行时长
   - System.currentTimeMillis( )
@@ -2326,7 +2334,7 @@ public interface AccountService {
 
   - proceed()方法执行前后获取系统时间
 
-### **5.3)案例制作步骤**
+### 5.3)案例制作步骤
 
 - 定义切入点（务必要绑定到接口上，而不是接口实现类上）
 
@@ -2336,7 +2344,7 @@ public interface AccountService {
 
 - 开启注解驱动支持
 
-### **5.4)案例制作核心代码**
+### 5.4)案例制作核心代码
 
 ```java
 public class RunTimeMonitorAdvice {
@@ -2362,7 +2370,7 @@ public class RunTimeMonitorAdvice {
 }
 ```
 
-### **5.5)案例后续思考与设计**
+### 5.5)案例后续思考与设计
 
 - 测量真实性
 
@@ -2398,7 +2406,7 @@ public class RunTimeMonitorAdvice {
 
 - 织入形式
 
-### **6.1)静态代理**
+### 6.1)静态代理
 
 装饰者模式（Decorator Pattern）：在不惊动原始设计的基础上，为其添加功能
 
@@ -2481,7 +2489,7 @@ public class UserServiceImplCglibProxy {
 }
 ```
 
-### **6.4)代理模式的选择**
+### 6.4)代理模式的选择
 
 Spirng可以通过配置的形式控制使用的代理形式，默认使用jdkproxy，通过配置可以修改为使用cglib
 
@@ -2506,7 +2514,7 @@ Spirng可以通过配置的形式控制使用的代理形式，默认使用jdkpr
   @EnableAspectJAutoProxy(proxyTargetClass = true)
   ```
 
-### **6.5)织入时机**
+### 6.5)织入时机
 
 Spring采用运行期织入
 
@@ -2561,7 +2569,7 @@ Spring采用运行期织入
 
 ## 2)事务管理
 
-### 2.1)**Spring**事务核心对象
+### 2.1)Spring事务核心对象
 
 - J2EE开发使用分层设计的思想进行，对于简单的业务层转调数据层的单一操作，事务开启在业务层或者数据层并无太大差别，当业务中包含多个数据层的调用时，需要在业务层开启事务，对数据层中多个操作进行组合并归属于同一个事务进行处理
 
@@ -2571,7 +2579,7 @@ Spring采用运行期织入
   - TransactionDefinition
   - TransactionStatus
 
-### **2.2)PlatformTransactionManager**
+### 2.2)PlatformTransactionManager
 
 - 平台事务管理器实现类
 
@@ -2613,7 +2621,7 @@ Spring采用运行期织入
   void rollback(TransactionStatus status)
   ```
 
-### **2.3)TransactionDefinition**
+### 2.3)TransactionDefinition
 
 此接口定义了事务的基本信息
 
@@ -2648,13 +2656,13 @@ Spring采用运行期织入
   int getPropagationBehavior()
   ```
 
-### **2.4)TransactionStatus**
+### 2.4)TransactionStatus
 
 此接口定义了事务在执行过程中某个时间点上的状态信息及对应的状态操作
 
 ![1591322466820](./assets/1591322466820.png)
 
-### **2.5)事务控制方式**
+### 2.5)事务控制方式
 
 - 编程式
 
@@ -2662,7 +2670,7 @@ Spring采用运行期织入
 
 - 声明式（注解）
 
-### **2.6)案例说明**
+### 2.6)案例说明
 
 #### 2.6.1)案例说明
 
@@ -2704,7 +2712,7 @@ public void transfer(String outName,String inName,Double money){
 </update>
 ```
 
-#### **2.6.3)编程式事务**
+#### 2.6.3)编程式事务
 
 ```java
 public void transfer(String outName,String inName,Double money){
@@ -2761,7 +2769,7 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
 </aop:config>
 ```
 
-### **2.8声明式事务（XML）**
+### 2.8声明式事务（XML）
 
 **AOP**配置事务是否具有特例性？
 
@@ -2806,7 +2814,7 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
 ```
 > execution需要限制在业务层方法，否则所有操作都会进入事务管理
 
-#### 2.8.1)**aop:advice与aop:advisor区别**
+#### 2.8.1)aop:advice与aop:advisor区别
 
 - aop:advice配置的通知类可以是普通java对象，不实现接口，也不使用继承关系
 
@@ -2892,7 +2900,7 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
 
 ![1591367291135](./assets/1591367291135.png)
 
-### **2.9)事务传播行为**
+### 2.9)事务传播行为
 
 - 事务管理员
 
@@ -2902,11 +2910,11 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
 
 - 事务传播行为描述的是事务协调员对事务管理员所携带事务的处理态度
 
-### **2.10)事务传播行为**
+### 2.10)事务传播行为
 
 ![1591367375088](./assets/1591367375088.png)
 
-### **2.11)事务传播应用**
+### 2.11)事务传播应用
 
 - 场景A：生成订单业务
 
@@ -2936,7 +2944,7 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
 
   - （S1需要新事务）
 
-### **2.12)声明式事务（注解）**
+### 2.12)声明式事务（注解）
 
 #### 2.12.1)@Transactional
 
@@ -2979,7 +2987,7 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
   <tx:annotation-driven transaction-manager="txManager"/>
   ```
 
-### **2.13)声明式事务（纯注解驱动）**
+### 2.13)声明式事务（纯注解驱动）
 
 - 名称：`@EnableTransactionManagement`
 
@@ -3053,7 +3061,7 @@ public void save(Account account) {
 }
 ```
 
-### **3.4)RedisTemplate**
+### 3.4)RedisTemplate
 
 RedisTemplate对象结构
 
