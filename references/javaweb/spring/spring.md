@@ -1,3 +1,5 @@
+@import "https://haogeshuohuanihaohaoting.github.io/static/mdCreateMenu.js"
+
 # IoC
 
 ## 1)Spring简介
