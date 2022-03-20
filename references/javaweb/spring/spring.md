@@ -825,7 +825,7 @@ UserService userService = (UserService)bf.getBean("userService");
 
 ### 2.2)bean的定义
 
-- 名称：@Component    @Controller    @Service    @Repository
+- 名称：`@Component`、`@Controller`、`@Service`、`@Repository`
 
 - 类型：**类注解**
 
@@ -845,11 +845,11 @@ UserService userService = (UserService)bf.getBean("userService");
   - @Controller、@Service 、@Repository是@Component的衍生注解，功能同@Component
 
 - 相关属性
-  - value（默认）：定义bean的访问id
+  - `value`（默认）：定义bean的访问id
 
 ### 2.3)bean的作用域
 
-- 名称：@Scope
+- 名称：`@Scope`
 
 - 类型：**类注解**
 
@@ -866,11 +866,11 @@ UserService userService = (UserService)bf.getBean("userService");
 
 - 相关属性
 
-  - value（默认）：定义bean的作用域，默认为singleton
+  - `value`（默认）：定义bean的作用域，默认为singleton
 
 ### 2.4)bean的生命周期
 
-- 名称：@PostConstruct、@PreDestroy
+- 名称：`@PostConstruct`、`@PreDestroy`
 
 - 类型：**方法注解**
 
@@ -887,7 +887,7 @@ UserService userService = (UserService)bf.getBean("userService");
 
 ### 2.5)加载第三方资源
 
-- 名称：@Bean
+- 名称：`@Bean`
 
 - 类型：**方法注解**
 
@@ -908,14 +908,14 @@ UserService userService = (UserService)bf.getBean("userService");
 
   - 该注解用于替代XML配置中的静态工厂与实例工厂创建bean，不区分方法是否为静态或非静态
 
-  - @Bean所在的类必须被spring扫描加载，否则该注解无法生效
+  - **@Bean所在的类必须被spring扫描加载**，否则该注解无法生效
 
 - 相关属性
-  - value（默认）：定义bean的访问id
+  - `value`（默认）：定义bean的访问id
 
 ### 2.6)bean的非引用类型属性注入
 
-- 名称：@Value
+- 名称：`@Value`
 
 - 类型：**属性注解、方法注解**
 
@@ -941,11 +941,11 @@ UserService userService = (UserService)bf.getBean("userService");
   - @value注解如果添加在属性上方，可以省略set方法（set方法的目的是为属性赋值）
 
 - 相关属性
-  - value（默认）：定义对应的属性值或参数值
+  - `value`（默认）：定义对应的属性值或参数值
 
 ### 2.7)bean的引用类型属性注入
 
-- 名称：@Autowired、@Qualifier
+- 名称：`@Autowired`、`@Qualifier`
 
 - 类型：**属性注解、方法注解**
 
@@ -963,14 +963,15 @@ UserService userService = (UserService)bf.getBean("userService");
 
 - 说明：
 
-  - @Autowired默认按类型装配，指定@Qualifier后可以指定自动装配的bean的id
+  - @Autowired默认按类型自动装配，类型匹配失败时自动按变量名（id）识别
+  - 指定@Qualifier后可以指定自动装配的bean的id
 
 - 相关属性
-  - required：定义该属性是否允许为null
+  - `required`：定义该属性是否允许为null
 
 ### 2.8)bean的引用类型属性注入
 
-- 名称：@Primary
+- 名称：`@Primary`
 
 - 类型：**类注解**
 
@@ -987,11 +988,12 @@ UserService userService = (UserService)bf.getBean("userService");
 
 - 说明：
 
-  - @Autowired默认按类型装配，当出现相同类型的bean，使用@Primary提高按类型自动装配的优先级，多个@Primary会导致优先级设置无效
+  - @Autowired默认按类型装配，当出现相同类型的bean，使用@Primary提高按类型自动装配的优先级，
+  - 多个@Primary会导致优先级设置无效
 
 ### 2.9)bean的引用类型属性注入
 
-- 名称：@Inject、@Named、@Resource
+- 名称：@Inject、@Named、`@Resource`
 
 - 说明：
   - @Inject与@Named是JSR330规范中的注解，功能与@Autowired和@Qualifier完全相同，适用于不同架构场景
@@ -999,13 +1001,13 @@ UserService userService = (UserService)bf.getBean("userService");
 
 - @Resource相关属性
 
-  - name：设置注入的bean的id
+  - `name`：设置注入的bean的id
 
-  - type：设置注入的bean的类型，接收的参数为Class类型
+  - `type`：设置注入的bean的类型，接收的参数为Class类型
 
 ### 2.10)加载properties文件
 
-- 名称：@PropertySource
+- 名称：`@PropertySource`
 
 - 类型：**类注解**
 
@@ -1025,17 +1027,18 @@ UserService userService = (UserService)bf.getBean("userService");
 
 - 说明：
 
-  - 不支持*通配格式，一旦加载，所有spring控制的bean中均可使用对应属性值
+  - 不支持`*`通配格式，一旦加载，所有spring控制的bean中均可使用对应属性值
+  - 多个路径需要使用数组: `{"path1","path2",...}`
 
 - 相关属性
 
-  - value（默认）：设置加载的properties文件名
+  - `value`（默认）：设置加载的properties文件名
 
-  - ignoreResourceNotFound：如果资源未找到，是否忽略，默认为false
+  - `ignoreResourceNotFound`：如果资源未找到，是否忽略，默认为false
 
 ### 2.11)纯注解格式
 
-- 名称：@Configuration、@ComponentScan
+- 名称：`@Configuration`、`@ComponentScan`
 
 - 类型：**类注解**
 
@@ -1060,15 +1063,16 @@ UserService userService = (UserService)bf.getBean("userService");
 
 **AnnotationConfigApplicationContext**
 
-- 加载纯注解格式上下文对象，需要使用AnnotationConfigApplicationContext
+- 加载纯注解格式上下文对象，需要使用`AnnotationConfigApplicationContext`
 
   ```java
   AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfig.class);
   ```
+  可以加载多个配置类
 
 ### 2.12)第三方bean配置与管理
 
-- 名称：@Import
+- 名称：`@Import`
 
 - 类型：**类注解**
 
@@ -1099,7 +1103,7 @@ UserService userService = (UserService)bf.getBean("userService");
 
 (1)@DependsOn
 
-- 名称：@DependsOn
+- 名称：`@DependsOn`
 
 - 类型：类注解、方法注解
 
@@ -1124,11 +1128,11 @@ UserService userService = (UserService)bf.getBean("userService");
   - 配置在类上，使@DependsOn指定的bean优先于@Component等配置的bean进行加载
 
 - 相关属性
-  - value（默认）：设置当前bean所依赖的bean的id
+  - `value`（默认）：设置当前bean所依赖的bean的id
 
 (2)@Order
 
-- 名称：@Order
+- 名称：`@Order`
 
 - 类型：**配置类注解**
 
@@ -1146,7 +1150,7 @@ UserService userService = (UserService)bf.getBean("userService");
 
 (3)@Lazy
 
-- 名称：@Lazy
+- 名称：`@Lazy`
 
 - 类型：**类注解、方法注解**
 
@@ -1198,26 +1202,27 @@ UserService userService = (UserService)bf.getBean("userService");
 
 ### 4.3)注解整合MyBatis步骤
 
-1.修改mybatis外部配置文件格式为注解格式
+1. 修改mybatis外部配置文件格式为注解格式
 
-2.业务类使用@Component声明bean，使用@Autowired注入对象
+2. Mapper接口使用@Repository声明
 
-3.建立配置文件JDBCConfig与MyBatisConfig类，并将其导入到核心配置类SpringConfig
+3. 业务类(ServiceImpl)使用@Component(或@Service)声明bean，使用@Autowired注入对象(Dao)
 
-4.开启注解扫描
+3. 建立配置文件JDBCConfig与MyBatisConfig类，并将其导入到核心配置类SpringConfig
 
-5.使用AnnotationConfigApplicationContext对象加载配置项
+4. 开启注解扫描
+
+5. 使用AnnotationConfigApplicationContext对象加载配置项
 
 ### 4.4)综合案例改版（注解整合Junit）
 
-1.Spring接管Junit的运行权，使用Spring专用的Junit类加载器
+1. Spring接管Junit的运行权，使用Spring专用的Junit类加载器
 
-2.为Junit测试用例设定对应的spring容器：
+2. 为Junit测试用例设定对应的spring容器：
 
-- 从Spring5.0以后，要求Junit的版本必须是4.12及以上
+  - 从Spring5.0以后，要求Junit的版本必须是4.12及以上
 
-- Junit仅用于单元测试，不能将Junit的测试类配置成spring的bean，否则该配置将会被打包进入工程中 
-
+  - Junit仅用于单元测试，不能将Junit的测试类配置成spring的bean，否则该配置将会被打包进入工程中 
 
 
 导入Spring整合Junit坐标
@@ -1270,23 +1275,23 @@ public class UserServiceTest {
 
   ```java
   @ComponentScan(
-      value="com.itheima",	           //设置基础扫描路径
-      excludeFilters =                          //设置过滤规则，当前为排除过滤
+      value= "com.itheima",	           //设置基础扫描路径
+      excludeFilters=                          //设置过滤规则，当前为排除过滤
   	@ComponentScan.Filter(            //设置过滤器
   	    type= FilterType.ANNOTATION,  //设置过滤方式为按照注解进行过滤
-  	    classes=Repository.class)     //设置具体的过滤项，过滤所有@Repository修饰的bean
+  	    classes= Repository.class)     //设置具体的过滤项，过滤所有@Repository修饰的bean
       )
   ```
 
-​	includeFilters：设置包含性过滤器
+​	`includeFilters`：设置包含性过滤器
 
-​	excludeFilters：设置排除性过滤器
+​	`excludeFilters`：设置排除性过滤器
 
-​	type：设置过滤器类型
+​	`type`：设置过滤器类型
 
 ### **5.4)自定义组件过滤器**
 
-- 名称：TypeFilter
+- 名称：`TypeFilter`
 
 - 类型：**接口**
 
@@ -1321,7 +1326,7 @@ public class UserServiceTest {
 
 **ImportSelector**
 
-- 名称： ImportSelector
+- 名称： `ImportSelector`
 
 - 类型：**接口**
 
@@ -1347,7 +1352,7 @@ public class UserServiceTest {
 
 ### **5.6)自定义注册器**
 
-- 名称：ImportBeanDefinitionRegistrar
+- 名称：`ImportBeanDefinitionRegistrar`
 
 - 类型：**接口**
 
@@ -1375,21 +1380,19 @@ public class UserServiceTest {
 
 ![1591025338778](./assets/1591025338778.png)
 
-### 5.8)bean初始化过程解析
-
-- BeanFactoryPostProcessor
+- **BeanFactoryPostProcessor**
 
   - 作用：定义了在bean工厂对象创建后，bean对象创建前执行的动作，用于对工厂进行创建后业务处理
 
   - 运行时机：当前操作用于对工厂进行处理，仅运行一次
 
-- BeanPostProcessor
+- **BeanPostProcessor**
 
   - 作用：定义了所有bean初始化前后进行的统一动作，用于对bean进行创建前业务处理与创建后业务处理
 
   - 运行时机：当前操作伴随着每个bean的创建过程，每次创建bean均运行该操作
 
-- InitializingBean
+- **InitializingBean**
 
   - 作用：定义了每个bean的初始化前进行的动作，属于非统一性动作，用于对bean进行创建前业务处理
 
@@ -1397,13 +1400,11 @@ public class UserServiceTest {
 
 - 注意：上述操作均需要被spring容器加载放可运行
 
-### 5.9)bean初始化过程解析
+### 5.8)繁琐的bean初始化过程处理
 
 ![1591025440019](./assets/1591025440019.png)
 
-### 5.10)繁琐的bean初始化过程处理
-
-- FactoryBean
+- **FactoryBean**
   - 对单一的bean的初始化过程进行封装，达到简化配置的目的
 
 **FactoryBean与BeanFactory区别**
@@ -1432,9 +1433,9 @@ public class UserServiceTest {
 
 - AOP弥补了OOP的不足，基于OOP基础之上进行横向开发
 
-  - uOOP规定程序开发以类为主体模型，一切围绕对象进行，完成某个任务先构建模型
+  - OOP规定程序开发以类为主体模型，一切围绕对象进行，完成某个任务先构建模型
 
-  - uAOP程序开发主要关注基于OOP开发中的共性功能，一切围绕共性功能进行，完成某个任务先构建可能遇到的所有共性功能（当所有功能都开发出来也就没有共性与非共性之分）
+  - AOP程序开发主要关注基于OOP开发中的共性功能，一切围绕共性功能进行，完成某个任务先构建可能遇到的所有共性功能（当所有功能都开发出来也就没有共性与非共性之分）
 
 - “AOP联盟”
 
@@ -1470,11 +1471,11 @@ public class UserServiceTest {
 
 - Joinpoint(连接点)：就是方法
 
-- Pointcut(切入点)：就是挖掉共性功能的方法
+- **Pointcut(切入点)**：就是挖掉共性功能的方法
 
-- Advice(通知)：就是共性功能，最终以一个方法的形式呈现
+- **Advice(通知)**：就是共性功能，最终以一个方法的形式呈现
 
-- Aspect(切面)：就是共性功能与挖的位置的对应关系
+- **Aspect(切面)**：就是共性功能与挖的位置的对应关系
 
 - Target(目标对象)：就是挖掉功能的方法对应的类产生的对象，这种对象是无法直接完成最终工作的
 
@@ -1514,19 +1515,19 @@ public class UserServiceTest {
 
 ### 2.3)入门案例制作分析
 
-1.导入相关坐标
+1. 导入相关坐标
 
-2.确认要抽取的功能，并将其制作成方法保存到专用的类中，删除原始业务中对应的功能
+2. 确认要抽取的功能，并将其制作成方法保存到专用的类中，删除原始业务中对应的功能
 
-3.将所有进行AOP操作的资源加载到IoC容器中
+3. 将所有进行AOP操作的资源加载到IoC容器中
 
-4.使用配置的方式描述被抽取功能的位置，并描述被抽取功能与对应位置的关系
+4. 使用配置的方式描述被抽取功能的位置，并描述被抽取功能与对应位置的关系
 
-5.运行程序
+5. 运行程序
 
 
 
-步骤一 导入坐标
+**步骤一 导入坐标**
 
 ```xml
 <dependency>
@@ -1536,17 +1537,16 @@ public class UserServiceTest {
 </dependency>
 ```
 
-步骤二 在业务层抽取通用代码
+**步骤二 在业务层抽取通用代码**
 
 ![1591282302976](./assets/1591282302976.png)
 
-步骤三 把通知加入spring容器管理
+**步骤三 把通知加入spring容器管理**
 
 ![1591282320624](./assets/1591282320624.png)
 
 
-
-步骤四 在配置文件中配置aop的配置 
+**步骤四 在配置文件中配置aop的配置**
 
 ```xml
 <!--aop配置-->
@@ -1573,7 +1573,7 @@ public class UserServiceTest {
 
 #### 3.2.1)aop:config
 
-- 名称：aop:config
+- 名称：`aop:config`
 
 - 类型：**标签**
 
@@ -1594,7 +1594,7 @@ public class UserServiceTest {
 
 #### 3.2.2)aop:aspect
 
-- 名称：aop:aspect
+- 名称：`aop:aspect`
 
 - 类型：**标签**
 
@@ -1611,17 +1611,15 @@ public class UserServiceTest {
   </aop:config>
   ```
 
-- 说明：
-
-  一个aop:config标签中可以配置多个aop:aspect标签
+- 说明：一个aop:config标签中可以配置多个aop:aspect标签
 
 - 基本属性：
 
-  - ref ：通知所在的bean的id
+  - `ref` ：通知所在的bean的id
 
 #### 3.2.3)aop:pointcut
 
-- 名称：aop:pointcut
+- 名称：`aop:pointcut`
 
 - 类型：**标签**
 
@@ -1646,9 +1644,9 @@ public class UserServiceTest {
 
 - 基本属性：
 
-  - id ：识别切入点的名称
+  - `id` ：识别切入点的名称
 
-  - expression ：切入点表达式
+  - `expression` ：切入点表达式
 
 ### **3.3)切入点**
 
@@ -1666,7 +1664,7 @@ public class UserServiceTest {
   关键字（访问修饰符  返回值  包名.类名.方法名（参数）异常名）
   ```
 
-​	关键字：描述表达式的匹配模式（参看关键字列表）
+​	关键字：描述表达式的匹配模式（参看关键字列表，public可省略）
 
 ​	访问修饰符：方法的访问控制权限修饰符
 
@@ -1722,7 +1720,7 @@ public class UserServiceTest {
 
 ​	匹配com包下的任意包中的UserService类或接口中所有名称为findById的方法
 
-- +：专用于匹配子类类型
+- +：专用于匹配子类类型（子类或接口实现类）
 
   ```xml
   execution(* *..*Service+.*(..))
@@ -1730,7 +1728,7 @@ public class UserServiceTest {
 
 #### 3.4.3)切入点表达式——逻辑运算符
 
-- && ：连接两个切入点表达式，表示两个切入点表达式同时成立的匹配
+- && ：连接两个切入点表达式，表示两个切入点表达式同时成立的匹配，xml中转义为`&amp;`
 
 - || ：连接两个切入点表达式，表示两个切入点表达式成立任意一个的匹配
 
@@ -1741,7 +1739,7 @@ public class UserServiceTest {
 ```java
 execution(* *(..))
 execution(* *..*(..))
-execution(* *..*.*(..))
+execution(* *..*.*(..)) //前三个含义相同
 execution(public * *..*.*(..))
 execution(public int *..*.*(..))
 execution(public void *..*.*(..))
@@ -1825,15 +1823,15 @@ AOP的通知类型共5种
 
     应用：十分强大，可以做任何事情
 
-#### 3.7.1)aop:before
+#### 3.7.1)aop:before/after/after-returning/after-throwing
 
-- 名称：aop:before
+- 名称：`aop:before`、`aop:after`、`aop:after-returning`、`aop:after-throwing`
 
 - 类型：**标签**
 
 - 归属：aop:aspect标签
 
-- 作用：设置前置通知
+- 作用：设置前置/后置/返回后/抛出异常后通知
 
 - 格式：
 
@@ -1843,103 +1841,20 @@ AOP的通知类型共5种
   </aop:aspect>
   ```
 
--  说明：一个aop:aspect标签中可以配置多个aop:before标签
+-  说明：一个aop:aspect标签中可以配置多个该类标签
 
 - 基本属性：
 
-  - method ：在通知类中设置当前通知类别对应的方法
+  - `method` ：在通知类中设置当前通知类别对应的方法
 
-  - pointcut ：设置当前通知对应的切入点表达式，与pointcut-ref属性冲突
+  - `pointcut` ：设置当前通知对应的切入点表达式，与pointcut-ref属性冲突
 
-  - pointcut-ref ：设置当前通知对应的切入点id，与pointcut属性冲突
+  - `pointcut-ref` ：设置当前通知对应的切入点id，与pointcut属性冲突
 
-#### 3.7.2)aop:after
 
-- 名称：aop:after
+#### 3.7.2)aop:around
 
-- 类型：**标签**
-
-- 归属：aop:aspect标签
-
-- 作用：设置后置通知
-
-- 格式：
-
-  ```xml
-  <aop:aspect ref="adviceId">
-      <aop:after method="methodName" pointcut="……"/>
-  </aop:aspect>
-  ```
-
--  说明：一个aop:aspect标签中可以配置多个aop:after标签
-
-- 基本属性：
-
-  - method ：在通知类中设置当前通知类别对应的方法
-
-  - pointcut ：设置当前通知对应的切入点表达式，与pointcut-ref属性冲突
-
-  - pointcut-ref ：设置当前通知对应的切入点id，与pointcut属性冲突
-
-#### 3.7.3)aop:after-returning
-
-- 名称：aop:after-returning
-
-- 类型：**标签**
-
-- 归属：aop:aspect标签
-
-- 作用：设置返回后通知
-
-- 格式：
-
-  ```xml
-  <aop:aspect ref="adviceId">
-      <aop:after-returning method="methodName" pointcut="……"/>
-  </aop:aspect>
-  ```
-
--  说明：一个aop:aspect标签中可以配置多个aop:after-returning标签
-
-- 基本属性：
-
-  - method ：在通知类中设置当前通知类别对应的方法
-
-  - pointcut ：设置当前通知对应的切入点表达式，与pointcut-ref属性冲突
-
-  - pointcut-ref ：设置当前通知对应的切入点id，与pointcut属性冲突
-
-#### 3.7.4)aop:after-throwing
-
-- 名称：aop:after-throwing
-
-- 类型：**标签**
-
-- 归属：aop:aspect标签
-
-- 作用：设置抛出异常后通知
-
-- 格式：
-
-  ```xml
-  <aop:aspect ref="adviceId">
-      <aop:after-throwing method="methodName" pointcut="……"/>
-  </aop:aspect>
-  ```
-
--  说明：一个aop:aspect标签中可以配置多个aop:after-throwing标签
-
-- 基本属性：
-
-  - method ：在通知类中设置当前通知类别对应的方法
-
-  - pointcut ：设置当前通知对应的切入点表达式，与pointcut-ref属性冲突
-
-  - pointcut-ref ：设置当前通知对应的切入点id，与pointcut属性冲突
-
-#### 3.7.5)aop:around
-
-- 名称：aop:around
+- 名称：`aop:around`
 
 - 类型：**标签**
 
@@ -1967,7 +1882,7 @@ AOP的通知类型共5种
 
 环绕通知的开发方式
 
-- 环绕通知是在原始方法的前后添加功能，在环绕通知中，存在对原始方法的显式调用
+- 环绕通知是在原始方法的前后添加功能，在环绕通知中，需要存在**对原始方法的显式调用**
 
   ```java
   public Object around(ProceedingJoinPoint pjp) throws Throwable {
@@ -1986,7 +1901,7 @@ AOP的通知类型共5种
 
 ### **3.8)通知顺序（了解）**
 
-当同一个切入点配置了多个通知时，通知会存在运行的先后顺序，该顺序以通知配置的顺序为准
+当同一个切入点配置了多个通知时，通知会存在运行的先后顺序，**该顺序以通知配置的顺序为准**
 
 ### **3.9)通知获取数据**
 
@@ -1998,9 +1913,9 @@ AOP的通知类型共5种
 
 #### **3.9.1)通知获取参数数据**
 
-第一种情况：
+**第一种情况：**
 
-- 设定通知方法第一个参数为JoinPoint，通过该对象调用getArgs()方法，获取原始方法运行的参数数组
+- 设定通知方法第一个参数为`JoinPoint`，通过该对象调用`getArgs()`方法，获取原始方法运行的参数数组
 
   ```java
   public void before(JoinPoint jp) throws Throwable {
@@ -2010,7 +1925,7 @@ AOP的通知类型共5种
 
 - 所有的通知均可以获取参数
 
-第二种情况：
+**第二种情况：**
 
 - 设定切入点表达式为通知方法传递参数（锁定通知变量名）
 
@@ -2018,7 +1933,7 @@ AOP的通知类型共5种
 
 ![1591284387913](./assets/1591284387913.png)
 
-第三种情况
+**第三种情况：**
 
 - 设定切入点表达式为通知方法传递参数（改变通知变量名的定义顺序）
 
@@ -2028,7 +1943,7 @@ AOP的通知类型共5种
 
 #### **3.9.2)通知获取返回值数据**
 
-第一种：返回值变量名
+**第一种：**
 
 - 设定返回值变量名
 
@@ -2036,19 +1951,19 @@ AOP的通知类型共5种
 
   ```java
   public int save() {
-  	System.out.println("user service running...");
-      return 100;
+    System.out.println("user service running...");
+    return 100;
   }
   ```
 
 -  AOP配置
 
-  ```xml
-  <aop:aspect ref="myAdvice">
-      <aop:pointcut id="pt3" expression="execution(* *(..))  "/>
-      <aop:after-returning method="afterReturning" pointcut-ref="pt3" returning="ret"/>
-  </aop:aspect>
-  ```
+    ```xml
+    <aop:aspect ref="myAdvice">
+        <aop:pointcut id="pt3" expression="execution(* *(..))  "/>
+        <aop:after-returning method="afterReturning" pointcut-ref="pt3" returning="ret"/>
+    </aop:aspect>
+    ```
 
 - 通知类
 
@@ -2060,7 +1975,7 @@ AOP的通知类型共5种
 
 - 适用于返回后通知（after-returning）
 
-第二种：
+**第二种：**
 
 - 在通知类的方法中调用原始方法获取返回值
 
@@ -2092,10 +2007,11 @@ AOP的通知类型共5种
   ```
 
 - 适用于环绕通知（around）
+  > void方法返回值为null: `return null;`
 
 #### **3.9.3)通知获取异常数据**
 
-第一种：通知类的方法中调用原始方法捕获异常
+**第一种：**
 
 - 在通知类的方法中调用原始方法捕获异常
 
@@ -2110,12 +2026,12 @@ AOP的通知类型共5种
 
 -  AOP配置
 
-  ```xml
-  <aop:aspect ref="myAdvice">
-      <aop:pointcut id="pt4" expression="execution(* *(..))  "/>
-      <aop:around method="around" pointcut-ref="pt4" />
-  </aop:aspect>
-  ```
+    ```xml
+    <aop:aspect ref="myAdvice">
+        <aop:pointcut id="pt4" expression="execution(* *(..))  "/>
+        <aop:around method="around" pointcut-ref="pt4" />
+    </aop:aspect>
+    ```
 
 - 通知类
 
@@ -2127,8 +2043,9 @@ AOP的通知类型共5种
   ```
 
 - 适用于环绕通知（around）
+  > 有异常时返回值总为null
 
-第二种：
+**第二种：**
 
 - 设定异常对象变量名
 
@@ -2143,12 +2060,12 @@ AOP的通知类型共5种
 
 -  AOP配置
 
-  ```xml
-  <aop:aspect ref="myAdvice">
-  	<aop:pointcut id="pt4" expression="execution(* *(..))  "/>
-      <aop:after-throwing method="afterThrowing" pointcut-ref="pt4" throwing="t"/>
-  </aop:aspect>
-  ```
+    ```xml
+    <aop:aspect ref="myAdvice">
+      <aop:pointcut id="pt4" expression="execution(* *(..))  "/>
+        <aop:after-throwing method="afterThrowing" pointcut-ref="pt4" throwing="t"/>
+    </aop:aspect>
+    ```
 
 - 通知类
 
@@ -2182,13 +2099,13 @@ AOP的通知类型共5种
 
 ### 4.3)注解开发AOP注意事项
 
-1.切入点最终体现为一个方法，无参无返回值，无实际方法体内容，但不能是抽象方法
+1. 切入点最终体现为一个方法，无参无返回值，无实际方法体内容，但不能是抽象方法
 
-2.引用切入点时必须使用方法调用名称，方法后面的（）不能省略
+2. 引用切入点时必须使用方法调用名称，方法后面的（）不能省略
 
-3.切面类中定义的切入点只能在当前类中使用，如果想引用其他类中定义的切入点使用“类名.方法名()”引用
+3. 切面类中定义的切入点只能在当前类中使用，如果想引用其他类中定义的切入点使用“类名.方法名()”引用
 
-4.可以在通知类型注解后添加参数，实现XML配置中的属性，例如after-returning后的returning属性
+4. 可以在通知类型注解后添加参数，实现XML配置中的属性，例如after-returning后的returning属性
 
 ![1591285152119](./assets/1591285152119.png)
 
@@ -2196,7 +2113,7 @@ AOP的通知类型共5种
 
 #### 4.4.1)@Aspect
 
-- 名称：@Aspect
+- 名称：`@Aspect`
 
 - 类型：**注解**
 
@@ -2216,7 +2133,7 @@ AOP的通知类型共5种
 
 #### 4.4.2)@Pointcut
 
-- 名称：@Pointcut
+- 名称：`@Pointcut`
 
 - 类型：**注解**
 
@@ -2236,7 +2153,7 @@ AOP的通知类型共5种
 
 #### 4.4.3)@Before
 
-- 名称：@Before
+- 名称：`@Before`
 
 - 类型：**注解**
 
@@ -2252,13 +2169,9 @@ AOP的通知类型共5种
   }
   ```
 
-- 特殊参数：
-
-  - 无
-
 #### 4.4.4)@After
 
-- 名称：@After
+- 名称：`@After`
 
 - 类型：**注解**
 
@@ -2274,13 +2187,9 @@ AOP的通知类型共5种
   }
   ```
 
-- 特殊参数：
-
-  - 无
-
 #### 4.4.5)@AfterReturning
 
-- 名称：@AfterReturning
+- 名称：`@AfterReturning`
 
 - 类型：**注解**
 
@@ -2298,11 +2207,11 @@ AOP的通知类型共5种
 
 - 特殊参数：
 
-  - returning ：设定使用通知方法参数接收返回值的变量名
+  - `returning` ：设定使用通知方法参数接收返回值的变量名
 
 #### 4.4.6)@AfterThrowing
 
-- 名称：@AfterThrowing
+- 名称：`@AfterThrowing`
 
 - 类型：**注解**
 
@@ -2320,11 +2229,11 @@ AOP的通知类型共5种
 
 - 特殊参数：
 
-  - throwing ：设定使用通知方法参数接收原始方法中抛出的异常对象名
+  - `throwing` ：设定使用通知方法参数接收原始方法中抛出的异常对象名
 
 #### 4.4.7)@Around
 
-- 名称：@Around
+- 名称：`@Around`
 
 - 类型：**注解**
 
@@ -2342,19 +2251,15 @@ AOP的通知类型共5种
   }
   ```
 
-- 特殊参数：
-
-  - 无
-
 ### 4.5)AOP注解开发通知执行顺序控制（了解）
 
-1.AOP使用XML配置情况下，通知的执行顺序由配置顺序决定，在注解情况下由于不存在配置顺序的概念的概念，参照通知所配置的方法名字符串对应的编码值顺序，可以简单理解为字母排序
+1.AOP在注解情况参照通知所配置的方法名(类名.方法名)字符串对应的编码值顺序，可以简单理解为字母排序
 
-- 同一个通知类中，相同通知类型以方法名排序为准
+- 同一个通知类中，相同通知类型以**方法名**排序为准
 
-- 不同通知类中，以类名排序为准
+- 不同通知类中，以**类名**排序为准
 
-- 使用@Order注解通过变更bean的加载顺序改变通知的加载顺序
+- 使用 **@Order** 注解通过变更bean的加载顺序改变通知的加载顺序
 
 2.企业开发经验
 
@@ -2376,7 +2281,7 @@ AOP的通知类型共5种
 
 ### 4.6)AOP注解驱动
 
-- 名称：@EnableAspectJAutoProxy
+- 名称：`@EnableAspectJAutoProxy`
 
 - 类型：**注解**
 
@@ -2516,7 +2421,7 @@ public class UserServiceDecorator implements UserService{
 
 ### 6.2)动态代理——JDK Proxy
 
-JDKProxy动态代理是针对对象做代理，要求原始对象具有接口实现，并对接口方法进行增强
+JDKProxy动态代理是针对对象做代理，要求原始对象具有**接口**实现，并对接口方法进行增强
 
 ```java
 public class UserServiceJDKProxy {
@@ -2603,6 +2508,8 @@ Spirng可以通过配置的形式控制使用的代理形式，默认使用jdkpr
 
 ### **6.5)织入时机**
 
+Spring采用运行期织入
+
 ![1591287839941](./assets/1591287839941.png)
 
 
@@ -2616,9 +2523,9 @@ Spirng可以通过配置的形式控制使用的代理形式，默认使用jdkpr
 
 ### 1.2)事务的作用
 
-1.当数据库操作序列中个别操作失败时，提供一种方式使数据库状态恢复到正常状态（**A**），保障数据库即使在异常状态下仍能保持数据一致性（**C**）（要么操作前状态，要么操作后状态）。
+1. 当数据库操作序列中个别操作失败时，提供一种方式使数据库状态恢复到正常状态（**A**），保障数据库即使在异常状态下仍能保持数据一致性（**C**）（要么操作前状态，要么操作后状态）。
 
-2.当出现并发访问数据库时，在多个访问间进行相互隔离，防止并发访问操作结果互相干扰（**I**）。
+2. 当出现并发访问数据库时，在多个访问间进行相互隔离，防止并发访问操作结果互相干扰（**I**）。
 
 - 事务特征（ACID）
 
@@ -2636,17 +2543,17 @@ Spirng可以通过配置的形式控制使用的代理形式，默认使用jdkpr
 
   - 原因：Read uncommitted
 
-  解决方案： （表级读锁）
+  解决方案：Read committed （表级读锁，写事务中不能读表）
 
 ![1591321851725](./assets/1591321851725.png)
 
 - 不可重复读：读取过程中单个数据发生了变化
-  - 解决方案： Repeatable read （行级写锁）
+  - 解决方案： Repeatable read （行级写锁，读事务中不能修改这行数据）
 
 ![1591321927034](./assets/1591321927034.png)
 
 - 幻读：读取过程中数据条目发生了变化
-  - 解决方案： Serializable（表级写锁）
+  - 解决方案： Serializable（表级写锁，读事务中不能写表）
 
 ![1591321959641](./assets/1591321959641.png)
 
@@ -2658,18 +2565,17 @@ Spirng可以通过配置的形式控制使用的代理形式，默认使用jdkpr
 
 - J2EE开发使用分层设计的思想进行，对于简单的业务层转调数据层的单一操作，事务开启在业务层或者数据层并无太大差别，当业务中包含多个数据层的调用时，需要在业务层开启事务，对数据层中多个操作进行组合并归属于同一个事务进行处理
 
-- Spring为业务层提供了整套的事务解决方案
+- Spring为**业务层**提供了整套的事务解决方案
 
   - PlatformTransactionManager
   - TransactionDefinition
-
   - TransactionStatus
 
 ### **2.2)PlatformTransactionManager**
 
 - 平台事务管理器实现类
 
-  - DataSourceTransactionManager  适用于Spring JDBC或MyBatis
+  - **DataSourceTransactionManager**  适用于Spring JDBC或MyBatis
 
   - HibernateTransactionManager  适用于Hibernate3.0及以上版本
 
@@ -2730,6 +2636,7 @@ Spirng可以通过配置的形式控制使用的代理形式，默认使用jdkpr
   ```
 
 - 获事务超时时间
+  > 默认 = -1，永不超时
 
   ```java
   int getTimeout()
@@ -2781,7 +2688,8 @@ public void transfer(String outName,String inName,Double money);
 
 ```java
 public void transfer(String outName,String inName,Double money){
-    accountDao.inMoney(outName,money);                                                       accountDao.outMoney(inName,money);
+    accountDao.inMoney(outName,money);              
+    accountDao.outMoney(inName,money);
 }
 ```
 
@@ -2876,7 +2784,7 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
 </bean>
 ```
 
-使用tx命名空间配置事务专属通知类
+使用`tx`命名空间配置事务专属通知类
 
 ```xml
 <tx:advice id="txAdvice" transaction-manager="txManager">
@@ -2888,7 +2796,7 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
 </tx:advice>
 ```
 
-使用aop:advisor在AOP配置中引用事务专属通知类
+使用`aop:advisor`在AOP配置中引用事务专属通知类
 
 ```xml
 <aop:config>
@@ -2896,6 +2804,7 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
     <aop:advisor advice-ref="txAdvice" pointcut-ref="pt"/>
 </aop:config>
 ```
+> execution需要限制在业务层方法，否则所有操作都会进入事务管理
 
 #### 2.8.1)**aop:advice与aop:advisor区别**
 
@@ -2913,7 +2822,7 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
 
 #### 2.8.2)tx配置----tx:advice
 
-- 名称：tx:advice
+- 名称：`tx:advice`
 
 - 类型：**标签**
 
@@ -2932,13 +2841,13 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
 
 - 基本属性：
 
-  - id ：用于配置aop时指定通知器的id
+  - `id` ：用于配置aop时指定通知器的id
 
-  - transaction-manager ：指定事务管理器bean
+  - `transaction-manager` ：指定事务管理器bean
 
 #### 2.8.3)tx配置----tx:attributes
 
-- 名称：tx:attributes
+- 名称：`tx:attributes`
 
 - 类型：**标签**
 
@@ -2955,13 +2864,10 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
   </tx:advice>
   ```
 
-- 基本属性：
-
-  - 无
 
 #### 2.8.4)tx配置----tx:method
 
-- 名称：tx:method
+- 名称：`tx:method`
 
 - 类型：**标签**
 
@@ -3034,7 +2940,7 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
 
 #### 2.12.1)@Transactional
 
-- 名称：@Transactional
+- 名称：`@Transactional`
 
 - 类型：**方法注解，类注解，接口注解**
 
@@ -3055,9 +2961,11 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
   )
   ```
 
+不建议配在实现类方法上，可以配在接口方法上。
+
 #### 2.12.2)tx:annotation-driven
 
-- 名称：tx:annotation-driven
+- 名称：`tx:annotation-driven`
 
 - 类型：**标签**
 
@@ -3073,7 +2981,7 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
 
 ### **2.13)声明式事务（纯注解驱动）**
 
-- 名称：@EnableTransactionManagement
+- 名称：`@EnableTransactionManagement`
 
 - 类型：**类注解**
 
@@ -3105,8 +3013,6 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
 ## 3)模板对象
 
 ### 3.1)Spring模块对象
-
-![1591368087398](./assets/1591368087398.png)
 
 - TransactionTemplate
 
@@ -3164,10 +3070,9 @@ public Double findMondyById(Integer id) {
 ```
 
 
-
 ## 4)事务底层原理解析
 
-### **4.1)策略模式应用**
+**策略模式应用**
 
 策略模式（Strategy Pattern）使用不同策略的对象实现不同的行为方式，策略对象的变化导致行为的变化。
 
