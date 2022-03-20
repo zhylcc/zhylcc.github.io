@@ -1,6 +1,4 @@
-@import "https://haogeshuohuanihaohaoting.github.io/static/mdCreateMenu.js"
-
-# IoC
+# 一、IoC
 
 ## 1)Spring简介
 
@@ -785,8 +783,7 @@ UserService userService = (UserService)bf.getBean("userService");
 - 业务发起使用spring上下文对象获取对应的bean
 
 
-
-# 注解开发
+# 二、注解开发
 
 ## 1)注解驱动的意义
 
@@ -1426,7 +1423,7 @@ public class UserServiceTest {
 
 
 
-# AOP
+# 三、AOP
 
 ## 1)AOP简介
 
@@ -2523,7 +2520,7 @@ Spring采用运行期织入
 ![1591287839941](./assets/1591287839941.png)
 
 
-# spring 事务
+# 四、spring 事务
 
 ## 1)事务回顾
 
