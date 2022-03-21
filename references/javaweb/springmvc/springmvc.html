@@ -283,16 +283,18 @@ pre[data-line] .line-highlight[data-end]:after {
 </li>
 <li>
 <p>View&#xFF08;&#x89C6;&#x56FE;&#xFF09;&#xFF1A;&#x9875;&#x9762;&#x89C6;&#x56FE;&#xFF0C;&#x7528;&#x4E8E;&#x5C55;&#x793A;&#x6570;&#x636E;</p>
-</li>
-</ul>
 <ul>
 <li>jsp</li>
 <li>html</li>
 </ul>
+</li>
+<li>
 <p>Controller&#xFF08;&#x63A7;&#x5236;&#x5668;&#xFF09;&#xFF1A;&#x5904;&#x7406;&#x7528;&#x6237;&#x4EA4;&#x4E92;&#x7684;&#x8C03;&#x5EA6;&#x5668;&#xFF0C;&#x7528;&#x4E8E;&#x6839;&#x636E;&#x7528;&#x6237;&#x9700;&#x6C42;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x903B;&#x8F91;</p>
 <ul>
 <li>Servlet</li>
 <li>SpringMVC</li>
+</ul>
+</li>
 </ul>
 <p><img src="./assets/image-20200426180210590.png" alt="image-20200426180210590"></p>
 <p><img src="./assets/image-20200426180348299.png" alt="image-20200426180348299"></p>
@@ -415,31 +417,33 @@ pre[data-line] .line-highlight[data-end]:after {
 <p><img src="./assets/image-20200426183313406.png" alt="image-20200426183313406"></p>
 <h1 class="mume-header" id="3-%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE">3 &#x57FA;&#x672C;&#x914D;&#x7F6E;</h1>
 
-<h2 class="mume-header" id="31-%E5%B8%B8%E8%A7%84%E9%85%8D%E7%BD%AEcontroller%E5%8A%A0%E8%BD%BD%E6%8E%A7%E5%88%B6">3.1 &#x5E38;&#x89C4;&#x914D;&#x7F6E;&#xFF08;Controller&#x52A0;&#x8F7D;&#x63A7;&#x5236;&#xFF09;</h2>
+<h2 class="mume-header" id="31-%E5%B8%B8%E8%A7%84%E9%85%8D%E7%BD%AE">3.1 &#x5E38;&#x89C4;&#x914D;&#x7F6E;</h2>
+
+<h3 class="mume-header" id="311-controller%E5%8A%A0%E8%BD%BD%E6%8E%A7%E5%88%B6">3.1.1 Controller&#x52A0;&#x8F7D;&#x63A7;&#x5236;</h3>
 
 <ul>
 <li>SpringMVC&#x7684;&#x5904;&#x7406;&#x5668;&#x5BF9;&#x5E94;&#x7684;bean&#x5FC5;&#x987B;&#x6309;&#x7167;&#x89C4;&#x8303;&#x683C;&#x5F0F;&#x5F00;&#x53D1;&#xFF0C;&#x672A;&#x907F;&#x514D;&#x52A0;&#x5165;&#x65E0;&#x6548;&#x7684;bean&#x53EF;&#x901A;&#x8FC7;bean&#x52A0;&#x8F7D;&#x8FC7;&#x6EE4;&#x5668;&#x8FDB;<br>
 &#x884C;&#x5305;&#x542B;&#x8BBE;&#x5B9A;&#x6216;&#x6392;&#x9664;&#x8BBE;&#x5B9A;&#xFF0C;&#x8868;&#x73B0;&#x5C42;bean&#x6807;&#x6CE8;&#x901A;&#x5E38;&#x8BBE;&#x5B9A;&#x4E3A;@Controller</li>
 </ul>
-<p><strong>xml&#x65B9;&#x5F0F;</strong></p>
+<p>&#x914D;&#x7F6E;&#x5728;<code>spring-mvc.xml</code></p>
 <pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">context:</span>component-scan</span> <span class="token attr-name">base-package</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com.itheima<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">context:</span>include-filter</span>
-                            <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>annotation<span class="token punctuation">&quot;</span></span>
-                            <span class="token attr-name">expression</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>org.springframework.stereotype.Controller<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+        <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>annotation<span class="token punctuation">&quot;</span></span>
+        <span class="token attr-name">expression</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>org.springframework.stereotype.Controller<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">context:</span>component-scan</span><span class="token punctuation">&gt;</span></span>
-</pre><h3 class="mume-header" id="311-%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD">3.1.1 &#x9759;&#x6001;&#x8D44;&#x6E90;&#x52A0;&#x8F7D;</h3>
+</pre><h3 class="mume-header" id="312-%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD">3.1.2 &#x9759;&#x6001;&#x8D44;&#x6E90;&#x52A0;&#x8F7D;</h3>
 
 <pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token comment">&lt;!--&#x653E;&#x884C;&#x6307;&#x5B9A;&#x7C7B;&#x578B;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x914D;&#x7F6E;&#x65B9;&#x5F0F;--&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>resources</span> <span class="token attr-name">mapping</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/img/**<span class="token punctuation">&quot;</span></span> <span class="token attr-name">location</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/img/<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>resources</span> <span class="token attr-name">mapping</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/js/**<span class="token punctuation">&quot;</span></span> <span class="token attr-name">location</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/js/<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>resources</span> <span class="token attr-name">mapping</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/css/**<span class="token punctuation">&quot;</span></span> <span class="token attr-name">location</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/css/<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
 
-<span class="token comment">&lt;!--SpringMVC&#x63D0;&#x4F9B;&#x7684;&#x901A;&#x7528;&#x8D44;&#x6E90;&#x653E;&#x884C;&#x65B9;&#x5F0F;--&gt;</span>
+<span class="token comment">&lt;!--SpringMVC&#x63D0;&#x4F9B;&#x7684;&#x901A;&#x7528;&#x8D44;&#x6E90;&#x653E;&#x884C;&#x65B9;&#x5F0F;&#xFF0C;&#x53EF;&#x76F4;&#x63A5;&#x66FF;&#x4EE3;&#x4E0A;&#x8FF0;&#x679A;&#x4E3E;&#x653E;&#x884C;--&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>default-servlet-handler</span><span class="token punctuation">/&gt;</span></span>
-</pre><h3 class="mume-header" id="312-%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%A4%84%E7%90%86">3.1.2 &#x4E2D;&#x6587;&#x4E71;&#x7801;&#x5904;&#x7406;</h3>
+</pre><h3 class="mume-header" id="313-%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%A4%84%E7%90%86">3.1.3 &#x4E2D;&#x6587;&#x4E71;&#x7801;&#x5904;&#x7406;</h3>
 
 <p>SpringMVC&#x63D0;&#x4F9B;&#x4E13;&#x7528;&#x7684;&#x4E2D;&#x6587;&#x5B57;&#x7B26;&#x8FC7;&#x6EE4;&#x5668;&#xFF0C;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x4E71;&#x7801;&#x95EE;&#x9898;</p>
-<p>&#x914D;&#x7F6E;&#x5728; <strong>web.xml</strong> &#x91CC;&#x9762;</p>
+<p>&#x914D;&#x7F6E;&#x5728; <code>web.xml</code></p>
 <pre data-role="codeBlock" data-info="XML" class="language-xml"><span class="token comment">&lt;!--&#x4E71;&#x7801;&#x5904;&#x7406;&#x8FC7;&#x6EE4;&#x5668;&#xFF0C;&#x4E0E;Servlet&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#xFF0C;&#x5DEE;&#x5F02;&#x4E4B;&#x5904;&#x5728;&#x4E8E;&#x5904;&#x7406;&#x5668;&#x7684;&#x7C7B;&#x7531;Spring&#x63D0;&#x4F9B;--&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>CharacterEncodingFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
@@ -456,7 +460,8 @@ pre[data-line] .line-highlight[data-end]:after {
 </pre><h2 class="mume-header" id="32-%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8">3.2 &#x6CE8;&#x89E3;&#x9A71;&#x52A8;</h2>
 
 <ul>
-<li>&#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x5F62;&#x5F0F;&#x8F6C;&#x5316;SpringMVC&#x6838;&#x5FC3;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E3A;&#x914D;&#x7F6E;&#x7C7B;</li>
+<li>&#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x5F62;&#x5F0F;&#x8F6C;&#x5316;SpringMVC&#x6838;&#x5FC3;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E3A;&#x914D;&#x7F6E;&#x7C7B;<br>
+&#x66FF;&#x6362;<code>spring-mvc.xml</code></li>
 </ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@Configuration</span>
 <span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">&quot;com.itheima&quot;</span><span class="token punctuation">,</span>includeFilters <span class="token operator">=</span>
@@ -478,7 +483,8 @@ pre[data-line] .line-highlight[data-end]:after {
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </pre><ul>
-<li>&#x57FA;&#x4E8E;servlet3.0&#x89C4;&#x8303;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;Servlet&#x5BB9;&#x5668;&#x521D;&#x59CB;&#x5316;&#x914D;&#x7F6E;&#x7C7B;&#xFF0C;&#x52A0;&#x8F7D;SpringMVC&#x6838;&#x5FC3;&#x914D;&#x7F6E;&#x7C7B;</li>
+<li>&#x57FA;&#x4E8E;servlet3.0&#x89C4;&#x8303;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;Servlet&#x5BB9;&#x5668;&#x521D;&#x59CB;&#x5316;&#x914D;&#x7F6E;&#x7C7B;&#xFF0C;&#x52A0;&#x8F7D;SpringMVC&#x6838;&#x5FC3;&#x914D;&#x7F6E;&#x7C7B;<br>
+&#x66FF;&#x6362;<code>web.xml</code></li>
 </ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">ServletContainersInitConfig</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">AbstractDispatcherServletInitializer</span> <span class="token punctuation">{</span>
     <span class="token comment">//&#x521B;&#x5EFA;Servlet&#x5BB9;&#x5668;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x7684;&#x65B9;&#x5F0F;&#x52A0;&#x8F7D;SPRINGMVC&#x914D;&#x7F6E;&#x7C7B;&#x4E2D;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x52A0;&#x8F7D;&#x6210;WEB&#x4E13;&#x7528;&#x7684;			           //ApplicationContext&#x5BF9;&#x8C61;</span>
@@ -513,27 +519,31 @@ pre[data-line] .line-highlight[data-end]:after {
 <span class="token punctuation">}</span>
 </pre><p>&#x5220;&#x9664;web.xml<br>
 &#x5220;&#x9664;spring-mvc.xml</p>
-<p><strong>&#x5C0F;&#x8282;</strong><br>
-&#xF06C; &#x57FA;&#x4E8E;servlet3.0&#x89C4;&#x8303;&#xFF0C;&#x914D;&#x7F6E;Servlet&#x5BB9;&#x5668;&#x521D;&#x59CB;&#x5316;&#x914D;&#x7F6E;&#x7C7B;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x52A0;&#x8F7D;SpringMVC&#x914D;&#x7F6E;&#x7C7B;<br>
-&#xF06C; &#x8F6C;&#x5316;SpringMVC&#x6838;&#x5FC3;&#x914D;&#x7F6E;&#x6587;&#x4EF6;<br>
-&#xF075; &#x8F6C;&#x5316;&#x4E3A;&#x6CE8;&#x89E3;&#xFF08;&#x4F8B;&#x5982;&#xFF1A; spring&#x5904;&#x7406;&#x5668;&#x52A0;&#x8F7D;&#x8FC7;&#x6EE4;&#xFF09;<br>
-&#xF075; &#x8F6C;&#x5316;&#x4E3A;bean&#x8FDB;&#x884C;&#x52A0;&#x8F7D;<br>
-&#xF075; &#x6309;&#x7167;&#x6807;&#x51C6;&#x63A5;&#x53E3;&#x8FDB;&#x884C;&#x5F00;&#x53D1;&#x5E76;&#x52A0;&#x8F7D;&#xFF08;&#x4F8B;&#x5982;&#xFF1A;&#x4E2D;&#x6587;&#x4E71;&#x7801;&#x5904;&#x7406;&#x3001;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x52A0;&#x8F7D;&#x8FC7;&#x6EE4;&#xFF09;</p>
+<p><strong>&#x5C0F;&#x8282;</strong></p>
+<ul>
+<li>&#x57FA;&#x4E8E;servlet3.0&#x89C4;&#x8303;&#xFF0C;&#x914D;&#x7F6E;Servlet&#x5BB9;&#x5668;&#x521D;&#x59CB;&#x5316;&#x914D;&#x7F6E;&#x7C7B;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x52A0;&#x8F7D;SpringMVC&#x914D;&#x7F6E;&#x7C7B;</li>
+<li>&#x8F6C;&#x5316;SpringMVC&#x6838;&#x5FC3;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</li>
+<li>&#x8F6C;&#x5316;&#x4E3A;&#x6CE8;&#x89E3;&#xFF08;&#x4F8B;&#x5982;&#xFF1A; spring&#x5904;&#x7406;&#x5668;&#x52A0;&#x8F7D;&#x8FC7;&#x6EE4;&#xFF09;</li>
+<li>&#x8F6C;&#x5316;&#x4E3A;bean&#x8FDB;&#x884C;&#x52A0;&#x8F7D;</li>
+<li>&#x6309;&#x7167;&#x6807;&#x51C6;&#x63A5;&#x53E3;&#x8FDB;&#x884C;&#x5F00;&#x53D1;&#x5E76;&#x52A0;&#x8F7D;&#xFF08;&#x4F8B;&#x5982;&#xFF1A;&#x4E2D;&#x6587;&#x4E71;&#x7801;&#x5904;&#x7406;&#x3001;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x52A0;&#x8F7D;&#x8FC7;&#x6EE4;&#xFF09;</li>
+</ul>
 <h1 class="mume-header" id="4-%E8%AF%B7%E6%B1%82">4 &#x8BF7;&#x6C42;</h1>
 
 <h2 class="mume-header" id="41-%E6%99%AE%E9%80%9A%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0%E4%BC%A0%E5%8F%82">4.1 &#x666E;&#x901A;&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x4F20;&#x53C2;</h2>
 
 <p>&#x53C2;&#x6570;&#x540D;&#x4E0E;&#x5904;&#x7406;&#x5668;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x540D;&#x4FDD;&#x6301;&#x4E00;&#x81F4;</p>
-<p>&#x8BBF;&#x95EE;URL&#xFF1A; <a href="http://localhost/requestParam1?name=itheima&amp;age=14">http://localhost/requestParam1?name=itheima&amp;age=14</a></p>
+<p>&#x8BBF;&#x95EE;URL&#xFF1A; <code>http://localhost/requestParam1?name=itheima&amp;age=14</code></p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/requestParam1&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">requestParam1</span><span class="token punctuation">(</span><span class="token class-name">String</span> name <span class="token punctuation">,</span><span class="token class-name">String</span> age<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;name=&quot;</span><span class="token operator">+</span>name<span class="token operator">+</span><span class="token string">&quot;,age=&quot;</span><span class="token operator">+</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword keyword-return">return</span> <span class="token string">&quot;page.jsp&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</pre><p><strong>@RequestParam</strong> &#x7684;&#x4F7F;&#x7528;<br>
-&#xF06C; &#x7C7B;&#x578B;&#xFF1A; &#x5F62;&#x53C2;&#x6CE8;&#x89E3;<br>
-&#xF06C; &#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x524D;&#x65B9;<br>
-&#xF06C; &#x4F5C;&#x7528;&#xFF1A;&#x7ED1;&#x5B9A;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x4E0E;&#x5BF9;&#x5E94;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x95F4;&#x7684;&#x5173;&#x7CFB;</p>
+</pre><p><code>@RequestParam</code> &#x7684;&#x4F7F;&#x7528;</p>
+<ul>
+<li>&#x7C7B;&#x578B;&#xFF1A; &#x5F62;&#x53C2;&#x6CE8;&#x89E3;</li>
+<li>&#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x524D;&#x65B9;</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x7ED1;&#x5B9A;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x4E0E;&#x5BF9;&#x5E94;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x95F4;&#x7684;&#x5173;&#x7CFB;</li>
+</ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/requestParam2&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">requestParam2</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span>
                             name <span class="token operator">=</span> <span class="token string">&quot;userName&quot;</span><span class="token punctuation">,</span>
@@ -546,7 +556,7 @@ pre[data-line] .line-highlight[data-end]:after {
 </pre><h2 class="mume-header" id="42-pojo%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0%E4%BC%A0%E5%8F%82">4.2 POJO&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x4F20;&#x53C2;</h2>
 
 <p>&#x5F53;POJO&#x4E2D;&#x4F7F;&#x7528;&#x7B80;&#x5355;&#x7C7B;&#x578B;&#x5C5E;&#x6027;&#x65F6;&#xFF0C; &#x53C2;&#x6570;&#x540D;&#x79F0;&#x4E0E;POJO&#x7C7B;&#x5C5E;&#x6027;&#x540D;&#x4FDD;&#x6301;&#x4E00;&#x81F4;</p>
-<p>&#x8BBF;&#x95EE;URL&#xFF1A; <a href="http://localhost/requestParam3?name=itheima&amp;age=14">http://localhost/requestParam3?name=itheima&amp;age=14</a></p>
+<p>&#x8BBF;&#x95EE;URL&#xFF1A; <code>http://localhost/requestParam3?name=itheima&amp;age=14</code></p>
 <p><strong>Controller</strong></p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/requestParam3&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">requestParam3</span><span class="token punctuation">(</span><span class="token class-name">User</span> user<span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -575,18 +585,24 @@ pre[data-line] .line-highlight[data-end]:after {
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
-</pre><p><strong>&#x53C2;&#x6570;&#x51B2;&#x7A81;</strong><br>
-&#xF06C; &#x5F53;POJO&#x7C7B;&#x578B;&#x5C5E;&#x6027;&#x4E0E;&#x5176;&#x4ED6;&#x5F62;&#x53C2;&#x51FA;&#x73B0;&#x540C;&#x540D;&#x95EE;&#x9898;&#x65F6;&#xFF0C;&#x5C06;&#x88AB;&#x540C;&#x65F6;&#x8D4B;&#x503C;<br>
-&#xF06C; &#x5EFA;&#x8BAE;&#x4F7F;&#x7528;@RequestParam&#x6CE8;&#x89E3;&#x8FDB;&#x884C;&#x533A;&#x5206;<br>
-&#x8BBF;&#x95EE;URL&#xFF1A; <a href="http://localhost/requestParam4?name=itheima&amp;">http://localhost/requestParam4?name=itheima&amp;</a><strong>age</strong>=14</p>
+</pre><p><strong>&#x53C2;&#x6570;&#x51B2;&#x7A81;</strong></p>
+<ul>
+<li>&#x5F53;POJO&#x7C7B;&#x578B;&#x5C5E;&#x6027;&#x4E0E;&#x5176;&#x4ED6;&#x5F62;&#x53C2;&#x51FA;&#x73B0;&#x540C;&#x540D;&#x95EE;&#x9898;&#x65F6;&#xFF0C;&#x5C06;&#x88AB;&#x540C;&#x65F6;&#x8D4B;&#x503C;</li>
+<li>&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;@RequestParam&#x6CE8;&#x89E3;&#x8FDB;&#x884C;&#x533A;&#x5206;<br>
+&#x8BBF;&#x95EE;URL&#xFF1A; <code>http://localhost/requestParam4?name=itheima&amp;**age**=14</code></li>
+</ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/requestParam4&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">requestParam4</span><span class="token punctuation">(</span><span class="token class-name">User</span> user<span class="token punctuation">,</span><span class="token class-name">String</span> age<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;user.age=&quot;</span><span class="token operator">+</span>user<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">&quot;,age=&quot;</span><span class="token operator">+</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword keyword-return">return</span> <span class="token string">&quot;page.jsp&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</pre><p><strong>&#x590D;&#x6742;POJO&#x7C7B;&#x578B;&#x53C2;&#x6570;</strong><br>
-&#xF06C; &#x5F53;POJO&#x4E2D;&#x51FA;&#x73B0;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x65F6;&#xFF0C;&#x53C2;&#x6570;&#x540D;&#x79F0;&#x4E0E;&#x5BF9;&#x8C61;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x540D;&#x79F0;&#x4FDD;&#x6301;&#x4E00;&#x81F4;</p>
-<p>&#x8BBF;&#x95EE;URL&#xFF1A; <a href="http://localhost/requestParam5?address.province=beijing">http://localhost/requestParam5?address.province=beijing</a></p>
+</pre><p><strong>&#x590D;&#x6742;POJO&#x7C7B;&#x578B;&#x53C2;&#x6570;</strong></p>
+<ul>
+<li>
+<p>&#x5F53;POJO&#x4E2D;&#x51FA;&#x73B0;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x65F6;&#xFF0C;&#x53C2;&#x6570;&#x540D;&#x79F0;&#x4E0E;&#x5BF9;&#x8C61;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x540D;&#x79F0;&#x4FDD;&#x6301;&#x4E00;&#x81F4;</p>
+<p>&#x8BBF;&#x95EE;URL&#xFF1A; <code>http://localhost/requestParam5?address.province=beijing</code></p>
+</li>
+</ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
     <span class="token keyword keyword-private">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
     <span class="token keyword keyword-private">private</span> <span class="token class-name">Integer</span> age<span class="token punctuation">;</span>
@@ -625,7 +641,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <span class="token punctuation">}</span>
 </pre><p><img src="./assets/image-20200426190932459.png" alt="image-20200426190932459"></p>
 <p><strong>&#x5F53;POJO&#x4E2D;&#x51FA;&#x73B0;List&#xFF0C;&#x4FDD;&#x5B58;&#x5BF9;&#x8C61;&#x6570;&#x636E;&#xFF0C;&#x53C2;&#x6570;&#x540D;&#x79F0;&#x4E0E;&#x5BF9;&#x8C61;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x540D;&#x79F0;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#xFF0C;&#x4F7F;&#x7528;&#x6570;&#x7EC4;&#x683C;&#x5F0F;&#x63CF;&#x8FF0;&#x96C6;&#x5408;&#x4E2D;&#x5BF9;&#x8C61;&#x7684;&#x4F4D;&#x7F6E;</strong></p>
-<p>&#x8BBF;&#x95EE;URL&#xFF1A; <a href="http://localhost/requestParam7?addresses%5B0%5D.province=bj&amp;addresses%5B1%5D.province=tj">http://localhost/requestParam7?addresses[0].province=bj&amp;addresses[1].province=tj</a></p>
+<p>&#x8BBF;&#x95EE;URL&#xFF1A; <code>http://localhost/requestParam7?addresses[0].province=bj&amp;addresses[1].province=tj</code></p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
     <span class="token keyword keyword-private">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
     <span class="token keyword keyword-private">private</span> <span class="token class-name">Integer</span> age<span class="token punctuation">;</span>
@@ -643,7 +659,7 @@ pre[data-line] .line-highlight[data-end]:after {
     <span class="token keyword keyword-return">return</span> <span class="token string">&quot;page.jsp&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </pre><p><strong>&#x5F53;POJO&#x4E2D;&#x51FA;&#x73B0;Map&#xFF0C;&#x4FDD;&#x5B58;&#x5BF9;&#x8C61;&#x6570;&#x636E;&#xFF0C;&#x53C2;&#x6570;&#x540D;&#x79F0;&#x4E0E;&#x5BF9;&#x8C61;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x540D;&#x79F0;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#xFF0C;&#x4F7F;&#x7528;&#x6620;&#x5C04;&#x683C;&#x5F0F;&#x63CF;&#x8FF0;&#x96C6;&#x5408;&#x4E2D;&#x5BF9;&#x8C61;&#x7684;&#x4F4D;&#x7F6E;</strong></p>
-<p>&#x8BBF;&#x95EE;URL&#xFF1A; <a href="http://localhost/requestParam8?addressMap%5B%E2%80%99home%E2%80%99%5D.province=bj&amp;addressMap%5B%E2%80%99job%E2%80%99%5D.province=tj">http://localhost/requestParam8?addressMap[&#x2019;home&#x2019;].province=bj&amp;addressMap[&#x2019;job&#x2019;].province=tj</a></p>
+<p>&#x8BBF;&#x95EE;URL&#xFF1A; <code>http://localhost/requestParam8?addressMap[&#x2019;home&#x2019;].province=bj&amp;addressMap[&#x2019;job&#x2019;].province=tj</code></p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
     <span class="token keyword keyword-private">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
     <span class="token keyword keyword-private">private</span> <span class="token class-name">Integer</span> age<span class="token punctuation">;</span>
@@ -659,77 +675,95 @@ pre[data-line] .line-highlight[data-end]:after {
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;user.addressMap=&quot;</span><span class="token operator">+</span>user<span class="token punctuation">.</span><span class="token function">getAddressMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword keyword-return">return</span> <span class="token string">&quot;page.jsp&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</pre><h2 class="mume-header" id="43-%E6%95%B0%E7%BB%84%E4%B8%8E%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0%E4%BC%A0%E5%8F%82">4.3 &#x6570;&#x7EC4;&#x4E0E;&#x96C6;&#x5408;&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x4F20;&#x53C2;</h2>
+</pre><p><strong>&#x5C0F;&#x8282;</strong></p>
+<ul>
+<li>&#x8BF7;&#x6C42;POJO&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x83B7;&#x53D6;
+<ul>
+<li>POJO&#x7684;&#x7B80;&#x5355;&#x5C5E;&#x6027;</li>
+<li>POJO&#x7684;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;</li>
+<li>POJO&#x7684;&#x96C6;&#x5408;&#x5C5E;&#x6027;&#xFF08;&#x5B58;&#x50A8;&#x7B80;&#x5355;&#x6570;&#x636E;&#xFF09;</li>
+<li>POJO&#x7684;&#x96C6;&#x5408;&#x5C5E;&#x6027;&#xFF08;&#x5B58;&#x50A8;&#x5BF9;&#x8C61;&#x6570;&#x636E;&#xFF09;</li>
+</ul>
+</li>
+<li>&#x540D;&#x79F0;&#x51B2;&#x7A81;&#x95EE;&#x9898;</li>
+</ul>
+<h2 class="mume-header" id="43-%E6%95%B0%E7%BB%84%E4%B8%8E%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0%E4%BC%A0%E5%8F%82">4.3 &#x6570;&#x7EC4;&#x4E0E;&#x96C6;&#x5408;&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x4F20;&#x53C2;</h2>
 
 <p><strong>&#x6570;&#x7EC4;&#x7C7B;&#x578B;&#x53C2;&#x6570;</strong></p>
 <p>&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x540D;&#x4E0E;&#x5904;&#x7406;&#x5668;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x540D;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#xFF0C;&#x4E14;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x6570;&#x91CF;&#xFF1E; 1&#x4E2A;</p>
-<p>&#x8BBF;&#x95EE;URL&#xFF1A; <a href="http://localhost/requestParam9?nick=Jockme&amp;nick=zahc">http://localhost/requestParam9?nick=Jockme&amp;nick=zahc</a></p>
+<p>&#x8BBF;&#x95EE;URL&#xFF1A; <code>http://localhost/requestParam9?nick=Jockme&amp;nick=zahc</code></p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/requestParam9&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">requestParam9</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nick<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>nick<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">&quot;,&quot;</span><span class="token operator">+</span>nick<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword keyword-return">return</span> <span class="token string">&quot;page.jsp&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</pre><p><strong>&#x96C6;&#x5408;&#x7C7B;&#x578B;&#x53C2;&#x6570;</strong><br>
-&#xF06C; &#x4FDD;&#x5B58;&#x7B80;&#x5355;&#x7C7B;&#x578B;&#x6570;&#x636E;&#xFF0C;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x540D;&#x4E0E;&#x5904;&#x7406;&#x5668;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x540D;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#xFF0C;&#x4E14;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x6570;&#x91CF;&#xFF1E; 1&#x4E2A;<br>
-&#x8BBF;&#x95EE;URL&#xFF1A; <a href="http://localhost/requestParam10?nick=Jockme&amp;nick=zahc">http://localhost/requestParam10?nick=Jockme&amp;nick=zahc</a></p>
+</pre><p><strong>&#x96C6;&#x5408;&#x7C7B;&#x578B;&#x53C2;&#x6570;</strong></p>
+<ul>
+<li>&#x4FDD;&#x5B58;&#x7B80;&#x5355;&#x7C7B;&#x578B;&#x6570;&#x636E;&#xFF0C;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x540D;&#x4E0E;&#x5904;&#x7406;&#x5668;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x540D;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#xFF0C;&#x4E14;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x6570;&#x91CF;&#xFF1E; 1&#x4E2A;<br>
+&#x8BBF;&#x95EE;URL&#xFF1A; <code>http://localhost/requestParam10?nick=Jockme&amp;nick=zahc</code></li>
+</ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/requestParam10&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">requestParam10</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">&quot;nick&quot;</span><span class="token punctuation">)</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> nick<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>nick<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword keyword-return">return</span> <span class="token string">&quot;page.jsp&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</pre><p>&#xF06C; &#x6CE8;&#x610F;&#xFF1A; SpringMVC&#x9ED8;&#x8BA4;&#x5C06;List&#x4F5C;&#x4E3A;&#x5BF9;&#x8C61;&#x5904;&#x7406;&#xFF0C;&#x8D4B;&#x503C;&#x524D;&#x5148;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x5C06;nick&#x4F5C;&#x4E3A;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;&#x7531;&#x4E8E;<br>
-List&#x662F;&#x63A5;&#x53E3;&#xFF0C;&#x65E0;&#x6CD5;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#xFF0C;&#x62A5;&#x65E0;&#x6CD5;&#x627E;&#x5230;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x5F02;&#x5E38;&#xFF1B;&#x4FEE;&#x590D;&#x7C7B;&#x578B;&#x4E3A;&#x53EF;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x7684;ArrayList&#x7C7B;&#x578B;&#x540E;&#xFF0C;&#x5BF9;&#x8C61;&#x53EF;<br>
-&#x4EE5;&#x521B;&#x5EFA;&#xFF0C;&#x4F46;&#x6CA1;&#x6709;nick&#x5C5E;&#x6027;&#xFF0C;&#x56E0;&#x6B64;&#x6570;&#x636E;&#x4E3A;&#x7A7A;&#x3002;&#x6B64;&#x65F6;&#x9700;&#x8981;&#x544A;&#x77E5;SpringMVC&#x7684;&#x5904;&#x7406;&#x5668;nick&#x662F;&#x4E00;&#x7EC4;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5355;<br>
-&#x4E00;&#x6570;&#x636E;&#x3002;&#x901A;&#x8FC7;@RequestParam&#x6CE8;&#x89E3;&#xFF0C;&#x5C06;&#x6570;&#x91CF;&#x5927;&#x4E8E;1&#x4E2A;names&#x53C2;&#x6570;&#x6253;&#x5305;&#x6210;&#x53C2;&#x6570;&#x6570;&#x7EC4;&#x540E;&#xFF0C; SpringMVC&#x624D;&#x80FD;&#x8BC6;&#x522B;&#x8BE5;&#x6570;<br>
-&#x636E;&#x683C;&#x5F0F;&#xFF0C;&#x5E76;&#x5224;&#x5B9A;&#x5F62;&#x53C2;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x4E3A;&#x6570;&#x7EC4;&#x6216;&#x96C6;&#x5408;&#xFF0C;&#x5E76;&#x6309;&#x6570;&#x7EC4;&#x6216;&#x96C6;&#x5408;&#x5BF9;&#x8C61;&#x7684;&#x5F62;&#x5F0F;&#x64CD;&#x4F5C;&#x6570;&#x636E;&#x3002;</p>
-<p><strong>&#x5C0F;&#x8282;</strong><br>
-&#xF06C; &#x8BF7;&#x6C42;POJO&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x83B7;&#x53D6;<br>
-&#xF075; POJO&#x7684;&#x7B80;&#x5355;&#x5C5E;&#x6027;<br>
-&#xF075; POJO&#x7684;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;<br>
-&#xF075; POJO&#x7684;&#x96C6;&#x5408;&#x5C5E;&#x6027;&#xFF08;&#x5B58;&#x50A8;&#x7B80;&#x5355;&#x6570;&#x636E;&#xFF09;<br>
-&#xF075; POJO&#x7684;&#x96C6;&#x5408;&#x5C5E;&#x6027;&#xFF08;&#x5B58;&#x50A8;&#x5BF9;&#x8C61;&#x6570;&#x636E;&#xFF09;<br>
-&#xF06C; &#x540D;&#x79F0;&#x51B2;&#x7A81;&#x95EE;&#x9898;</p>
+</pre><ul>
+<li>&#x6CE8;&#x610F;&#xFF1A; SpringMVC&#x9ED8;&#x8BA4;&#x5C06;List&#x4F5C;&#x4E3A;&#x5BF9;&#x8C61;&#x5904;&#x7406;&#xFF0C;&#x8D4B;&#x503C;&#x524D;&#x5148;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x5C06;nick&#x4F5C;&#x4E3A;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;
+<ul>
+<li>&#x7531;&#x4E8E;List&#x662F;&#x63A5;&#x53E3;&#xFF0C;&#x65E0;&#x6CD5;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#xFF0C;&#x62A5;&#x65E0;&#x6CD5;&#x627E;&#x5230;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x5F02;&#x5E38;&#xFF1B;</li>
+<li>&#x4FEE;&#x590D;&#x7C7B;&#x578B;&#x4E3A;&#x53EF;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x7684;ArrayList&#x7C7B;&#x578B;&#x540E;&#xFF0C;&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#xFF0C;&#x4F46;&#x6CA1;&#x6709;nick&#x5C5E;&#x6027;&#xFF0C;&#x56E0;&#x6B64;&#x6570;&#x636E;&#x4E3A;&#x7A7A;&#x3002;</li>
+<li>&#x6B64;&#x65F6;&#x9700;&#x8981;&#x544A;&#x77E5;SpringMVC&#x7684;&#x5904;&#x7406;&#x5668;nick&#x662F;&#x4E00;&#x7EC4;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x4E00;&#x6570;&#x636E;&#x3002;</li>
+</ul>
+</li>
+<li>&#x901A;&#x8FC7;<code>@RequestParam</code>&#x6CE8;&#x89E3;&#xFF0C;&#x5C06;&#x6570;&#x91CF;&#x5927;&#x4E8E;1&#x4E2A;names&#x53C2;&#x6570;&#x6253;&#x5305;&#x6210;&#x53C2;&#x6570;&#x6570;&#x7EC4;&#x540E;&#xFF0C; SpringMVC&#x624D;&#x80FD;&#x8BC6;&#x522B;&#x8BE5;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF0C;&#x5E76;&#x5224;&#x5B9A;&#x5F62;&#x53C2;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x4E3A;&#x6570;&#x7EC4;&#x6216;&#x96C6;&#x5408;&#xFF0C;&#x5E76;&#x6309;&#x6570;&#x7EC4;&#x6216;&#x96C6;&#x5408;&#x5BF9;&#x8C61;&#x7684;&#x5F62;&#x5F0F;&#x64CD;&#x4F5C;&#x6570;&#x636E;&#x3002;</li>
+</ul>
 <h2 class="mume-header" id="44-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%99%A8">4.4 &#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x5668;</h2>
 
 <p>SpringMVC&#x5BF9;&#x63A5;&#x6536;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x81EA;&#x52A8;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#xFF0C;&#x8BE5;&#x5DE5;&#x4F5C;&#x901A;&#x8FC7;Converter&#x63A5;&#x53E3;&#x5B9E;&#x73B0;</p>
 <p><img src="./assets/image-20200426193801059.png" alt="image-20200426193801059"></p>
 <ul>
 <li>
-<p><strong>&#x6807;&#x91CF;&#x8F6C;&#x6362;&#x5668;</strong><br>
-&#xF075; StringToBooleanConverter String&#x2192;Boolean<br>
-&#xF075; ObjectToStringConverter Object&#x2192;String<br>
-&#xF075; StringToNumberConverterFactory String&#x2192;Number&#xFF08; Integer&#x3001; Long&#x7B49;&#xFF09;<br>
-&#xF075; NumberToNumberConverterFactory Number&#x5B50;&#x7C7B;&#x578B;&#x4E4B;&#x95F4;(Integer&#x3001; Long&#x3001; Double&#x7B49;)<br>
-&#xF075; StringToCharacterConverter String&#x2192;java.lang.Character<br>
-&#xF075; NumberToCharacterConverter Number&#x5B50;&#x7C7B;&#x578B;(Integer&#x3001; Long&#x3001; Double&#x7B49;)&#x2192;java.lang.Character<br>
-&#xF075; CharacterToNumberFactory java.lang.Character&#x2192;Number&#x5B50;&#x7C7B;&#x578B;(Integer&#x3001; Long&#x3001; Double&#x7B49;)<br>
-&#xF075; StringToEnumConverterFactory String&#x2192;enum&#x7C7B;&#x578B;<br>
-&#xF075; EnumToStringConverter enum&#x7C7B;&#x578B;&#x2192;String<br>
-&#xF075; StringToLocaleConverter String&#x2192;java.util.Local<br>
-&#xF075; PropertiesToStringConverter java.util.Properties&#x2192;String<br>
-&#xF075; StringToPropertiesConverter String&#x2192;java.util.Properties</p>
+<p><strong>&#x6807;&#x91CF;&#x8F6C;&#x6362;&#x5668;</strong></p>
+<ul>
+<li>StringToBooleanConverter String&#x2192;Boolean</li>
+<li>ObjectToStringConverter Object&#x2192;String</li>
+<li>StringToNumberConverterFactory String&#x2192;Number&#xFF08; Integer&#x3001; Long&#x7B49;&#xFF09;</li>
+<li>NumberToNumberConverterFactory Number&#x5B50;&#x7C7B;&#x578B;&#x4E4B;&#x95F4;(Integer&#x3001; Long&#x3001; Double&#x7B49;)</li>
+<li>StringToCharacterConverter String&#x2192;java.lang.Character</li>
+<li>NumberToCharacterConverter Number&#x5B50;&#x7C7B;&#x578B;(Integer&#x3001; Long&#x3001; Double&#x7B49;)&#x2192;java.lang.Character</li>
+<li>CharacterToNumberFactory java.lang.Character&#x2192;Number&#x5B50;&#x7C7B;&#x578B;(Integer&#x3001; Long&#x3001; Double&#x7B49;)</li>
+<li>StringToEnumConverterFactory String&#x2192;enum&#x7C7B;&#x578B;</li>
+<li>EnumToStringConverter enum&#x7C7B;&#x578B;&#x2192;String</li>
+<li>StringToLocaleConverter String&#x2192;java.util.Local</li>
+<li>PropertiesToStringConverter java.util.Properties&#x2192;String</li>
+<li>StringToPropertiesConverter String&#x2192;java.util.Properties</li>
+</ul>
 </li>
 <li>
-<p><strong>&#x96C6;&#x5408;&#x3001;&#x6570;&#x7EC4;&#x76F8;&#x5173;&#x8F6C;&#x6362;&#x5668;</strong><br>
-&#xF075; ArrayToCollectionConverter &#x6570;&#x7EC4;&#x2192;&#x96C6;&#x5408;&#xFF08; List&#x3001; Set&#xFF09;<br>
-&#xF075; CollectionToArrayConverter &#x96C6;&#x5408;&#xFF08; List&#x3001; Set&#xFF09; &#x2192;&#x6570;&#x7EC4;<br>
-&#xF075; ArrayToArrayConverter &#x6570;&#x7EC4;&#x95F4;<br>
-&#xF075; CollectionToCollectionConverter &#x96C6;&#x5408;&#x95F4;&#xFF08; List&#x3001; Set&#xFF09;<br>
-&#xF075; MapToMapConverter Map&#x95F4;<br>
-&#xF075; ArrayToStringConverter &#x6570;&#x7EC4;&#x2192;String&#x7C7B;&#x578B;<br>
-&#xF075; StringToArrayConverter String&#x2192;&#x6570;&#x7EC4;&#xFF0C; trim&#x540E;&#x4F7F;&#x7528;&#x201C;,&#x201D;split<br>
-&#xF075; ArrayToObjectConverter &#x6570;&#x7EC4;&#x2192;Object<br>
-&#xF075; ObjectToArrayConverter Object&#x2192;&#x5355;&#x5143;&#x7D20;&#x6570;&#x7EC4;<br>
-&#xF075; CollectionToStringConverter &#x96C6;&#x5408;&#xFF08; List&#x3001; Set&#xFF09; &#x2192;String<br>
-&#xF075; StringToCollectionConverter String&#x2192;&#x96C6;&#x5408;&#xFF08; List&#x3001; Set&#xFF09;&#xFF0C; trim&#x540E;&#x4F7F;&#x7528;&#x201C;,&#x201D;split<br>
-&#xF075; CollectionToObjectConverter &#x96C6;&#x5408;&#x2192;Object<br>
-&#xF075; ObjectToCollectionConverter Object&#x2192;&#x5355;&#x5143;&#x7D20;&#x96C6;&#x5408;</p>
+<p><strong>&#x96C6;&#x5408;&#x3001;&#x6570;&#x7EC4;&#x76F8;&#x5173;&#x8F6C;&#x6362;&#x5668;</strong></p>
+<ul>
+<li>ArrayToCollectionConverter &#x6570;&#x7EC4;&#x2192;&#x96C6;&#x5408;&#xFF08; List&#x3001; Set&#xFF09;</li>
+<li>CollectionToArrayConverter &#x96C6;&#x5408;&#xFF08; List&#x3001; Set&#xFF09; &#x2192;&#x6570;&#x7EC4;</li>
+<li>ArrayToArrayConverter &#x6570;&#x7EC4;&#x95F4;</li>
+<li>CollectionToCollectionConverter &#x96C6;&#x5408;&#x95F4;&#xFF08; List&#x3001; Set&#xFF09;</li>
+<li>MapToMapConverter Map&#x95F4;</li>
+<li>ArrayToStringConverter &#x6570;&#x7EC4;&#x2192;String&#x7C7B;&#x578B;</li>
+<li>StringToArrayConverter String&#x2192;&#x6570;&#x7EC4;&#xFF0C; trim&#x540E;&#x4F7F;&#x7528;&#x201C;,&#x201D;split</li>
+<li>ArrayToObjectConverter &#x6570;&#x7EC4;&#x2192;Object</li>
+<li>ObjectToArrayConverter Object&#x2192;&#x5355;&#x5143;&#x7D20;&#x6570;&#x7EC4;</li>
+<li>CollectionToStringConverter &#x96C6;&#x5408;&#xFF08; List&#x3001; Set&#xFF09; &#x2192;String</li>
+<li>StringToCollectionConverter String&#x2192;&#x96C6;&#x5408;&#xFF08; List&#x3001; Set&#xFF09;&#xFF0C; trim&#x540E;&#x4F7F;&#x7528;&#x201C;,&#x201D;split</li>
+<li>CollectionToObjectConverter &#x96C6;&#x5408;&#x2192;Object</li>
+<li>ObjectToCollectionConverter Object&#x2192;&#x5355;&#x5143;&#x7D20;&#x96C6;&#x5408;</li>
+</ul>
 </li>
 <li>
-<p><strong>&#x9ED8;&#x8BA4;&#x8F6C;&#x6362;&#x5668;</strong><br>
-&#xF075; ObjectToObjectConverter Object&#x95F4;<br>
-&#xF075; IdToEntityConverter Id&#x2192;Entity<br>
-&#xF075; FallbackObjectToStringConverter Object&#x2192;String</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x8F6C;&#x6362;&#x5668;</strong></p>
+<ul>
+<li><code>ObjectToObjectConverter</code> Object&#x2192;&#x65F6;&#x95F4;</li>
+<li><code>IdToEntityConverter</code> Id&#x2192;Entity</li>
+<li><code>FallbackObjectToStringConverter</code> Object&#x2192;String</li>
+</ul>
 </li>
 <li>
 <p><strong>SpringMVC&#x5BF9;&#x63A5;&#x6536;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x81EA;&#x52A8;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#xFF0C;&#x8BE5;&#x5DE5;&#x4F5C;&#x901A;&#x8FC7;Converter&#x63A5;&#x53E3;&#x5B9E;&#x73B0;</strong></p>
@@ -741,7 +775,7 @@ List&#x662F;&#x63A5;&#x53E3;&#xFF0C;&#x65E0;&#x6CD5;&#x521B;&#x5EFA;&#x5BF9;&#x8
 <ul>
 <li>
 <p><strong>&#x58F0;&#x660E;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x8F6C;&#x6362;&#x683C;&#x5F0F;&#x5E76;&#x8986;&#x76D6;&#x7CFB;&#x7EDF;&#x8F6C;&#x6362;&#x683C;&#x5F0F;</strong></p>
-<pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token comment">&lt;!--5.&#x542F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;Converter--&gt;</span>
+<pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token comment">&lt;!--6.&#x542F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;Converter--&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>annotation-driven</span> <span class="token attr-name">conversion-service</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>conversionService<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
 <span class="token comment">&lt;!--1.&#x8BBE;&#x5B9A;&#x683C;&#x5F0F;&#x7C7B;&#x578B;Converter&#xFF0C;&#x6CE8;&#x518C;&#x4E3A;Bean&#xFF0C;&#x53D7;SpringMVC&#x7BA1;&#x7406;--&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>conversionService<span class="token punctuation">&quot;</span></span>
@@ -760,12 +794,14 @@ List&#x662F;&#x63A5;&#x53E3;&#xFF0C;&#x65E0;&#x6CD5;&#x521B;&#x5EFA;&#x5BF9;&#x8
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
 </pre></li>
 <li>
-<p><strong>&#x65E5;&#x671F;&#x7C7B;&#x578B;&#x683C;&#x5F0F;&#x8F6C;&#x6362;&#xFF08;&#x7B80;&#x5316;&#x7248;&#xFF09;</strong><br>
-&#xF06C; &#x540D;&#x79F0;&#xFF1A; @DateTimeFormat<br>
-&#xF06C; &#x7C7B;&#x578B;&#xFF1A; &#x5F62;&#x53C2;&#x6CE8;&#x89E3;&#x3001;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x6CE8;&#x89E3;<br>
-&#xF06C; &#x4F4D;&#x7F6E;&#xFF1A;&#x5F62;&#x53C2;&#x524D;&#x9762; &#x6216; &#x6210;&#x5458;&#x53D8;&#x91CF;&#x4E0A;&#x65B9;<br>
-&#xF06C; &#x4F5C;&#x7528;&#xFF1A;&#x4E3A;&#x5F53;&#x524D;&#x53C2;&#x6570;&#x6216;&#x53D8;&#x91CF;&#x6307;&#x5B9A;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x89C4;&#x5219;<br>
-&#xF06C; &#x8303;&#x4F8B;&#xFF1A;</p>
+<p><strong>&#x65E5;&#x671F;&#x7C7B;&#x578B;&#x683C;&#x5F0F;&#x8F6C;&#x6362;&#xFF08;&#x7B80;&#x5316;&#x7248;&#xFF09;</strong></p>
+<ul>
+<li>&#x540D;&#x79F0;&#xFF1A; <code>@DateTimeFormat</code></li>
+<li>&#x7C7B;&#x578B;&#xFF1A; &#x5F62;&#x53C2;&#x6CE8;&#x89E3;&#x3001;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x6CE8;&#x89E3;</li>
+<li>&#x4F4D;&#x7F6E;&#xFF1A;&#x5F62;&#x53C2;&#x524D;&#x9762; &#x6216; &#x6210;&#x5458;&#x53D8;&#x91CF;&#x4E0A;&#x65B9;</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x4E3A;&#x5F53;&#x524D;&#x53C2;&#x6570;&#x6216;&#x53D8;&#x91CF;&#x6307;&#x5B9A;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x89C4;&#x5219;</li>
+<li>&#x8303;&#x4F8B;&#xFF1A;</li>
+</ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">requestParam12</span><span class="token punctuation">(</span><span class="token annotation punctuation">@DateTimeFormat</span><span class="token punctuation">(</span>pattern <span class="token operator">=</span> <span class="token string">&quot;yyyy-MM-dd&quot;</span><span class="token punctuation">)</span> <span class="token class-name">Date</span> date<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;date=&quot;</span><span class="token operator">+</span>date<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword keyword-return">return</span> <span class="token string">&quot;page.jsp&quot;</span><span class="token punctuation">;</span>
@@ -775,8 +811,8 @@ List&#x662F;&#x63A5;&#x53E3;&#xFF0C;&#x65E0;&#x6CD5;&#x521B;&#x5EFA;&#x5BF9;&#x8
 </pre></li>
 <li>
 <p>&#x6CE8;&#x610F;&#xFF1A;&#x4F9D;&#x8D56;&#x6CE8;&#x89E3;&#x9A71;&#x52A8;&#x652F;&#x6301;</p>
-<p>&lt;mvc:annotation-driven /&gt;</p>
-</li>
+<pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>annotation-driven</span> <span class="token punctuation">/&gt;</span></span>  
+</pre></li>
 </ul>
 <h2 class="mume-header" id="46-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%99%A8">4.6 &#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x5668;</h2>
 
@@ -820,45 +856,47 @@ List&#x662F;&#x63A5;&#x53E3;&#xFF0C;&#x65E0;&#x6CD5;&#x521B;&#x5EFA;&#x5BF9;&#x8
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>annotation-driven</span> <span class="token attr-name">conversion-service</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>conversionService<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
 </pre></li>
 </ul>
-<h2 class="mume-header" id="47-%E8%AF%B7%E6%B1%82%E6%98%A0%E5%B0%84-requestmapping">4.7 &#x8BF7;&#x6C42;&#x6620;&#x5C04; @RequestMapping</h2>
+<h2 class="mume-header" id="47-%E8%AF%B7%E6%B1%82%E6%98%A0%E5%B0%84">4.7 &#x8BF7;&#x6C42;&#x6620;&#x5C04;</h2>
 
+<p><code>@RequestMapping</code></p>
+<p>&#x8FD4;&#x56DE;&#x5B57;&#x7B26;&#x4E32;&#xFF1A;</p>
+<ul>
+<li><code>page.jsp</code>&#xFF1A;&#x9ED8;&#x8BA4;&#x5F53;&#x524D;&#x6620;&#x5C04;&#x8DEF;&#x5F84;</li>
+<li><code>/page.jsp</code>&#xFF1A;&#x6839;&#x8DEF;&#x5F84;</li>
+</ul>
 <h3 class="mume-header" id="471-%E6%96%B9%E6%B3%95%E6%B3%A8%E8%A7%A3">4.7.1 &#x65B9;&#x6CD5;&#x6CE8;&#x89E3;</h3>
 
 <ul>
-<li>&#x540D;&#x79F0;&#xFF1A; @RequestMapping<br>
-&#xF06C; &#x7C7B;&#x578B;&#xFF1A; &#x65B9;&#x6CD5;&#x6CE8;&#x89E3;<br>
-&#xF06C; &#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;&#x4E0A;&#x65B9;<br>
-&#xF06C; &#x4F5C;&#x7528;&#xFF1A;&#x7ED1;&#x5B9A;&#x8BF7;&#x6C42;&#x5730;&#x5740;&#x4E0E;&#x5BF9;&#x5E94;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x95F4;&#x7684;&#x5173;&#x7CFB;<br>
-&#xF06C; &#x8303;&#x4F8B;&#xFF1A;<br>
-&#xF075; &#x8BBF;&#x95EE;&#x8DEF;&#x5F84;&#xFF1A; /requestURL1</li>
+<li>&#x7C7B;&#x578B;&#xFF1A; &#x65B9;&#x6CD5;&#x6CE8;&#x89E3;</li>
+<li>&#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;&#x4E0A;&#x65B9;</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x7ED1;&#x5B9A;&#x8BF7;&#x6C42;&#x5730;&#x5740;&#x4E0E;&#x5BF9;&#x5E94;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x95F4;&#x7684;&#x5173;&#x7CFB;</li>
+<li>&#x8303;&#x4F8B;&#xFF1A;&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;<code>/requestURL</code></li>
 </ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@Controller</span>
-<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/user&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/requestURL2&quot;</span><span class="token punctuation">)</span>
-    <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">requestURL2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/requestURL&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">requestURL</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword keyword-return">return</span> <span class="token string">&quot;page.jsp&quot;</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </pre><h3 class="mume-header" id="472-%E7%B1%BB%E6%B3%A8%E8%A7%A3">4.7.2 &#x7C7B;&#x6CE8;&#x89E3;</h3>
 
-<p><strong>&#x540D;&#x79F0;&#xFF1A; @RequestMapping</strong><br>
-&#xF06C; &#x7C7B;&#x578B;&#xFF1A; &#x7C7B;&#x6CE8;&#x89E3;<br>
-&#xF06C; &#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x5B9A;&#x4E49;&#x4E0A;&#x65B9;<br>
-&#xF06C; &#x4F5C;&#x7528;&#xFF1A;&#x4E3A;&#x5F53;&#x524D;&#x5904;&#x7406;&#x5668;&#x4E2D;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x8BBE;&#x5B9A;&#x516C;&#x5171;&#x7684;&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;&#x524D;&#x7F00;<br>
-&#xF06C; &#x8303;&#x4F8B;&#xFF1A;<br>
-&#xF075; &#x8BBF;&#x95EE;&#x8DEF;&#x5F84;&#xFF1A; /user/requestURL1</p>
+<ul>
+<li>&#x7C7B;&#x578B;&#xFF1A; &#x7C7B;&#x6CE8;&#x89E3;</li>
+<li>&#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x5B9A;&#x4E49;&#x4E0A;&#x65B9;</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x4E3A;&#x5F53;&#x524D;&#x5904;&#x7406;&#x5668;&#x4E2D;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x8BBE;&#x5B9A;&#x516C;&#x5171;&#x7684;&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;&#x524D;&#x7F00;</li>
+<li>&#x8303;&#x4F8B;&#xFF1A;&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;<code>/user/requestURL</code></li>
+</ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@Controller</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/user&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/requestURL2&quot;</span><span class="token punctuation">)</span>
-    <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">requestURL2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/requestURL&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">requestURL</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword keyword-return">return</span> <span class="token string">&quot;page.jsp&quot;</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>  
-</pre><ul>
-<li>
-<p>&#x5E38;&#x7528;&#x5C5E;&#x6027;</p>
+</pre><h3 class="mume-header" id="473-%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7">4.7.3 &#x5E38;&#x7528;&#x5C5E;&#x6027;</h3>
+
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>
     value<span class="token operator">=</span><span class="token string">&quot;/requestURL3&quot;</span><span class="token punctuation">,</span> <span class="token comment">//&#x8BBE;&#x5B9A;&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF0C;&#x4E0E;path&#x5C5E;&#x6027;&#x3001; value&#x5C5E;&#x6027;&#x76F8;&#x540C;</span>
     method <span class="token operator">=</span> <span class="token class-name">RequestMethod</span><span class="token punctuation">.</span>GET<span class="token punctuation">,</span> <span class="token comment">//&#x8BBE;&#x5B9A;&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;</span>
@@ -867,12 +905,10 @@ List&#x662F;&#x63A5;&#x53E3;&#xFF0C;&#x65E0;&#x6CD5;&#x521B;&#x5EFA;&#x5BF9;&#x8
     consumes <span class="token operator">=</span> <span class="token string">&quot;text/*&quot;</span><span class="token punctuation">,</span> <span class="token comment">//&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x53EF;&#x4EE5;&#x63A5;&#x6536;&#x7684;&#x8BF7;&#x6C42;&#x6B63;&#x6587;&#x7C7B;&#x578B;&#xFF08;MIME&#x7C7B;&#x578B;&#xFF09;</span>
     produces <span class="token operator">=</span> <span class="token string">&quot;text/*&quot;</span> <span class="token comment">//&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x53EF;&#x4EE5;&#x751F;&#x6210;&#x7684;&#x54CD;&#x5E94;&#x6B63;&#x6587;&#x7C7B;&#x578B;&#xFF08;MIME&#x7C7B;&#x578B;&#xFF09;</span>
 <span class="token punctuation">)</span>
-<span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">requestURL3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">requestURL</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword keyword-return">return</span> <span class="token string">&quot;/page.jsp&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</pre></li>
-</ul>
-<h1 class="mume-header" id="5-%E5%93%8D%E5%BA%94">5 &#x54CD;&#x5E94;</h1>
+</pre><h1 class="mume-header" id="5-%E5%93%8D%E5%BA%94">5 &#x54CD;&#x5E94;</h1>
 
 <h2 class="mume-header" id="51-%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC">5.1 &#x9875;&#x9762;&#x8DF3;&#x8F6C;</h2>
 
@@ -882,29 +918,40 @@ List&#x662F;&#x63A5;&#x53E3;&#xFF0C;&#x65E0;&#x6CD5;&#x521B;&#x5EFA;&#x5BF9;&#x8
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/showPage1&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">showPage1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;user mvc controller is running ...&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword keyword-return">return</span> <span class="token string">&quot;forward:page.jsp&quot;</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-return">return</span> <span class="token string">&quot;forward:page.jsp&quot;</span><span class="token punctuation">;</span> <span class="token comment">//&#x7B49;&#x6548;&#x4E8E;: return &quot;page.jsp&quot;</span>
 <span class="token punctuation">}</span>
 </pre><ul>
 <li>&#x91CD;&#x5B9A;&#x5411;</li>
 </ul>
-<pre data-role="codeBlock" data-info class="language-"><code>@RequestMapping(&quot;/showPage2&quot;)
-public String showPage2() {
-System.out.println(&quot;user mvc controller is running ...&quot;);
-return &quot;redirect:page.jsp&quot;;
-}
-</code></pre><p>&#xF06C; &#x6CE8;&#x610F;&#xFF1A;&#x9875;&#x9762;&#x8BBF;&#x95EE;&#x5730;&#x5740;&#x4E2D;&#x6240;&#x643A;&#x5E26;&#x7684;   <strong>/</strong></p>
-<h2 class="mume-header" id="52-%E9%A1%B5%E9%9D%A2%E8%AE%BF%E9%97%AE%E5%BF%AB%E6%8D%B7%E8%AE%BE%E5%AE%9A">5.2 &#x9875;&#x9762;&#x8BBF;&#x95EE;&#x5FEB;&#x6377;&#x8BBE;&#x5B9A;</h2>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/showPage2&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">showPage2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;user mvc controller is running ...&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-return">return</span> <span class="token string">&quot;redirect:page.jsp&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><ul>
+<li>&#x6CE8;&#x610F;&#xFF1A;
+<ul>
+<li>&#x9875;&#x9762;&#x8BBF;&#x95EE;&#x5730;&#x5740;&#x4E2D;&#x4ECD;&#x652F;&#x6301;<code>/</code>&#xFF0C;&#x5982;&#xFF1A;<code>redict:/page.jsp</code></li>
+<li>&#x8F6C;&#x53D1;&#x5730;&#x5740;&#x680F;&#x4E0D;&#x6539;&#x53D8;&#xFF0C;&#x91CD;&#x5B9A;&#x5411;&#x6539;&#x53D8;</li>
+<li>&#x8F6C;&#x53D1;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;<code>WEB-INF/</code>&#x4E0B;&#x7684;&#x9875;&#x9762;&#xFF0C;&#x800C;&#x91CD;&#x5B9A;&#x5411;&#x4E0D;&#x53EF;&#x4EE5;</li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="52-%E9%A1%B5%E9%9D%A2%E8%AE%BF%E9%97%AE%E5%89%8D%E5%90%8E%E7%BC%80%E8%AE%BE%E5%AE%9A">5.2 &#x9875;&#x9762;&#x8BBF;&#x95EE;&#x524D;/&#x540E;&#x7F00;&#x8BBE;&#x5B9A;</h2>
 
-<p>(InternalResourceViewResolver)</p>
-<p>&#x5C55;&#x793A;&#x9875;&#x9762;&#x7684;&#x4FDD;&#x5B58;&#x4F4D;&#x7F6E;&#x901A;&#x5E38;&#x56FA;&#x5B9A;&#xFF0C;&#x4E14;&#x7ED3;&#x6784;&#x76F8;&#x4F3C;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x5B9A;&#x901A;&#x7528;&#x7684;&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;&#xFF0C;&#x7B80;&#x5316;&#x9875;&#x9762;&#x914D;&#x7F6E;&#x683C;&#x5F0F;</p>
-<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token operator">&lt;</span>bean <span class="token keyword keyword-class">class</span><span class="token operator">=</span><span class="token string">&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;</span><span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">&quot;prefix&quot;</span> value<span class="token operator">=</span><span class="token string">&quot;/WEB-INF/pages/&quot;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">&quot;suffix&quot;</span> value<span class="token operator">=</span><span class="token string">&quot;.jsp&quot;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
-<span class="token operator">/</span>bean<span class="token operator">&gt;</span>
+<p><strong>InternalResourceViewResolver</strong></p>
+<p><strong>&#x5C55;&#x793A;&#x9875;&#x9762;&#x7684;&#x4FDD;&#x5B58;&#x4F4D;&#x7F6E;&#x901A;&#x5E38;&#x56FA;&#x5B9A;&#xFF0C;&#x4E14;&#x7ED3;&#x6784;&#x76F8;&#x4F3C;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x5B9A;&#x901A;&#x7528;&#x7684;&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;&#xFF0C;&#x7B80;&#x5316;&#x9875;&#x9762;&#x914D;&#x7F6E;&#x683C;&#x5F0F;</strong></p>
+<blockquote>
+<p>&#x6CE8;&#x610F;&#x8003;&#x8651;&#x5BF9;&#x91CD;&#x5B9A;&#x5411;&#x3001;&#x8F6C;&#x53D1;&#x3001;@ResultMapping&#x7684;&#x5F71;&#x54CD;</p>
+</blockquote>
+<pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>org.springframework.web.servlet.view.InternalResourceViewResolver<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>prefix<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/WEB-INF/pages/<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>suffix<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>.jsp<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
 </pre><pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">showPage3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword keyword-return">return</span> <span class="token string">&quot;page&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</pre><p><strong>&#x5982;&#x679C;&#x672A;&#x8BBE;&#x5B9A;&#x4E86;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4F7F;&#x7528;void&#x7C7B;&#x578B;&#xFF0C;&#x5219;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;&#x4F5C;&#x9875;&#x9762;&#x5730;&#x5740;&#x7684;&#x524D;&#x7F00;&#x540E;&#x7F00;</strong></p>
+</pre><p><strong>&#x5982;&#x679C;&#x672A;&#x8BBE;&#x5B9A;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4F7F;&#x7528;void&#x7C7B;&#x578B;&#xFF0C;&#x5219;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;&#x4E0E;&#x524D;&#x540E;&#x7F00;&#x62FC;&#x63A5;&#x4F5C;&#x4E3A;&#x9875;&#x9762;&#x5730;&#x5740;</strong></p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">//&#x6700;&#x7B80;&#x9875;&#x9762;&#x914D;&#x7F6E;&#x65B9;&#x5F0F;&#xFF0C;&#x4F7F;&#x7528;&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;&#x4F5C;&#x4E3A;&#x9875;&#x9762;&#x540D;&#x79F0;&#xFF0C;&#x7701;&#x7565;&#x8FD4;&#x56DE;&#x503C;</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/showPage5&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">showPage5</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -913,7 +960,12 @@ return &quot;redirect:page.jsp&quot;;
 </pre><h2 class="mume-header" id="53-%E5%B8%A6%E6%95%B0%E6%8D%AE%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC">5.3 &#x5E26;&#x6570;&#x636E;&#x9875;&#x9762;&#x8DF3;&#x8F6C;</h2>
 
 <ul>
-<li>&#x65B9;&#x5F0F;&#x4E00;&#xFF1A;&#x4F7F;&#x7528;HttpServletRequest&#x7C7B;&#x578B;&#x5F62;&#x53C2;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x4F20;&#x9012;</li>
+<li>
+<p>&#x65B9;&#x5F0F;&#x4E00;&#xFF1A;&#x4F7F;&#x7528;<code>HttpServletRequest</code>&#x7C7B;&#x578B;&#x5F62;&#x53C2;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x4F20;&#x9012;</p>
+<blockquote>
+<p>&#x5229;&#x7528;&#x7684;&#x662F;Servlet API&#xFF0C;&#x4E0D;&#x5EFA;&#x8BAE;</p>
+</blockquote>
+</li>
 </ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/showPageAndData1&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">showPageAndData1</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -921,7 +973,7 @@ return &quot;redirect:page.jsp&quot;;
     <span class="token keyword keyword-return">return</span> <span class="token string">&quot;page&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </pre><ul>
-<li>&#x65B9;&#x5F0F;&#x4E8C;&#xFF1A;&#x4F7F;&#x7528;Model&#x7C7B;&#x578B;&#x5F62;&#x53C2;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x4F20;&#x9012;</li>
+<li>&#x65B9;&#x5F0F;&#x4E8C;&#xFF1A;&#x4F7F;&#x7528;<code>Model</code>&#x7C7B;&#x578B;&#x5F62;&#x53C2;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x4F20;&#x9012;</li>
 </ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/showPageAndData2&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">showPageAndData2</span><span class="token punctuation">(</span><span class="token class-name">Model</span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -933,12 +985,17 @@ return &quot;redirect:page.jsp&quot;;
     <span class="token keyword keyword-return">return</span> <span class="token string">&quot;page&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </pre><ul>
-<li>&#x65B9;&#x5F0F;&#x4E09;&#xFF1A;&#x4F7F;&#x7528;ModelAndView&#x7C7B;&#x578B;&#x5F62;&#x53C2;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x4F20;&#x9012;&#xFF0C;&#x5C06;&#x8BE5;&#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x8FD4;&#x56DE;&#x503C;&#x4F20;&#x9012;&#x7ED9;&#x8C03;&#x7528;&#x8005;</li>
+<li>
+<p>&#x65B9;&#x5F0F;&#x4E09;&#xFF1A;&#x4F7F;&#x7528;<code>ModelAndView</code>&#x7C7B;&#x578B;&#x5F62;&#x53C2;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x4F20;&#x9012;&#xFF0C;&#x5C06;&#x8BE5;&#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x8FD4;&#x56DE;&#x503C;&#x4F20;&#x9012;&#x7ED9;&#x8C03;&#x7528;&#x8005;</p>
+<blockquote>
+<p>&#x6700;&#x63A8;&#x8350;&#x4F7F;&#x7528;</p>
+</blockquote>
+</li>
 </ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">//&#x4F7F;&#x7528;ModelAndView&#x5F62;&#x53C2;&#x4F20;&#x9012;&#x53C2;&#x6570;&#xFF0C;&#x8BE5;&#x5BF9;&#x8C61;&#x8FD8;&#x5C01;&#x88C5;&#x4E86;&#x9875;&#x9762;&#x4FE1;&#x606F;</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/showPageAndData3&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token class-name">ModelAndView</span> <span class="token function">showPageAndData3</span><span class="token punctuation">(</span><span class="token class-name">ModelAndView</span> modelAndView<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">//ModelAndView mav = new ModelAndView();    &#x66FF;&#x6362;&#x5F62;&#x53C2;&#x4E2D;&#x7684;&#x53C2;&#x6570;</span>
+    <span class="token comment">//ModelAndView mav = new ModelAndView();    //&#x53EF;&#x4EE5;&#x7701;&#x7565;&#x5F62;&#x53C2;&#x4E2D;&#x7684;&#x53C2;&#x6570;</span>
     <span class="token class-name">Book</span> book  <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Book</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     book<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">&quot;SpringMVC&#x5165;&#x95E8;&#x6848;&#x4F8B;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     book<span class="token punctuation">.</span><span class="token function">setPrice</span><span class="token punctuation">(</span><span class="token number">66.66d</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -947,15 +1004,41 @@ return &quot;redirect:page.jsp&quot;;
     <span class="token comment">//&#x6DFB;&#x52A0;&#x6570;&#x636E;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;key&#x5BF9;value</span>
     modelAndView<span class="token punctuation">.</span><span class="token function">addObject</span><span class="token punctuation">(</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Jockme&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment">//&#x8BBE;&#x7F6E;&#x9875;&#x9762;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x6267;&#x884C;&#x7684;&#x7ED3;&#x679C;&#x751F;&#x6548;</span>
-    modelAndView<span class="token punctuation">.</span><span class="token function">setViewName</span><span class="token punctuation">(</span><span class="token string">&quot;page&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    modelAndView<span class="token punctuation">.</span><span class="token function">setViewName</span><span class="token punctuation">(</span><span class="token string">&quot;page&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x4E0E;&#x4E0A;&#x8FF0;&#x65B9;&#x5F0F;[return &quot;page&quot;]&#x5BF9;&#x5E94;</span>
     <span class="token comment">//&#x8FD4;&#x56DE;&#x503C;&#x8BBE;&#x5B9A;&#x6210;ModelAndView&#x5BF9;&#x8C61;</span>
     <span class="token keyword keyword-return">return</span> modelAndView<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</pre><h2 class="mume-header" id="54-%E8%BF%94%E5%9B%9Ejson%E6%95%B0%E6%8D%AE">5.4 &#x8FD4;&#x56DE;json&#x6570;&#x636E;</h2>
+</pre><h2 class="mume-header" id="54-%E8%BF%94%E5%9B%9Ejson%E5%AD%97%E7%AC%A6%E4%B8%B2">5.4 &#x8FD4;&#x56DE;json&#x5B57;&#x7B26;&#x4E32;</h2>
 
 <ul>
 <li>
-<p>&#x65B9;&#x5F0F;&#x4E00;&#xFF1A;&#x57FA;&#x4E8E;response&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x7684;&#x7B80;&#x5316;&#x683C;&#x5F0F;&#xFF0C;&#x8FD4;&#x56DE;JSON&#x6570;&#x636E;</p>
+<p>&#x65B9;&#x5F0F;&#x4E00;&#xFF1A;&#x4F7F;&#x7528;<code>HttpServletResponse</code>&#x5DE5;&#x5177;&#x8F6C;&#x6362;JSON&#x6570;&#x636E;&#x8FD4;&#x56DE;</p>
+<blockquote>
+<p>&#x57FA;&#x4E8E;Servlet API</p>
+</blockquote>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">//&#x4F7F;&#x7528;jackson&#x8FDB;&#x884C;json&#x6570;&#x636E;&#x683C;&#x5F0F;&#x8F6C;&#x5316;</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/showData1&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">showData1</span><span class="token punctuation">(</span><span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+    response<span class="token punctuation">.</span><span class="token function">gerWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;message&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#x76F4;&#x63A5;&#x54CD;&#x5E94;&#x5B57;&#x7B26;&#x4E32;</span>
+<span class="token punctuation">}</span>
+</pre></li>
+</ul>
+<p><code>@ResponseBody</code>: &#x8FD4;&#x56DE;&#x54CD;&#x5E94;&#x5185;&#x5BB9;&#x800C;&#x4E0D;&#x662F;&#x8DF3;&#x8F6C;&#x9875;&#x9762;</p>
+<ul>
+<li>
+<p>&#x65B9;&#x5F0F;&#x4E8C;&#xFF1A;&#x65B9;&#x5F0F;&#x4E00;&#x7684;&#x7B80;&#x5316;&#x7B80;&#x5316;&#xFF0C;&#x4E0E;Servlet&#x8131;&#x94A9;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/showData2&quot;</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@ResponseBody</span>
+<span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">showData2</span><span class="token punctuation">(</span><span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token string">&quot;message&quot;</span>
+<span class="token punctuation">}</span>
+</pre></li>
+</ul>
+<h2 class="mume-header" id="55-%E8%BF%94%E5%9B%9Ejson%E5%AF%B9%E8%B1%A1">5.5 &#x8FD4;&#x56DE;json&#x5BF9;&#x8C61;</h2>
+
+<ul>
+<li>
+<p>&#x65B9;&#x5F0F;&#x4E00;&#xFF1A;&#x4F7F;&#x7528;jackson&#x5DE5;&#x5177;&#x8F6C;&#x6362;JSON&#x6570;&#x636E;&#x8FD4;&#x56DE;</p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">//&#x4F7F;&#x7528;jackson&#x8FDB;&#x884C;json&#x6570;&#x636E;&#x683C;&#x5F0F;&#x8F6C;&#x5316;</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/showData3&quot;</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@ResponseBody</span>
@@ -969,8 +1052,9 @@ return &quot;redirect:page.jsp&quot;;
 <span class="token punctuation">}</span>
 </pre></li>
 <li>
-<p>&#x65B9;&#x5F0F;&#x4E8C;&#xFF1A;&#x4F7F;&#x7528;SpringMVC&#x63D0;&#x4F9B;&#x7684;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x5668;&#x5C06;&#x5BF9;&#x8C61;&#x4E0E;&#x96C6;&#x5408;&#x6570;&#x636E;&#x81EA;&#x52A8;&#x8F6C;&#x6362;&#x4E3A;JSON&#x6570;&#x636E;</p>
-<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">//&#x4F7F;&#x7528;SpringMVC&#x6CE8;&#x89E3;&#x9A71;&#x52A8;&#xFF0C;&#x5BF9;&#x6807;&#x6CE8;@ResponseBody&#x6CE8;&#x89E3;&#x7684;&#x63A7;&#x5236;&#x5668;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x7ED3;&#x679C;&#x8F6C;&#x6362;&#xFF0C;&#x7531;&#x4E8E;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#xFF0C;&#x81EA;&#x52A8;&#x8C03;&#x7528;jackson&#x63D0;&#x4F9B;&#x7684;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x5668;&#x8FDB;&#x884C;&#x683C;&#x5F0F;&#x8F6C;&#x6362;</span>
+<p>&#x65B9;&#x5F0F;&#x4E8C;&#xFF1A;&#x4F7F;&#x7528;SpringMVC&#x63D0;&#x4F9B;&#x7684;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x5668;&#xFF0C;&#x5C06;&#x5BF9;&#x8C61;&#x4E0E;&#x96C6;&#x5408;&#x6570;&#x636E;&#x81EA;&#x52A8;&#x8F6C;&#x6362;&#x4E3A;JSON&#x6570;&#x636E;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">//&#x4F7F;&#x7528;SpringMVC&#x6CE8;&#x89E3;&#x9A71;&#x52A8;&#xFF0C;&#x5BF9;&#x6807;&#x6CE8;@ResponseBody&#x6CE8;&#x89E3;&#x7684;&#x63A7;&#x5236;&#x5668;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x7ED3;&#x679C;&#x8F6C;&#x6362;</span>
+<span class="token comment">//&#x7531;&#x4E8E;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#xFF0C;&#x81EA;&#x52A8;&#x8C03;&#x7528;jackson&#x63D0;&#x4F9B;&#x7684;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x5668;&#x8FDB;&#x884C;&#x683C;&#x5F0F;&#x8F6C;&#x6362;</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/showData4&quot;</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@ResponseBody</span>
 <span class="token keyword keyword-public">public</span> <span class="token class-name">Book</span> <span class="token function">showData4</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -987,12 +1071,12 @@ return &quot;redirect:page.jsp&quot;;
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>list</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
-</pre></li>
-<li>
-<p>&#x65B9;&#x5F0F;&#x4E09;&#xFF1A;&#x4F7F;&#x7528;SpringMVC&#x6CE8;&#x89E3;&#x9A71;&#x52A8;&#x7B80;&#x5316;&#x914D;&#x7F6E;</p>
-<pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token comment">&lt;!--&#x5F00;&#x542F;springmvc&#x6CE8;&#x89E3;&#x9A71;&#x52A8;&#xFF0C;&#x5BF9;@ResponseBody&#x7684;&#x6CE8;&#x89E3;&#x8FDB;&#x884C;&#x683C;&#x5F0F;&#x589E;&#x5F3A;&#xFF0C;&#x8FFD;&#x52A0;&#x5176;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x7531;MappingJackson2HttpMessageConverter&#x8FDB;&#x884C;--&gt;</span>
+</pre><p>&#x4F7F;&#x7528;SpringMVC&#x6CE8;&#x89E3;&#x9A71;&#x52A8;&#x7B80;&#x5316;&#x914D;&#x7F6E;&#xFF0C;&#x66FF;&#x4EE3;&#x4E0A;&#x8FF0;&#x624B;&#x52A8;&#x914D;&#x7F6E;</p>
+<pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token comment">&lt;!--&#x5F00;&#x542F;springmvc&#x6CE8;&#x89E3;&#x9A71;&#x52A8;&#xFF0C;&#x5BF9;@ResponseBody&#x7684;&#x6CE8;&#x89E3;&#x8FDB;&#x884C;&#x683C;&#x5F0F;&#x589E;&#x5F3A;&#xFF0C;&#x8FFD;&#x52A0;&#x5176;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x7684;&#x529F;&#x80FD;&#xFF0C;
+    &#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x7531;&#x6DFB;&#x52A0;&#x7684;jackson&#x5305;&#x4E2D;MappingJackson2HttpMessageConverter&#x8FDB;&#x884C;--&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>annotation-driven</span><span class="token punctuation">/&gt;</span></span>
-</pre></li>
+</pre><p>&#x6362;&#x6210;&#x8FD4;&#x56DE;&#x96C6;&#x5408;&#xFF08;<code>List&lt;Book&gt;</code>&#xFF09;&#x4E5F;&#x80FD;&#x7528;</p>
+</li>
 </ul>
 <h1 class="mume-header" id="6-servlet%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3">6 Servlet&#x76F8;&#x5173;&#x63A5;&#x53E3;</h1>
 
@@ -1012,52 +1096,64 @@ return &quot;redirect:page.jsp&quot;;
     <span class="token keyword keyword-return">return</span> <span class="token string">&quot;page.jsp&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </pre><ul>
-<li><strong>Head&#x6570;&#x636E;&#x83B7;&#x53D6;</strong></li>
+<li>
+<p><strong>Head&#x6570;&#x636E;&#x83B7;&#x53D6;</strong></p>
+<ul>
+<li>&#x540D;&#x79F0;&#xFF1A; <code>@RequestHeader</code></li>
+<li>&#x7C7B;&#x578B;&#xFF1A; &#x5F62;&#x53C2;&#x6CE8;&#x89E3;</li>
+<li>&#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x524D;&#x65B9;</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x7ED1;&#x5B9A;&#x8BF7;&#x6C42;&#x5934;&#x6570;&#x636E;&#x4E0E;&#x5BF9;&#x5E94;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x95F4;&#x7684;&#x5173;&#x7CFB;</li>
 </ul>
-<p>&#xF06C; &#x540D;&#x79F0;&#xFF1A; @RequestHeader<br>
-&#xF06C; &#x7C7B;&#x578B;&#xFF1A; &#x5F62;&#x53C2;&#x6CE8;&#x89E3;<br>
-&#xF06C; &#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x524D;&#x65B9;<br>
-&#xF06C; &#x4F5C;&#x7528;&#xFF1A;&#x7ED1;&#x5B9A;&#x8BF7;&#x6C42;&#x5934;&#x6570;&#x636E;&#x4E0E;&#x5BF9;&#x5E94;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x95F4;&#x7684;&#x5173;&#x7CFB;<br>
-&#xF06C; &#x8303;&#x4F8B;&#xFF1A;</p>
+</li>
+</ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/headApi&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">headApi</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestHeader</span><span class="token punctuation">(</span><span class="token string">&quot;Accept-Language&quot;</span><span class="token punctuation">)</span> <span class="token class-name">String</span> head<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword keyword-return">return</span> <span class="token string">&quot;page.jsp&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>  
 </pre><ul>
-<li><strong>Cookie&#x6570;&#x636E;&#x83B7;&#x53D6;</strong></li>
+<li>
+<p><strong>Cookie&#x6570;&#x636E;&#x83B7;&#x53D6;</strong></p>
+<ul>
+<li>&#x540D;&#x79F0;&#xFF1A; <code>@CookieValue</code></li>
+<li>&#x7C7B;&#x578B;&#xFF1A; &#x5F62;&#x53C2;&#x6CE8;&#x89E3;</li>
+<li>&#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x524D;&#x65B9;</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x7ED1;&#x5B9A;&#x8BF7;&#x6C42;Cookie&#x6570;&#x636E;&#x4E0E;&#x5BF9;&#x5E94;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x95F4;&#x7684;&#x5173;&#x7CFB;</li>
 </ul>
-<p>&#xF06C; &#x540D;&#x79F0;&#xFF1A; @CookieValue<br>
-&#xF06C; &#x7C7B;&#x578B;&#xFF1A; &#x5F62;&#x53C2;&#x6CE8;&#x89E3;<br>
-&#xF06C; &#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x524D;&#x65B9;<br>
-&#xF06C; &#x4F5C;&#x7528;&#xFF1A;&#x7ED1;&#x5B9A;&#x8BF7;&#x6C42;Cookie&#x6570;&#x636E;&#x4E0E;&#x5BF9;&#x5E94;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x95F4;&#x7684;&#x5173;&#x7CFB;<br>
-&#xF06C; &#x8303;&#x4F8B;&#xFF1A;</p>
+</li>
+</ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/cookieApi&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">cookieApi</span><span class="token punctuation">(</span><span class="token annotation punctuation">@CookieValue</span><span class="token punctuation">(</span><span class="token string">&quot;JSESSIONID&quot;</span><span class="token punctuation">)</span> <span class="token class-name">String</span> jsessionid<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>jsessionid<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword keyword-return">return</span> <span class="token string">&quot;page.jsp&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>  
 </pre><ul>
-<li><strong>Session&#x6570;&#x636E;&#x83B7;&#x53D6;</strong></li>
+<li>
+<p><strong>Session&#x6570;&#x636E;&#x83B7;&#x53D6;</strong></p>
+<ul>
+<li>&#x540D;&#x79F0;&#xFF1A; <code>@SessionAttribute</code></li>
+<li>&#x7C7B;&#x578B;&#xFF1A; &#x5F62;&#x53C2;&#x6CE8;&#x89E3;</li>
+<li>&#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x524D;&#x65B9;</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x7ED1;&#x5B9A;&#x8BF7;&#x6C42;Session&#x6570;&#x636E;&#x4E0E;&#x5BF9;&#x5E94;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x95F4;&#x7684;&#x5173;&#x7CFB;</li>
 </ul>
-<p>&#xF06C; &#x540D;&#x79F0;&#xFF1A; @SessionAttribute<br>
-&#xF06C; &#x7C7B;&#x578B;&#xFF1A; &#x5F62;&#x53C2;&#x6CE8;&#x89E3;<br>
-&#xF06C; &#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x524D;&#x65B9;<br>
-&#xF06C; &#x4F5C;&#x7528;&#xFF1A;&#x7ED1;&#x5B9A;&#x8BF7;&#x6C42;Session&#x6570;&#x636E;&#x4E0E;&#x5BF9;&#x5E94;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x95F4;&#x7684;&#x5173;&#x7CFB;<br>
-&#xF06C; &#x8303;&#x4F8B;&#xFF1A;</p>
+</li>
+</ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/sessionApi&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">sessionApi</span><span class="token punctuation">(</span><span class="token annotation punctuation">@SessionAttribute</span><span class="token punctuation">(</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">)</span> <span class="token class-name">String</span> name<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword keyword-return">return</span> <span class="token string">&quot;page.jsp&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>  
 </pre><ul>
-<li><strong>Session&#x6570;&#x636E;&#x8BBE;&#x7F6E;&#xFF08;&#x4E86;&#x89E3;&#xFF09;</strong></li>
+<li>
+<p><strong>Session&#x6570;&#x636E;&#x8BBE;&#x7F6E;&#xFF08;&#x4E86;&#x89E3;&#xFF09;</strong></p>
+<ul>
+<li>&#x540D;&#x79F0;&#xFF1A; <code>@SessionAttributes</code></li>
+<li>&#x7C7B;&#x578B;&#xFF1A; &#x7C7B;&#x6CE8;&#x89E3;</li>
+<li>&#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E0A;&#x65B9;</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x58F0;&#x660E;&#x653E;&#x5165;session&#x8303;&#x56F4;&#x7684;&#x53D8;&#x91CF;&#x540D;&#x79F0;&#xFF0C;&#x9002;&#x7528;&#x4E8E;Model&#x7C7B;&#x578B;&#x6570;&#x636E;&#x4F20;&#x53C2;</li>
 </ul>
-<p>&#xF06C; &#x540D;&#x79F0;&#xFF1A; @SessionAttributes<br>
-&#xF06C; &#x7C7B;&#x578B;&#xFF1A; &#x7C7B;&#x6CE8;&#x89E3;<br>
-&#xF06C; &#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E0A;&#x65B9;<br>
-&#xF06C; &#x4F5C;&#x7528;&#xFF1A;&#x58F0;&#x660E;&#x653E;&#x5165;session&#x8303;&#x56F4;&#x7684;&#x53D8;&#x91CF;&#x540D;&#x79F0;&#xFF0C;&#x9002;&#x7528;&#x4E8E;Model&#x7C7B;&#x578B;&#x6570;&#x636E;&#x4F20;&#x53C2;<br>
-&#xF06C; &#x8303;&#x4F8B;&#xFF1A;</p>
+</li>
+</ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@Controller</span>
 <span class="token annotation punctuation">@SessionAttributes</span><span class="token punctuation">(</span>names<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">ServletController</span> <span class="token punctuation">{</span>
@@ -1068,15 +1164,25 @@ return &quot;redirect:page.jsp&quot;;
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>  
 </pre><ul>
-<li><strong>&#x6CE8;&#x89E3;&#x5F0F;&#x53C2;&#x6570;&#x6570;&#x636E;&#x5C01;&#x88C5;&#x5E95;&#x5C42;&#x539F;&#x7406;</strong></li>
+<li>
+<p><strong>&#x6CE8;&#x89E3;&#x5F0F;&#x53C2;&#x6570;&#x6570;&#x636E;&#x5C01;&#x88C5;&#x5E95;&#x5C42;&#x539F;&#x7406;</strong></p>
+<ul>
+<li>&#x6570;&#x636E;&#x7684;&#x6765;&#x6E90;&#x4E0D;&#x540C;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x5904;&#x7406;&#x7B56;&#x7565;&#x8981;&#x8FDB;&#x884C;&#x533A;&#x5206;
+<ul>
+<li>Head</li>
+<li>Cookie</li>
+<li>Session</li>
 </ul>
-<p>&#xF06C; &#x6570;&#x636E;&#x7684;&#x6765;&#x6E90;&#x4E0D;&#x540C;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x5904;&#x7406;&#x7B56;&#x7565;&#x8981;&#x8FDB;&#x884C;&#x533A;&#x5206;<br>
-&#xF075; Head<br>
-&#xF075; Cookie<br>
-&#xF075; Session<br>
-&#xF06C; SpringMVC&#x4F7F;&#x7528;&#x7B56;&#x7565;&#x6A21;&#x5F0F;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x5206;&#x53D1;<br>
-&#xF075; &#x9876;&#x5C42;&#x63A5;&#x53E3;&#xFF1A; HandlerMethodArgumentResolver<br>
-&#xF075; &#x5B9E;&#x73B0;&#x7C7B;&#xFF1A; &#x2026;&#x2026;</p>
+</li>
+<li>SpringMVC&#x4F7F;&#x7528;&#x7B56;&#x7565;&#x6A21;&#x5F0F;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x5206;&#x53D1;
+<ul>
+<li>&#x9876;&#x5C42;&#x63A5;&#x53E3;&#xFF1A; HandlerMethodArgumentResolver</li>
+<li>&#x5B9E;&#x73B0;&#x7C7B;&#xFF1A; &#x2026;&#x2026;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h1 class="mume-header" id="7-%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8">7 &#x5F02;&#x6B65;&#x8C03;&#x7528;</h1>
 
 <h2 class="mume-header" id="71-%E5%8F%91%E9%80%81%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82%E5%9B%9E%E9%A1%BE">7.1 &#x53D1;&#x9001;&#x5F02;&#x6B65;&#x8BF7;&#x6C42;&#xFF08;&#x56DE;&#x987E;&#xFF09;</h2>
@@ -1098,11 +1204,13 @@ return &quot;redirect:page.jsp&quot;;
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </pre><h2 class="mume-header" id="72-%E6%8E%A5%E5%8F%97%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0">7.2 &#x63A5;&#x53D7;&#x5F02;&#x6B65;&#x8BF7;&#x6C42;&#x53C2;&#x6570;</h2>
 
-<p>&#xF06C; &#x540D;&#x79F0;&#xFF1A; @RequestBody<br>
-&#xF06C; &#x7C7B;&#x578B;&#xFF1A; &#x5F62;&#x53C2;&#x6CE8;&#x89E3;<br>
-&#xF06C; &#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x524D;&#x65B9;<br>
-&#xF06C; &#x4F5C;&#x7528;&#xFF1A;&#x5C06;&#x5F02;&#x6B65;&#x63D0;&#x4EA4;&#x6570;&#x636E;&#x7EC4;&#x7EC7;&#x6210;&#x6807;&#x51C6;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x683C;&#x5F0F;&#xFF0C;&#x5E76;&#x8D4B;&#x503C;&#x7ED9;&#x5F62;&#x53C2;<br>
-&#xF06C; &#x8303;&#x4F8B;&#xFF1A;</p>
+<ul>
+<li>&#x540D;&#x79F0;&#xFF1A; @RequestBody</li>
+<li>&#x7C7B;&#x578B;&#xFF1A; &#x5F62;&#x53C2;&#x6CE8;&#x89E3;</li>
+<li>&#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x524D;&#x65B9;</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x5C06;&#x5F02;&#x6B65;&#x63D0;&#x4EA4;&#x6570;&#x636E;&#x7EC4;&#x7EC7;&#x6210;&#x6807;&#x51C6;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x683C;&#x5F0F;&#xFF0C;&#x5E76;&#x8D4B;&#x503C;&#x7ED9;&#x5F62;&#x53C2;</li>
+<li>&#x8303;&#x4F8B;&#xFF1A;</li>
+</ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/ajaxController&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">ajaxController</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> <span class="token class-name">String</span> message<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1189,11 +1297,13 @@ return &quot;redirect:page.jsp&quot;;
 </ul>
 <h2 class="mume-header" id="83-%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AE%E6%94%AF%E6%8C%81">8.3 &#x8DE8;&#x57DF;&#x8BBF;&#x95EE;&#x652F;&#x6301;</h2>
 
-<p>&#xF06C; &#x540D;&#x79F0;&#xFF1A; @CrossOrigin<br>
-&#xF06C; &#x7C7B;&#x578B;&#xFF1A; &#x65B9;&#x6CD5;&#x6CE8;&#x89E3; &#x3001; &#x7C7B;&#x6CE8;&#x89E3;<br>
-&#xF06C; &#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x4E0A;&#x65B9; &#x6216; &#x7C7B;&#x4E0A;&#x65B9;<br>
-&#xF06C; &#x4F5C;&#x7528;&#xFF1A;&#x8BBE;&#x7F6E;&#x5F53;&#x524D;&#x5904;&#x7406;&#x5668;&#x65B9;&#x6CD5;/&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x652F;&#x6301;&#x8DE8;&#x57DF;&#x8BBF;&#x95EE;<br>
-&#xF06C; &#x8303;&#x4F8B;&#xFF1A;</p>
+<ul>
+<li>&#x540D;&#x79F0;&#xFF1A; @CrossOrigin</li>
+<li>&#x7C7B;&#x578B;&#xFF1A; &#x65B9;&#x6CD5;&#x6CE8;&#x89E3; &#x3001; &#x7C7B;&#x6CE8;&#x89E3;</li>
+<li>&#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x4E0A;&#x65B9; &#x6216; &#x7C7B;&#x4E0A;&#x65B9;</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x8BBE;&#x7F6E;&#x5F53;&#x524D;&#x5904;&#x7406;&#x5668;&#x65B9;&#x6CD5;/&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x652F;&#x6301;&#x8DE8;&#x57DF;&#x8BBF;&#x95EE;</li>
+<li>&#x8303;&#x4F8B;&#xFF1A;</li>
+</ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/cross&quot;</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@ResponseBody</span>
 <span class="token comment">//&#x4F7F;&#x7528;@CrossOrigin&#x5F00;&#x542F;&#x8DE8;&#x57DF;&#x8BBF;&#x95EE;</span>
@@ -1215,17 +1325,31 @@ return &quot;redirect:page.jsp&quot;;
 <li>&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x89E3;&#x6790;</li>
 </ul>
 <p><img src="./assets/image-20200427164038103.png" alt="image-20200427164038103"></p>
-<p>&#xF06C; &#x62E6;&#x622A;&#x5668;&#xFF08; Interceptor&#xFF09;&#x662F;&#x4E00;&#x79CD;&#x52A8;&#x6001;&#x62E6;&#x622A;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x7684;&#x673A;&#x5236;<br>
-&#xF06C; &#x4F5C;&#x7528;&#xFF1A;<br>
-1. &#x5728;&#x6307;&#x5B9A;&#x7684;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x524D;&#x540E;&#x6267;&#x884C;&#x9884;&#x5148;&#x8BBE;&#x5B9A;&#x540E;&#x7684;&#x7684;&#x4EE3;&#x7801;<br>
-2. &#x963B;&#x6B62;&#x539F;&#x59CB;&#x65B9;&#x6CD5;&#x7684;&#x6267;&#x884C;</p>
-<p>&#xF06C; &#x6838;&#x5FC3;&#x539F;&#x7406;&#xFF1A; AOP&#x601D;&#x60F3;<br>
-&#xF06C; &#x62E6;&#x622A;&#x5668;&#x94FE;&#xFF1A;&#x591A;&#x4E2A;&#x62E6;&#x622A;&#x5668;&#x6309;&#x7167;&#x4E00;&#x5B9A;&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x5BF9;&#x539F;&#x59CB;&#x88AB;&#x8C03;&#x7528;&#x529F;&#x80FD;&#x8FDB;&#x884C;&#x589E;&#x5F3A;</p>
 <ul>
 <li>
-<p><strong>&#x62E6;&#x622A;&#x5668;VS&#x8FC7;&#x6EE4;&#x5668;</strong><br>
-&#xF06C; &#x5F52;&#x5C5E;&#x4E0D;&#x540C;&#xFF1A; Filter&#x5C5E;&#x4E8E;Servlet&#x6280;&#x672F;&#xFF0C; Interceptor&#x5C5E;&#x4E8E;SpringMVC&#x6280;&#x672F;<br>
-&#xF06C; &#x62E6;&#x622A;&#x5185;&#x5BB9;&#x4E0D;&#x540C;&#xFF1A; Filter&#x5BF9;&#x6240;&#x6709;&#x8BBF;&#x95EE;&#x8FDB;&#x884C;&#x589E;&#x5F3A;&#xFF0C; Interceptor&#x4EC5;&#x9488;&#x5BF9;SpringMVC&#x7684;&#x8BBF;&#x95EE;&#x8FDB;&#x884C;&#x589E;&#x5F3A;</p>
+<p>&#x62E6;&#x622A;&#x5668;&#xFF08; Interceptor&#xFF09;&#x662F;&#x4E00;&#x79CD;&#x52A8;&#x6001;&#x62E6;&#x622A;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x7684;&#x673A;&#x5236;</p>
+</li>
+<li>
+<p>&#x4F5C;&#x7528;&#xFF1A;</p>
+<ol>
+<li>&#x5728;&#x6307;&#x5B9A;&#x7684;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x524D;&#x540E;&#x6267;&#x884C;&#x9884;&#x5148;&#x8BBE;&#x5B9A;&#x540E;&#x7684;&#x7684;&#x4EE3;&#x7801;</li>
+<li>&#x963B;&#x6B62;&#x539F;&#x59CB;&#x65B9;&#x6CD5;&#x7684;&#x6267;&#x884C;</li>
+</ol>
+</li>
+<li>
+<p>&#x6838;&#x5FC3;&#x539F;&#x7406;&#xFF1A; AOP&#x601D;&#x60F3;</p>
+</li>
+<li>
+<p>&#x62E6;&#x622A;&#x5668;&#x94FE;&#xFF1A;&#x591A;&#x4E2A;&#x62E6;&#x622A;&#x5668;&#x6309;&#x7167;&#x4E00;&#x5B9A;&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x5BF9;&#x539F;&#x59CB;&#x88AB;&#x8C03;&#x7528;&#x529F;&#x80FD;&#x8FDB;&#x884C;&#x589E;&#x5F3A;</p>
+</li>
+</ul>
+<ul>
+<li>
+<p><strong>&#x62E6;&#x622A;&#x5668;VS&#x8FC7;&#x6EE4;&#x5668;</strong></p>
+<ul>
+<li>&#x5F52;&#x5C5E;&#x4E0D;&#x540C;&#xFF1A; Filter&#x5C5E;&#x4E8E;Servlet&#x6280;&#x672F;&#xFF0C; Interceptor&#x5C5E;&#x4E8E;SpringMVC&#x6280;&#x672F;</li>
+<li>&#x62E6;&#x622A;&#x5185;&#x5BB9;&#x4E0D;&#x540C;&#xFF1A; Filter&#x5BF9;&#x6240;&#x6709;&#x8BBF;&#x95EE;&#x8FDB;&#x884C;&#x589E;&#x5F3A;&#xFF0C; Interceptor&#x4EC5;&#x9488;&#x5BF9;SpringMVC&#x7684;&#x8BBF;&#x95EE;&#x8FDB;&#x884C;&#x589E;&#x5F3A;</li>
+</ul>
 <p><img src="./assets/image-20200427164512745.png" alt="image-20200427164512745"></p>
 </li>
 </ul>
@@ -1312,8 +1436,10 @@ return &quot;redirect:page.jsp&quot;;
                        <span class="token class-name">ModelAndView</span> modelAndView<span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;postHandle&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</pre><p>&#xF06C; &#x53C2;&#x6570;<br>
-&#xF075; modelAndView:&#x5982;&#x679C;&#x5904;&#x7406;&#x5668;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x5177;&#x6709;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF0C;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x5230;&#x5BF9;&#x5E94;&#x6570;&#x636E;&#x4E0E;&#x9875;&#x9762;&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x8FDB;&#x884C;&#x8C03;&#x6574;</p>
+</pre><ul>
+<li>&#x53C2;&#x6570;<br>
+&#xF075; modelAndView:&#x5982;&#x679C;&#x5904;&#x7406;&#x5668;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x5177;&#x6709;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF0C;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x5230;&#x5BF9;&#x5E94;&#x6570;&#x636E;&#x4E0E;&#x9875;&#x9762;&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x8FDB;&#x884C;&#x8C03;&#x6574;</li>
+</ul>
 <h3 class="mume-header" id="943-%E5%AE%8C%E6%88%90%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95">9.4.3 &#x5B8C;&#x6210;&#x5904;&#x7406;&#x65B9;&#x6CD5;</h3>
 
 <p>&#x62E6;&#x622A;&#x5668;&#x6700;&#x540E;&#x6267;&#x884C;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x65E0;&#x8BBA;&#x539F;&#x59CB;&#x65B9;&#x6CD5;&#x662F;&#x5426;&#x6267;&#x884C;</p>
@@ -1323,8 +1449,10 @@ return &quot;redirect:page.jsp&quot;;
                             <span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;afterCompletion&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</pre><p>&#xF06C; &#x53C2;&#x6570;<br>
-&#xF075; ex:&#x5982;&#x679C;&#x5904;&#x7406;&#x5668;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x51FA;&#x73B0;&#x5F02;&#x5E38;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x9488;&#x5BF9;&#x5F02;&#x5E38;&#x60C5;&#x51B5;&#x8FDB;&#x884C;&#x5355;&#x72EC;&#x5904;&#x7406;</p>
+</pre><ul>
+<li>&#x53C2;&#x6570;<br>
+&#xF075; ex:&#x5982;&#x679C;&#x5904;&#x7406;&#x5668;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x51FA;&#x73B0;&#x5F02;&#x5E38;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x9488;&#x5BF9;&#x5F02;&#x5E38;&#x60C5;&#x51B5;&#x8FDB;&#x884C;&#x5355;&#x72EC;&#x5904;&#x7406;</li>
+</ul>
 <h2 class="mume-header" id="95-%E6%8B%A6%E6%88%AA%E5%99%A8%E9%85%8D%E7%BD%AE%E9%A1%B9">9.5 &#x62E6;&#x622A;&#x5668;&#x914D;&#x7F6E;&#x9879;</h2>
 
 <pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>interceptors</span><span class="token punctuation">&gt;</span></span>
@@ -1348,18 +1476,20 @@ return &quot;redirect:page.jsp&quot;;
 </pre><h2 class="mume-header" id="96-%E5%A4%9A%E6%8B%A6%E6%88%AA%E5%99%A8%E9%85%8D%E7%BD%AE">9.6 &#x591A;&#x62E6;&#x622A;&#x5668;&#x914D;&#x7F6E;</h2>
 
 <p><img src="./assets/image-20200427171422781.png" alt="image-20200427171422781"></p>
-<p><strong>&#x8D23;&#x4EFB;&#x94FE;&#x6A21;&#x5F0F;</strong><br>
-&#xF06C; &#x8D23;&#x4EFB;&#x94FE;&#x6A21;&#x5F0F;&#x662F;&#x4E00;&#x79CD;&#x884C;&#x4E3A;&#x6A21;&#x5F0F;<br>
-&#xF06C; &#x7279;&#x5F81;&#xFF1A;<br>
-&#x6CBF;&#x7740;&#x4E00;&#x6761;&#x9884;&#x5148;&#x8BBE;&#x5B9A;&#x7684;&#x4EFB;&#x52A1;&#x94FE;&#x987A;&#x5E8F;&#x6267;&#x884C;&#xFF0C;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x5177;&#x6709;&#x72EC;&#x7ACB;&#x7684;&#x5DE5;&#x4F5C;&#x4EFB;&#x52A1;<br>
-&#xF06C; &#x4F18;&#x52BF;&#xFF1A;<br>
+<p><strong>&#x8D23;&#x4EFB;&#x94FE;&#x6A21;&#x5F0F;</strong></p>
+<ul>
+<li>&#x8D23;&#x4EFB;&#x94FE;&#x6A21;&#x5F0F;&#x662F;&#x4E00;&#x79CD;&#x884C;&#x4E3A;&#x6A21;&#x5F0F;</li>
+<li>&#x7279;&#x5F81;&#xFF1A;<br>
+&#x6CBF;&#x7740;&#x4E00;&#x6761;&#x9884;&#x5148;&#x8BBE;&#x5B9A;&#x7684;&#x4EFB;&#x52A1;&#x94FE;&#x987A;&#x5E8F;&#x6267;&#x884C;&#xFF0C;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x5177;&#x6709;&#x72EC;&#x7ACB;&#x7684;&#x5DE5;&#x4F5C;&#x4EFB;&#x52A1;</li>
+<li>&#x4F18;&#x52BF;&#xFF1A;<br>
 &#x72EC;&#x7ACB;&#x6027;&#xFF1A;&#x53EA;&#x5173;&#x6CE8;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x5BF9;&#x5176;&#x4ED6;&#x4EFB;&#x52A1;&#x76F4;&#x63A5;&#x653E;&#x884C;&#x5230;&#x4E0B;&#x4E00;&#x8282;&#x70B9;<br>
 &#x9694;&#x79BB;&#x6027;&#xFF1A;&#x5177;&#x5907;&#x94FE;&#x5F0F;&#x4F20;&#x9012;&#x7279;&#x5F81;&#xFF0C;&#x65E0;&#x9700;&#x77E5;&#x6653;&#x6574;&#x4F53;&#x94FE;&#x8DEF;&#x7ED3;&#x6784;&#xFF0C;&#x53EA;&#x9700;&#x7B49;&#x5F85;&#x8BF7;&#x6C42;&#x5230;&#x8FBE;&#x540E;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x5373;&#x53EF;<br>
 &#x7075;&#x6D3B;&#x6027;&#xFF1A;&#x53EF;&#x4EE5;&#x4EFB;&#x610F;&#x4FEE;&#x6539;&#x94FE;&#x8DEF;&#x7ED3;&#x6784;&#x52A8;&#x6001;&#x65B0;&#x589E;&#x6216;&#x5220;&#x51CF;&#x6574;&#x4F53;&#x94FE;&#x8DEF;&#x8D23;&#x4EFB;<br>
-&#x89E3;&#x8026;&#xFF1A;&#x5C06;&#x52A8;&#x6001;&#x4EFB;&#x52A1;&#x4E0E;&#x539F;&#x59CB;&#x4EFB;&#x52A1;&#x89E3;&#x8026;<br>
-&#xF06C; &#x5F0A;&#x7AEF;&#xFF1A;<br>
+&#x89E3;&#x8026;&#xFF1A;&#x5C06;&#x52A8;&#x6001;&#x4EFB;&#x52A1;&#x4E0E;&#x539F;&#x59CB;&#x4EFB;&#x52A1;&#x89E3;&#x8026;</li>
+<li>&#x5F0A;&#x7AEF;&#xFF1A;<br>
 &#x94FE;&#x8DEF;&#x8FC7;&#x957F;&#x65F6;&#xFF0C;&#x5904;&#x7406;&#x6548;&#x7387;&#x4F4E;&#x4E0B;<br>
-&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x8282;&#x70B9;&#x4E0A;&#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x73B0;&#x8C61;&#xFF0C;&#x9020;&#x6210;&#x6B7B;&#x5FAA;&#x73AF;&#xFF0C;&#x5BFC;&#x81F4;&#x7CFB;&#x7EDF;&#x5D29;&#x6E83;</p>
+&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x8282;&#x70B9;&#x4E0A;&#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x73B0;&#x8C61;&#xFF0C;&#x9020;&#x6210;&#x6B7B;&#x5FAA;&#x73AF;&#xFF0C;&#x5BFC;&#x81F4;&#x7CFB;&#x7EDF;&#x5D29;&#x6E83;</li>
+</ul>
 <h1 class="mume-header" id="10-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86">10 &#x5F02;&#x5E38;&#x5904;&#x7406;</h1>
 
 <h2 class="mume-header" id="101-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%99%A8">10.1 &#x5F02;&#x5E38;&#x5904;&#x7406;&#x5668;</h2>
@@ -1403,25 +1533,31 @@ return &quot;redirect:page.jsp&quot;;
 </pre><h2 class="mume-header" id="102-%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%99%A8">10.2 &#x6CE8;&#x89E3;&#x5F00;&#x53D1;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5668;</h2>
 
 <ul>
-<li>&#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x5B9E;&#x73B0;&#x5F02;&#x5E38;&#x5206;&#x7C7B;&#x7BA1;&#x7406;<br>
-&#xF06C; &#x540D;&#x79F0;&#xFF1A; @ControllerAdvice<br>
-&#xF06C; &#x7C7B;&#x578B;&#xFF1A; &#x7C7B;&#x6CE8;&#x89E3;<br>
-&#xF06C; &#x4F4D;&#x7F6E;&#xFF1A;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E0A;&#x65B9;<br>
-&#xF06C; &#x4F5C;&#x7528;&#xFF1A;&#x8BBE;&#x7F6E;&#x5F53;&#x524D;&#x7C7B;&#x4E3A;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5668;&#x7C7B;<br>
-&#xF06C; &#x8303;&#x4F8B;&#xFF1A;</li>
+<li>&#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x5B9E;&#x73B0;&#x5F02;&#x5E38;&#x5206;&#x7C7B;&#x7BA1;&#x7406;
+<ul>
+<li>&#x540D;&#x79F0;&#xFF1A; @ControllerAdvice</li>
+<li>&#x7C7B;&#x578B;&#xFF1A; &#x7C7B;&#x6CE8;&#x89E3;</li>
+<li>&#x4F4D;&#x7F6E;&#xFF1A;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E0A;&#x65B9;</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x8BBE;&#x7F6E;&#x5F53;&#x524D;&#x7C7B;&#x4E3A;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5668;&#x7C7B;</li>
+<li>&#x8303;&#x4F8B;&#xFF1A;</li>
+</ul>
+</li>
 </ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@Component</span>
 <span class="token annotation punctuation">@ControllerAdvice</span>
 <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">ExceptionAdvice</span> <span class="token punctuation">{</span>
 <span class="token punctuation">}</span>  
 </pre><ul>
-<li>&#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x5B9E;&#x73B0;&#x5F02;&#x5E38;&#x5206;&#x7C7B;&#x7BA1;&#x7406;<br>
-&#xF06C; &#x540D;&#x79F0;&#xFF1A; @ExceptionHandler<br>
-&#xF06C; &#x7C7B;&#x578B;&#xFF1A; &#x65B9;&#x6CD5;&#x6CE8;&#x89E3;<br>
-&#xF06C; &#x4F4D;&#x7F6E;&#xFF1A;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x9488;&#x5BF9;&#x6307;&#x5B9A;&#x5F02;&#x5E38;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;&#x65B9;&#x6CD5;&#x4E0A;&#x65B9;<br>
-&#xF06C; &#x4F5C;&#x7528;&#xFF1A;&#x8BBE;&#x7F6E;&#x6307;&#x5B9A;&#x5F02;&#x5E38;&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;<br>
-&#xF06C; &#x8303;&#x4F8B;&#xFF1A;<br>
-&#xF06C; &#x8BF4;&#x660E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x8BBE;&#x5B9A;&#x591A;&#x4E2A;</li>
+<li>&#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x5B9E;&#x73B0;&#x5F02;&#x5E38;&#x5206;&#x7C7B;&#x7BA1;&#x7406;
+<ul>
+<li>&#x540D;&#x79F0;&#xFF1A; @ExceptionHandler</li>
+<li>&#x7C7B;&#x578B;&#xFF1A; &#x65B9;&#x6CD5;&#x6CE8;&#x89E3;</li>
+<li>&#x4F4D;&#x7F6E;&#xFF1A;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x9488;&#x5BF9;&#x6307;&#x5B9A;&#x5F02;&#x5E38;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;&#x65B9;&#x6CD5;&#x4E0A;&#x65B9;</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x8BBE;&#x7F6E;&#x6307;&#x5B9A;&#x5F02;&#x5E38;&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;</li>
+<li>&#x8303;&#x4F8B;&#xFF1A;</li>
+<li>&#x8BF4;&#x660E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x8BBE;&#x5B9A;&#x591A;&#x4E2A;</li>
+</ul>
+</li>
 </ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span><span class="token class-name">Exception</span><span class="token punctuation">.</span><span class="token keyword keyword-class">class</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@ResponseBody</span>
@@ -1600,11 +1736,13 @@ return &quot;redirect:page.jsp&quot;;
 </ul>
 <h3 class="mume-header" id="1142-rest%E8%A1%8C%E4%B8%BA%E7%BA%A6%E5%AE%9A%E6%96%B9%E5%BC%8F">11.4.2 Rest&#x884C;&#x4E3A;&#x7EA6;&#x5B9A;&#x65B9;&#x5F0F;</h3>
 
-<p>&#xF06C; GET&#xFF08;&#x67E5;&#x8BE2;&#xFF09; <a href="http://localhost/user/1">http://localhost/user/1</a> GET<br>
-&#xF06C; POST&#xFF08;&#x4FDD;&#x5B58;&#xFF09; <a href="http://localhost/user">http://localhost/user</a> POST<br>
-&#xF06C; PUT&#xFF08;&#x66F4;&#x65B0;&#xFF09; <a href="http://localhost/user">http://localhost/user</a> PUT<br>
-&#xF06C; DELETE&#xFF08;&#x5220;&#x9664;&#xFF09; <a href="http://localhost/user">http://localhost/user</a> DELETE<br>
-**&#x6CE8;&#x610F;&#xFF1A;**&#x4E0A;&#x8FF0;&#x884C;&#x4E3A;&#x662F;&#x7EA6;&#x5B9A;&#x65B9;&#x5F0F;&#xFF0C;&#x7EA6;&#x5B9A;&#x4E0D;&#x662F;&#x89C4;&#x8303;&#xFF0C;&#x53EF;&#x4EE5;&#x6253;&#x7834;&#xFF0C;&#x6240;&#x4EE5;&#x79F0;Rest&#x98CE;&#x683C;&#xFF0C;&#x800C;&#x4E0D;&#x662F;Rest&#x89C4;&#x8303;</p>
+<ul>
+<li>GET&#xFF08;&#x67E5;&#x8BE2;&#xFF09; <a href="http://localhost/user/1">http://localhost/user/1</a> GET</li>
+<li>POST&#xFF08;&#x4FDD;&#x5B58;&#xFF09; <a href="http://localhost/user">http://localhost/user</a> POST</li>
+<li>PUT&#xFF08;&#x66F4;&#x65B0;&#xFF09; <a href="http://localhost/user">http://localhost/user</a> PUT</li>
+<li>DELETE&#xFF08;&#x5220;&#x9664;&#xFF09; <a href="http://localhost/user">http://localhost/user</a> DELETE<br>
+**&#x6CE8;&#x610F;&#xFF1A;**&#x4E0A;&#x8FF0;&#x884C;&#x4E3A;&#x662F;&#x7EA6;&#x5B9A;&#x65B9;&#x5F0F;&#xFF0C;&#x7EA6;&#x5B9A;&#x4E0D;&#x662F;&#x89C4;&#x8303;&#xFF0C;&#x53EF;&#x4EE5;&#x6253;&#x7834;&#xFF0C;&#x6240;&#x4EE5;&#x79F0;Rest&#x98CE;&#x683C;&#xFF0C;&#x800C;&#x4E0D;&#x662F;Rest&#x89C4;&#x8303;</li>
+</ul>
 <h3 class="mume-header" id="1143-restful%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8">11.4.3 Restful&#x5F00;&#x53D1;&#x5165;&#x95E8;</h3>
 
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">//&#x8BBE;&#x7F6E;rest&#x98CE;&#x683C;&#x7684;&#x63A7;&#x5236;&#x5668;</span>
@@ -1673,8 +1811,10 @@ return &quot;redirect:page.jsp&quot;;
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>HiddenHttpMethodFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">&gt;</span></span>DispatcherServlet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
-</pre><p>&#xF06C; &#x5F00;&#x542F;SpringMVC&#x5BF9;Restful&#x98CE;&#x683C;&#x7684;&#x8BBF;&#x95EE;&#x652F;&#x6301;&#x8FC7;&#x6EE4;&#x5668;&#xFF0C;&#x5373;&#x53EF;&#x901A;&#x8FC7;&#x9875;&#x9762;&#x8868;&#x5355;&#x63D0;&#x4EA4;PUT&#x4E0E;DELETE&#x8BF7;&#x6C42;<br>
-&#xF06C; &#x9875;&#x9762;&#x8868;&#x5355;&#x4F7F;&#x7528;&#x9690;&#x85CF;&#x57DF;&#x63D0;&#x4EA4;&#x8BF7;&#x6C42;&#x7C7B;&#x578B;&#xFF0C;&#x53C2;&#x6570;&#x540D;&#x79F0;&#x56FA;&#x5B9A;&#x4E3A;_method&#xFF0C;&#x5FC5;&#x987B;&#x914D;&#x5408;&#x63D0;&#x4EA4;&#x7C7B;&#x578B;method=post&#x4F7F;&#x7528;</p>
+</pre><ul>
+<li>&#x5F00;&#x542F;SpringMVC&#x5BF9;Restful&#x98CE;&#x683C;&#x7684;&#x8BBF;&#x95EE;&#x652F;&#x6301;&#x8FC7;&#x6EE4;&#x5668;&#xFF0C;&#x5373;&#x53EF;&#x901A;&#x8FC7;&#x9875;&#x9762;&#x8868;&#x5355;&#x63D0;&#x4EA4;PUT&#x4E0E;DELETE&#x8BF7;&#x6C42;</li>
+<li>&#x9875;&#x9762;&#x8868;&#x5355;&#x4F7F;&#x7528;&#x9690;&#x85CF;&#x57DF;&#x63D0;&#x4EA4;&#x8BF7;&#x6C42;&#x7C7B;&#x578B;&#xFF0C;&#x53C2;&#x6570;&#x540D;&#x79F0;&#x56FA;&#x5B9A;&#x4E3A;_method&#xFF0C;&#x5FC5;&#x987B;&#x914D;&#x5408;&#x63D0;&#x4EA4;&#x7C7B;&#x578B;method=post&#x4F7F;&#x7528;</li>
+</ul>
 <pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/user/1<span class="token punctuation">&quot;</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>post<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>hidden<span class="token punctuation">&quot;</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>_method<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>PUT<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>submit<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
@@ -1766,17 +1906,21 @@ return &quot;redirect:page.jsp&quot;;
 &#xF075; JavaServer Faces 2.0 (JSR 314)<br>
 &#xF075; JavaServer Pages 2.2/Expression Language 2.2 (JSR 245)<br>
 &#xF075; Standard Tag Library for JavaServer Pages (JSTL) 1.2 (JSR 52)<br>
-&#xF075; Debugging Support for Other Languages 1.0 (JSR 45)<br>
-&#xF06C; &#x6A21;&#x5757;&#x5316; (JSR 294)<br>
+&#xF075; Debugging Support for Other Languages 1.0 (JSR 45)
+<ul>
+<li>&#x6A21;&#x5757;&#x5316; (JSR 294)<br>
 &#xF075; Swing&#x5E94;&#x7528;&#x6846;&#x67B6; (JSR 296)<br>
 &#xF075; JavaBeans Activation Framework (JAF) 1.1 (JSR 925)<br>
 &#xF075; Streaming API for XML (StAX) 1.0 (JSR 173)</li>
+</ul>
+</li>
 <li>&#x7BA1;&#x7406;&#x4E0E;&#x5B89;&#x5168;&#x6280;&#x672F;<br>
 &#xF075; Java Authentication Service Provider Interface for Containers (JSR 196)<br>
 &#xF075; Java Authorization Contract for Containers 1.3 (JSR 115)<br>
 &#xF075; Java EE Application Deployment 1.2 (JSR 88)<br>
-&#xF075; J2EE Management 1.1 (JSR 77)<br>
-&#xF06C; Java SE&#x4E2D;&#x4E0E;Java EE&#x6709;&#x5173;&#x7684;&#x89C4;&#x8303;<br>
+&#xF075; J2EE Management 1.1 (JSR 77)
+<ul>
+<li>Java SE&#x4E2D;&#x4E0E;Java EE&#x6709;&#x5173;&#x7684;&#x89C4;&#x8303;<br>
 &#xF075; JCache API (JSR 107)<br>
 &#xF075; Java Memory Model (JSR 133)<br>
 &#xF075; Concurrency Utilitie (JSR 166)<br>
@@ -1784,6 +1928,8 @@ return &quot;redirect:page.jsp&quot;;
 &#xF075; Java Database Connectivity 4.0 (JSR 221)<br>
 &#xF075; Java Management Extensions (JMX) 2.0 (JSR 255)<br>
 &#xF075; Java Portlet API (JSR 286)</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1817,23 +1963,27 @@ tomcat8.5&#x2191; &#xFF1A;&#x642D;&#x914D;hibernate-validator&#x7248;&#x672C;6.<
 <h2 class="mume-header" id="122-%E5%BF%AB%E9%80%9F%E4%BD%BF%E7%94%A8">12.2 &#x5FEB;&#x901F;&#x4F7F;&#x7528;</h2>
 
 <p><strong>1. &#x5F00;&#x542F;&#x6821;&#x9A8C;</strong></p>
-<p>&#xF06C; &#x540D;&#x79F0;&#xFF1A;@Valid &#x3001; @Validated<br>
-&#xF06C; &#x7C7B;&#x578B;&#xFF1A;&#x5F62;&#x53C2;&#x6CE8;&#x89E3;<br>
-&#xF06C; &#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7684;&#x5B9E;&#x4F53;&#x7C7B;&#x7C7B;&#x578B;&#x7684;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x524D;&#x65B9;<br>
-&#xF06C; &#x4F5C;&#x7528;&#xFF1A;&#x8BBE;&#x5B9A;&#x5BF9;&#x5F53;&#x524D;&#x5B9E;&#x4F53;&#x7C7B;&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x8FDB;&#x884C;&#x6821;&#x9A8C;<br>
-&#xF06C; &#x8303;&#x4F8B;&#xFF1A;</p>
+<ul>
+<li>&#x540D;&#x79F0;&#xFF1A;@Valid &#x3001; @Validated</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;&#x5F62;&#x53C2;&#x6CE8;&#x89E3;</li>
+<li>&#x4F4D;&#x7F6E;&#xFF1A;&#x5904;&#x7406;&#x5668;&#x7C7B;&#x4E2D;&#x7684;&#x5B9E;&#x4F53;&#x7C7B;&#x7C7B;&#x578B;&#x7684;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x524D;&#x65B9;</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x8BBE;&#x5B9A;&#x5BF9;&#x5F53;&#x524D;&#x5B9E;&#x4F53;&#x7C7B;&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x8FDB;&#x884C;&#x6821;&#x9A8C;</li>
+<li>&#x8303;&#x4F8B;&#xFF1A;</li>
+</ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">&quot;/addemployee&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">addEmployee</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Valid</span> <span class="token class-name">Employee</span> employee<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </pre><p><strong>2.&#x8BBE;&#x7F6E;&#x6821;&#x9A8C;&#x89C4;&#x5219;</strong></p>
-<p>&#xF06C; &#x540D;&#x79F0;&#xFF1A;@NotNull<br>
-&#xF06C; &#x7C7B;&#x578B;&#xFF1A;&#x5C5E;&#x6027;&#x6CE8;&#x89E3; &#x7B49;<br>
-&#xF06C; &#x4F4D;&#x7F6E;&#xFF1A;&#x5B9E;&#x4F53;&#x7C7B;&#x5C5E;&#x6027;&#x4E0A;&#x65B9;<br>
-&#xF06C; &#x4F5C;&#x7528;&#xFF1A;&#x8BBE;&#x5B9A;&#x5F53;&#x524D;&#x5C5E;&#x6027;&#x6821;&#x9A8C;&#x89C4;&#x5219;<br>
-&#xF06C; &#x8303;&#x4F8B;&#xFF1A;<br>
+<ul>
+<li>&#x540D;&#x79F0;&#xFF1A;@NotNull</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;&#x5C5E;&#x6027;&#x6CE8;&#x89E3; &#x7B49;</li>
+<li>&#x4F4D;&#x7F6E;&#xFF1A;&#x5B9E;&#x4F53;&#x7C7B;&#x5C5E;&#x6027;&#x4E0A;&#x65B9;</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x8BBE;&#x5B9A;&#x5F53;&#x524D;&#x5C5E;&#x6027;&#x6821;&#x9A8C;&#x89C4;&#x5219;</li>
+<li>&#x8303;&#x4F8B;&#xFF1A;<br>
 &#x6BCF;&#x4E2A;&#x6821;&#x9A8C;&#x89C4;&#x5219;&#x6240;&#x643A;&#x5E26;&#x7684;&#x53C2;&#x6570;&#x4E0D;&#x540C;&#xFF0C;&#x6839;&#x636E;&#x6821;&#x9A8C;&#x89C4;&#x5219;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x8C03;&#x6574;<br>
-&#x5177;&#x4F53;&#x7684;&#x6821;&#x9A8C;&#x89C4;&#x5219;&#x67E5;&#x770B;&#x5BF9;&#x5E94;&#x7684;&#x6821;&#x9A8C;&#x6846;&#x67B6;&#x8FDB;&#x884C;&#x83B7;&#x53D6;</p>
+&#x5177;&#x4F53;&#x7684;&#x6821;&#x9A8C;&#x89C4;&#x5219;&#x67E5;&#x770B;&#x5BF9;&#x5E94;&#x7684;&#x6821;&#x9A8C;&#x6846;&#x67B6;&#x8FDB;&#x884C;&#x83B7;&#x53D6;</li>
+</ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Employee</span><span class="token punctuation">{</span>
     <span class="token annotation punctuation">@NotNull</span><span class="token punctuation">(</span>message <span class="token operator">=</span> <span class="token string">&quot;&#x59D3;&#x540D;&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;&quot;</span><span class="token punctuation">)</span>
     <span class="token keyword keyword-private">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span><span class="token comment">//&#x5458;&#x5DE5;&#x59D3;&#x540D;</span>
@@ -1873,11 +2023,13 @@ tomcat8.5&#x2191; &#xFF1A;&#x642D;&#x914D;hibernate-validator&#x7248;&#x672C;6.<
 <p><img src="./assets/image-20200506160725709.png" alt="image-20200506160725709"></p>
 <h2 class="mume-header" id="124-%E5%B5%8C%E5%A5%97%E6%A0%A1%E9%AA%8C">12.4 &#x5D4C;&#x5957;&#x6821;&#x9A8C;</h2>
 
-<p>&#xF06C; &#x540D;&#x79F0;&#xFF1A;@Valid<br>
-&#xF06C; &#x7C7B;&#x578B;&#xFF1A;&#x5C5E;&#x6027;&#x6CE8;&#x89E3;<br>
-&#xF06C; &#x4F4D;&#x7F6E;&#xFF1A;&#x5B9E;&#x4F53;&#x7C7B;&#x4E2D;&#x7684;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x5C5E;&#x6027;&#x4E0A;&#x65B9;<br>
-&#xF06C; &#x4F5C;&#x7528;&#xFF1A;&#x8BBE;&#x5B9A;&#x5F53;&#x524D;&#x5E94;&#x7528;&#x7C7B;&#x578B;&#x5C5E;&#x6027;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x5F00;&#x542F;&#x6821;&#x9A8C;<br>
-&#xF06C; &#x8303;&#x4F8B;&#xFF1A;</p>
+<ul>
+<li>&#x540D;&#x79F0;&#xFF1A;@Valid</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;&#x5C5E;&#x6027;&#x6CE8;&#x89E3;</li>
+<li>&#x4F4D;&#x7F6E;&#xFF1A;&#x5B9E;&#x4F53;&#x7C7B;&#x4E2D;&#x7684;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x5C5E;&#x6027;&#x4E0A;&#x65B9;</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x8BBE;&#x5B9A;&#x5F53;&#x524D;&#x5E94;&#x7528;&#x7C7B;&#x578B;&#x5C5E;&#x6027;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x5F00;&#x542F;&#x6821;&#x9A8C;</li>
+<li>&#x8303;&#x4F8B;&#xFF1A;</li>
+</ul>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Employee</span> <span class="token punctuation">{</span>
     <span class="token comment">//&#x5B9E;&#x4F53;&#x7C7B;&#x4E2D;&#x7684;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x901A;&#x8FC7;&#x6807;&#x6CE8;@Valid&#x6CE8;&#x89E3;&#xFF0C;&#x8BBE;&#x5B9A;&#x5F00;&#x542F;&#x5F53;&#x524D;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x5B57;&#x6BB5;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x53C2;&#x4E0E;&#x6821;&#x9A8C;</span>
     <span class="token annotation punctuation">@Valid</span>
@@ -2118,7 +2270,7 @@ tomcat8.5&#x2191; &#xFF1A;&#x642D;&#x914D;hibernate-validator&#x7248;&#x672C;6.<
 </ul>
 <h2 class="mume-header" id="134-%E6%95%B4%E5%90%88junit">13.4 &#x6574;&#x5408;junit</h2>
 
-<p>**Part2&#xFF1A;**&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x6574;&#x5408;junit</p>
+<p><strong>Part2&#xFF1A;</strong> &#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x6574;&#x5408;junit</p>
 <pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span><span class="token class-name">SpringJUnit4ClassRunner</span><span class="token punctuation">.</span><span class="token keyword keyword-class">class</span><span class="token punctuation">)</span>  
 <span class="token annotation punctuation">@ContextConfiguration</span><span class="token punctuation">(</span>locations <span class="token operator">=</span> <span class="token string">&quot;classpath:applicationContext.xml&quot;</span><span class="token punctuation">)</span>  
 <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">UserServiceTest</span> <span class="token punctuation">{</span>
@@ -2134,7 +2286,7 @@ tomcat8.5&#x2191; &#xFF1A;&#x642D;&#x914D;hibernate-validator&#x7248;&#x672C;6.<
 
 </pre><h2 class="mume-header" id="135-spring%E6%95%B4%E5%90%88springmvc">13.5 Spring&#x6574;&#x5408;SpringMVC</h2>
 
-<p>**Part3&#xFF1A;**SpringMVC</p>
+<p><strong>Part3&#xFF1A;</strong> SpringMVC</p>
 <ul>
 <li>
 <p>web.xml&#x914D;&#x7F6E;</p>
@@ -2421,10 +2573,11 @@ tomcat8.5&#x2191; &#xFF1A;&#x642D;&#x914D;hibernate-validator&#x7248;&#x672C;6.<
 </li>
 <li><a href="#3-%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE">3 &#x57FA;&#x672C;&#x914D;&#x7F6E;</a>
 <ul>
-<li><a href="#31-%E5%B8%B8%E8%A7%84%E9%85%8D%E7%BD%AEcontroller%E5%8A%A0%E8%BD%BD%E6%8E%A7%E5%88%B6">3.1 &#x5E38;&#x89C4;&#x914D;&#x7F6E;&#xFF08;Controller&#x52A0;&#x8F7D;&#x63A7;&#x5236;&#xFF09;</a>
+<li><a href="#31-%E5%B8%B8%E8%A7%84%E9%85%8D%E7%BD%AE">3.1 &#x5E38;&#x89C4;&#x914D;&#x7F6E;</a>
 <ul>
-<li><a href="#311-%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD">3.1.1 &#x9759;&#x6001;&#x8D44;&#x6E90;&#x52A0;&#x8F7D;</a></li>
-<li><a href="#312-%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%A4%84%E7%90%86">3.1.2 &#x4E2D;&#x6587;&#x4E71;&#x7801;&#x5904;&#x7406;</a></li>
+<li><a href="#311-controller%E5%8A%A0%E8%BD%BD%E6%8E%A7%E5%88%B6">3.1.1 Controller&#x52A0;&#x8F7D;&#x63A7;&#x5236;</a></li>
+<li><a href="#312-%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD">3.1.2 &#x9759;&#x6001;&#x8D44;&#x6E90;&#x52A0;&#x8F7D;</a></li>
+<li><a href="#313-%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%A4%84%E7%90%86">3.1.3 &#x4E2D;&#x6587;&#x4E71;&#x7801;&#x5904;&#x7406;</a></li>
 </ul>
 </li>
 <li><a href="#32-%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8">3.2 &#x6CE8;&#x89E3;&#x9A71;&#x52A8;</a></li>
@@ -2438,10 +2591,11 @@ tomcat8.5&#x2191; &#xFF1A;&#x642D;&#x914D;hibernate-validator&#x7248;&#x672C;6.<
 <li><a href="#44-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%99%A8">4.4 &#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x5668;</a></li>
 <li><a href="#45-%E6%97%A5%E6%9C%9F%E7%B1%BB%E5%9E%8B%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2">4.5 &#x65E5;&#x671F;&#x7C7B;&#x578B;&#x683C;&#x5F0F;&#x8F6C;&#x6362;</a></li>
 <li><a href="#46-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%99%A8">4.6 &#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x5668;</a></li>
-<li><a href="#47-%E8%AF%B7%E6%B1%82%E6%98%A0%E5%B0%84-requestmapping">4.7 &#x8BF7;&#x6C42;&#x6620;&#x5C04; @RequestMapping</a>
+<li><a href="#47-%E8%AF%B7%E6%B1%82%E6%98%A0%E5%B0%84">4.7 &#x8BF7;&#x6C42;&#x6620;&#x5C04;</a>
 <ul>
 <li><a href="#471-%E6%96%B9%E6%B3%95%E6%B3%A8%E8%A7%A3">4.7.1 &#x65B9;&#x6CD5;&#x6CE8;&#x89E3;</a></li>
 <li><a href="#472-%E7%B1%BB%E6%B3%A8%E8%A7%A3">4.7.2 &#x7C7B;&#x6CE8;&#x89E3;</a></li>
+<li><a href="#473-%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7">4.7.3 &#x5E38;&#x7528;&#x5C5E;&#x6027;</a></li>
 </ul>
 </li>
 </ul>
@@ -2449,9 +2603,10 @@ tomcat8.5&#x2191; &#xFF1A;&#x642D;&#x914D;hibernate-validator&#x7248;&#x672C;6.<
 <li><a href="#5-%E5%93%8D%E5%BA%94">5 &#x54CD;&#x5E94;</a>
 <ul>
 <li><a href="#51-%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC">5.1 &#x9875;&#x9762;&#x8DF3;&#x8F6C;</a></li>
-<li><a href="#52-%E9%A1%B5%E9%9D%A2%E8%AE%BF%E9%97%AE%E5%BF%AB%E6%8D%B7%E8%AE%BE%E5%AE%9A">5.2 &#x9875;&#x9762;&#x8BBF;&#x95EE;&#x5FEB;&#x6377;&#x8BBE;&#x5B9A;</a></li>
+<li><a href="#52-%E9%A1%B5%E9%9D%A2%E8%AE%BF%E9%97%AE%E5%89%8D%E5%90%8E%E7%BC%80%E8%AE%BE%E5%AE%9A">5.2 &#x9875;&#x9762;&#x8BBF;&#x95EE;&#x524D;/&#x540E;&#x7F00;&#x8BBE;&#x5B9A;</a></li>
 <li><a href="#53-%E5%B8%A6%E6%95%B0%E6%8D%AE%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC">5.3 &#x5E26;&#x6570;&#x636E;&#x9875;&#x9762;&#x8DF3;&#x8F6C;</a></li>
-<li><a href="#54-%E8%BF%94%E5%9B%9Ejson%E6%95%B0%E6%8D%AE">5.4 &#x8FD4;&#x56DE;json&#x6570;&#x636E;</a></li>
+<li><a href="#54-%E8%BF%94%E5%9B%9Ejson%E5%AD%97%E7%AC%A6%E4%B8%B2">5.4 &#x8FD4;&#x56DE;json&#x5B57;&#x7B26;&#x4E32;</a></li>
+<li><a href="#55-%E8%BF%94%E5%9B%9Ejson%E5%AF%B9%E8%B1%A1">5.5 &#x8FD4;&#x56DE;json&#x5BF9;&#x8C61;</a></li>
 </ul>
 </li>
 <li><a href="#6-servlet%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3">6 Servlet&#x76F8;&#x5173;&#x63A5;&#x53E3;</a></li>
