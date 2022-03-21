@@ -97,18 +97,6 @@ Spring是分层的JavaSE/EE应用full-stack轻量级开源框架
 
 1. 导入spring坐标（5.1.9.release）
 
-2. 编写业务层与表现层（模拟）接口与实现类
-
-3. 建立spring配置文件
-
-4. 配置所需资源（Service）为spring控制的资源
-
-5. 表现层（App）通过spring获取资源（Service实例）
-
-![1590637353510](./assets/1590637353510.png)
-
-#### 3.2.1)IoC入门案例制作步骤-1
-
 ```xml
 <dependency>
     <groupId>org.springframework</groupId>
@@ -117,18 +105,14 @@ Spring是分层的JavaSE/EE应用full-stack轻量级开源框架
 </dependency>
 ```
 
-#### 3.2.2)IoC入门案例制作步骤-2
+2. 编写业务层与表现层（模拟）接口与实现类
 
 ```java
 public interface UserService {
-	//业务方法  
-	void save();
+  //业务方法  
+  void save();
 }
-```
 
-#### 3.2.3)IoC入门案例制作步骤-3
-
-```java
 public class UserServiceImpl implements UserService {
     public void save() {
         System.out.println("user service running...");
@@ -136,9 +120,10 @@ public class UserServiceImpl implements UserService {
 }
 ```
 
-#### 3.2.4)IoC入门案例制作步骤-4
+3. 建立spring配置文件，配置所需资源（Service）为spring控制的资源
 
 ```xml
+<!-- applicationContext.xml -->
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -149,7 +134,7 @@ public class UserServiceImpl implements UserService {
 </beans>
 ```
 
-#### 3.2.5)IoC入门案例制作步骤-5
+4. 表现层（App）通过spring获取资源（Service实例）
 
 ```java
 public class UserApp {
@@ -162,6 +147,9 @@ public class UserApp {
     }
 }
 ```
+
+![1590637353510](./assets/1590637353510.png)
+
 
 ## 4)IoC配置（XML格式）
 
@@ -476,7 +464,7 @@ public class UserApp {
 
   ```xml
   <beans xmlns="http://www.springframework.org/schema/beans"    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    xmlns:p="http://www.springframework.org/schema/p"       xsi:schemaLocation="http://www.springframework.org/schema/beans     https://www.springframework.org/schema/beans/spring-beans.xsd">
-  <!-- ... -->
+    ...
   </beans>
   ```
 
@@ -829,7 +817,7 @@ UserService userService = (UserService)bf.getBean("userService");
 
   - 无论是注解格式还是XML配置格式，最终都是将资源加载到IoC容器中，差别仅仅是数据读取方式不同
 
-  - 从加载效率上来说注解优于XML配置文件
+  - **从加载效率上来说注解优于XML配置文件**
 
 ### 2.2)bean的定义
 
@@ -977,7 +965,7 @@ UserService userService = (UserService)bf.getBean("userService");
 - 相关属性
   - `required`：定义该属性是否允许为null
 
-### 2.8)bean的引用类型属性注入
+### 2.8)bean的引用类型属性注入——优先级
 
 - 名称：`@Primary`
 
@@ -999,7 +987,7 @@ UserService userService = (UserService)bf.getBean("userService");
   - @Autowired默认按类型装配，当出现相同类型的bean，使用@Primary提高按类型自动装配的优先级，
   - 多个@Primary会导致优先级设置无效
 
-### 2.9)bean的引用类型属性注入
+### 2.9)bean的引用类型属性注入——补充注解
 
 - 名称：@Inject、@Named、`@Resource`
 
@@ -1271,7 +1259,7 @@ public class UserServiceTest {
 
 ### 5.3)设定组件扫描加载过滤器
 
-- 名称：@ComponentScan
+- 名称：`@ComponentScan`
 
 - 类型：**类注解**
 
@@ -1525,17 +1513,6 @@ public class UserServiceTest {
 
 1. 导入相关坐标
 
-2. 确认要抽取的功能，并将其制作成方法保存到专用的类中，删除原始业务中对应的功能
-
-3. 将所有进行AOP操作的资源加载到IoC容器中
-
-4. 使用配置的方式描述被抽取功能的位置，并描述被抽取功能与对应位置的关系
-
-5. 运行程序
-
-
-**步骤一 导入坐标**
-
 ```xml
 <dependency>
     <groupId>org.aspectj</groupId>
@@ -1544,16 +1521,15 @@ public class UserServiceTest {
 </dependency>
 ```
 
-**步骤二 在业务层抽取通用代码**
+2. 确认要抽取的功能，并将其制作成方法保存到专用的类中，删除原始业务中对应的功能
 
 ![1591282302976](./assets/1591282302976.png)
 
-**步骤三 把通知加入spring容器管理**
+3. 将所有进行AOP操作的资源加载到IoC容器中
 
 ![1591282320624](./assets/1591282320624.png)
 
-
-**步骤四 在配置文件中配置aop的配置**
+4. 使用配置的方式描述被抽取功能的位置，并描述被抽取功能与对应位置的关系
 
 ```xml
 <!--aop配置-->
@@ -1567,6 +1543,23 @@ public class UserServiceTest {
     </aop:aspect>
 </aop:config>
 ```
+
+
+5. 运行程序
+
+```java
+public class App {
+    public static void main(String[] args) {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationConfig.xml");
+
+        AccountService accountService = (AccountService) applicationContext.getBean("accountService");
+        accountService.save();
+    }
+}
+```
+
+
+
 
 ## 3)AOP配置（XML）
 
@@ -1840,7 +1833,7 @@ AOP的通知类型共5种
 
 - 作用：设置前置/后置/返回后/抛出异常后通知
 
-- 格式：
+- 格式（以aop:before为例）：
 
   ```xml
   <aop:aspect ref="adviceId">
@@ -1952,6 +1945,8 @@ AOP的通知类型共5种
 
 **第一种：**
 
+- **适用于返回后通知（after-returning）**
+
 - 设定返回值变量名
 
 - 原始方法
@@ -1980,9 +1975,10 @@ AOP的通知类型共5种
   }
   ```
 
-- 适用于返回后通知（after-returning）
 
 **第二种：**
+
+- **适用于环绕通知（around）**
 
 - 在通知类的方法中调用原始方法获取返回值
 
@@ -1995,7 +1991,7 @@ AOP的通知类型共5种
   }
   ```
 
-- AOP配置l
+- AOP配置
 
   ```xml
   <aop:aspect ref="myAdvice">
@@ -2009,16 +2005,15 @@ AOP的通知类型共5种
   ```java
   public Object around(ProceedingJoinPoint pjp) throws Throwable {
       Object ret = pjp.proceed();
-      return ret;
+      return ret; //void方法返回值为null
   }
   ```
-
-- 适用于环绕通知（around）
-  > void方法返回值为null: `return null;`
 
 #### 3.9.3)通知获取异常数据
 
 **第一种：**
+
+- **适用于环绕通知（around）**
 
 - 在通知类的方法中调用原始方法捕获异常
 
@@ -2045,14 +2040,14 @@ AOP的通知类型共5种
   ```java
   public Object around(ProceedingJoinPoint pjp) throws Throwable {
       Object ret = pjp.proceed();	//对此处调用进行try……catch……捕获异常，或抛出异常
-      return ret;
+      return ret; //异常时返回值总为null
   }
   ```
 
-- 适用于环绕通知（around）
-  > 有异常时返回值总为null
 
 **第二种：**
+
+- **适用于返回后通知（after-throwing）**
 
 - 设定异常对象变量名
 
@@ -2082,7 +2077,6 @@ AOP的通知类型共5种
   }
   ```
 
-- 适用于返回后通知（after-throwing）
 
 ## 4)AOP配置（注解）
 
@@ -2092,17 +2086,23 @@ AOP的通知类型共5种
 
 ### 4.2)注解开发AOP制作步骤
 
-在XML格式基础上
+在XML格式和IoC注解基础上
 
 - 导入坐标（伴随spring-context坐标导入已经依赖导入完成）
 
 - 开启AOP注解支持
+
+  ```xml
+  <!-- applicationConfig.xml -->
+  <aop:aspectj-autoproxy/>
+  ```
 
 - 配置切面@Aspect
 
 - 定义专用的切入点方法，并配置切入点@Pointcut
 
 - 为通知方法配置通知类型及对应切入点@Before
+
 
 ### 4.3)注解开发AOP注意事项
 
@@ -2496,7 +2496,7 @@ Spirng可以通过配置的形式控制使用的代理形式，默认使用jdkpr
 
   ```xml
   <!--XMP配置AOP-->
-  <aop:config proxy-target-class="false"></aop:config>
+  <aop:config proxy-target-class="false">...</aop:config>
   ```
 
 - XML注解支持
@@ -2768,26 +2768,15 @@ public Object tx(ProceedingJoinPoint pjp) throws Throwable {
 </aop:config>
 ```
 
-### 2.8声明式事务（XML）
+### 2.8)声明式事务（XML）
 
-**AOP**配置事务是否具有特例性？
+上述AOP配置事务具有很强通用性，因此Spring为我们提供了一套选用格式，即声明式事务
 
-```java
-public Object tx(ProceedingJoinPoint pjp) throws Throwable {
-    DataSourceTransactionManager dstm = new DataSourceTransactionManager();
-    dstm.setDataSource(dataSource);
-    TransactionDefinition td = new DefaultTransactionDefinition();
-    TransactionStatus ts = dstm.getTransaction(td);
-    Object ret = pjp.proceed(pjp.getArgs());
-    dstm.commit(ts);
-
-    return ret;
-}
-```
+首先定义事务管理
 
 ```xml
-<bean id="txAdvice" class="com.itheima.aop.TxAdvice">
-	<property name="dataSource" ref="dataSource"/>
+<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource"/>
 </bean>
 ```
 
