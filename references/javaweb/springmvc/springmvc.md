@@ -233,11 +233,14 @@ public String save(){
 *   使用注解形式转化SpringMVC核心配置文件为配置类  
     替换`spring-mvc.xml`
 
+`@EnableWebMvc`: 启动springmvc配置
+
 ```java
 @Configuration
 @ComponentScan(value = "com.itheima",includeFilters =
     @ComponentScan.Filter(type=FilterType.ANNOTATION,classes = {Controller.class})
     )
+@EnableWebMvc
 public class SpringMVCConfiguration implements WebMvcConfigurer{
     //注解配置放行指定资源格式
 //    @Override
@@ -292,8 +295,7 @@ public class ServletContainersInitConfig extends AbstractDispatcherServletInitia
 }
 ```
 
-  删除web.xml
-  删除spring-mvc.xml  
+*  删除web.xml、spring-mvc.xml  
 
  **小节**
 - 基于servlet3.0规范，配置Servlet容器初始化配置类，初始化时加载SpringMVC配置类
@@ -311,6 +313,7 @@ public class ServletContainersInitConfig extends AbstractDispatcherServletInitia
   访问URL： `http://localhost/requestParam1?name=itheima&age=14`
 
 ```java
+// 参数名必须是name，否则为null
 @RequestMapping("/requestParam1")
 public String requestParam1(String name ,String age){
     System.out.println("name="+name+",age="+age);
@@ -324,6 +327,7 @@ public String requestParam1(String name ,String age){
 - 作用：绑定请求参数与对应处理方法形参间的关系  
 
 ```java
+// 参数名必须是userName，否则若required=true且不提供默认值会报错
 @RequestMapping("/requestParam2")
 public String requestParam2(@RequestParam(
                             name = "userName",
@@ -878,7 +882,26 @@ public void showPage5() {
 
 ## 5.5 返回json对象
 
-* 方式一：使用jackson工具转换JSON数据返回  
+下面都是基于jackson工具进行，首先导入坐标
+```xml
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-core</artifactId>
+    <version>2.9.0</version>
+</dependency>
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.9.0</version>
+</dependency>
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-annotations</artifactId>
+    <version>2.9.0</version>
+</dependency>
+```
+
+* 方式一：使用jackson工具API转换JSON数据返回  
 
   ```java
   //使用jackson进行json数据格式转化
@@ -1053,10 +1076,10 @@ Servlet相关接口替换方案
 
 ## 7.2 接受异步请求参数
 
-- 名称： @RequestBody
+- 名称： `@RequestBody`
 - 类型： 形参注解
 - 位置：处理器类中的方法形参前方
-- 作用：将异步提交数据组织成标准请求参数格式，并赋值给形参
+- 作用：将异步提交数据组织成标准请求参数格式（封装），并赋值给形参
 - 范例：
 
 ```java
@@ -1068,7 +1091,6 @@ public String ajaxController(@RequestBody String message){
 ```
 
 * 注解添加到Pojo参数前方时，封装的异步提交数据按照Pojo的属性格式进行关系映射
-* 注解添加到集合参数前方时，封装的异步提交数据按照集合的存储结构进行关系映射 
 
 ```java
 @RequestMapping("/ajaxPojoToController")
@@ -1078,7 +1100,11 @@ public String  ajaxPojoToController(@RequestBody User user){
     System.out.println("controller pojo :"+user);
     return "page.jsp";
 }
+```
 
+* 注解添加到集合参数前方时，封装的异步提交数据按照集合的存储结构进行关系映射 
+
+```java
 @RequestMapping("/ajaxListToController")
 //如果处理参数是List集合且封装了POJO，且页面发送的数据是JSON格式的对象数组，数据将自动映射到集合参数中
 public String  ajaxListToController(@RequestBody List<User> userList){
@@ -1089,12 +1115,15 @@ public String  ajaxListToController(@RequestBody List<User> userList){
 
 ## 7.3 异步请求接受响应数据
 
+使用`@ResponseBody`，返回响应正文而不是视图解析
+> 除了添加在方法上方，也可以添加在方法头的返回类型前。
+
 * 方法返回值为Pojo时，自动封装数据成json对象数据
 
 ```java
 @RequestMapping("/ajaxReturnJson")
 @ResponseBody
-public User ajaxReturnJson(){
+public User ajaxReturnJson(){ //或写作: public @ResponseBody User() ajaxReturnJson
     System.out.println("controller return json pojo...");
     User user = new User();
     user.setName("Jockme");
@@ -1147,7 +1176,7 @@ public List ajaxReturnJsonList(){
 
 ## 8.3 跨域访问支持  
 
-- 名称： @CrossOrigin
+- 名称： `@CrossOrigin`
 - 类型： 方法注解 、 类注解
 - 位置：处理器类中的方法上方 或 类上方
 - 作用：设置当前处理器方法/处理器类中所有方法支持跨域访问
@@ -1182,9 +1211,8 @@ public User cross(HttpServletRequest request){
    	1. 在指定的方法调用前后执行预先设定后的的代码
  	2. 阻止原始方法的执行
 
-- 核心原理： AOP思想
+- 核心原理： **AOP思想**
 - 拦截器链：多个拦截器按照一定的顺序，对原始被调用功能进行增强  
-
 
 
 * **拦截器VS过滤器**
@@ -1273,11 +1301,11 @@ public boolean preHandle(HttpServletRequest request,
 ```
 
 * 参数
-   request:请求对象
-   response:响应对象
-   handler:被调用的处理器对象，本质上是一个方法对象，对反射中的Method对象进行了再包装
+  - request:请求对象
+  - response:响应对象
+  - handler:被调用的处理器对象，本质上是一个方法对象，对反射中的Method对象进行了再包装
 * 返回值
-   返回值为false，被拦截的处理器将不执行  
+  - 返回值为false，被拦截的处理器将不执行  
 
 ### 9.4.2   后置处理方法
 
@@ -1293,7 +1321,7 @@ public void postHandle(HttpServletRequest request,
 ```
 
 - 参数
- modelAndView:如果处理器执行完成具有返回结果，可以读取到对应数据与页面信息，并进行调整  
+    - modelAndView:如果处理器执行完成具有返回结果，可以读取到对应数据与页面信息，并进行调整  
 
 ### 9.4.3 完成处理方法
 
@@ -1309,7 +1337,7 @@ public void afterCompletion(HttpServletRequest request,
 ```
 
 - 参数
- ex:如果处理器执行过程中出现异常对象，可以针对异常情况进行单独处理  
+    - ex:如果处理器执行过程中出现异常对象，可以针对异常情况进行单独处理  
 
 ## 9.5 拦截器配置项  
 
@@ -1357,7 +1385,9 @@ public void afterCompletion(HttpServletRequest request,
 
 ## 10.1 异常处理器
 
-  **HandlerExceptionResolver**接口（异常处理器）  
+**HandlerExceptionResolver**接口（异常处理器） 
+
+> 在Controller工作时加载异常处理，不会处理之前的异常，如类型转换器转换请求参数出错。
 
 ```java
 @Component
@@ -1404,11 +1434,13 @@ public class ExceptionResolver implements HandlerExceptionResolver {
 ## 10.2 注解开发异常处理器
 
 * 使用注解实现异常分类管理
-  - 名称： @ControllerAdvice
+  - 名称： `@ControllerAdvice`
   - 类型： 类注解
   - 位置：异常处理器类上方
   - 作用：设置当前类为异常处理器类
   - 范例：
+
+> 在Dispatcher工作时就加载，能够拦截类型转换器的异常
 
 ```java
 @Component
@@ -1418,12 +1450,12 @@ public class ExceptionAdvice {
 ```
 
 * 使用注解实现异常分类管理
-  - 名称： @ExceptionHandler
+  - 名称： `@ExceptionHandler`
   - 类型： 方法注解
   - 位置：异常处理器类中针对指定异常进行处理的方法上方
   - 作用：设置指定异常的处理方式
-  - 范例：
   - 说明：处理器方法可以设定多个
+  - 范例：
  ```java
 @ExceptionHandler(Exception.class)
 @ResponseBody
@@ -1434,18 +1466,18 @@ public String doOtherException(Exception ex){
 
 ## 10.3 异常处理解决方案
 
-* 异常处理方案
-  * 业务异常：
-     发送对应消息传递给用户，提醒规范操作
-  * 系统异常：
-     发送固定消息传递给用户，安抚用户
-     发送特定消息给运维人员，提醒维护
-     记录日志
-  * 其他异常：
-     发送固定消息传递给用户，安抚用户
-     发送特定消息给编程人员，提醒维护
-     纳入预期范围内
-     记录日志  
+异常处理方案
+* 业务异常：
+    - 发送对应消息传递给用户，提醒规范操作
+* 系统异常：
+    - 发送固定消息传递给用户，安抚用户
+    - 发送特定消息给运维人员，提醒维护
+    - 记录日志
+* 其他异常：
+    - 发送固定消息传递给用户，安抚用户
+    - 发送特定消息给编程人员，提醒维护
+    - 纳入预期范围内
+    - 记录日志  
 
 ## 10.4 自定义异常
 
@@ -1495,9 +1527,9 @@ public String doOtherException(Exception ex){
 
 *   MultipartResolver接口  
 
-  *  MultipartResolver接口定义了文件上传过程中的相关操作，并对通用性操作进行了封装
-  * MultipartResolver接口底层实现类CommonsMultipartResovler
-  * CommonsMultipartResovler并未自主实现文件上传下载对应的功能，而是调用了apache的文件上传下载组件  
+    *  MultipartResolver接口定义了文件上传过程中的相关操作，并对通用性操作进行了封装
+    * MultipartResolver接口底层实现类`CommonsMultipartResovler`
+    * CommonsMultipartResovler并未自主实现文件上传下载对应的功能，而是调用了apache的文件上传下载组件  
 
   ```xml
   <dependency>
@@ -1535,13 +1567,30 @@ public String doOtherException(Exception ex){
     }
     ```
 
+  * 控制器中的形参名要和表单中的name属性值相匹配：此处均为`file`。
+
 ## 11.2 文件上传注意事项
 
 1. 文件命名问题， 获取上传文件名，并解析文件名与扩展名
-2. 文件名过长问题
-3. 文件保存路径
-4. 重名问题
+```java
+file.getOriginalFilename();
+```
 
+2. 文件名过长或重名问题
+将原始文件名作为变量存储（例如存入数据库），再使用自己的生成策略绑定符合规范的新文件名
+```java
+String uuid = UUID.randomUUID().toString().replace('-','').toUpperCase();
+```
+
+
+3. 文件保存路径
+```java
+String basePath = request.getServletContext().getRealPath("/images");
+File f = new File(basePath + "/");
+if (!f.exists()) f.mkdirs();
+```
+
+4. 多文件同时上传
 ```java
 @RequestMapping(value = "/fileupload")
 //参数中定义MultipartFile参数，用于接收页面提交的type=file类型的表单，要求表单名称与参数名相同
@@ -1586,27 +1635,29 @@ public String fileupload(MultipartFile file,MultipartFile file1,MultipartFile fi
 
 * Rest（ REpresentational State Transfer） 一种网络资源的访问风格，定义了网络资源的访问方式
   * 传统风格访问路径
-     http://localhost/user/get?id=1
-     http://localhost/deleteUser?id=1
+    - `http://localhost/user/get?id=1`
+    - `http://localhost/deleteUser?id=1`
   * Rest风格访问路径
-     http://localhost/user/1
+    - `http://localhost/user/1`
 * Restful是按照Rest风格访问网络资源
 * 优点
-   隐藏资源的访问行为，通过地址无法得知做的是何种操作
-   书写简化
+  - 隐藏资源的访问行为，通过地址无法得知做的是何种操作
+  - 书写简化
 
 ### 11.4.2 Rest行为约定方式  
 
-- GET（查询） http://localhost/user/1 GET
-- POST（保存） http://localhost/user POST
-- PUT（更新） http://localhost/user PUT
-- DELETE（删除） http://localhost/user DELETE
-**注意：**上述行为是约定方式，约定不是规范，可以打破，所以称Rest风格，而不是Rest规范  
+- GET（查询） `http://localhost/user/1 GET`
+- POST（保存） `http://localhost/user POST`
+- PUT（更新） `http://localhost/user PUT`
+- DELETE（删除） `http://localhost/user DELETE`
+**注意：** 上述行为是约定方式，约定不是规范，可以打破，所以称Rest风格，而不是Rest规范  
 
 ### 11.4.3 Restful开发入门  
 
+`@PathVariable`、`@RestController`
+
 ```java
-//设置rest风格的控制器
+//设置rest风格的控制器，包含了@Controller、@ResponseBody
 @RestController
 //设置公共访问路径，配合下方访问路径使用
 @RequestMapping("/user/")
@@ -1665,46 +1716,48 @@ public class UserController {
 }
 ```
 
-```xml
-<!--配置拦截器，解析请求中的参数_method，否则无法发起PUT请求与DELETE请求，配合页面表单使用-->
-<filter>
-    <filter-name>HiddenHttpMethodFilter</filter-name>
-    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
-</filter>
-<filter-mapping>
-    <filter-name>HiddenHttpMethodFilter</filter-name>
-    <servlet-name>DispatcherServlet</servlet-name>
-</filter-mapping>
-```
+- 页表表单method只有get和post两种属性值，其它值默认转成get，put和delete需要额外配置
 
-- 开启SpringMVC对Restful风格的访问支持过滤器，即可通过页面表单提交PUT与DELETE请求
-- 页面表单使用隐藏域提交请求类型，参数名称固定为_method，必须配合提交类型method=post使用
+    1. 页面表单使用隐藏域提交请求类型，参数名称固定为_method，必须配合提交类型method=post使用
 
-```xml
-<form action="/user/1" method="post">
-    <input type="hidden" name="_method" value="PUT"/>
-    <input type="submit"/>
-</form>  
-```
+    ```xml
+    <form action="/user/1" method="post">
+        <input type="hidden" name="_method" value="PUT"/>
+        <input type="submit"/>
+    </form>  
+    ```
 
-*   Restful请求路径简化配置方式  
+
+    2. web.xml中开启SpringMVC对Restful风格的访问支持过滤器，即可通过页面表单提交PUT与DELETE请求
+
+    ```xml
+    <!--配置过滤器，解析请求中的参数_method，否则无法发起PUT请求与DELETE请求，配合页面表单使用-->
+    <filter>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <!-- 此处servlet-name的属性表示过滤DispatcherServlet处理的请求，即SpringMvc处理的所有请求 -->
+    </filter-mapping>
+    ```
+
+*   Restful请求路径简化配置方式
+
+`@GetMapping`、`@PostMapping`、`@PutMapping`、`@DeleteMapping`
 
   ```java
   @RestController
   public class UserController {
-      @RequestMapping(value = "/user/{id}",method = RequestMethod.DELETE)
-      public String restDelete(@PathVariable String id){
-          System.out.println("restful is running ....delete:"+id);
+      @GetMapping("{id}")
+      //等同于：@RequestMapping(value = "{id}",method = RequestMethod.GET)
+      public String restGet(@PathVariable String id){
+          System.out.println("restful is running ....get:"+id);
           return "success.jsp";
       }
   }  
   ```
-
-## 11.5 postman工具安装与使用
-
-**postman** 是  一款可以发送Restful风格请求的工具，方便开发调试。首次运行需要联网注册  
-
-![image-20200427180851880](./assets/image-20200427180851880.png)
 
 
 # 12 校验框架
@@ -1732,7 +1785,7 @@ public class UserController {
     * 客户端：使用ajax发送要校验的数据，在服务端完成逻辑校验，返回校验结果
     * 服务端：接收到完整的请求后，在执行业务操作前，完成逻辑校验
 
-###  1.1.3 表单校验规则
+### 12.1.3 表单校验规则
 
 * 长度：例如用户名长度，评论字符数量
 * 非法字符：例如用户名组成
@@ -1742,60 +1795,59 @@ public class UserController {
 
 ### 12.1.4 表单校验框架
 
-* JSR（Java Specification Requests）：Java 规范提案  
+* **JSR（Java Specification Requests）：Java 规范提案** 
 
-    303：提供bean属性相关校验规则  
+  * 由JCP（Java Community Process，Java社区）提出
+
+  * 303：提供bean属性相关校验规则  
 
 * JSR规范列表
   * 企业应用技术
-     Contexts and Dependency Injection for Java (Web Beans 1.0) (JSR 299)
-     Dependency Injection for Java 1.0 (JSR 330)@postConstruct, @PreDestroy
-     Bean Validation 1.0 (JSR 303)
-     Enterprise JavaBeans 3.1 (includes Interceptors 1.1) (JSR 318)
-     Java EE Connector Architecture 1.6 (JSR 322)
-     Java Persistence 2.0 (JSR 317)
-     Common Annotations for the Java Platform 1.1 (JSR 250)
-     Java Message Service API 1.1 (JSR 914)
-     Java Transaction API (JTA) 1.1 (JSR 907)
-     JavaMail 1.4 (JSR 919)
+    - Contexts and Dependency Injection for Java (Web Beans 1.0) (JSR 299)
+    - Dependency Injection for Java 1.0 (JSR 330)@postConstruct, @PreDestroy
+    - **Bean Validation 1.0 (JSR 303)**
+    - Enterprise JavaBeans 3.1 (includes Interceptors 1.1) (JSR 318)
+    - Java EE Connector Architecture 1.6 (JSR 322)
+    - Java Persistence 2.0 (JSR 317)
+    - Common Annotations for the Java Platform 1.1 (JSR 250)
+    - Java Message Service API 1.1 (JSR 914)
+    - Java Transaction API (JTA) 1.1 (JSR 907)
+    - JavaMail 1.4 (JSR 919)
   * Web应用技术
-     Java Servlet 3.0 (JSR 315)
-     JavaServer Faces 2.0 (JSR 314)
-     JavaServer Pages 2.2/Expression Language 2.2 (JSR 245)
-     Standard Tag Library for JavaServer Pages (JSTL) 1.2 (JSR 52)
-     Debugging Support for Other Languages 1.0 (JSR 45)
+    - Java Servlet 3.0 (JSR 315)
+    - JavaServer Faces 2.0 (JSR 314)
+    - JavaServer Pages 2.2/Expression Language 2.2 (JSR 245)
+    - Standard Tag Library for JavaServer Pages (JSTL) 1.2 (JSR 52)
+    - Debugging Support for Other Languages 1.0 (JSR 45)
     - 模块化 (JSR 294)
-     Swing应用框架 (JSR 296)
-     JavaBeans Activation Framework (JAF) 1.1 (JSR 925)
-     Streaming API for XML (StAX) 1.0 (JSR 173)
+    - Swing应用框架 (JSR 296)
+    - JavaBeans Activation Framework (JAF) 1.1 (JSR 925)
+    - Streaming API for XML (StAX) 1.0 (JSR 173)
   * 管理与安全技术
-     Java Authentication Service Provider Interface for Containers (JSR 196)
-     Java Authorization Contract for Containers 1.3 (JSR 115)
-     Java EE Application Deployment 1.2 (JSR 88)
-     J2EE Management 1.1 (JSR 77)
+    - Java Authentication Service Provider Interface for Containers (JSR 196)
+    - Java Authorization Contract for Containers 1.3 (JSR 115)
+    - Java EE Application Deployment 1.2 (JSR 88)
+    - J2EE Management 1.1 (JSR 77)
     - Java SE中与Java EE有关的规范
-     JCache API (JSR 107)
-     Java Memory Model (JSR 133)
-     Concurrency Utilitie (JSR 166)
-     Java API for XML Processing (JAXP) 1.3 (JSR 206)
-     Java Database Connectivity 4.0 (JSR 221)
-     Java Management Extensions (JMX) 2.0 (JSR 255)
-     Java Portlet API (JSR 286)
+    - JCache API (JSR 107)
+    - Java Memory Model (JSR 133)
+    - Concurrency Utilitie (JSR 166)
+    - Java API for XML Processing (JAXP) 1.3 (JSR 206)
+    - Java Database Connectivity 4.0 (JSR 221)
+    - Java Management Extensions (JMX) 2.0 (JSR 255)
+    - Java Portlet API (JSR 286)
+  * Web Service技术
+    - Java Date与Time API (JSR 310)
+    - Java API for RESTful Web Services (JAX-RS) 1.1 (JSR 311)
+    - Implementing Enterprise Web Services 1.3 (JSR 109)
+    - Java API for XML-Based Web Services (JAX-WS) 2.2 (JSR 224)
+    - Java Architecture for XML Binding (JAXB) 2.2 (JSR 222)
+    - Web Services Metadata for the Java Platform (JSR 181)
+    - Java API for XML-Based RPC (JAX-RPC) 1.1 (JSR 101)
+    - Java APIs for XML Messaging 1.3 (JSR 67)
+    - Java API for XML Registries (JAXR) 1.0 (JSR 93)
 
-* Web Service技术
-   Java Date与Time API (JSR 310)
-   Java API for RESTful Web Services (JAX-RS) 1.1 (JSR 311)
-   Implementing Enterprise Web Services 1.3 (JSR 109)
-   Java API for XML-Based Web Services (JAX-WS) 2.2 (JSR 224)
-   Java Architecture for XML Binding (JAXB) 2.2 (JSR 222)
-   Web Services Metadata for the Java Platform (JSR 181)
-   Java API for XML-Based RPC (JAX-RPC) 1.1 (JSR 101)
-   Java APIs for XML Messaging 1.3 (JSR 67)
-   Java API for XML Registries (JAXR) 1.0 (JSR 93)
-
-* JCP（Java Community Process）：Java社区
-
-*  Hibernate框架中包含一套独立的校验框架hibernate-validator  
+*  **Hibernate框架中包含一套独立的校验框架：hibernate-validator** 
 
      导入坐标
 
@@ -1808,8 +1860,8 @@ public class UserController {
   ```
 
   **注意：**
-  tomcat7 ：搭配hibernate-validator版本5.*.*.Final
-  tomcat8.5↑ ：搭配hibernate-validator版本6.*.*.Final  
+  - tomcat7 ：搭配hibernate-validator版本5.*.*.Final
+  - tomcat8.5↑ ：搭配hibernate-validator版本6.*.*.Final  
 
 
 
@@ -1817,7 +1869,7 @@ public class UserController {
 
 **1. 开启校验**
 
-- 名称：@Valid 、 @Validated
+- 名称：`@Valid` 、 `@Validated`
 - 类型：形参注解
 - 位置：处理器类中的实体类类型的方法形参前方
 - 作用：设定对当前实体类类型参数进行校验
@@ -1830,9 +1882,9 @@ public String addEmployee(@Valid Employee employee) {
 }
 ```
 
-**2.设置校验规则**
+**2. 设置校验规则**
 
-- 名称：@NotNull
+- 名称：`@NotNull`、`NotBlank`、`NotEmpty`、`@Max`、`@Min`等，全部校验规则在jar包中查看
 - 类型：属性注解 等
 - 位置：实体类属性上方
 - 作用：设定当前属性校验规则
@@ -1847,7 +1899,9 @@ public class Employee{
 }  
 ```
 
-**3.获取错误信息**
+**3. 获取错误信息**
+
+通过形参Errors获取校验结果数据，通过Model接口将数据封装后传递到页面显示  
 
 ```java
 @RequestMapping(value = "/addemployee")
@@ -1863,7 +1917,7 @@ public String addEmployee(@Valid Employee employee, Errors errors, Model model){
 }  
 ```
 
-  通过形参Errors获取校验结果数据，通过Model接口将数据封装后传递到页面显示  
+页面获取后台封装的校验结果信息  
 
 ```html
 <form action="/addemployee" method="post">
@@ -1873,8 +1927,6 @@ public String addEmployee(@Valid Employee employee, Errors errors, Model model){
 </form>
 ```
 
-通过形参Errors获取校验结果数据，通过Model接口将数据封装后传递到页面显示
-页面获取后台封装的校验结果信息  
 
 ## 12.3 多规则校验
 
@@ -1893,7 +1945,7 @@ private Integer age;//员工年龄
 
 ## 12.4 嵌套校验
 
-- 名称：@Valid
+- 名称：`@Valid`
 - 类型：属性注解
 - 位置：实体类中的引用类型属性上方
 - 作用：设定当前应用类型属性中的属性开启校验
@@ -1907,7 +1959,14 @@ public class Employee {
 }
 ```
 
- 注意：开启嵌套校验后，被校验对象内部需要添加对应的校验规则  
+```html
+<%--注意，如果引用类型的校验未通过信息不是通过对象进行封装的，直接使用"对象名.属性名"的格式作为整体属性字符串进行保存，页面变量需要进行修改--%>
+<input type="text" name="address.provinceName">
+    <span style="color:red">
+        ${requestScope['address.provinceName']}
+    </span>
+```
+- 注意：开启嵌套校验后，被校验对象内部需要添加对应的校验规则 
 
 ## 12.5 分组校验
 
@@ -1915,27 +1974,29 @@ public class Employee {
   * 新增用户
   * 修改用户
 * 对不同种类的属性进行分组，在校验时可以指定参与校验的字段所属的组类别
-  * 定义组（通用）
-  * 为属性设置所属组，可以设置多个
-  * 开启组校验
+  * 定义分组接口
+    ```java
+    public interface GroupOne {
+    }
+    ```
 
-```java
-public interface GroupOne {
-}
-```
+  * 在属性添加校验，并绑定`groups`属性
+    ```java
+    @NotEmpty(message = "姓名不能为空",groups = {GroupOne.class})
+    private String name;//员工姓名
+    ```
 
-```java
-public String addEmployee(@Validated({GroupOne.class}) Employee employee){
-}  
-```
+  * 使用`@Validated`启用分组校验
+    ```java
+    public String addEmployee(@Validated({GroupOne.class}) Employee employee){
+        //表示支队Employee中的GroupOne分组属性(上面的name)进行校验
+    }  
+    ```
 
+注意：@Valid不支持分组校验
 
+**推荐：使用@Validated修饰形参，使用@Valid修饰属性**
 
-
-```java
-@NotEmpty(message = "姓名不能为空",groups = {GroupOne.class})
-private String name;//员工姓名
-```
 
 # 13 ssm整合
 
@@ -1987,67 +2048,48 @@ SSM（Spring+SpringMVC+MyBatis）
 
 
 
-## 13.2 项目结构搭建
+## 13.2 整合步骤
 
-**Part0：**   项目基础结构搭建
+### 13.2.1 项目基础结构搭建
 
 * 创建项目，组织项目结构，创建包
 
 * 创建表与实体类
 
 * 创建三层架构对应的模块、接口与实体类，建立关联关系
-
-* 数据层接口（代理自动创建实现类）
+  * 数据层接口（代理自动创建实现类）
   * 业务层接口+业务层实现类
   * 表现层类
-
 
 
 ![image-20200506094053535](./assets/image-20200506094053535.png)
 
 
 
-```java
-public interface UserDao {
-    public boolean save(User user);  public boolean update(User user);  
-    public boolean delete(Integer uuid);  public User get(Integer uuid);
-    public List<User> getAll(int page,int size);
+### 13.2.2 Spring整合Mybatis
 
-    public interface UserService {  
-        public boolean save(User user);  public boolean update(User user);
-        public boolean delete(Integer uuid);
-        public User get(Integer uuid);
-        public List<User> getAll(int page, int size);
-        /**
-        用户登录
-        @param userName 用户名
-        @param password 密码信息
-        @return
-        */
-        public User login(String userName,String password);
-    }
-```
-
-
-
-## 13.3 Spring整合Mybatis（复习）
-
-**Part1 :**  Spring环境配置
+**Spring环境配置**
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"  xmlns:context="http://www.springframework.org/schema/context"  xmlns:tx="http://www.springframework.org/schema/tx"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd  http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!--开启bean注解扫描-->
     <context:component-scan base-package="com.itheima"/>
 
 </beans>
-
 ```
 
-**Part1 :**  Mybatis配置事务
-
-* MyBatis映射
+**Mybatis映射配置**
 
   ```xml
   <?xml version="1.0" encoding="UTF-8"?>
@@ -2089,9 +2131,8 @@ public interface UserDao {
   </mapper>
   ```
 
-  
 
-* Mybatis核心配置
+**Spring整合配置**
 
   ```xml
   <!--开启注解式事务-->
@@ -2140,9 +2181,9 @@ public interface UserDao {
 
   
 
-## 13.4 整合junit
+### 13.2.3 整合junit
 
-**Part2：** 单元测试整合junit
+**单元测试整合junit**
 
 ```java
 @RunWith(SpringJUnit4ClassRunner.class)  
@@ -2154,18 +2195,17 @@ public class UserServiceTest {
 
     @Test
     public void testDelete(){  
-        User user = new User();  userService.delete(3);
+        User user = new User();
+        userService.delete(3);
     }
 }
-
 ```
 
+### 13.2.4 Spring整合SpringMVC
 
-## 13.5 Spring整合SpringMVC
+**SpringMVC**
 
-**Part3：** SpringMVC
-
-* web.xml配置
+* web.xml
 
   ```xml
   <servlet>
@@ -2208,7 +2248,8 @@ public class UserServiceTest {
   @RequestMapping("/user")  public class UserController {
       @PostMapping
       public boolean save(User user) {  
-          System.out.println("save ..." + user);  return true;
+          System.out.println("save ..." + user);
+          return true;
       }
       @PostMapping("/login")
       public User login(String userName,String password){  
@@ -2220,7 +2261,7 @@ public class UserServiceTest {
 
 
 
-**Part4：**Spring整合SpringMVC
+**Spring整合SpringMVC**
 
 * web.xml加载Spring环境
 
@@ -2253,57 +2294,60 @@ public class UserServiceTest {
   }
   ```
 
-## 13.6 表现层数据封装
+### 13.2.5 表现层数据封装
 
-**Part5-1：**表现层数据封装
+**表现层数据封装**
 
 * 前端接收表现层返回的数据种类
 
-| u操作是否成功 | true/false | 格式A |
-| ------------- | ---------- | ----- |
-| u单个数据     | 1,100,true | 格式B |
-| u对象数据     | json对象   | 格式C |
-| u集合数据     | json数组   | 格式D |
+    | 数据种类 | 返回类型 | 格式 |
+    | ------------- | ---------- | ----- |
+    | 操作是否成功 | true/false | 格式A |
+    | 单个数据     | 1,100,true | 格式B |
+    | 对象数据     | json对象   | 格式C |
+    | 集合数据     | json数组   | 格式D |
 
-![image-20200506103851845](./assets/image-20200506103851845.png)
+    ![image-20200506103851845](./assets/image-20200506103851845.png)
 
 
 
 * 返回数据格式设计
 
-![image-20200506104339019](./assets/image-20200506104339019.png)
+    ![image-20200506104339019](./assets/image-20200506104339019.png)
 
-* 代码
+    * 代码
 
-  ```java
-  public class Result {
-      // 操作结果编码
-      private Integer code;
-      // 操作数据结果
-      private Object data;
-      // 消息
-      private String message;
-      public Result(Integer code) {
-          this.code = code;
-      }
-      public Result(Integer code, Object data) {
-          this.code = code;
-          this.data = data;
-      }
-  }
-  ```
+    ```java
+    public class Result {
+        // 操作结果编码
+        private Integer code;
+        // 操作数据结果
+        private Object data;
+        // 消息
+        private String message;
+        public Result(Integer code) {
+            this.code = code;
+        }
+        public Result(Integer code, Object data) {
+            this.code = code;
+            this.data = data;
+        }
 
-  状态码常量可以根据自己的业务需求设定
+        //...
+    }
+    ```
 
-  ```java
-  public class Code {
-      public static final Integer SAVE_OK = 20011;
-      public static final Integer SAVE_ERROR = 20010;
-      //其他编码
-  }
-  ```
+    * 状态码常量可以根据自己的业务需求设定
 
-  controller 调用
+    ```java
+    public class Code {
+        public static final Integer SAVE_OK = 20011;
+        public static final Integer SAVE_ERROR = 20010;
+        //其他编码（操作结果、操作权限、校验结果、系统错误）
+    }
+    ```
+
+* controller 调用
 
   ```java
   @RestController
@@ -2323,20 +2367,16 @@ public class UserServiceTest {
   }
   ```
 
-  
 
+### 13.2.6 自定义异常
 
-
-## 13.7 自定义异常
-
-**Part5-2：**自定义异常
+**自定义异常**
 
 * 设定自定义异常，封装程序执行过程中出现的问题，便于表现层进行统一的异常拦截并进行处理
   * BusinessException
   * SystemException
 
 * 自定义异常消息返回时需要与业务正常执行的消息按照统一的格式进行处理
-
 
 
 **定义BusinessException**
@@ -2392,8 +2432,7 @@ public Result get(@PathVariable Integer uuid){
 ```
 
 
-
-## **2.8 返回消息兼容异常信息**
+**创建异常处理器，返回消息兼容异常信息**
 
 ```java
 @Component
@@ -2413,9 +2452,9 @@ public class ProjectExceptionAdivce {
 ## 14.1 用注解替代applicationContext.xml
 
 同前期设置，添加事务注解驱动
-@Configuration
 
 ```java
+@Configuration
 //扫描组件，排除SpringMVC对应的bean，等同于<context:component-scan />
 @ComponentScan(value = "com.itheima",excludeFilters = {
     @ComponentScan.Filter(type= FilterType.ANNOTATION,classes = {Controller.class})})
@@ -2448,10 +2487,54 @@ public class SpringConfig {
   ```
 
 *   EnableWebMvc  
+    1. 支持ConversionService的配置，可以方便配置自定义类型转换器
+    2. 支持@NumberFormat注解格式化数字类型
+    3. 支持@DateTimeFormat注解格式化日期数据，日期包括Date,Calendar,JodaTime（JodaTime要导包）
+    4. 支持@Valid的参数校验(需要导入JSR-303规范)
+    5. 配合第三方jar包和SpringMVC提供的注解读写XML和JSON格式数据  
 
+## 14.3 自定义容器类替代web.xml
 
-1. 支持ConversionService的配置，可以方便配置自定义类型转换器
-2. 支持@NumberFormat注解格式化数字类型
-3. 支持@DateTimeFormat注解格式化日期数据，日期包括Date,Calendar,JodaTime（JodaTime要导包）
-4. 支持@Valid的参数校验(需要导入JSR-303规范)
-5. 配合第三方jar包和SpringMVC提供的注解读写XML和JSON格式数据  
+**生成主容器(spring)、子容器(spring-mvc)，配置映射、过滤器**
+```java
+public class ServletContainersInitConfig extends AbstractDispatcherServletInitializer {
+
+    //创建Servlet容器时，使用注解的方式加载SPRINGMVC配置类中的信息，并加载成WEB专用的ApplicationContext对象
+    //该对象放入了ServletContext范围，后期在整个WEB容器中可以随时获取调用
+    @Override
+    protected WebApplicationContext createServletApplicationContext() {
+        AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
+        ctx.register(SpringMvcConfig.class);
+        return ctx;
+    }
+
+    //注解配置映射地址方式，服务于SpringMVC的核心控制器DispatcherServlet
+    @Override
+    protected String[] getServletMappings() {
+        return new String[]{"/"};
+    }
+
+    @Override
+    //基本等同于<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    protected WebApplicationContext createRootApplicationContext() {
+        AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
+        ctx.register(SpringConfig.class);
+        return ctx;
+    }
+
+    //乱码处理作为过滤器，在servlet容器启动时进行配置，相关内容参看Servlet零配置相关课程
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        //触发父类的onStartup
+        super.onStartup(servletContext);
+        //1.创建字符集过滤器对象
+        CharacterEncodingFilter cef = new CharacterEncodingFilter();
+        //2.设置使用的字符集
+        cef.setEncoding("UTF-8");
+        //3.添加到容器（它不是ioc容器，而是ServletContainer）
+        FilterRegistration.Dynamic registration = servletContext.addFilter("characterEncodingFilter", cef);
+        //4.添加映射
+        registration.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.INCLUDE), false, "/*");
+    }
+}
+```
