@@ -1,0 +1,831 @@
+<!DOCTYPE html><html><head>
+      <title>dubbo</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///d:\Apps\VSCode\data\extensions\shd101wyy.markdown-preview-enhanced-0.6.2\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h2 class="mume-header" id="1-%E4%BB%8A%E6%97%A5%E5%86%85%E5%AE%B9"><strong>1-&#x4ECA;&#x65E5;&#x5185;&#x5BB9;</strong></h2>
+
+<p>&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x76F8;&#x5173;&#x6982;&#x5FF5;</p>
+<p>dubbo &#x6982;&#x8FF0;</p>
+<p>dubbo&#x5FEB;&#x901F;&#x5165;&#x95E8;</p>
+<p>dubbo&#x7684;&#x9AD8;&#x7EA7;&#x7279;&#x6027;</p>
+<h2 class="mume-header" id="2-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><strong>2-&#x76F8;&#x5173;&#x6982;&#x5FF5;</strong></h2>
+
+<h3 class="mume-header" id="21-%E4%BA%92%E8%81%94%E7%BD%91%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84-%E7%89%B9%E7%82%B9">2.1-&#x4E92;&#x8054;&#x7F51;&#x9879;&#x76EE;&#x67B6;&#x6784;-&#x7279;&#x70B9;</h3>
+
+<p>&#x4E92;&#x8054;&#x7F51;&#x9879;&#x76EE;&#x67B6;&#x6784;-&#x7279;&#x70B9;</p>
+<ol>
+<li>
+<p>&#x7528;&#x6237;&#x591A;</p>
+</li>
+<li>
+<p>&#x6D41;&#x91CF;&#x5927;&#xFF0C;&#x5E76;&#x53D1;&#x9AD8;</p>
+</li>
+<li>
+<p>&#x6D77;&#x91CF;&#x6570;&#x636E;</p>
+</li>
+<li>
+<p>&#x6613;&#x53D7;&#x653B;&#x51FB;</p>
+</li>
+<li>
+<p>&#x529F;&#x80FD;&#x7E41;&#x7410;</p>
+</li>
+<li>
+<p>&#x53D8;&#x66F4;&#x5FEB;</p>
+</li>
+</ol>
+<p><strong>&#x4F20;&#x7EDF;&#x9879;&#x76EE;&#x548C;&#x4E92;&#x8054;&#x7F51;&#x9879;&#x76EE;&#x7684;&#x4E0D;&#x540C;</strong></p>
+<p><img src="img/1581310475046.png" alt="1581310475046"></p>
+<p><strong>&#x7528;&#x6237;&#x4F53;&#x9A8C;</strong>&#xFF1A;<br>
+&#x7F8E;&#x89C2;&#x3001;&#x529F;&#x80FD;&#x3001;&#x901F;&#x5EA6;&#x3001;&#x7A33;&#x5B9A;&#x6027;</p>
+<p><strong>&#x8861;&#x91CF;&#x4E00;&#x4E2A;&#x7F51;&#x7AD9;&#x901F;&#x5EA6;&#x662F;&#x5426;&#x5FEB;:</strong><br>
+&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x65B0;&#x9875;&#x9762;&#x4E00;&#x77AC;&#x95F4;&#x5B8C;&#x6210;;&#x9875;&#x9762;&#x5185;&#x8DF3;&#x8F6C;&#xFF0C;-&#x5239;&#x90A3;&#x95F4;&#x5B8C;&#x6210;&#x3002;<br>
+&#x6839;&#x636E;&#x4F5B;&#x7ECF;&#x300A;&#x50E7;&#x8879;&#x5F8B;&#x300B;&#x8BB0;&#x8F7D;:&#x4E00; &#x5239;&#x90A3;&#x8005;&#x4E3A;-&#x5FF5;,&#x4E8C;&#x5341;&#x5FF5;&#x4E3A;-&#x77AC;,&#x4E8C;&#x5341;&#x77AC;&#x4E3A;-&#x5F39;<br>
+&#x6307;&#xFF0C;&#x4E8C;&#x5341;&#x5F39;&#x6307;&#x4E3A;-&#x7F57;&#x9884;&#xFF0C; &#x4E8C;&#x5341;&#x7F57;&#x9884;&#x4E3A;-&#x987B;&#x81FE;&#xFF0C;&#x4E00;&#x65E5;&#x4E00;&#x591C;&#x6709;&#x4E09;&#x5341;&#x987B;&#x81FE;&#x3002;</p>
+<h3 class="mume-header" id="22-%E4%BA%92%E8%81%94%E7%BD%91%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84-%E7%9B%AE%E6%A0%87">2.2-&#x4E92;&#x8054;&#x7F51;&#x9879;&#x76EE;&#x67B6;&#x6784;-&#x76EE;&#x6807;</h3>
+
+<p><strong>&#x8861;&#x91CF;&#x7F51;&#x7AD9;&#x7684;&#x6027;&#x80FD;&#x6307;&#x6807;:</strong><br>
+**&#x54CD;&#x5E94;&#x65F6;&#x95F4;:**&#x6307;&#x6267;&#x884C;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x4ECE;&#x5F00;&#x59CB;&#x5230;&#x6700;&#x540E;&#x6536;&#x5230;&#x54CD;&#x5E94;&#x6570;&#x636E;&#x6240;&#x82B1;&#x8D39;&#x7684;&#x603B;&#x4F53;&#x65F6;&#x95F4;&#x3002;<br>
+**&#x5E76;&#x53D1;&#x6570;:**&#x6307;&#x7CFB;&#x7EDF;&#x540C;&#x65F6;&#x80FD;&#x5904;&#x7406;&#x7684;&#x8BF7;&#x6C42;&#x6570;&#x91CF;&#x3002;<br>
+<strong>&#x5E76;&#x53D1;&#x8FDE;&#x63A5;&#x6570;:</strong> &#x6307;&#x7684;&#x662F;&#x5BA2;&#x6237;&#x7AEF;&#x5411;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x8D77;&#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x5EFA;&#x7ACB;&#x4E86;TCP&#x8FDE;&#x63A5;&#x3002;&#x6BCF;&#x79D2;&#x949F;&#x670D;&#x52A1;&#x5668;&#x8FDE;&#x63A5;&#x7684;&#x603B;TCP&#x6570;&#x91CF;<br>
+**&#x8BF7;&#x6C42;&#x6570;:**&#x4E5F;&#x79F0;&#x4E3A;QPS(Query Per Second)&#x6307;&#x6BCF;&#x79D2;&#x591A;&#x5C11;&#x8BF7;&#x6C42;.<br>
+**&#x5E76;&#x53D1;&#x7528;&#x6237;&#x6570;:**&#x5355;&#x4F4D;&#x65F6;&#x95F4;&#x5185;&#x6709;&#x591A;&#x5C11;&#x7528;&#x6237;<br>
+**&#x541E;&#x5410;&#x91CF;:**&#x6307;&#x5355;&#x4F4D;&#x65F6;&#x95F4;&#x5185;&#x7CFB;&#x7EDF;&#x80FD;&#x5904;&#x7406;&#x7684;&#x8BF7;&#x6C42;&#x6570;&#x91CF;&#x3002;</p>
+<pre class="language-text">&#x25CF;QPS: Query Per Second&#x6BCF;&#x79D2;&#x67E5;&#x8BE2;&#x6570;&#x3002;
+&#x25CF;TPS: Transactions Per Second&#x6BCF;&#x79D2;&#x4E8B;&#x52A1;&#x6570;&#x3002;
+&#x25CF;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x662F;&#x6307;&#x4E00; &#x4E2A;&#x5BA2;&#x6237;&#x673A;&#x5411;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x7136;&#x540E;&#x670D;&#x52A1;&#x5668;&#x505A;&#x51FA;&#x53CD;&#x5E94;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x5BA2;&#x6237;&#x673A;&#x5728;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x65F6;&#x5F00;&#x59CB;&#x8BA1;&#x65F6;&#xFF0C;&#x6536;&#x5230;&#x670D;&#x52A1;&#x5668;&#x54CD;&#x5E94;&#x540E;&#x7ED3;&#x675F;
+&#x8BA1;&#x65F6;&#xFF0C;&#x4EE5;&#x6B64;&#x6765;&#x8BA1;&#x7B97;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x95F4;&#x548C;&#x5B8C;&#x6210;&#x7684;&#x4E8B;&#x52A1;&#x4E2A;&#x6570;&#x3002;
+&#x25CF;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#x7684;&#x4E00;&#x6B21;&#x8BBF;&#x95EE;&#xFF0C;&#x53EA;&#x4F1A;&#x5F62;&#x6210;&#x4E00; &#x4E2A;TPS; &#x4F46;-&#x6B21;&#x9875;&#x9762;&#x8BF7;&#x6C42;&#xFF0C;&#x53EF;&#x80FD;&#x4EA7;&#x751F;&#x591A;&#x6B21;&#x5BF9;&#x670D;&#x52A1;&#x5668;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x5C31;&#x4F1A;&#x6709;&#x591A;&#x4E2A;QPS
+  QPS&gt;=&#x5E76;&#x53D1;&#x8FDE;&#x63A5;&#x6570;&gt;= TPS
+</pre>
+<p><strong>&#x5927;&#x578B;&#x4E92;&#x8054;&#x7F51;&#x9879;&#x76EE;&#x67B6;&#x6784;&#x76EE;&#x6807;</strong>:</p>
+<p>&#x200B;	&#x25CF;**&#x9AD8;&#x6027;&#x80FD;:<strong>&#x63D0;&#x4F9B;&#x5FEB;&#x901F;&#x7684;&#x8BBF;&#x95EE;&#x4F53;&#x9A8C;&#x3002;<br>
+&#x200B;	&#x25CF;</strong>&#x9AD8;&#x53EF;&#x7528;:**&#x7F51;&#x7AD9;&#x670D;&#x52A1;- &#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x8BBF;&#x95EE;</p>
+<h3 class="mume-header" id="23-%E9%9B%86%E7%BE%A4%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F">2.3-&#x96C6;&#x7FA4;&#x548C;&#x5206;&#x5E03;&#x5F0F;</h3>
+
+<p>&#x96C6;&#x7FA4;&#x548C;&#x5206;&#x5E03;&#x5F0F;&#xFF0C;<br>
+&#x25CF;&#x96C6;&#x7FA4;:&#x5F88;&#x591A;&#x201C;&#x4EBA;&#x201D;&#x4E00;&#x8D77;&#xFF0C;&#x5E72;&#x4E00;&#x6837;&#x7684;&#x4E8B;&#x3002;<br>
+&#x25CF;&#x4E00;&#x4E2A;&#x4E1A;&#x52A1;&#x6A21;&#x5757;&#xFF0C;&#x90E8;&#x7F72;&#x5728;&#x591A;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x3002;<br>
+&#x25CF;&#x5206;&#x5E03;&#x5F0F;:&#x5F88;&#x591A;&quot;&#x4EBA;&#x201D;&#x4E00;&#x8D77;&#xFF0C;&#x5E72;&#x4E0D;&#x6837;&#x7684;&#x4E8B;&#x3002;&#x8FD9;&#x4E9B;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#x4E8B;&#xFF0C; &#x5408;&#x8D77;&#x6765;&#x662F;&#x4E00;&#x4EF6;&#x5927;&#x4E8B;&#x3002;</p>
+<p><img src="img/%E9%9B%86%E7%BE%A4%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F-1581325224087.png" alt></p>
+<h3 class="mume-header" id="24-%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B">2.4-&#x67B6;&#x6784;&#x6F14;&#x8FDB;</h3>
+
+<p><strong>&#x5355;&#x4F53;&#x67B6;&#x6784;&#xFF1A;</strong></p>
+<p><strong>&#x4F18;&#x70B9;:</strong><br>
+&#x7B80;&#x5355;:&#x5F00;&#x53D1;&#x90E8;&#x7F72;&#x90FD;&#x5F88;&#x65B9;&#x4FBF;&#xFF0C;&#x5C0F;&#x578B;&#x9879;&#x76EE;&#x9996;&#x9009;<br>
+<strong>&#x7F3A;&#x70B9;:</strong><br>
+&#x25CF;&#x9879;&#x76EE;&#x542F;&#x52A8;&#x6162;<br>
+&#x25CF;&#x53EF;&#x9760;&#x6027;&#x5DEE;</p>
+<p><img src="img/1581313584459.png" alt="1581313584459"></p>
+<p>**&#x5782;&#x76F4;&#x67B6;&#x6784;&#xFF1A;**&#x5782;&#x76F4;&#x67B6;&#x6784;&#x662F;&#x6307;&#x5C06;&#x5355;&#x4F53;&#x67B6;&#x6784;&#x4E2D;&#x7684;&#x591A;&#x4E2A;&#x6A21;&#x5757;&#x62C6;&#x5206;&#x4E3A;&#x591A;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x9879;&#x76EE;&#x3002;&#x5F62;&#x6210;&#x591A;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x5355;&#x4F53;&#x67B6;&#x6784;&#x3002;</p>
+<p><strong>&#x5355;&#x4F53;&#x67B6;&#x6784;&#x5B58;&#x5728;&#x7684;&#x95EE;&#x9898;:</strong></p>
+<ul>
+<li>
+<p>&#x9879;&#x76EE;&#x542F;&#x52A8;&#x6162;</p>
+</li>
+<li>
+<p>&#x53EF;&#x9760;&#x6027;&#x5DEE;</p>
+</li>
+<li>
+<p>&#x53EF;&#x4F38;&#x7F29;&#x6027;&#x5DEE;</p>
+</li>
+<li>
+<p>&#x6269;&#x5C55;&#x6027;&#x548C;&#x53EF;&#x7EF4;&#x62A4;&#x6027;&#x5DEE;</p>
+</li>
+<li>
+<p>&#x6027;&#x80FD;&#x4F4E;</p>
+</li>
+</ul>
+<p><strong>&#x5782;&#x76F4;&#x67B6;&#x6784;&#x5B58;&#x5728;&#x7684;&#x95EE;&#x9898;:</strong> &#x91CD;&#x590D;&#x529F;&#x80FD;&#x592A;&#x591A;</p>
+<p><img src="img/1581313910427.png" alt="1581313910427"></p>
+<p>**&#x5206;&#x5E03;&#x5F0F;&#x67B6;&#x6784;&#xFF1A;**&#x662F;&#x6307;&#x5728;&#x5782;&#x76F4;&#x67B6;&#x6784;&#x7684;&#x57FA;&#x7840;&#x4E0A;,&#x5C06;&#x516C;&#x5171;&#x4E1A;&#x52A1;&#x6A21;&#x5757;&#x62BD;&#x53D6;&#x51FA;&#x6765;,&#x4F5C;&#x4E3A;&#x72EC;&#x7ACB;&#x7684;&#x670D;&#x52A1;&#x4F9B;&#x5176;&#x4ED6;&#x8C03;&#x7528;&#x8005;&#x6D88;&#x8D39;&#xFF0C;&#x4EE5;&#x5B9E;&#x73B0;&#x670D;&#x52A1;&#x7684;&#x5171;&#x4EAB;&#x548C;&#x91CD;&#x7528;&#x3002;&#x5E95;&#x5C42;&#x901A;&#x8FC7;RPC&#xFF08;&#x8FDC;&#x7A0B;&#x8FC7;&#x7A0B;&#x8C03;&#x7528;&#x5B9E;&#x73B0;&#xFF09;<br>
+<strong>RPC:</strong> Remote Procedure Call&#x8FDC;&#x7A0B;&#x8FC7;&#x7A0B;&#x8C03;&#x7528;&#x3002;&#x6709;&#x975E;&#x5E38;&#x591A;&#x7684;&#x534F;&#x8BAE;&#x548C;&#x6280;&#x672F;&#x6765;&#x90FD;&#x5B9E;&#x73B0;&#x4E86;RPC&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x6BD4;&#x5982;: HTTP REST&#x98CE;&#x683C;&#xFF0C;Java RMI&#x89C4;&#x8303;&#x3001;WebService SOAP&#x534F;&#x8BAE;Hession&#x7B49;&#x7B49;&#x3002;<br>
+<strong>&#x5782;&#x76F4;&#x67B6;&#x6784;&#x5B58;&#x5728;&#x7684;&#x95EE;&#x9898;:</strong><br>
+&#x25CF;&#x91CD;&#x590D;&#x529F;&#x80FD;&#x592A;&#x591A;</p>
+<p><strong>&#x5206;&#x5E03;&#x5F0F;&#x67B6;&#x6784;&#x5B58;&#x5728;&#x7684;&#x95EE;&#x9898;:</strong><br>
+&#x200B;	&#x25CF;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x65B9;- -&#x65E6;&#x4EA7;&#x751F;&#x53D8;&#x66F4;,&#x6240;&#x6709;&#x6D88;&#x8D39;&#x65B9;&#x90FD;&#x9700;&#x8981;&#x53D8;&#x66F4;&#x3002;</p>
+<p><img src="img/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84.png" alt></p>
+<p><strong>SOA: (Service- Oriented Architecture,&#x9762;&#x5411;&#x670D;&#x52A1;&#x7684;&#x67B6;&#x6784;)</strong>&#xFF1A;&#x662F;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x6A21;&#x578B;,&#x5B83;&#x5C06;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x4E0D;&#x540C;&#x529F;&#x80FD;&#x5355;&#x5143;(&#x79F0;&#x4E3A;&#x670D;&#x52A1;)&#x8FDB;&#x884C;&#x62C6;&#x5206;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;&#x8FD9;&#x4E9B;&#x670D;&#x52A1;&#x4E4B;&#x95F4;&#x5B9A;&#x4E49;&#x826F;&#x597D;&#x7684;&#x63A5;&#x53E3;&#x548C;&#x5951;&#x7EA6;&#x8054;&#x7CFB;&#x8D77;&#x6765;&#x3002;</p>
+<p><strong>ESB: (Enterparise Servce Bus)</strong>&#xFF1A;&#x4F01;&#x4E1A;&#x670D;&#x52A1;&#x603B;&#x7EBF;,&#x670D;&#x52A1;&#x4E2D;&#x4ECB;&#x3002;&#x4E3B;&#x8981;&#x662F;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E00;&#x4E2A;&#x670D;<br>
+&#x52A1;&#x4E8E;&#x670D;&#x52A1;&#x4E4B;&#x95F4;&#x7684;&#x4EA4;&#x4E92;&#x3002;ESB&#x5305;&#x542B;&#x7684;&#x529F;&#x80FD;&#x5982;:&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#xFF0C;&#x6D41;&#x91CF;&#x63A7;&#x5236;&#xFF0C;&#x52A0;&#x5BC6;&#x5904;&#x7406;&#xFF0C;&#x670D;&#x52A1;<br>
+&#x7684;&#x76D1;&#x63A7;&#xFF0C;&#x5F02;&#x5E38;&#x5904;&#x7406;&#xFF0C;&#x76D1;&#x63A7;&#x544A;&#x6025;&#x7B49;&#x7B49;&#x3002;</p>
+<p><img src="img/1581314362523.png" alt="1581314362523"></p>
+<p><strong>&#x5FAE;&#x670D;&#x52A1;&#x67B6;&#x6784;&#xFF1A;</strong></p>
+<p>&#x25CF;&#x5FAE;&#x670D;&#x52A1;&#x67B6;&#x6784;&#x662F;&#x5728;SOA&#x4E0A;&#x505A;&#x7684;&#x5347;&#x534E;,&#x5FAE;&#x670D;&#x52A1;&#x67B6;&#x6784;&#x5F3A;&#x8C03;&#x7684;&#x4E00;&#x4E2A;&#x91CD;&#x70B9;&#x662F;&#x201C;&#x4E1A;&#x52A1;&#x9700;&#x8981;&#x5F7B;&#x5E95;&#x7684;&#x7EC4;&#x4EF6;&#x5316;&#x548C;&#x670D;&#x52A1;&#x5316;&#x201D;&#xFF0C;&#x539F;&#x6709;&#x7684;&#x5355;&#x4E2A;<br>
+&#x4E1A;&#x52A1;&#x7CFB;&#x7EDF;&#x4F1A;&#x62C6;&#x5206;&#x4E3A;&#x591A;&#x4E2A;&#x53EF;&#x4EE5;&#x72EC;&#x7ACB;&#x5F00;&#x53D1;&#x3001;&#x8BBE;&#x8BA1;&#x3001;&#x8FD0;&#x884C;&#x7684;&#x5C0F;&#x5E94;&#x7528;&#x3002;&#x8FD9;&#x4E9B;&#x5C0F;&#x5E94;&#x7528;&#x4E4B;&#x95F4;&#x901A;&#x8FC7;&#x670D;&#x52A1;&#x5B8C;&#x6210;&#x4EA4;&#x4E92;&#x548C;&#x96C6;&#x6210;&#x3002;</p>
+<p>&#x25CF;&#x5FAE;&#x670D;&#x52A1;&#x67B6;&#x6784;= 80%&#x7684;SOA&#x670D;&#x52A1;&#x67B6;&#x6784;&#x601D;&#x60F3;+ 100%&#x7684;&#x7EC4;&#x4EF6;&#x5316;&#x67B6;&#x6784;&#x601D;&#x60F3;+ 80%&#x7684;&#x9886;&#x57DF;&#x5EFA;&#x6A21;&#x601D;&#x60F3;</p>
+<p><strong>&#x7279;&#x70B9;:</strong><br>
+&#x25CF;&#x670D;&#x52A1;&#x5B9E;&#x73B0;&#x7EC4;&#x4EF6;&#x5316;:&#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x9009;&#x62E9;&#x5F00;&#x53D1;&#x6280;&#x672F;&#x3002;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x534F;&#x8C03;&#x5176;&#x4ED6;&#x56E2;&#x961F;<br>
+&#x25CF;&#x670D;&#x52A1;&#x4E4B;&#x95F4;&#x4EA4;&#x4E92;&#x4E00; &#x822C;&#x4F7F;&#x7528;REST API<br>
+&#x25CF;&#x53BB;&#x4E2D;&#x5FC3;&#x5316;:&#x6BCF;&#x4E2A;&#x5FAE;&#x670D;&#x52A1;&#x6709;&#x81EA;&#x5DF1;&#x79C1;&#x6709;&#x7684;&#x6570;&#x636E;&#x5E93;&#x6301;&#x4E45;&#x5316;&#x4E1A;&#x52A1;&#x6570;&#x636E;<br>
+&#x25CF;&#x81EA;&#x52A8;&#x5316;&#x90E8;&#x7F72;:&#x628A;&#x5E94;&#x7528;&#x62C6;&#x5206;&#x6210;&#x4E3A;&#x4E00; &#x4E2A;-&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x5355;&#x4E2A;&#x670D;&#x52A1;,&#x65B9;&#x4FBF;&#x81EA;&#x52A8;&#x5316;&#x90E8;&#x7F72;&#x3001;&#x6D4B;&#x8BD5;&#x3001;&#x8FD0;&#x7EF4;</p>
+<p><img src="img/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt></p>
+<h2 class="mume-header" id="3-dubbo-%E6%A6%82%E8%BF%B0">3-dubbo &#x6982;&#x8FF0;</h2>
+
+<p><strong>Dubbo&#x6982;&#x5FF5;</strong></p>
+<p>&#x25CF;Dubbo&#x662F;&#x963F;&#x91CC;&#x5DF4;&#x5DF4;&#x516C;&#x53F8;&#x5F00;&#x6E90;&#x7684;&#x4E00;&#x4E2A;&#x9AD8;&#x6027;&#x80FD;&#x3001;&#x8F7B;&#x91CF;&#x7EA7;&#x7684;Java RPC&#x6846;&#x67B6;&#x3002;<br>
+&#x25CF;&#x81F4;&#x529B;&#x4E8E;&#x63D0;&#x4F9B;&#x9AD8;&#x6027;&#x80FD;&#x548C;&#x900F;&#x660E;&#x5316;&#x7684;RPC&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x8C03;&#x7528;&#x65B9;&#x6848;,&#x4EE5;&#x53CA;SOA&#x670D;&#x52A1;&#x6CBB;&#x7406;&#x65B9;&#x6848;&#x3002;<br>
+&#x25CF;&#x5B98;&#x7F51;: htp://ubbo.apache.orgo</p>
+<p><img src="img/Dubbo%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt></p>
+<p>&#x8282;&#x70B9;&#x89D2;&#x8272;&#x8BF4;&#x660E;: .<br>
+&#x25CF;Provider: &#x66B4;&#x9732;&#x670D;&#x52A1;&#x7684;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x65B9;<br>
+&#x25CF;Contahier: &#x670D;&#x52A1;&#x8FD0;&#x884C;&#x5BB9;&#x5668;<br>
+&#x25CF;Consumer: &#x8C03;&#x7528;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x7684;&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x65B9;<br>
+&#x25CF;Registry: &#x670D;&#x52A1;&#x6CE8;&#x518C;&#x4E0E;&#x53D1;&#x73B0;&#x7684;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;<br>
+&#x25CF;Monitor:&#x7EDF;&#x8BA1;&#x670D;&#x52A1;&#x7684;&#x8C03;&#x7528;&#x6B21;&#x6570;&#x548C;&#x8C03;&#x7528;&#x65F6;&#x95F4;&#x7684;&#x76D1;&#x63A7;&#x4E2D;&#x5FC3;</p>
+<h2 class="mume-header" id="4-dubbo%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8">4-dubbo&#x5FEB;&#x901F;&#x5165;&#x95E8;</h2>
+
+<h3 class="mume-header" id="41zookeeper%E5%AE%89%E8%A3%85">4.1zookeeper&#x5B89;&#x88C5;</h3>
+
+<p>&#x5B89;&#x88C5;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<p>&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x5B89;&#x88C5; jdk&#xFF08;&#x7565;&#xFF09;<br>
+&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x628A; zookeeper &#x7684;&#x538B;&#x7F29;&#x5305;&#xFF08;zookeeper-3.4.6.tar.gz&#xFF09;&#x4E0A;&#x4F20;&#x5230; linux &#x7CFB;&#x7EDF;<br>
+&#x7B2C;&#x4E09;&#x6B65;&#xFF1A;&#x89E3;&#x538B;&#x7F29;&#x538B;&#x7F29;&#x5305;</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash"><span class="token function">tar</span> -zxvf  zookeeper-3.4.6.tar.gz
+</pre><p>&#x7B2C;&#x56DB;&#x6B65;&#xFF1A;&#x8FDB;&#x5165;zookeeper-3.4.6&#x76EE;&#x5F55;&#xFF0C;&#x521B;&#x5EFA;data&#x76EE;&#x5F55;</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash"><span class="token function">mkdir</span> data
+</pre><p>&#x7B2C;&#x4E94;&#x6B65;&#xFF1A;&#x8FDB;&#x5165;conf&#x76EE;&#x5F55; &#xFF0C;&#x628A;zoo_sample.cfg &#x6539;&#x540D;&#x4E3A;zoo.cfg</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash"><span class="token builtin class-name">cd</span> conf
+<span class="token function">mv</span> zoo_sample.cfg zoo.cfg
+</pre><p>&#x7B2C;&#x516D;&#x6B65;&#xFF1A;&#x6253;&#x5F00;zoo.cfg&#x6587;&#x4EF6;,  &#x4FEE;&#x6539;data&#x5C5E;&#x6027;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash"><span class="token assign-left variable">dataDir</span><span class="token operator">=</span>/root/zookeeper-3.4.6/data
+</pre><p>&#x8FDB;&#x5165;Zookeeper&#x7684;bin&#x76EE;&#x5F55;&#xFF0C;&#x542F;&#x52A8;&#x670D;&#x52A1;&#x547D;&#x4EE4;</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash">./zkServer.sh start
+</pre><p><img src="img/1581315609244.png" alt="1581315609244"></p>
+<p>&#x505C;&#x6B62;&#x670D;&#x52A1;&#x547D;&#x4EE4;</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash">./zkServer.sh stop
+</pre><p>&#x67E5;&#x770B;&#x670D;&#x52A1;&#x72B6;&#x6001;&#xFF1A;standalone &#x5355;&#x8282;&#x70B9;</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash">./zkServer.sh status
+</pre><p><img src="img/1581315645227.png" alt="1581315645227"></p>
+<h3 class="mume-header" id="42spring%E5%92%8Cspringmvc%E6%95%B4%E5%90%88">4.2spring&#x548C;springmvc&#x6574;&#x5408;</h3>
+
+<p>&#x5B9E;&#x65BD;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<p>1.&#x521B;&#x5EFA;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;Provider&#x6A21;&#x5757;<br>
+2.&#x521B;&#x5EFA;&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;Consumer&#x6A21;&#x5757;<br>
+3.&#x5728;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x6A21;&#x5757;&#x7F16;&#x5199;UserServicelmpl&#x63D0;&#x4F9B;&#x670D;&#x52A1;<br>
+4.&#x5728;&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;&#x4E2D;&#x7684;UserC ontroller&#x8FDC;&#x7A0B;&#x8C03;&#x7528;<br>
+5.UserServicelmpl&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;<br>
+6.&#x5206;&#x522B;&#x542F;&#x52A8;&#x4E24;&#x4E2A;&#x670D;&#x52A1;&#xFF0C;&#x6D4B;&#x8BD5;</p>
+<p>Dubbo&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;RPC&#x6846;&#x67B6;&#xFF0C;&#x5176;&#x6700;&#x6838;&#x5FC3;&#x7684;&#x529F;&#x80FD;&#x5C31;&#x662F;&#x8981;&#x5B9E;&#x73B0;&#x8DE8;&#x7F51;&#x7EDC;&#x7684;&#x8FDC;&#x7A0B;&#x8C03;&#x7528;&#x3002;&#x672C;&#x5C0F;&#x8282;&#x5C31;&#x662F;&#x8981;&#x521B;&#x5EFA;&#x4E24;&#x4E2A;&#x5E94;&#x7528;&#xFF0C;&#x4E00;&#x4E2A;&#x4F5C;&#x4E3A;&#x670D;&#x52A1;&#x7684;&#x63D0;&#x4F9B;&#x65B9;&#xFF0C;&#x4E00;&#x4E2A;&#x4F5C;&#x4E3A;&#x670D;&#x52A1;&#x7684;&#x6D88;&#x8D39;&#x65B9;&#x3002;&#x901A;&#x8FC7;Dubbo&#x6765;&#x5B9E;&#x73B0;&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x65B9;&#x8FDC;&#x7A0B;&#x8C03;&#x7528;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x65B9;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>1 &#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x65B9;&#x5F00;&#x53D1;</p>
+<p>&#x5F00;&#x53D1;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<p>&#xFF08;1&#xFF09;&#x521B;&#x5EFA;maven&#x5DE5;&#x7A0B;&#xFF08;&#x6253;&#x5305;&#x65B9;&#x5F0F;&#x4E3A;war&#xFF09;dubbodemo_provider&#xFF0C;&#x5728;pom.xml&#x6587;&#x4EF6;&#x4E2D;&#x5BFC;&#x5165;&#x5982;&#x4E0B;&#x5750;&#x6807;</p>
+<pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project.build.sourceEncoding</span><span class="token punctuation">&gt;</span></span>UTF-8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project.build.sourceEncoding</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maven.compiler.source</span><span class="token punctuation">&gt;</span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maven.compiler.source</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maven.compiler.target</span><span class="token punctuation">&gt;</span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maven.compiler.target</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>spring.version</span><span class="token punctuation">&gt;</span></span>5.0.5.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>spring.version</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-context<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>${spring.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-beans<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>${spring.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-webmvc<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>${spring.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-jdbc<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>${spring.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-aspects<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>${spring.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-jms<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>${spring.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-context-support<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>${spring.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- dubbo&#x76F8;&#x5173; --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.alibaba<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>dubbo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>2.6.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.apache.zookeeper<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>zookeeper<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>3.4.6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.github.sgroschupf<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>zkclient<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>0.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>javassist<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>javassist<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>3.12.1.GA<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.alibaba<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>fastjson<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.2.47<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.apache.maven.plugins<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>maven-compiler-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>2.3.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span><span class="token punctuation">&gt;</span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>source</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>target</span><span class="token punctuation">&gt;</span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>target</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.apache.tomcat.maven<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>tomcat7-maven-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+        <span class="token comment">&lt;!-- &#x6307;&#x5B9A;&#x7AEF;&#x53E3; --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>port</span><span class="token punctuation">&gt;</span></span>8081<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>port</span><span class="token punctuation">&gt;</span></span>
+        <span class="token comment">&lt;!-- &#x8BF7;&#x6C42;&#x8DEF;&#x5F84; --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span><span class="token punctuation">&gt;</span></span>/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>path</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">&gt;</span></span>
+</pre><p>&#xFF08;2&#xFF09;&#x914D;&#x7F6E;web.xml&#x6587;&#x4EF6;</p>
+<pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">web-app</span> <span class="token name">PUBLIC</span>
+ <span class="token string">&quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot;</span>
+ <span class="token string">&quot;http://java.sun.com/dtd/web-app_2_3.dtd&quot;</span> <span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-app</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>display-name</span><span class="token punctuation">&gt;</span></span>Archetype Created Web Application<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>display-name</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>context-param</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-name</span><span class="token punctuation">&gt;</span></span>contextConfigLocation<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-value</span><span class="token punctuation">&gt;</span></span>classpath:applicationContext*.xml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>context-param</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>listener</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>listener-class</span><span class="token punctuation">&gt;</span></span>org.springframework.web.context.ContextLoaderListener<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>listener-class</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>listener</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-app</span><span class="token punctuation">&gt;</span></span>
+
+</pre><p>&#xFF08;3&#xFF09;&#x521B;&#x5EFA;&#x670D;&#x52A1;&#x63A5;&#x53E3;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-package">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>service</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-interface">interface</span> <span class="token class-name">HelloService</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p>&#xFF08;4&#xFF09;&#x521B;&#x5EFA;&#x670D;&#x52A1;&#x5B9E;&#x73B0;&#x7C7B;</p>
+<p>**&#x6CE8;&#x610F;&#xFF1A;**&#x670D;&#x52A1;&#x5B9E;&#x73B0;&#x7C7B;&#x4E0A;&#x4F7F;&#x7528;&#x7684;Service&#x6CE8;&#x89E3;&#x662F;Dubbo&#x63D0;&#x4F9B;&#x7684;&#xFF0C;&#x7528;&#x4E8E;&#x5BF9;&#x5916;&#x53D1;&#x5E03;&#x670D;&#x52A1;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-package">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>service<span class="token punctuation">.</span>impl</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token namespace">com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>dubbo<span class="token punctuation">.</span>config<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Service</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>service<span class="token punctuation">.</span></span><span class="token class-name">HelloService</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Service</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">HelloServiceImpl</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">HelloService</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token string">&quot;hello &quot;</span> <span class="token operator">+</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><p>tomcat7:run</p>
+<p>2 &#x670D;&#x52A1;&#x6D88;&#x8D39;&#x65B9;&#x5F00;&#x53D1;</p>
+<p>&#x5F00;&#x53D1;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<p>&#xFF08;1&#xFF09;&#x521B;&#x5EFA;maven&#x5DE5;&#x7A0B;&#xFF08;&#x6253;&#x5305;&#x65B9;&#x5F0F;&#x4E3A;war&#xFF09;dubbodemo_consumer&#xFF0C;pom.xml&#x914D;&#x7F6E;&#x548C;&#x4E0A;&#x9762;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x76F8;&#x540C;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5C06;Tomcat&#x63D2;&#x4EF6;&#x7684;&#x7AEF;&#x53E3;&#x53F7;&#x6539;&#x4E3A;8082&#x5373;&#x53EF;</p>
+<p>&#xFF08;2&#xFF09;&#x914D;&#x7F6E;web.xml&#x6587;&#x4EF6;</p>
+<pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">web-app</span> <span class="token name">PUBLIC</span>
+ <span class="token string">&quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot;</span>
+ <span class="token string">&quot;http://java.sun.com/dtd/web-app_2_3.dtd&quot;</span> <span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-app</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>display-name</span><span class="token punctuation">&gt;</span></span>Archetype Created Web Application<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>display-name</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">&gt;</span></span>springmvc<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-class</span><span class="token punctuation">&gt;</span></span>org.springframework.web.servlet.DispatcherServlet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-class</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- &#x6307;&#x5B9A;&#x52A0;&#x8F7D;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6; &#xFF0C;&#x901A;&#x8FC7;&#x53C2;&#x6570;contextConfigLocation&#x52A0;&#x8F7D; --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>init-param</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-name</span><span class="token punctuation">&gt;</span></span>contextConfigLocation<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-name</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-value</span><span class="token punctuation">&gt;</span></span>classpath:applicationContext-web.xml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-value</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>init-param</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>load-on-startup</span><span class="token punctuation">&gt;</span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>load-on-startup</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-mapping</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">&gt;</span></span>springmvc<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>*.do<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-mapping</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-app</span><span class="token punctuation">&gt;</span></span>
+</pre><p>&#xFF08;3&#xFF09;&#x5C06;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x5DE5;&#x7A0B;&#x4E2D;&#x7684;HelloService&#x63A5;&#x53E3;&#x590D;&#x5236;&#x5230;&#x5F53;&#x524D;&#x5DE5;&#x7A0B;</p>
+<p>&#xFF08;4&#xFF09;&#x7F16;&#x5199;Controller</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-package">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>controller</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token namespace">com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>dubbo<span class="token punctuation">.</span>config<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Reference</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>service<span class="token punctuation">.</span></span><span class="token class-name">HelloService</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Controller</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">RequestMapping</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">ResponseBody</span><span class="token punctuation">;</span>
+<span class="token annotation punctuation">@Controller</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/demo&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">HelloController</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Reference</span>
+    <span class="token keyword keyword-private">private</span> <span class="token class-name">HelloService</span> helloService<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/hello&quot;</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@ResponseBody</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//&#x8FDC;&#x7A0B;&#x8C03;&#x7528;</span>
+        <span class="token class-name">String</span> result <span class="token operator">=</span> helloService<span class="token punctuation">.</span><span class="token function">sayHello</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword keyword-return">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><p>&#x6CE8;&#x610F;&#xFF1A;Controller&#x4E2D;&#x6CE8;&#x5165;HelloService&#x4F7F;&#x7528;&#x7684;&#x662F;Dubbo&#x63D0;&#x4F9B;&#x7684;@Reference&#x6CE8;&#x89E3;</p>
+<h3 class="mume-header" id="43%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E8%80%85">4.3&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;</h3>
+
+<p>&#x5728;dubbodemo_provider&#x5DE5;&#x7A0B;&#x4E2D;src/main/resources&#x4E0B;&#x521B;&#x5EFA;applicationContext-service.xml</p>
+<pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token prolog">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>beans</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.springframework.org/schema/beans<span class="token punctuation">&quot;</span></span>
+		<span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">&quot;</span></span>
+	    <span class="token attr-name"><span class="token namespace">xmlns:</span>p</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.springframework.org/schema/p<span class="token punctuation">&quot;</span></span>
+		<span class="token attr-name"><span class="token namespace">xmlns:</span>context</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.springframework.org/schema/context<span class="token punctuation">&quot;</span></span>
+		<span class="token attr-name"><span class="token namespace">xmlns:</span>dubbo</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://code.alibabatech.com/schema/dubbo<span class="token punctuation">&quot;</span></span>
+	    <span class="token attr-name"><span class="token namespace">xmlns:</span>mvc</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.springframework.org/schema/mvc<span class="token punctuation">&quot;</span></span>
+		<span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/mvc
+         http://www.springframework.org/schema/mvc/spring-mvc.xsd
+         http://code.alibabatech.com/schema/dubbo
+         http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+	<span class="token comment">&lt;!-- &#x5F53;&#x524D;&#x5E94;&#x7528;&#x540D;&#x79F0;&#xFF0C;&#x7528;&#x4E8E;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x8BA1;&#x7B97;&#x5E94;&#x7528;&#x95F4;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#xFF0C;&#x6CE8;&#x610F;&#xFF1A;&#x6D88;&#x8D39;&#x8005;&#x548C;&#x63D0;&#x4F9B;&#x8005;&#x5E94;&#x7528;&#x540D;&#x4E0D;&#x8981;&#x4E00;&#x6837; --&gt;</span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">dubbo:</span>application</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>dubbodemo_provider<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+	<span class="token comment">&lt;!-- &#x8FDE;&#x63A5;&#x670D;&#x52A1;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;zookeeper ip&#x4E3A;zookeeper&#x6240;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7684;ip&#x5730;&#x5740;--&gt;</span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">dubbo:</span>registry</span> <span class="token attr-name">address</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>zookeeper://192.168.134.129:2181<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+	<span class="token comment">&lt;!-- &#x6CE8;&#x518C;  &#x534F;&#x8BAE;&#x548C;port   &#x7AEF;&#x53E3;&#x9ED8;&#x8BA4;&#x662F;20880 --&gt;</span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">dubbo:</span>protocol</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>dubbo<span class="token punctuation">&quot;</span></span> <span class="token attr-name">port</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>20881<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">dubbo:</span>protocol</span><span class="token punctuation">&gt;</span></span>
+    
+	<span class="token comment">&lt;!-- &#x626B;&#x63CF;&#x6307;&#x5B9A;&#x5305;&#xFF0C;&#x52A0;&#x4E0A;@Service&#x6CE8;&#x89E3;&#x7684;&#x7C7B;&#x4F1A;&#x88AB;&#x53D1;&#x5E03;&#x4E3A;&#x670D;&#x52A1;  --&gt;</span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">dubbo:</span>annotation</span> <span class="token attr-name">package</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com.itheima.service.impl<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>beans</span><span class="token punctuation">&gt;</span></span>
+</pre><h3 class="mume-header" id="44%E6%9C%8D%E5%8A%A1%E6%B6%88%E8%B4%B9%E8%80%85">4.4&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;</h3>
+
+<p>&#x5728;dubbodemo_consumer&#x5DE5;&#x7A0B;&#x4E2D;src/main/resources&#x4E0B;&#x521B;&#x5EFA;applicationContext-web.xml</p>
+<pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token prolog">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>beans</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.springframework.org/schema/beans<span class="token punctuation">&quot;</span></span>
+	<span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">&quot;</span></span>
+	<span class="token attr-name"><span class="token namespace">xmlns:</span>p</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.springframework.org/schema/p<span class="token punctuation">&quot;</span></span>
+	<span class="token attr-name"><span class="token namespace">xmlns:</span>context</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.springframework.org/schema/context<span class="token punctuation">&quot;</span></span>
+	<span class="token attr-name"><span class="token namespace">xmlns:</span>dubbo</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://code.alibabatech.com/schema/dubbo<span class="token punctuation">&quot;</span></span>
+	<span class="token attr-name"><span class="token namespace">xmlns:</span>mvc</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.springframework.org/schema/mvc<span class="token punctuation">&quot;</span></span>
+	<span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/mvc
+			http://www.springframework.org/schema/mvc/spring-mvc.xsd
+			http://code.alibabatech.com/schema/dubbo
+			http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context.xsd<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+
+	<span class="token comment">&lt;!-- &#x5F53;&#x524D;&#x5E94;&#x7528;&#x540D;&#x79F0;&#xFF0C;&#x7528;&#x4E8E;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x8BA1;&#x7B97;&#x5E94;&#x7528;&#x95F4;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#xFF0C;&#x6CE8;&#x610F;&#xFF1A;&#x6D88;&#x8D39;&#x8005;&#x548C;&#x63D0;&#x4F9B;&#x8005;&#x5E94;&#x7528;&#x540D;&#x4E0D;&#x8981;&#x4E00;&#x6837; --&gt;</span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">dubbo:</span>application</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>dubbodemo-consumer<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+	<span class="token comment">&lt;!-- &#x8FDE;&#x63A5;&#x670D;&#x52A1;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;zookeeper ip&#x4E3A;zookeeper&#x6240;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7684;ip&#x5730;&#x5740;--&gt;</span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">dubbo:</span>registry</span> <span class="token attr-name">address</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>zookeeper://192.168.134.129:2181<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+	<span class="token comment">&lt;!-- &#x5305;&#x626B;&#x63CF;&#x7684;&#x65B9;&#x5F0F; &#x5F15;&#x7528;&#x670D;&#x52A1; &#x626B;&#x63CF;@Reference --&gt;</span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">dubbo:</span>annotation</span> <span class="token attr-name">package</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com.itheima.controller<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>beans</span><span class="token punctuation">&gt;</span></span>
+</pre><p>&#x8FD0;&#x884C;&#x6D4B;&#x8BD5;</p>
+<p>tomcat7:run&#x542F;&#x52A8;</p>
+<p>&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x8F93;&#x5165;http://localhost:8082/demo/hello.do?name=Jack&#xFF0C;&#x67E5;&#x770B;&#x6D4F;&#x89C8;&#x5668;&#x8F93;&#x51FA;&#x7ED3;&#x679C;</p>
+<h2 class="mume-header" id="5-dubbo%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7">5-dubbo&#x9AD8;&#x7EA7;&#x7279;&#x6027;</h2>
+
+<h3 class="mume-header" id="51dubbo-admin%E5%AE%89%E8%A3%85">5.1dubbo-admin&#x5B89;&#x88C5;</h3>
+
+<p>dubbo- admin<br>
+&#x25CF;dubbo-admin&#x7BA1;&#x7406;&#x5E73;&#x53F0;&#xFF0C;&#x662F;&#x56FE;&#x5F62;&#x5316;&#x7684;&#x670D;&#x52A1;&#x7BA1;&#x7406;&#x9875;&#x9762;<br>
+&#x25CF;&#x4ECE;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x4E2D;&#x83B7;&#x53D6;&#x5230;&#x6240;&#x6709;&#x7684;&#x63D0;&#x4F9B;&#x8005; /&#x6D88;&#x8D39;&#x8005;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#x7BA1;&#x7406;<br>
+&#x25CF;&#x8DEF;&#x7531;&#x89C4;&#x5219;&#x3001;&#x52A8;&#x6001;&#x914D;&#x7F6E;&#x3001;&#x670D;&#x52A1;&#x964D;&#x7EA7;&#x3001;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#x3001;&#x6743;&#x91CD;&#x8C03;&#x6574;&#x3001;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7B49;&#x7BA1;&#x7406;&#x529F;&#x80FD;<br>
+&#x25CF;dubbo- admin&#x662F;&#x4E00;&#x4E2A;&#x524D;&#x540E;&#x7AEF;&#x5206;&#x79BB;&#x7684;&#x9879;&#x76EE;&#x3002;&#x524D;&#x7AEF;&#x4F7F;&#x7528;vue&#xFF0C;&#x540E;&#x7AEF;&#x4F7F;&#x7528;springboot<br>
+&#x25CF;&#x5B89;&#x88C5;dubbo-admin&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x90E8;&#x7F72;&#x8BE5;&#x9879;&#x76EE;</p>
+<p>&#x5177;&#x4F53;&#x5B89;&#x88C5;&#x53C2;&#x89C1;&#xFF1A;<a href="http://dubbo-admin.md">dubbo-admin.md</a></p>
+<h3 class="mume-header" id="52-dubbo-admin%E4%BD%BF%E7%94%A8">5.2-dubbo-admin&#x4F7F;&#x7528;</h3>
+
+<p>&#x5177;&#x4F53;&#x5B89;&#x88C5;&#x53C2;&#x89C1;&#xFF1A;<a href="http://dubbo-admin.md">dubbo-admin.md</a></p>
+<h3 class="mume-header" id="53%E5%BA%8F%E5%88%97%E5%8C%96">5.3&#x5E8F;&#x5217;&#x5316;</h3>
+
+<ol>
+<li>dubbo &#x5185;&#x90E8;&#x5DF2;&#x7ECF;&#x5C06;&#x5E8F;&#x5217;&#x5316;&#x548C;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x8FC7;&#x7A0B;&#x5185;&#x90E8;&#x5C01;&#x88C5;&#x4E86;</li>
+<li>&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x5728;&#x5B9A;&#x4E49;pojo&#x7C7B;&#x65F6;<strong>&#x5B9E;&#x73B0;seriali zable&#x63A5;&#x53E3;</strong>&#x5373;&#x53EF;</li>
+<li>&#x4E00;&#x822C;&#x4F1A;&#x5B9A;&#x4E49;&#x4E00; &#x4E2A;&#x516C;&#x5171;&#x7684;pojo&#x6A21;&#x5757;,&#x8BA9;&#x751F;&#x4EA7;&#x8005;&#x548C;&#x6D88;&#x8D39;&#x8005;&#x90FD;&#x4F9D;&#x8D56;&#x8BE5;&#x6A21;&#x5757;&#x3002;</li>
+</ol>
+<p><img src="img/1581317650919.png" alt="1581317650919"></p>
+<p>User&#x5BF9;&#x8C61;&#x672A;&#x5B9E;&#x73B0;seriali zable&#x63A5;&#x53E3;</p>
+<p>&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF1A;</p>
+<p><img src="img/1581317583708.png" alt="1581317583708"></p>
+<p>&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token class-name">User</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">Serializable</span>
+</pre><h3 class="mume-header" id="54%E5%9C%B0%E5%9D%80%E7%BC%93%E5%AD%98">5.4&#x5730;&#x5740;&#x7F13;&#x5B58;</h3>
+
+<p><strong>&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x6302;&#x4E86;&#xFF0C;&#x670D;&#x52A1;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x8BBF;&#x95EE;&#xFF1F;</strong></p>
+<ol>
+<li>&#x53EF;&#x4EE5;&#xFF0C;&#x56E0;&#x4E3A;dubbo&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;&#x5728;&#x7B2C;&#x4E00;-&#x6B21;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x4F1A;&#x5C06;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x65B9;&#x5730;&#x5740;&#x7F13;&#x5B58;&#x5230;&#x672C;&#x5730;&#xFF0C;&#x4EE5;&#x540E;&#x5728;&#x8C03;&#x7528;&#x5219;&#x4E0D;&#x4F1A;&#x8BBF;&#x95EE;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x3002;</li>
+<li>&#x5F53;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x5730;&#x5740;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#xFF0C;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x4F1A;&#x901A;&#x77E5;&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;&#x3002;</li>
+</ol>
+<p><img src="img/Dubbo%E6%9E%B6%E6%9E%84%E5%9B%BE-1581318103917.png" alt></p>
+<h3 class="mume-header" id="55-%E8%B6%85%E6%97%B6">5.5 &#x8D85;&#x65F6;</h3>
+
+<p><img src="img/%E8%B6%85%E6%97%B6%E5%9B%BE%E7%89%87.png" alt></p>
+<ul>
+<li>&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;&#x5728;&#x8C03;&#x7528;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x7684;&#x65F6;&#x5019;&#x53D1;&#x751F;&#x4E86;&#x963B;&#x585E;&#x3001;&#x7B49;&#x5F85;&#x7684;&#x60C5;&#x5F62;,&#x8FD9;&#x4E2A;&#x65F6;&#x5019;,&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;&#x4F1A;&#x76F4;&#x7B49;&#x5F85;&#x4E0B;&#x53BB;&#x3002;</li>
+<li>&#x5728;&#x67D0;&#x4E2A;&#x5CF0;&#x503C;&#x65F6;&#x523B;&#xFF0C;&#x5927;&#x91CF;&#x7684;&#x8BF7;&#x6C42;&#x90FD;&#x5728;&#x540C;&#x65F6;&#x8BF7;&#x6C42;&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;,&#x4F1A;&#x9020;&#x6210;&#x7EBF;&#x7A0B;&#x7684;&#x5927;&#x91CF;&#x5806;&#x79EF;&#xFF0C;&#x52BF;&#x5FC5;&#x4F1A;&#x9020;&#x6210;&#x96EA;&#x5D29;&#x3002;</li>
+<li>dubbo&#x5229;&#x7528;&#x8D85;&#x65F6;&#x673A;&#x5236;&#x6765;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x8BBE;&#x7F6E;-&#x4E2A;&#x8D85;&#x65F6;&#x65F6;&#x95F4;, &#x5728;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x6BB5;&#x5185;&#xFF0C;&#x65E0;&#x6CD5;&#x5B8C;&#x6210;&#x670D;&#x52A1;&#x8BBF;&#x95EE;,&#x5219;&#x81EA;&#x52A8;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#x3002;</li>
+<li>&#x4F7F;&#x7528;timeout&#x5C5E;&#x6027;&#x914D;&#x7F6E;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;1000&#xFF0C;&#x5355;&#x4F4D;&#x6BEB;&#x79D2;</li>
+</ul>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">//timeout &#x8D85;&#x65F6;&#x65F6;&#x95F4; &#x5355;&#x4F4D;&#x6BEB;&#x79D2;  retries &#x91CD;&#x8BD5;&#x6B21;&#x6570;</span>
+<span class="token annotation punctuation">@Service</span><span class="token punctuation">(</span>timeout <span class="token operator">=</span> <span class="token number">3000</span><span class="token punctuation">,</span>retries<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+</pre><h3 class="mume-header" id="56%E9%87%8D%E8%AF%95">5.6&#x91CD;&#x8BD5;</h3>
+
+<p><img src="img/1581322543136.png" alt="1581322543136"></p>
+<ol>
+<li>&#x8BBE;&#x7F6E;&#x4E86;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x6BB5;&#x5185;&#xFF0C;&#x65E0;&#x6CD5;&#x5B8C;&#x6210;&#x670D;&#x52A1;&#x8BBF;&#x95EE;,&#x5219;&#x81EA;&#x52A8;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x51FA;&#x73B0;&#x7F51;&#x7EDC;&#x6296;&#x52A8;,&#x5219;&#x8FD9;&#x4E00;-&#x6B21;&#x8BF7;&#x6C42;&#x5C31;&#x4F1A;&#x5931;&#x8D25;&#x3002;</li>
+<li>Dubbo&#x63D0;&#x4F9B;&#x91CD;&#x8BD5;&#x673A;&#x5236;&#x6765;&#x907F;&#x514D;&#x7C7B;&#x4F3C;&#x95EE;&#x9898;&#x7684;&#x53D1;&#x751F;&#x3002;</li>
+<li>&#x901A;&#x8FC7;retries&#x5C5E;&#x6027;&#x6765;&#x8BBE;&#x7F6E;&#x91CD;&#x8BD5;&#x6B21;&#x6570;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;2&#x6B21;</li>
+</ol>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">//timeout &#x8D85;&#x65F6;&#x65F6;&#x95F4; &#x5355;&#x4F4D;&#x6BEB;&#x79D2;  retries &#x91CD;&#x8BD5;&#x6B21;&#x6570;</span>
+<span class="token annotation punctuation">@Service</span><span class="token punctuation">(</span>timeout <span class="token operator">=</span> <span class="token number">3000</span><span class="token punctuation">,</span>retries<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+</pre><h3 class="mume-header" id="57%E5%A4%9A%E7%89%88%E6%9C%AC">5.7&#x591A;&#x7248;&#x672C;</h3>
+
+<p><img src="img/%E5%A4%9A%E7%89%88%E6%9C%AC%E5%9B%BE%E7%89%87.png" alt></p>
+<p>**&#x7070;&#x5EA6;&#x53D1;&#x5E03;:**&#x5F53;&#x51FA;&#x73B0;&#x65B0;&#x529F;&#x80FD;&#x65F6;,&#x4F1A;&#x8BA9;&#x4E00;&#x90E8;&#x5206;&#x7528;&#x6237;&#x5148;&#x4F7F;&#x7528;&#x65B0;&#x529F;&#x80FD;&#xFF0C;&#x7528;&#x6237;&#x53CD;&#x9988;&#x6CA1;&#x95EE;&#x9898;&#x65F6;&#xFF0C;&#x518D;&#x5C06;&#x6240;&#x6709;&#x7528;&#x6237;&#x8FC1;&#x79FB;&#x5230;&#x65B0;&#x529F;&#x80FD;&#x3002;</p>
+<p>dubbo&#x4E2D;&#x4F7F;&#x7528;version&#x5C5E;&#x6027;&#x6765;&#x8BBE;&#x7F6E;&#x548C;&#x8C03;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x4E0D;&#x540C;&#x7248;&#x672C;</p>
+<p>&#x751F;&#x4EA7;&#x8005;&#x914D;&#x7F6E;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@Service</span><span class="token punctuation">(</span>version<span class="token operator">=</span><span class="token string">&quot;v2.0&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">UserServiceImp12</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>
+</pre><p>&#x6D88;&#x8D39;&#x8005;&#x914D;&#x7F6E;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@Reference</span><span class="token punctuation">(</span>version <span class="token operator">=</span> <span class="token string">&quot;v2.0&quot;</span><span class="token punctuation">)</span><span class="token comment">//&#x8FDC;&#x7A0B;&#x6CE8;&#x5165;</span>
+<span class="token keyword keyword-private">private</span> <span class="token class-name">UserService</span> userService<span class="token punctuation">;</span>
+</pre><h3 class="mume-header" id="58%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1">5.8&#x8D1F;&#x8F7D;&#x5747;&#x8861;</h3>
+
+<p><strong>&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7B56;&#x7565;(4&#x79CD;) :</strong><br>
+**Random:**&#x6309;&#x6743;&#x91CD;&#x968F;&#x673A;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x3002;&#x6309;&#x6743;&#x91CD;&#x8BBE;&#x7F6E;&#x968F;&#x673A;&#x6982;&#x7387;&#x3002;</p>
+<p><strong>RoundRobin:</strong> &#x6309;&#x6743;&#x91CD;&#x8F6E;&#x8BE2;&#x3002;</p>
+<p><strong>LeastActive:</strong> &#x6700;&#x5C11;&#x6D3B;&#x8DC3;&#x8C03;&#x7528;&#x6570;,&#x76F8;&#x540C;&#x6D3B;&#x8DC3;&#x6570;&#x7684;&#x968F;&#x673A;&#x3002;</p>
+<p>**ConsistentHash:**&#x4E00; &#x81F4;&#x6027;Hash,&#x76F8;&#x540C;&#x53C2;&#x6570;&#x7684;&#x8BF7;&#x6C42;&#x603B;&#x662F;&#x53D1;&#x5230;&#x540C;&#x4E00;&#x63D0;&#x4F9B;&#x8005;&#x3002;</p>
+<p><img src="img/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%9B%BE.png" alt></p>
+<p>&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x914D;&#x7F6E;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@Service</span><span class="token punctuation">(</span>weight <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">UserServiceImp12</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>
+</pre><p>application.xml &#x914D;&#x7F6E;parameter key</p>
+<p><img src="img/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" alt></p>
+<p>&#x6D88;&#x8D39;&#x8005;&#x914D;&#x7F6E;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">//@Reference(loadbalance = &quot;roundrobin&quot;)</span>
+<span class="token comment">//@Reference(loadbalance = &quot;leastactive&quot;)</span>
+<span class="token comment">//@Reference(loadbalance = &quot;consistenthash&quot;)</span>
+<span class="token annotation punctuation">@Reference</span><span class="token punctuation">(</span>loadbalance <span class="token operator">=</span> <span class="token string">&quot;random&quot;</span><span class="token punctuation">)</span><span class="token comment">//&#x9ED8;&#x8BA4; &#x6309;&#x6743;&#x91CD;&#x968F;&#x673A;</span>
+<span class="token keyword keyword-private">private</span> <span class="token class-name">UserService</span> userService<span class="token punctuation">;</span>
+</pre><h3 class="mume-header" id="59%E9%9B%86%E7%BE%A4%E5%AE%B9%E9%94%99">5.9&#x96C6;&#x7FA4;&#x5BB9;&#x9519;</h3>
+
+<p><img src="img/1581324308044.png" alt="1581324308044"></p>
+<p><strong>&#x96C6;&#x7FA4;&#x5BB9;&#x9519;&#x6A21;&#x5F0F;:</strong><br>
+**Failover Cluster:**&#x5931;&#x8D25;&#x91CD;&#x8BD5;&#x3002;&#x9ED8;&#x8BA4;&#x503C;&#x3002;&#x5F53;&#x51FA;&#x73B0;&#x5931;&#x8D25;&#xFF0C;&#x91CD;&#x8BD5;&#x5176;&#x5B83;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x9ED8;&#x8BA4;&#x91CD;&#x8BD5;2&#x6B21;&#xFF0C;&#x4F7F;&#x7528;retries&#x914D;&#x7F6E;&#x3002;&#x4E00;&#x822C;&#x7528;&#x4E8E;&#x8BFB;&#x64CD;&#x4F5C;<br>
+**Failfast Cluster &#x1F617;*&#x5FEB;&#x901F;&#x5931;&#x8D25;,&#x53D1;&#x8D77;-&#x6B21;&#x8C03;&#x7528;&#xFF0C;&#x5931;&#x8D25;&#x7ACB;&#x5373;&#x62A5;&#x9519;&#x3002;&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x5199;&#x64CD;&#x4F5C;&#x3002;<br>
+**Failsafe Cluster:**&#x5931;&#x8D25;&#x5B89;&#x5168;&#xFF0C;&#x51FA;&#x73B0;&#x5F02;&#x5E38;&#x65F6;&#xFF0C;&#x76F4;&#x63A5;&#x5FFD;&#x7565;&#x3002;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7A7A;&#x7ED3;&#x679C;&#x3002;<br>
+**Failback Cluster:**&#x5931;&#x8D25;&#x81EA;&#x52A8;&#x6062;&#x590D;,&#x540E;&#x53F0;&#x8BB0;&#x5F55;&#x5931;&#x8D25;&#x8BF7;&#x6C42;,&#x5B9A;&#x65F6;&#x91CD;&#x53D1;&#x3002;<br>
+**Forking Cluster &#x1F617;*&#x5E76;&#x884C;&#x8C03;&#x7528;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x53EA;&#x8981;&#x4E00;&#x4E2A;&#x6210;&#x529F;&#x5373;&#x8FD4;&#x56DE;&#x3002;<br>
+<strong>Broadcast Cluster:</strong> &#x5E7F;&#x64AD;&#x8C03;&#x7528;&#x6240;&#x6709;&#x63D0;&#x4F9B;&#x8005;,&#x9010;&#x4E2A;&#x8C03;&#x7528;&#xFF0C;&#x4EFB;&#x610F;&#x4E00;&#x53F0;&#x62A5;&#x9519;&#x5219;&#x62A5;&#x9519;&#x3002;</p>
+<p>&#x6D88;&#x8D39;&#x8005;&#x914D;&#x7F6E;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@Reference</span><span class="token punctuation">(</span>cluster <span class="token operator">=</span> <span class="token string">&quot;failover&quot;</span><span class="token punctuation">)</span><span class="token comment">//&#x8FDC;&#x7A0B;&#x6CE8;&#x5165;</span>
+<span class="token keyword keyword-private">private</span> <span class="token class-name">UserService</span> userService<span class="token punctuation">;</span>
+</pre><h3 class="mume-header" id="510%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7">5.10&#x670D;&#x52A1;&#x964D;&#x7EA7;</h3>
+
+<p><strong>&#x670D;&#x52A1;&#x964D;&#x7EA7;</strong>&#xFF1A;&#x5F53;&#x670D;&#x52A1;&#x5668;&#x538B;&#x529B;&#x5267;&#x589E;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6839;&#x636E;&#x5B9E;&#x9645;&#x4E1A;&#x52A1;&#x60C5;&#x51B5;&#x53CA;&#x6D41;&#x91CF;&#xFF0C;&#x5BF9;&#x4E00;&#x4E9B;&#x670D;&#x52A1;&#x548C;&#x9875;&#x9762;&#x6709;&#x7B56;&#x7565;&#x7684;&#x4E0D;&#x5904;&#x7406;&#x6216;&#x6362;&#x79CD;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x5F0F;&#x5904;&#x7406;&#xFF0C;&#x4ECE;&#x800C;&#x91CA;&#x653E;&#x670D;&#x52A1;&#x5668;&#x8D44;&#x6E90;&#x4EE5;&#x4FDD;&#x8BC1;<strong>&#x6838;&#x5FC3;&#x4EA4;&#x6613;</strong>&#x6B63;&#x5E38;&#x8FD0;&#x4F5C;&#x6216;&#x9AD8;&#x6548;&#x8FD0;&#x4F5C;</p>
+<p><strong>&#x670D;&#x52A1;&#x964D;&#x7EA7;&#x65B9;&#x5F0F;:</strong><br>
+<strong>mock= force:return null</strong>&#xFF1A;&#x8868;&#x793A;&#x6D88;&#x8D39;&#x65B9;&#x5BF9;&#x8BE5;&#x670D;&#x52A1;&#x7684;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x90FD;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;null&#x503C;,&#x4E0D;&#x53D1;&#x8D77;&#x8FDC;&#x7A0B;&#x8C03;&#x7528;&#x3002;&#x7528;&#x6765;&#x5C4F;&#x853D;&#x4E0D;&#x91CD;&#x8981;&#x670D;&#x52A1;&#x4E0D;&#x53EF;&#x7528;&#x65F6;&#x5BF9;&#x8C03;&#x7528;&#x65B9;&#x7684;&#x5F71;&#x54CD;&#x3002;</p>
+<p><strong>mock=fail:return null</strong>&#xFF1A;&#x8868;&#x793A;&#x6D88;&#x8D39;&#x65B9;&#x5BF9;&#x8BE5;&#x670D;&#x52A1;&#x7684;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x5728;&#x5931;&#x8D25;&#x540E;&#xFF0C;&#x518D;&#x8FD4;&#x56DE;null&#x503C;,&#x4E0D;&#x629B;&#x5F02;&#x5E38;&#x3002;&#x7528;&#x6765;&#x5BB9;&#x5FCD;&#x4E0D;&#x91CD;&#x8981;&#x670D;&#x52A1;&#x4E0D;&#x7A33;&#x5B9A;&#x65F6;&#x5BF9;&#x8C03;&#x7528;&#x65B9;&#x7684;&#x5F71;&#x54CD;</p>
+<p><img src="img/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E5%9B%BE%E7%89%87.png" alt></p>
+<p>&#x6D88;&#x8D39;&#x65B9;&#x914D;&#x7F6E;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">//&#x8FDC;&#x7A0B;&#x6CE8;&#x5165;</span>
+<span class="token annotation punctuation">@Reference</span><span class="token punctuation">(</span>mock <span class="token operator">=</span>&#x201C; force <span class="token operator">:</span><span class="token keyword keyword-return">return</span> <span class="token keyword keyword-null">null</span>&quot;<span class="token punctuation">)</span><span class="token comment">//&#x4E0D;&#x518D;&#x8C03;&#x7528;userService&#x7684;&#x670D;&#x52A1;</span>
+<span class="token keyword keyword-private">private</span> <span class="token class-name">UserService</span> userService<span class="token punctuation">;</span>
+</pre>
+      </div>
+      <div class="md-sidebar-toc"><ul>
+<li><a href="#1-%E4%BB%8A%E6%97%A5%E5%86%85%E5%AE%B9"><strong>1-&#x4ECA;&#x65E5;&#x5185;&#x5BB9;</strong></a></li>
+<li><a href="#2-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><strong>2-&#x76F8;&#x5173;&#x6982;&#x5FF5;</strong></a>
+<ul>
+<li><a href="#21-%E4%BA%92%E8%81%94%E7%BD%91%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84-%E7%89%B9%E7%82%B9">2.1-&#x4E92;&#x8054;&#x7F51;&#x9879;&#x76EE;&#x67B6;&#x6784;-&#x7279;&#x70B9;</a></li>
+<li><a href="#22-%E4%BA%92%E8%81%94%E7%BD%91%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84-%E7%9B%AE%E6%A0%87">2.2-&#x4E92;&#x8054;&#x7F51;&#x9879;&#x76EE;&#x67B6;&#x6784;-&#x76EE;&#x6807;</a></li>
+<li><a href="#23-%E9%9B%86%E7%BE%A4%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F">2.3-&#x96C6;&#x7FA4;&#x548C;&#x5206;&#x5E03;&#x5F0F;</a></li>
+<li><a href="#24-%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B">2.4-&#x67B6;&#x6784;&#x6F14;&#x8FDB;</a></li>
+</ul>
+</li>
+<li><a href="#3-dubbo-%E6%A6%82%E8%BF%B0">3-dubbo &#x6982;&#x8FF0;</a></li>
+<li><a href="#4-dubbo%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8">4-dubbo&#x5FEB;&#x901F;&#x5165;&#x95E8;</a>
+<ul>
+<li><a href="#41zookeeper%E5%AE%89%E8%A3%85">4.1zookeeper&#x5B89;&#x88C5;</a></li>
+<li><a href="#42spring%E5%92%8Cspringmvc%E6%95%B4%E5%90%88">4.2spring&#x548C;springmvc&#x6574;&#x5408;</a></li>
+<li><a href="#43%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E8%80%85">4.3&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;</a></li>
+<li><a href="#44%E6%9C%8D%E5%8A%A1%E6%B6%88%E8%B4%B9%E8%80%85">4.4&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;</a></li>
+</ul>
+</li>
+<li><a href="#5-dubbo%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7">5-dubbo&#x9AD8;&#x7EA7;&#x7279;&#x6027;</a>
+<ul>
+<li><a href="#51dubbo-admin%E5%AE%89%E8%A3%85">5.1dubbo-admin&#x5B89;&#x88C5;</a></li>
+<li><a href="#52-dubbo-admin%E4%BD%BF%E7%94%A8">5.2-dubbo-admin&#x4F7F;&#x7528;</a></li>
+<li><a href="#53%E5%BA%8F%E5%88%97%E5%8C%96">5.3&#x5E8F;&#x5217;&#x5316;</a></li>
+<li><a href="#54%E5%9C%B0%E5%9D%80%E7%BC%93%E5%AD%98">5.4&#x5730;&#x5740;&#x7F13;&#x5B58;</a></li>
+<li><a href="#55-%E8%B6%85%E6%97%B6">5.5 &#x8D85;&#x65F6;</a></li>
+<li><a href="#56%E9%87%8D%E8%AF%95">5.6&#x91CD;&#x8BD5;</a></li>
+<li><a href="#57%E5%A4%9A%E7%89%88%E6%9C%AC">5.7&#x591A;&#x7248;&#x672C;</a></li>
+<li><a href="#58%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1">5.8&#x8D1F;&#x8F7D;&#x5747;&#x8861;</a></li>
+<li><a href="#59%E9%9B%86%E7%BE%A4%E5%AE%B9%E9%94%99">5.9&#x96C6;&#x7FA4;&#x5BB9;&#x9519;</a></li>
+<li><a href="#510%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7">5.10&#x670D;&#x52A1;&#x964D;&#x7EA7;</a></li>
+</ul>
+</li>
+</ul>
+</div>
+      <a id="sidebar-toc-btn">&#x2261;</a>
+    
+    
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    </body></html>

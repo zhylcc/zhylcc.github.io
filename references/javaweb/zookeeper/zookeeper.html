@@ -1,0 +1,973 @@
+<!DOCTYPE html><html><head>
+      <title>zookeeper</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///d:\Apps\VSCode\data\extensions\shd101wyy.markdown-preview-enhanced-0.6.2\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="zookeeper">Zookeeper</h1>
+
+<h2 class="mume-header" id="1%E5%88%9D%E8%AF%86-zookeeper">1)&#x521D;&#x8BC6; Zookeeper</h2>
+
+<h3 class="mume-header" id="11zookeeper%E6%A6%82%E5%BF%B5">1.1)Zookeeper&#x6982;&#x5FF5;</h3>
+
+<p>&#x2022;Zookeeper &#x662F; Apache Hadoop &#x9879;&#x76EE;&#x4E0B;&#x7684;&#x4E00;&#x4E2A;&#x5B50;&#x9879;&#x76EE;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x6811;&#x5F62;&#x76EE;&#x5F55;&#x670D;&#x52A1;&#x3002;</p>
+<p>&#x2022;Zookeeper &#x7FFB;&#x8BD1;&#x8FC7;&#x6765;&#x5C31;&#x662F; &#x52A8;&#x7269;&#x56ED;&#x7BA1;&#x7406;&#x5458;&#xFF0C;&#x4ED6;&#x662F;&#x7528;&#x6765;&#x7BA1; Hadoop&#xFF08;&#x5927;&#x8C61;&#xFF09;&#x3001;Hive(&#x871C;&#x8702;)&#x3001;Pig(&#x5C0F; &#x732A;)&#x7684;&#x7BA1;&#x7406;&#x5458;&#x3002;&#x7B80;&#x79F0;zk</p>
+<p>&#x2022;Zookeeper &#x662F;&#x4E00;&#x4E2A;&#x5206;&#x5E03;&#x5F0F;&#x7684;&#x3001;&#x5F00;&#x6E90;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x534F;&#x8C03;&#x670D;&#x52A1;&#x3002;</p>
+<p>&#x2022;Zookeeper &#x63D0;&#x4F9B;&#x7684;&#x4E3B;&#x8981;&#x529F;&#x80FD;&#x5305;&#x62EC;&#xFF1A;</p>
+<p>&#x2022;&#x914D;&#x7F6E;&#x7BA1;&#x7406;</p>
+<p>&#x2022;&#x5206;&#x5E03;&#x5F0F;&#x9501;</p>
+<p>&#x2022;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;</p>
+<p><img src="assets%5C1592054580488.png" alt="1592054580488"></p>
+<p><img src="assets%5C1592054603167.png" alt="1592054603167"></p>
+<h2 class="mume-header" id="2zookeeper-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE">2)ZooKeeper &#x5B89;&#x88C5;&#x4E0E;&#x914D;&#x7F6E;</h2>
+
+<h3 class="mume-header" id="21-%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85">2.1) &#x4E0B;&#x8F7D;&#x5B89;&#x88C5;</h3>
+
+<h4 class="mume-header" id="211-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><strong>2.1.1&#x3001;&#x73AF;&#x5883;&#x51C6;&#x5907;</strong></h4>
+
+<p>ZooKeeper&#x670D;&#x52A1;&#x5668;&#x662F;&#x7528;Java&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x5B83;&#x8FD0;&#x884C;&#x5728;JVM&#x4E4B;&#x4E0A;&#x3002;&#x9700;&#x8981;&#x5B89;&#x88C5;JDK 7&#x6216;&#x66F4;&#x9AD8;&#x7248;&#x672C;&#x3002;</p>
+<h4 class="mume-header" id="212-%E4%B8%8A%E4%BC%A0"><strong>2.1.2&#x3001;&#x4E0A;&#x4F20;</strong></h4>
+
+<p>&#x5C06;&#x4E0B;&#x8F7D;&#x7684;ZooKeeper&#x653E;&#x5230;/opt/ZooKeeper&#x76EE;&#x5F55;&#x4E0B;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token comment">#&#x4E0A;&#x4F20;zookeeper alt+p</span>
+put f:/setup/apache-zookeeper-3.5.6-bin.tar.gz
+<span class="token comment">#&#x6253;&#x5F00; opt&#x76EE;&#x5F55;</span>
+<span class="token builtin class-name">cd</span> /opt
+<span class="token comment">#&#x521B;&#x5EFA;zooKeeper&#x76EE;&#x5F55;</span>
+<span class="token function">mkdir</span>  zooKeeper
+<span class="token comment">#&#x5C06;zookeeper&#x5B89;&#x88C5;&#x5305;&#x79FB;&#x52A8;&#x5230; /opt/zooKeeper</span>
+<span class="token function">mv</span> apache-zookeeper-3.5.6-bin.tar.gz /opt/zookeeper/
+</pre><h4 class="mume-header" id="213-%E8%A7%A3%E5%8E%8B"><strong>2.1.3&#x3001;&#x89E3;&#x538B;</strong></h4>
+
+<p>&#x5C06;tar&#x5305;&#x89E3;&#x538B;&#x5230;/opt/zookeeper&#x76EE;&#x5F55;&#x4E0B;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">tar</span> -zxvf apache-ZooKeeper-3.5.6-bin.tar.gz 
+</pre><h3 class="mume-header" id="22-%E9%85%8D%E7%BD%AE%E5%90%AF%E5%8A%A8">2.2) &#x914D;&#x7F6E;&#x542F;&#x52A8;</h3>
+
+<h4 class="mume-header" id="221-%E9%85%8D%E7%BD%AEzoocfg"><strong>2.2.1&#x3001;&#x914D;&#x7F6E;zoo.cfg</strong></h4>
+
+<p>&#x8FDB;&#x5165;&#x5230;conf&#x76EE;&#x5F55;&#x62F7;&#x8D1D;&#x4E00;&#x4E2A;zoo_sample.cfg&#x5E76;&#x5B8C;&#x6210;&#x914D;&#x7F6E;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token comment">#&#x8FDB;&#x5165;&#x5230;conf&#x76EE;&#x5F55;</span>
+<span class="token builtin class-name">cd</span> /opt/zooKeeper/apache-zooKeeper-3.5.6-bin/conf/
+<span class="token comment">#&#x62F7;&#x8D1D;</span>
+<span class="token function">cp</span>  zoo_sample.cfg  zoo.cfg
+</pre><p>&#x4FEE;&#x6539;zoo.cfg</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token comment">#&#x6253;&#x5F00;&#x76EE;&#x5F55;</span>
+<span class="token builtin class-name">cd</span> /opt/zooKeeper/
+<span class="token comment">#&#x521B;&#x5EFA;zooKeeper&#x5B58;&#x50A8;&#x76EE;&#x5F55;</span>
+<span class="token function">mkdir</span>  zkdata
+<span class="token comment">#&#x4FEE;&#x6539;zoo.cfg</span>
+<span class="token function">vim</span> /opt/zooKeeper/apache-zooKeeper-3.5.6-bin/conf/zoo.cfg
+</pre><p><img src="G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%AE%B2%E4%B9%89/assets/1577548250377.png" alt="1577548250377"></p>
+<p>&#x4FEE;&#x6539;&#x5B58;&#x50A8;&#x76EE;&#x5F55;&#xFF1A;dataDir=/opt/zookeeper/zkdata</p>
+<h4 class="mume-header" id="222-%E5%90%AF%E5%8A%A8zookeeper"><strong>2.2.2&#x3001;&#x542F;&#x52A8;ZooKeeper</strong></h4>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token builtin class-name">cd</span> /opt/zooKeeper/apache-zooKeeper-3.5.6-bin/bin/
+<span class="token comment">#&#x542F;&#x52A8;</span>
+ ./zkServer.sh  start
+</pre><p><img src="G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%AE%B2%E4%B9%89/assets/1577548052037.png" alt="1577548052037"></p>
+<p>&#x770B;&#x5230;&#x4E0A;&#x56FE;&#x8868;&#x793A;ZooKeeper&#x6210;&#x529F;&#x542F;&#x52A8;</p>
+<p><strong>3&#x3001;&#x67E5;&#x770B;ZooKeeper&#x72B6;&#x6001;</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">./zkServer.sh status
+</pre><p>zookeeper&#x542F;&#x52A8;&#x6210;&#x529F;&#x3002;standalone&#x4EE3;&#x8868;zk&#x6CA1;&#x6709;&#x642D;&#x5EFA;&#x96C6;&#x7FA4;&#xFF0C;&#x73B0;&#x5728;&#x662F;&#x5355;&#x8282;&#x70B9;</p>
+<p><img src="G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%AE%B2%E4%B9%89/assets/1577548175232.png" alt="1577548175232"></p>
+<p>zookeeper&#x6CA1;&#x6709;&#x542F;&#x52A8;</p>
+<p><img src="G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%AE%B2%E4%B9%89/assets/1577548112773.png" alt="1577548112773"></p>
+<h3 class="mume-header" id></h3>
+
+<h2 class="mume-header" id="3zookeeper-%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C">3)ZooKeeper &#x547D;&#x4EE4;&#x64CD;&#x4F5C;</h2>
+
+<h3 class="mume-header" id="31zookeeper%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B">3.1)Zookeeper&#x547D;&#x4EE4;&#x64CD;&#x4F5C;&#x6570;&#x636E;&#x6A21;&#x578B;</h3>
+
+<p>&#x2022;ZooKeeper &#x662F;&#x4E00;&#x4E2A;&#x6811;&#x5F62;&#x76EE;&#x5F55;&#x670D;&#x52A1;,&#x5176;&#x6570;&#x636E;&#x6A21;&#x578B;&#x548C;Unix&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x76EE;&#x5F55;&#x6811;&#x5F88;&#x7C7B;&#x4F3C;&#xFF0C;&#x62E5;&#x6709;&#x4E00;&#x4E2A;&#x5C42;&#x6B21;&#x5316;&#x7ED3;&#x6784;&#x3002;</p>
+<p>&#x2022;&#x8FD9;&#x91CC;&#x9762;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x88AB;&#x79F0;&#x4E3A;&#xFF1A; ZNode&#xFF0C;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#x90FD;&#x4F1A;&#x4FDD;&#x5B58;&#x81EA;&#x5DF1;&#x7684;&#x6570;&#x636E;&#x548C;&#x8282;&#x70B9;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x2022; &#x8282;&#x70B9;&#x53EF;&#x4EE5;&#x62E5;&#x6709;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x5141;&#x8BB8;&#x5C11;&#x91CF;&#xFF08;1MB&#xFF09;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x5728;&#x8BE5;&#x8282;&#x70B9;&#x4E4B;&#x4E0B;&#x3002;</p>
+<p>&#x2022;&#x8282;&#x70B9;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x56DB;&#x5927;&#x7C7B;&#xFF1A;</p>
+<p>&#x2022;PERSISTENT &#x6301;&#x4E45;&#x5316;&#x8282;&#x70B9;</p>
+<p>&#x2022;EPHEMERAL &#x4E34;&#x65F6;&#x8282;&#x70B9; &#xFF1A;-e</p>
+<p>&#x2022;PERSISTENT_SEQUENTIAL &#x6301;&#x4E45;&#x5316;&#x987A;&#x5E8F;&#x8282;&#x70B9; &#xFF1A;-s</p>
+<p>&#x2022;EPHEMERAL_SEQUENTIAL &#x4E34;&#x65F6;&#x987A;&#x5E8F;&#x8282;&#x70B9;  &#xFF1A;-es</p>
+<p><img src="G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%AE%B2%E4%B9%89/assets/1592054828485.png" alt="1592054828485"></p>
+<p><img src="G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%AE%B2%E4%B9%89/assets/1592054844023.png" alt="1592054844023"></p>
+<h3 class="mume-header" id="32zookeeper%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%91%BD%E4%BB%A4"><strong>3.2)Zookeeper&#x547D;&#x4EE4;&#x64CD;&#x4F5C;&#x670D;&#x52A1;&#x7AEF;&#x547D;&#x4EE4;</strong></h3>
+
+<p>&#x2022;&#x542F;&#x52A8; ZooKeeper &#x670D;&#x52A1;: ./zkServer.sh start</p>
+<p>&#x2022;&#x67E5;&#x770B; ZooKeeper &#x670D;&#x52A1;&#x72B6;&#x6001;: ./zkServer.sh status</p>
+<p>&#x2022;&#x505C;&#x6B62; ZooKeeper &#x670D;&#x52A1;: ./zkServer.sh stop</p>
+<p>&#x2022;&#x91CD;&#x542F; ZooKeeper &#x670D;&#x52A1;: ./zkServer.sh restart</p>
+<p><img src="assets%5C1592055088686.png" alt="1592055088686"></p>
+<h3 class="mume-header" id="33zookeeper%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><strong>3.3)Zookeeper&#x5BA2;&#x6237;&#x7AEF;&#x5E38;&#x7528;&#x547D;&#x4EE4;</strong></h3>
+
+<p>&#x2022;&#x8FDE;&#x63A5;ZooKeeper&#x670D;&#x52A1;&#x7AEF;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">./zkCli.sh &#x2013;server ip:port
+</pre><p>&#x2022;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">quit
+</pre><p>&#x2022;&#x67E5;&#x770B;&#x547D;&#x4EE4;&#x5E2E;&#x52A9;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token builtin class-name">help</span>
+</pre><p>&#x2022;&#x663E;&#x793A;&#x6307;&#x5B9A;&#x76EE;&#x5F55;&#x4E0B;&#x8282;&#x70B9;</p>
+<pre data-role="codeBlock" data-info class="language-"><code>ls &#x76EE;&#x5F55;
+</code></pre><p>&#x2022;&#x521B;&#x5EFA;&#x8282;&#x70B9;</p>
+<pre data-role="codeBlock" data-info class="language-"><code>create /&#x8282;&#x70B9;path value
+</code></pre><p>&#x2022;&#x83B7;&#x53D6;&#x8282;&#x70B9;&#x503C;</p>
+<pre data-role="codeBlock" data-info class="language-"><code>get /&#x8282;&#x70B9;path
+</code></pre><p>&#x2022;&#x8BBE;&#x7F6E;&#x8282;&#x70B9;&#x503C;</p>
+<pre data-role="codeBlock" data-info class="language-"><code>set /&#x8282;&#x70B9;path value
+</code></pre><p>&#x2022;&#x5220;&#x9664;&#x5355;&#x4E2A;&#x8282;&#x70B9;</p>
+<pre data-role="codeBlock" data-info class="language-"><code>delete /&#x8282;&#x70B9;path
+</code></pre><p>&#x2022;&#x5220;&#x9664;&#x5E26;&#x6709;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x8282;&#x70B9;</p>
+<pre data-role="codeBlock" data-info class="language-"><code>deleteall /&#x8282;&#x70B9;path
+</code></pre><p><img src="assets%5C1592055332198.png" alt="1592055332198"></p>
+<p><img src="assets%5C1592055345400.png" alt="1592055345400"></p>
+<h3 class="mume-header" id="34%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%91%BD%E4%BB%A4-%E5%88%9B%E5%BB%BA%E4%B8%B4%E6%97%B6%E6%9C%89%E5%BA%8F%E8%8A%82%E7%82%B9">3.4)&#x5BA2;&#x6237;&#x7AEF;&#x547D;&#x4EE4;-&#x521B;&#x5EFA;&#x4E34;&#x65F6;&#x6709;&#x5E8F;&#x8282;&#x70B9;</h3>
+
+<p>&#x2022;&#x521B;&#x5EFA;&#x4E34;&#x65F6;&#x8282;&#x70B9;</p>
+<pre data-role="codeBlock" data-info class="language-"><code>create -e /&#x8282;&#x70B9;path value
+</code></pre><p>&#x2022;&#x521B;&#x5EFA;&#x987A;&#x5E8F;&#x8282;&#x70B9;</p>
+<pre data-role="codeBlock" data-info class="language-"><code>create -s /&#x8282;&#x70B9;path value
+</code></pre><p>&#x2022;&#x67E5;&#x8BE2;&#x8282;&#x70B9;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;</p>
+<pre data-role="codeBlock" data-info class="language-"><code>ls &#x2013;s /&#x8282;&#x70B9;path 
+</code></pre><p>&#x2022;czxid&#xFF1A;&#x8282;&#x70B9;&#x88AB;&#x521B;&#x5EFA;&#x7684;&#x4E8B;&#x52A1;ID</p>
+<p>&#x2022;ctime: &#x521B;&#x5EFA;&#x65F6;&#x95F4;</p>
+<p>&#x2022;mzxid: &#x6700;&#x540E;&#x4E00;&#x6B21;&#x88AB;&#x66F4;&#x65B0;&#x7684;&#x4E8B;&#x52A1;ID</p>
+<p>&#x2022;mtime: &#x4FEE;&#x6539;&#x65F6;&#x95F4;</p>
+<p>&#x2022;pzxid&#xFF1A;&#x5B50;&#x8282;&#x70B9;&#x5217;&#x8868;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x88AB;&#x66F4;&#x65B0;&#x7684;&#x4E8B;&#x52A1;ID</p>
+<p>&#x2022;cversion&#xFF1A;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x7248;&#x672C;&#x53F7;</p>
+<p>&#x2022;dataversion&#xFF1A;&#x6570;&#x636E;&#x7248;&#x672C;&#x53F7;</p>
+<p>&#x2022;aclversion&#xFF1A;&#x6743;&#x9650;&#x7248;&#x672C;&#x53F7;</p>
+<p>&#x2022;ephemeralOwner&#xFF1A;&#x7528;&#x4E8E;&#x4E34;&#x65F6;&#x8282;&#x70B9;&#xFF0C;&#x4EE3;&#x8868;&#x4E34;&#x65F6;&#x8282;&#x70B9;&#x7684;&#x4E8B;&#x52A1;ID&#xFF0C;&#x5982;&#x679C;&#x4E3A;&#x6301;&#x4E45;&#x8282;&#x70B9;&#x5219;&#x4E3A;0</p>
+<p>&#x2022;dataLength&#xFF1A;&#x8282;&#x70B9;&#x5B58;&#x50A8;&#x7684;&#x6570;&#x636E;&#x7684;&#x957F;&#x5EA6;</p>
+<p>&#x2022;numChildren&#xFF1A;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684;&#x5B50;&#x8282;&#x70B9;&#x4E2A;&#x6570;</p>
+<p><img src="assets%5C1592055462588.png" alt="1592055462588"></p>
+<h2 class="mume-header" id="4zookeeper-javaapi-%E6%93%8D%E4%BD%9C">4)ZooKeeper JavaAPI &#x64CD;&#x4F5C;</h2>
+
+<h3 class="mume-header" id="41urator%E4%BB%8B%E7%BB%8D">4.1)urator&#x4ECB;&#x7ECD;</h3>
+
+<p>&#x2022;Curator &#x662F; Apache ZooKeeper &#x7684;Java&#x5BA2;&#x6237;&#x7AEF;&#x5E93;&#x3002;</p>
+<p>&#x2022;&#x5E38;&#x89C1;&#x7684;ZooKeeper Java API &#xFF1A;</p>
+<p>&#x2022;&#x539F;&#x751F;Java API</p>
+<p>&#x2022;ZkClient</p>
+<p>&#x2022;Curator</p>
+<p>&#x2022;Curator &#x9879;&#x76EE;&#x7684;&#x76EE;&#x6807;&#x662F;&#x7B80;&#x5316; ZooKeeper &#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x2022;Curator &#x6700;&#x521D;&#x662F; Netfix &#x7814;&#x53D1;&#x7684;,&#x540E;&#x6765;&#x6350;&#x732E;&#x4E86; Apache &#x57FA;&#x91D1;&#x4F1A;,&#x76EE;&#x524D;&#x662F; Apache &#x7684;&#x9876;&#x7EA7;&#x9879;&#x76EE;&#x3002;</p>
+<p>&#x2022;&#x5B98;&#x7F51;&#xFF1A;<a href="http://curator.apache.org/">http://curator.apache.org/</a></p>
+<h3 class="mume-header" id="42javaapi%E6%93%8D%E4%BD%9C%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5">4.2)JavaAPI&#x64CD;&#x4F5C;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;</h3>
+
+<p>1&#xFF0C;&#x642D;&#x5EFA;&#x9879;&#x76EE;</p>
+<p>&#x521B;&#x5EFA;&#x9879;&#x76EE;curator-zk</p>
+<p>&#x5F15;&#x5165;pom&#x548C;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;</p>
+<p>&#x8D44;&#x6599;&#x6587;&#x4EF6;&#x5939;&#x4E0B;pom.xml&#x548C;log4j.properties</p>
+<p><img src="assets%5C1592055569716.png" alt="1592055569716"></p>
+<p>2&#x3001;&#x521B;&#x5EFA;&#x6D4B;&#x8BD5;&#x7C7B;&#xFF0C;&#x4F7F;&#x7528;curator&#x8FDE;&#x63A5;zookeeper</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@Before</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testConnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//&#x91CD;&#x8BD5;&#x7B56;&#x7565;</span>
+    <span class="token class-name">RetryPolicy</span> retryPolicy <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">ExponentialBackoffRetry</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//2.&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x5F0F;</span>
+    <span class="token comment">//CuratorFrameworkFactory.builder();</span>
+    client <span class="token operator">=</span> <span class="token class-name">CuratorFrameworkFactory</span><span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">connectString</span><span class="token punctuation">(</span><span class="token string">&quot;192.168.200.130:2181&quot;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">sessionTimeoutMs</span><span class="token punctuation">(</span><span class="token number">60</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">connectionTimeoutMs</span><span class="token punctuation">(</span><span class="token number">15</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">retryPolicy</span><span class="token punctuation">(</span>retryPolicy<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">namespace</span><span class="token punctuation">(</span><span class="token string">&quot;itheima&quot;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x5F00;&#x542F;&#x8FDE;&#x63A5;</span>
+    client<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="43zookeeper-javaapi%E6%93%8D%E4%BD%9C-%E5%88%9B%E5%BB%BA%E8%8A%82%E7%82%B9">4.3)Zookeeper JavaAPI&#x64CD;&#x4F5C;-&#x521B;&#x5EFA;&#x8282;&#x70B9;</h3>
+
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token doc-comment comment">/**
+* &#x521B;&#x5EFA;&#x8282;&#x70B9;&#xFF1A;create &#x6301;&#x4E45; &#x4E34;&#x65F6; &#x987A;&#x5E8F; &#x6570;&#x636E;
+* 1. &#x57FA;&#x672C;&#x521B;&#x5EFA; &#xFF1A;create().forPath(&quot;&quot;)
+* 2. &#x521B;&#x5EFA;&#x8282;&#x70B9; &#x5E26;&#x6709;&#x6570;&#x636E;:create().forPath(&quot;&quot;,data)
+* 3. &#x8BBE;&#x7F6E;&#x8282;&#x70B9;&#x7684;&#x7C7B;&#x578B;&#xFF1A;create().withMode().forPath(&quot;&quot;,data)
+* 4. &#x521B;&#x5EFA;&#x591A;&#x7EA7;&#x8282;&#x70B9;  /app1/p1 &#xFF1A;create().creatingParentsIfNeeded().forPath(&quot;&quot;,data)
+*/</span>
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testCreate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+    <span class="token comment">//2. &#x521B;&#x5EFA;&#x8282;&#x70B9; &#x5E26;&#x6709;&#x6570;&#x636E;</span>
+    <span class="token comment">//&#x5982;&#x679C;&#x521B;&#x5EFA;&#x8282;&#x70B9;&#xFF0C;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x6570;&#x636E;&#xFF0C;&#x5219;&#x9ED8;&#x8BA4;&#x5C06;&#x5F53;&#x524D;&#x5BA2;&#x6237;&#x7AEF;&#x7684;ip&#x4F5C;&#x4E3A;&#x6570;&#x636E;&#x5B58;&#x50A8;</span>
+    <span class="token class-name">String</span> path <span class="token operator">=</span> client<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forPath</span><span class="token punctuation">(</span><span class="token string">&quot;/app2&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;hehe&quot;</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testCreate2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+    <span class="token comment">//1. &#x57FA;&#x672C;&#x521B;&#x5EFA;</span>
+    <span class="token comment">//&#x5982;&#x679C;&#x521B;&#x5EFA;&#x8282;&#x70B9;&#xFF0C;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x6570;&#x636E;&#xFF0C;&#x5219;&#x9ED8;&#x8BA4;&#x5C06;&#x5F53;&#x524D;&#x5BA2;&#x6237;&#x7AEF;&#x7684;ip&#x4F5C;&#x4E3A;&#x6570;&#x636E;&#x5B58;&#x50A8;</span>
+    <span class="token class-name">String</span> path <span class="token operator">=</span> client<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forPath</span><span class="token punctuation">(</span><span class="token string">&quot;/app1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testCreate3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+    <span class="token comment">//3. &#x8BBE;&#x7F6E;&#x8282;&#x70B9;&#x7684;&#x7C7B;&#x578B;</span>
+    <span class="token comment">//&#x9ED8;&#x8BA4;&#x7C7B;&#x578B;&#xFF1A;&#x6301;&#x4E45;&#x5316;</span>
+    <span class="token class-name">String</span> path <span class="token operator">=</span> client<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">withMode</span><span class="token punctuation">(</span><span class="token class-name">CreateMode</span><span class="token punctuation">.</span>EPHEMERAL<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forPath</span><span class="token punctuation">(</span><span class="token string">&quot;/app3&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testCreate4</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+    <span class="token comment">//4. &#x521B;&#x5EFA;&#x591A;&#x7EA7;&#x8282;&#x70B9;  /app1/p1</span>
+    <span class="token comment">//creatingParentsIfNeeded():&#x5982;&#x679C;&#x7236;&#x8282;&#x70B9;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x521B;&#x5EFA;&#x7236;&#x8282;&#x70B9;</span>
+    <span class="token class-name">String</span> path <span class="token operator">=</span> client<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">creatingParentsIfNeeded</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forPath</span><span class="token punctuation">(</span><span class="token string">&quot;/app4/p1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="44zookeeperjavaapi%E6%93%8D%E4%BD%9C-%E6%9F%A5%E8%AF%A2%E8%8A%82%E7%82%B9">4.4)ZookeeperJavaAPI&#x64CD;&#x4F5C;-&#x67E5;&#x8BE2;&#x8282;&#x70B9;</h3>
+
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token doc-comment comment">/**
+* &#x67E5;&#x8BE2;&#x8282;&#x70B9;&#xFF1A;
+* 1. &#x67E5;&#x8BE2;&#x6570;&#x636E;&#xFF1A;get: getData().forPath()
+* 2. &#x67E5;&#x8BE2;&#x5B50;&#x8282;&#x70B9;&#xFF1A; ls: getChildren().forPath()
+* 3. &#x67E5;&#x8BE2;&#x8282;&#x70B9;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#xFF1A;ls -s:getData().storingStatIn(&#x72B6;&#x6001;&#x5BF9;&#x8C61;).forPath()
+*/</span>
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testGet1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+    <span class="token comment">//1. &#x67E5;&#x8BE2;&#x6570;&#x636E;&#xFF1A;get</span>
+    <span class="token keyword keyword-byte">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> client<span class="token punctuation">.</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forPath</span><span class="token punctuation">(</span><span class="token string">&quot;/app1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token keyword keyword-new">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><pre data-role="codeBlock" data-info="JAVA" class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testGet2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 2. &#x67E5;&#x8BE2;&#x5B50;&#x8282;&#x70B9;&#xFF1A; ls</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> path <span class="token operator">=</span> client<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forPath</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testGet3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Stat</span> status <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Stat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//3. &#x67E5;&#x8BE2;&#x8282;&#x70B9;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#xFF1A;ls -s</span>
+    client<span class="token punctuation">.</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">storingStatIn</span><span class="token punctuation">(</span>status<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forPath</span><span class="token punctuation">(</span><span class="token string">&quot;/app1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="45zookeeper-javaapi%E6%93%8D%E4%BD%9C-%E4%BF%AE%E6%94%B9%E8%8A%82%E7%82%B9">4.5)Zookeeper JavaAPI&#x64CD;&#x4F5C;-&#x4FEE;&#x6539;&#x8282;&#x70B9;</h3>
+
+<pre data-role="codeBlock" data-info="JAVA" class="language-java"><span class="token doc-comment comment">/**
+* &#x4FEE;&#x6539;&#x6570;&#x636E;
+* 1. &#x57FA;&#x672C;&#x4FEE;&#x6539;&#x6570;&#x636E;&#xFF1A;setData().forPath()
+* 2. &#x6839;&#x636E;&#x7248;&#x672C;&#x4FEE;&#x6539;: setData().withVersion().forPath()
+* * version &#x662F;&#x901A;&#x8FC7;&#x67E5;&#x8BE2;&#x51FA;&#x6765;&#x7684;&#x3002;&#x76EE;&#x7684;&#x5C31;&#x662F;&#x4E3A;&#x4E86;&#x8BA9;&#x5176;&#x4ED6;&#x5BA2;&#x6237;&#x7AEF;&#x6216;&#x8005;&#x7EBF;&#x7A0B;&#x4E0D;&#x5E72;&#x6270;&#x6211;&#x3002;
+*
+* <span class="token keyword keyword-@throws">@throws</span> <span class="token reference"><span class="token class-name">Exception</span></span>
+*/</span>
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+	client<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forPath</span><span class="token punctuation">(</span><span class="token string">&quot;/app1&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;itcast&quot;</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><pre data-role="codeBlock" data-info="JAVA" class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testSetForVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Stat</span> status <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Stat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//3. &#x67E5;&#x8BE2;&#x8282;&#x70B9;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#xFF1A;ls -s</span>
+    client<span class="token punctuation">.</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">storingStatIn</span><span class="token punctuation">(</span>status<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forPath</span><span class="token punctuation">(</span><span class="token string">&quot;/app1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-int">int</span> version <span class="token operator">=</span> status<span class="token punctuation">.</span><span class="token function">getVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x67E5;&#x8BE2;&#x51FA;&#x6765;&#x7684; 3</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>version<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    client<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">withVersion</span><span class="token punctuation">(</span>version<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forPath</span><span class="token punctuation">(</span><span class="token string">&quot;/app1&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;hehe&quot;</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="46zookeeper-javaapi%E6%93%8D%E4%BD%9C-%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9">4.6)Zookeeper JavaAPI&#x64CD;&#x4F5C;-&#x5220;&#x9664;&#x8282;&#x70B9;</h3>
+
+<pre data-role="codeBlock" data-info="JAVA" class="language-java"><span class="token doc-comment comment">/**
+* &#x5220;&#x9664;&#x8282;&#x70B9;&#xFF1A; delete deleteall
+* 1. &#x5220;&#x9664;&#x5355;&#x4E2A;&#x8282;&#x70B9;:delete().forPath(&quot;/app1&quot;);
+* 2. &#x5220;&#x9664;&#x5E26;&#x6709;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x8282;&#x70B9;:delete().deletingChildrenIfNeeded().forPath(&quot;/app1&quot;);
+* 3. &#x5FC5;&#x987B;&#x6210;&#x529F;&#x7684;&#x5220;&#x9664;:&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x7F51;&#x7EDC;&#x6296;&#x52A8;&#x3002;&#x672C;&#x8D28;&#x5C31;&#x662F;&#x91CD;&#x8BD5;&#x3002;  client.delete().guaranteed().forPath(&quot;/app2&quot;);
+* 4. &#x56DE;&#x8C03;&#xFF1A;inBackground
+* <span class="token keyword keyword-@throws">@throws</span> <span class="token reference"><span class="token class-name">Exception</span></span>
+*/</span>
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testDelete</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 1. &#x5220;&#x9664;&#x5355;&#x4E2A;&#x8282;&#x70B9;</span>
+    client<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forPath</span><span class="token punctuation">(</span><span class="token string">&quot;/app1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testDelete2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+    <span class="token comment">//2. &#x5220;&#x9664;&#x5E26;&#x6709;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x8282;&#x70B9;</span>
+    client<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">deletingChildrenIfNeeded</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forPath</span><span class="token punctuation">(</span><span class="token string">&quot;/app4&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><pre data-role="codeBlock" data-info="JAVA" class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testDelete3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+    <span class="token comment">//3. &#x5FC5;&#x987B;&#x6210;&#x529F;&#x7684;&#x5220;&#x9664;</span>
+    client<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">guaranteed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forPath</span><span class="token punctuation">(</span><span class="token string">&quot;/app2&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testDelete4</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+    <span class="token comment">//4. &#x56DE;&#x8C03;</span>
+    client<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">guaranteed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">inBackground</span><span class="token punctuation">(</span><span class="token keyword keyword-new">new</span> <span class="token class-name">BackgroundCallback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">processResult</span><span class="token punctuation">(</span><span class="token class-name">CuratorFramework</span> client<span class="token punctuation">,</span> <span class="token class-name">CuratorEvent</span> event<span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;&#x6211;&#x88AB;&#x5220;&#x9664;&#x4E86;~&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forPath</span><span class="token punctuation">(</span><span class="token string">&quot;/app1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="47zookeeper-javaapi%E6%93%8D%E4%BD%9C-watch%E7%9B%91%E5%90%AC%E6%A6%82%E8%BF%B0">4.7)Zookeeper JavaAPI&#x64CD;&#x4F5C;-Watch&#x76D1;&#x542C;&#x6982;&#x8FF0;</h3>
+
+<p>&#x2022;ZooKeeper &#x5141;&#x8BB8;&#x7528;&#x6237;&#x5728;&#x6307;&#x5B9A;&#x8282;&#x70B9;&#x4E0A;&#x6CE8;&#x518C;&#x4E00;&#x4E9B;Watcher&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x4E00;&#x4E9B;&#x7279;&#x5B9A;&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x7684;&#x65F6;&#x5019;&#xFF0C;ZooKeeper &#x670D;&#x52A1;&#x7AEF;&#x4F1A;&#x5C06;&#x4E8B;&#x4EF6;&#x901A;&#x77E5;&#x5230;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x4E0A;&#x53BB;&#xFF0C;&#x8BE5;&#x673A;&#x5236;&#x662F; ZooKeeper &#x5B9E;&#x73B0;&#x5206;&#x5E03;&#x5F0F;&#x534F;&#x8C03;&#x670D;&#x52A1;&#x7684;&#x91CD;&#x8981;&#x7279;&#x6027;&#x3002;</p>
+<p>&#x2022;ZooKeeper &#x4E2D;&#x5F15;&#x5165;&#x4E86;Watcher&#x673A;&#x5236;&#x6765;&#x5B9E;&#x73B0;&#x4E86;&#x53D1;&#x5E03;/&#x8BA2;&#x9605;&#x529F;&#x80FD;&#x80FD;&#xFF0C;&#x80FD;&#x591F;&#x8BA9;&#x591A;&#x4E2A;&#x8BA2;&#x9605;&#x8005;&#x540C;&#x65F6;&#x76D1;&#x542C;&#x67D0;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x81EA;&#x8EAB;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x65F6;&#xFF0C;&#x4F1A;&#x901A;&#x77E5;&#x6240;&#x6709;&#x8BA2;&#x9605;&#x8005;&#x3002;</p>
+<p>&#x2022;ZooKeeper &#x539F;&#x751F;&#x652F;&#x6301;&#x901A;&#x8FC7;&#x6CE8;&#x518C;Watcher&#x6765;&#x8FDB;&#x884C;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#xFF0C;&#x4F46;&#x662F;&#x5176;&#x4F7F;&#x7528;&#x5E76;&#x4E0D;&#x662F;&#x7279;&#x522B;&#x65B9;&#x4FBF;</p>
+<p>&#x200B;    &#x9700;&#x8981;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x81EA;&#x5DF1;&#x53CD;&#x590D;&#x6CE8;&#x518C;Watcher&#xFF0C;&#x6BD4;&#x8F83;&#x7E41;&#x7410;&#x3002;</p>
+<p>&#x2022;Curator&#x5F15;&#x5165;&#x4E86; Cache &#x6765;&#x5B9E;&#x73B0;&#x5BF9; ZooKeeper &#x670D;&#x52A1;&#x7AEF;&#x4E8B;&#x4EF6;&#x7684;&#x76D1;&#x542C;&#x3002;</p>
+<p>&#x2022;ZooKeeper&#x63D0;&#x4F9B;&#x4E86;&#x4E09;&#x79CD;Watcher&#xFF1A;</p>
+<p>&#x2022;NodeCache : &#x53EA;&#x662F;&#x76D1;&#x542C;&#x67D0;&#x4E00;&#x4E2A;&#x7279;&#x5B9A;&#x7684;&#x8282;&#x70B9;</p>
+<p>&#x2022;PathChildrenCache : &#x76D1;&#x63A7;&#x4E00;&#x4E2A;ZNode&#x7684;&#x5B50;&#x8282;&#x70B9;.</p>
+<p>&#x2022;TreeCache : &#x53EF;&#x4EE5;&#x76D1;&#x63A7;&#x6574;&#x4E2A;&#x6811;&#x4E0A;&#x7684;&#x6240;&#x6709;&#x8282;&#x70B9;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;PathChildrenCache&#x548C;NodeCache&#x7684;&#x7EC4;&#x5408;</p>
+<p><img src="assets%5C1592057429708.png" alt="1592057429708"></p>
+<h3 class="mume-header" id="48zookeeper-javaapi%E6%93%8D%E4%BD%9C-watch%E7%9B%91%E5%90%AC-nodecache">4.8Zookeeper JavaAPI&#x64CD;&#x4F5C;-Watch&#x76D1;&#x542C;-NodeCache</h3>
+
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token doc-comment comment">/**
+* &#x6F14;&#x793A; NodeCache&#xFF1A;&#x7ED9;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x6CE8;&#x518C;&#x76D1;&#x542C;&#x5668;
+*/</span>
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testNodeCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+    <span class="token comment">//1. &#x521B;&#x5EFA;NodeCache&#x5BF9;&#x8C61;</span>
+    <span class="token keyword keyword-final">final</span> <span class="token class-name">NodeCache</span> nodeCache <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">NodeCache</span><span class="token punctuation">(</span>client<span class="token punctuation">,</span><span class="token string">&quot;/app1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//2. &#x6CE8;&#x518C;&#x76D1;&#x542C;</span>
+   	nodeCache<span class="token punctuation">.</span><span class="token function">getListenable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token keyword keyword-new">new</span> <span class="token class-name">NodeCacheListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">nodeChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;&#x8282;&#x70B9;&#x53D8;&#x5316;&#x4E86;~&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//&#x83B7;&#x53D6;&#x4FEE;&#x6539;&#x8282;&#x70B9;&#x540E;&#x7684;&#x6570;&#x636E;</span>
+            <span class="token keyword keyword-byte">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> nodeCache<span class="token punctuation">.</span><span class="token function">getCurrentData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token keyword keyword-new">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    	<span class="token comment">//3. &#x5F00;&#x542F;&#x76D1;&#x542C;.&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E3A;true&#xFF0C;&#x5219;&#x5F00;&#x542F;&#x76D1;&#x542C;&#x662F;&#xFF0C;&#x52A0;&#x8F7D;&#x7F13;&#x51B2;&#x6570;&#x636E;</span>
+    	nodeCache<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    	<span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="49zookeeper-javaapi%E6%93%8D%E4%BD%9C-watch%E7%9B%91%E5%90%AC-pathchildrencache"><strong>4.9)Zookeeper</strong> JavaAPI&#x64CD;&#x4F5C;-Watch&#x76D1;&#x542C;-PathChildrenCache</h3>
+
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testPathChildrenCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+    <span class="token comment">//1.&#x521B;&#x5EFA;&#x76D1;&#x542C;&#x5BF9;&#x8C61;</span>
+    <span class="token class-name">PathChildrenCache</span> pathChildrenCache <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">PathChildrenCache</span><span class="token punctuation">(</span>client<span class="token punctuation">,</span><span class="token string">&quot;/app2&quot;</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//2. &#x7ED1;&#x5B9A;&#x76D1;&#x542C;&#x5668;</span>
+    pathChildrenCache<span class="token punctuation">.</span><span class="token function">getListenable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token keyword keyword-new">new</span> <span class="token class-name">PathChildrenCacheListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    			<span class="token annotation punctuation">@Override</span>
+        <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">childEvent</span><span class="token punctuation">(</span><span class="token class-name">CuratorFramework</span> client<span class="token punctuation">,</span> <span class="token class-name">PathChildrenCacheEvent</span> event<span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;&#x5B50;&#x8282;&#x70B9;&#x53D8;&#x5316;&#x4E86;~&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//&#x76D1;&#x542C;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x6570;&#x636E;&#x53D8;&#x66F4;&#xFF0C;&#x5E76;&#x4E14;&#x62FF;&#x5230;&#x53D8;&#x66F4;&#x540E;&#x7684;&#x6570;&#x636E;</span>
+            <span class="token comment">//1.&#x83B7;&#x53D6;&#x7C7B;&#x578B;</span>
+            <span class="token class-name">PathChildrenCacheEvent<span class="token punctuation">.</span>Type</span> type <span class="token operator">=</span> event<span class="token punctuation">.</span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//2.&#x5224;&#x65AD;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x662F;update</span>
+            <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span>type<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token class-name">PathChildrenCacheEvent<span class="token punctuation">.</span>Type</span><span class="token punctuation">.</span>CHILD_UPDATED<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;&#x6570;&#x636E;&#x53D8;&#x4E86;&#xFF01;&#xFF01;&#xFF01;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword keyword-byte">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> event<span class="token punctuation">.</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token keyword keyword-new">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//3. &#x5F00;&#x542F;</span>
+    pathChildrenCache<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="410zookeeper-javaapi%E6%93%8D%E4%BD%9C-watch%E7%9B%91%E5%90%AC-treecache"><strong>4.10)Zookeeper</strong> JavaAPI&#x64CD;&#x4F5C;-Watch&#x76D1;&#x542C;-TreeCache</h3>
+
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token doc-comment comment">/**
+* &#x6F14;&#x793A; TreeCache&#xFF1A;&#x76D1;&#x542C;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x81EA;&#x5DF1;&#x548C;&#x6240;&#x6709;&#x5B50;&#x8282;&#x70B9;&#x4EEC;
+*/</span>
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testTreeCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+    <span class="token comment">//1. &#x521B;&#x5EFA;&#x76D1;&#x542C;&#x5668;</span>
+    <span class="token class-name">TreeCache</span> treeCache <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">TreeCache</span><span class="token punctuation">(</span>client<span class="token punctuation">,</span><span class="token string">&quot;/app2&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//2. &#x6CE8;&#x518C;&#x76D1;&#x542C;</span>
+    treeCache<span class="token punctuation">.</span><span class="token function">getListenable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token keyword keyword-new">new</span> <span class="token class-name">TreeCacheListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">childEvent</span><span class="token punctuation">(</span><span class="token class-name">CuratorFramework</span> client<span class="token punctuation">,</span> <span class="token class-name">TreeCacheEvent</span> event<span class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;&#x8282;&#x70B9;&#x53D8;&#x5316;&#x4E86;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//3. &#x5F00;&#x542F;</span>
+    treeCache<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="411zookeeper%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E6%A6%82%E5%BF%B5">4.11)Zookeeper&#x5206;&#x5E03;&#x5F0F;&#x9501;-&#x6982;&#x5FF5;</h3>
+
+<p>&#x2022;&#x5728;&#x6211;&#x4EEC;&#x8FDB;&#x884C;&#x5355;&#x673A;&#x5E94;&#x7528;&#x5F00;&#x53D1;&#xFF0C;&#x6D89;&#x53CA;&#x5E76;&#x53D1;&#x540C;&#x6B65;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x5F80;&#x5F80;&#x91C7;&#x7528;synchronized&#x6216;&#x8005;Lock&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x89E3;&#x51B3;&#x591A;&#x7EBF;&#x7A0B;&#x95F4;&#x7684;&#x4EE3;&#x7801;&#x540C;&#x6B65;&#x95EE;&#x9898;&#xFF0C;&#x8FD9;&#x65F6;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x8FD0;&#x884C;&#x90FD;&#x662F;&#x5728;&#x540C;&#x4E00;&#x4E2A;JVM&#x4E4B;&#x4E0B;&#xFF0C;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x2022;&#x4F46;&#x5F53;&#x6211;&#x4EEC;&#x7684;&#x5E94;&#x7528;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x96C6;&#x7FA4;&#x5DE5;&#x4F5C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5C5E;&#x4E8E;&#x591A;JVM&#x4E0B;&#x7684;&#x5DE5;&#x4F5C;&#x73AF;&#x5883;&#xFF0C;&#x8DE8;JVM&#x4E4B;&#x95F4;&#x5DF2;&#x7ECF;&#x65E0;&#x6CD5;&#x901A;&#x8FC7;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x9501;&#x89E3;&#x51B3;&#x540C;&#x6B65;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x2022;&#x90A3;&#x4E48;&#x5C31;&#x9700;&#x8981;&#x4E00;&#x79CD;&#x66F4;&#x52A0;&#x9AD8;&#x7EA7;&#x7684;&#x9501;&#x673A;&#x5236;&#xFF0C;&#x6765;&#x5904;&#x7406;&#x79CD;&#x8DE8;&#x673A;&#x5668;&#x7684;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x540C;&#x6B65;&#x95EE;&#x9898;&#x2014;&#x2014;&#x8FD9;&#x5C31;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x9501;&#x3002;</p>
+<p><img src="assets%5C1592057871141.png" alt="1592057871141"></p>
+<h3 class="mume-header" id="412zookeeper-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-zookeeper%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%8E%9F%E7%90%86"><strong>4.12)Zookeeper</strong> &#x5206;&#x5E03;&#x5F0F;&#x9501;-zookeeper&#x5206;&#x5E03;&#x5F0F;&#x9501;&#x539F;&#x7406;</h3>
+
+<p>&#x2022;&#x6838;&#x5FC3;&#x601D;&#x60F3;&#xFF1A;&#x5F53;&#x5BA2;&#x6237;&#x7AEF;&#x8981;&#x83B7;&#x53D6;&#x9501;&#xFF0C;&#x5219;&#x521B;&#x5EFA;&#x8282;&#x70B9;&#xFF0C;&#x4F7F;&#x7528;&#x5B8C;&#x9501;&#xFF0C;&#x5219;&#x5220;&#x9664;&#x8BE5;&#x8282;&#x70B9;&#x3002;</p>
+<p>1.&#x5BA2;&#x6237;&#x7AEF;&#x83B7;&#x53D6;&#x9501;&#x65F6;&#xFF0C;&#x5728;lock&#x8282;&#x70B9;&#x4E0B;&#x521B;&#x5EFA;&#x4E34;&#x65F6;&#x987A;&#x5E8F;&#x8282;&#x70B9;&#x3002;</p>
+<p>2.&#x7136;&#x540E;&#x83B7;&#x53D6;lock&#x4E0B;&#x9762;&#x7684;&#x6240;&#x6709;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x83B7;&#x53D6;&#x5230;&#x6240;&#x6709;&#x7684;&#x5B50;&#x8282;&#x70B9;&#x4E4B;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x53D1;&#x73B0;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x7684;&#x5B50;&#x8282;&#x70B9;&#x5E8F;&#x53F7;&#x6700;&#x5C0F;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x8BA4;&#x4E3A;&#x8BE5;&#x5BA2;&#x6237;&#x7AEF;&#x83B7;&#x53D6;&#x5230;&#x4E86;&#x9501;&#x3002;&#x4F7F;&#x7528;&#x5B8C;&#x9501;&#x540E;&#xFF0C;&#x5C06;&#x8BE5;&#x8282;&#x70B9;&#x5220;&#x9664;&#x3002;</p>
+<p>3.&#x5982;&#x679C;&#x53D1;&#x73B0;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x7684;&#x8282;&#x70B9;&#x5E76;&#x975E;lock&#x6240;&#x6709;&#x5B50;&#x8282;&#x70B9;&#x4E2D;&#x6700;&#x5C0F;&#x7684;&#xFF0C;&#x8BF4;&#x660E;&#x81EA;&#x5DF1;&#x8FD8;&#x6CA1;&#x6709;&#x83B7;&#x53D6;&#x5230;&#x9501;&#xFF0C;&#x6B64;&#x65F6;&#x5BA2;&#x6237;&#x7AEF;&#x9700;&#x8981;&#x627E;&#x5230;&#x6BD4;&#x81EA;&#x5DF1;&#x5C0F;&#x7684;&#x90A3;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x540C;&#x65F6;&#x5BF9;&#x5176;&#x6CE8;&#x518C;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#xFF0C;&#x76D1;&#x542C;&#x5220;&#x9664;&#x4E8B;&#x4EF6;&#x3002;</p>
+<p>4.&#x5982;&#x679C;&#x53D1;&#x73B0;&#x6BD4;&#x81EA;&#x5DF1;&#x5C0F;&#x7684;&#x90A3;&#x4E2A;&#x8282;&#x70B9;&#x88AB;&#x5220;&#x9664;&#xFF0C;&#x5219;&#x5BA2;&#x6237;&#x7AEF;&#x7684;</p>
+<p>&#x200B;    Watcher&#x4F1A;&#x6536;&#x5230;&#x76F8;&#x5E94;&#x901A;&#x77E5;&#xFF0C;&#x6B64;&#x65F6;&#x518D;&#x6B21;&#x5224;&#x65AD;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x7684;&#x8282;&#x70B9;</p>
+<p>&#x200B;    &#x662F;&#x5426;&#x662F;lock&#x5B50;&#x8282;&#x70B9;&#x4E2D;&#x5E8F;&#x53F7;&#x6700;&#x5C0F;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5219;&#x83B7;&#x53D6;&#x5230;&#x4E86;&#x9501;&#xFF0C;</p>
+<p>&#x200B;    &#x5982;&#x679C;&#x4E0D;&#x662F;&#x5219;&#x91CD;&#x590D;&#x4EE5;&#x4E0A;&#x6B65;&#x9AA4;&#x7EE7;&#x7EED;&#x83B7;&#x53D6;&#x5230;&#x6BD4;&#x81EA;&#x5DF1;&#x5C0F;&#x7684;&#x4E00;&#x4E2A;&#x8282;&#x70B9;</p>
+<p>&#x200B;    &#x5E76;&#x6CE8;&#x518C;&#x76D1;&#x542C;&#x3002;</p>
+<p><img src="assets%5C1592057925831.png" alt="1592057925831"></p>
+<h3 class="mume-header" id="413zookeeper-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E6%A8%A1%E6%8B%9F12306%E5%94%AE%E7%A5%A8%E6%A1%88%E4%BE%8B"><strong>4.13)Zookeeper</strong> &#x5206;&#x5E03;&#x5F0F;&#x9501;-&#x6A21;&#x62DF;12306&#x552E;&#x7968;&#x6848;&#x4F8B;</h3>
+
+<p><strong>Curator&#x5B9E;&#x73B0;&#x5206;&#x5E03;&#x5F0F;&#x9501;API</strong></p>
+<ul>
+<li>
+<p>&#x5728;Curator&#x4E2D;&#x6709;&#x4E94;&#x79CD;&#x9501;&#x65B9;&#x6848;&#xFF1A;</p>
+<ul>
+<li>
+<p>InterProcessSemaphoreMutex&#xFF1A;&#x5206;&#x5E03;&#x5F0F;&#x6392;&#x5B83;&#x9501;&#xFF08;&#x975E;&#x53EF;&#x91CD;&#x5165;&#x9501;&#xFF09;</p>
+</li>
+<li>
+<p>InterProcessMutex&#xFF1A;&#x5206;&#x5E03;&#x5F0F;&#x53EF;&#x91CD;&#x5165;&#x6392;&#x5B83;&#x9501;</p>
+</li>
+<li>
+<p>InterProcessReadWriteLock&#xFF1A;&#x5206;&#x5E03;&#x5F0F;&#x8BFB;&#x5199;&#x9501;</p>
+</li>
+<li>
+<p>InterProcessMultiLock&#xFF1A;&#x5C06;&#x591A;&#x4E2A;&#x9501;&#x4F5C;&#x4E3A;&#x5355;&#x4E2A;&#x5B9E;&#x4F53;&#x7BA1;&#x7406;&#x7684;&#x5BB9;&#x5668;</p>
+</li>
+<li>
+<p>InterProcessSemaphoreV2&#xFF1A;&#x5171;&#x4EAB;&#x4FE1;&#x53F7;&#x91CF;</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="assets%5C1592058017457.png" alt="1592058017457"></p>
+<p>1,&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x52A0;&#x9501;&#x8BBE;&#x7F6E;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Ticket12306</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">Runnable</span><span class="token punctuation">{</span>
+    <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-int">int</span> tickets <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span><span class="token comment">//&#x6570;&#x636E;&#x5E93;&#x7684;&#x7968;&#x6570;</span>
+    <span class="token keyword keyword-private">private</span> <span class="token class-name">InterProcessMutex</span> lock <span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-while">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment">//&#x83B7;&#x53D6;&#x9501;</span>
+            <span class="token keyword keyword-try">try</span> <span class="token punctuation">{</span>
+            lock<span class="token punctuation">.</span><span class="token function">acquire</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>SECONDS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span>tickets <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">&quot;:&quot;</span><span class="token operator">+</span>tickets<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    tickets<span class="token operator">--</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span> <span class="token keyword keyword-catch">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword keyword-finally">finally</span> <span class="token punctuation">{</span>
+                <span class="token comment">//&#x91CA;&#x653E;&#x9501;</span>
+                <span class="token keyword keyword-try">try</span> <span class="token punctuation">{</span>
+                    lock<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword keyword-catch">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><p>2,&#x521B;&#x5EFA;&#x8FDE;&#x63A5;&#xFF0C;&#x5E76;&#x4E14;&#x521D;&#x59CB;&#x5316;&#x9501;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-public">public</span> <span class="token class-name">Ticket12306</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">//&#x91CD;&#x8BD5;&#x7B56;&#x7565;</span>
+    <span class="token class-name">RetryPolicy</span> retryPolicy <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">ExponentialBackoffRetry</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//2.&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x5F0F;</span>
+    <span class="token comment">//CuratorFrameworkFactory.builder();</span>
+    <span class="token class-name">CuratorFramework</span> client <span class="token operator">=</span> <span class="token class-name">CuratorFrameworkFactory</span><span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">connectString</span><span class="token punctuation">(</span><span class="token string">&quot;192.168.149.135:2181&quot;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">sessionTimeoutMs</span><span class="token punctuation">(</span><span class="token number">60</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">connectionTimeoutMs</span><span class="token punctuation">(</span><span class="token number">15</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">retryPolicy</span><span class="token punctuation">(</span>retryPolicy<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x5F00;&#x542F;&#x8FDE;&#x63A5;</span>
+    client<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    lock <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">InterProcessMutex</span><span class="token punctuation">(</span>client<span class="token punctuation">,</span><span class="token string">&quot;/lock&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p>3,&#x8FD0;&#x884C;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">LockTest</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Ticket12306</span> ticket12306 <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Ticket12306</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//&#x521B;&#x5EFA;&#x5BA2;&#x6237;&#x7AEF;</span>
+        <span class="token class-name">Thread</span> t1 <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span>ticket12306<span class="token punctuation">,</span><span class="token string">&quot;&#x643A;&#x7A0B;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Thread</span> t2 <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span>ticket12306<span class="token punctuation">,</span><span class="token string">&quot;&#x98DE;&#x732A;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        t1<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        t2<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h2 class="mume-header" id="5zookeeper-%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA">5)ZooKeeper &#x96C6;&#x7FA4;&#x642D;&#x5EFA;</h2>
+
+<h3 class="mume-header" id="51zookeeper%E9%9B%86%E7%BE%A4%E4%BB%8B%E7%BB%8D"><strong>5.1)Zookeeper</strong>&#x96C6;&#x7FA4;&#x4ECB;&#x7ECD;</h3>
+
+<p>Leader&#x9009;&#x4E3E;&#xFF1A;</p>
+<p>&#x2022;Serverid&#xFF1A;&#x670D;&#x52A1;&#x5668;ID</p>
+<p>&#x6BD4;&#x5982;&#x6709;&#x4E09;&#x53F0;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x7F16;&#x53F7;&#x5206;&#x522B;&#x662F;1,2,3&#x3002;</p>
+<p>&#x7F16;&#x53F7;&#x8D8A;&#x5927;&#x5728;&#x9009;&#x62E9;&#x7B97;&#x6CD5;&#x4E2D;&#x7684;&#x6743;&#x91CD;&#x8D8A;&#x5927;&#x3002;</p>
+<p>&#x2022;Zxid&#xFF1A;&#x6570;&#x636E;ID</p>
+<p>&#x670D;&#x52A1;&#x5668;&#x4E2D;&#x5B58;&#x653E;&#x7684;&#x6700;&#x5927;&#x6570;&#x636E;ID.&#x503C;&#x8D8A;&#x5927;&#x8BF4;&#x660E;&#x6570;&#x636E;  &#x8D8A;&#x65B0;&#xFF0C;&#x5728;&#x9009;&#x4E3E;&#x7B97;&#x6CD5;&#x4E2D;&#x6570;&#x636E;&#x8D8A;&#x65B0;&#x6743;&#x91CD;&#x8D8A;&#x5927;&#x3002;</p>
+<p>&#x2022;&#x5728;Leader&#x9009;&#x4E3E;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x67D0;&#x53F0;ZooKeeper</p>
+<p>&#x200B;    &#x83B7;&#x5F97;&#x4E86;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#x7684;&#x9009;&#x7968;&#xFF0C;</p>
+<p>&#x200B;    &#x5219;&#x6B64;ZooKeeper&#x5C31;&#x53EF;&#x4EE5;&#x6210;&#x4E3A;Leader&#x4E86;&#x3002;</p>
+<h3 class="mume-header" id="52%E6%90%AD%E5%BB%BA%E8%A6%81%E6%B1%82">5.2)&#x642D;&#x5EFA;&#x8981;&#x6C42;</h3>
+
+<p>&#x771F;&#x5B9E;&#x7684;&#x96C6;&#x7FA4;&#x662F;&#x9700;&#x8981;&#x90E8;&#x7F72;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x6211;&#x4EEC;&#x6D4B;&#x8BD5;&#x65F6;&#x540C;&#x65F6;&#x542F;&#x52A8;&#x5F88;&#x591A;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#x5185;&#x5B58;&#x4F1A;&#x5403;&#x4E0D;&#x6D88;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x4F1A;&#x642D;&#x5EFA;<strong>&#x4F2A;&#x96C6;&#x7FA4;</strong>&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x628A;&#x6240;&#x6709;&#x7684;&#x670D;&#x52A1;&#x90FD;&#x642D;&#x5EFA;&#x5728;&#x4E00;&#x53F0;&#x865A;&#x62DF;&#x673A;&#x4E0A;&#xFF0C;&#x7528;&#x7AEF;&#x53E3;&#x8FDB;&#x884C;&#x533A;&#x5206;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x8981;&#x6C42;&#x642D;&#x5EFA;&#x4E00;&#x4E2A;&#x4E09;&#x4E2A;&#x8282;&#x70B9;&#x7684;Zookeeper&#x96C6;&#x7FA4;&#xFF08;&#x4F2A;&#x96C6;&#x7FA4;&#xFF09;&#x3002;</p>
+<h3 class="mume-header" id="53%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><strong>5.3)&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</strong></h3>
+
+<p>&#x91CD;&#x65B0;&#x90E8;&#x7F72;&#x4E00;&#x53F0;&#x865A;&#x62DF;&#x673A;&#x4F5C;&#x4E3A;&#x6211;&#x4EEC;&#x642D;&#x5EFA;&#x96C6;&#x7FA4;&#x7684;&#x6D4B;&#x8BD5;&#x670D;&#x52A1;&#x5668;&#x3002;</p>
+<p>&#xFF08;1&#xFF09;&#x5B89;&#x88C5;JDK  &#x3010;&#x6B64;&#x6B65;&#x9AA4;&#x7701;&#x7565;&#x3011;&#x3002;</p>
+<p>&#xFF08;2&#xFF09;Zookeeper&#x538B;&#x7F29;&#x5305;&#x4E0A;&#x4F20;&#x5230;&#x670D;&#x52A1;&#x5668;<br>
+&#xFF08;3&#xFF09;&#x5C06;Zookeeper&#x89E3;&#x538B; &#xFF0C;&#x5EFA;&#x7ACB;/usr/local/zookeeper-cluster&#x76EE;&#x5F55;&#xFF0C;&#x5C06;&#x89E3;&#x538B;&#x540E;&#x7684;Zookeeper&#x590D;&#x5236;&#x5230;&#x4EE5;&#x4E0B;&#x4E09;&#x4E2A;&#x76EE;&#x5F55;</p>
+<p>/usr/local/zookeeper-cluster/zookeeper-1</p>
+<p>/usr/local/zookeeper-cluster/zookeeper-2</p>
+<p>/usr/local/zookeeper-cluster/zookeeper-3</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># mkdir /usr/local/zookeeper-cluster</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># cp -r  apache-zookeeper-3.5.6-bin /usr/local/zookeeper-cluster/zookeeper-1</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># cp -r  apache-zookeeper-3.5.6-bin /usr/local/zookeeper-cluster/zookeeper-2</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># cp -r  apache-zookeeper-3.5.6-bin /usr/local/zookeeper-cluster/zookeeper-3</span>
+</pre><p>&#xFF08;4&#xFF09;&#x521B;&#x5EFA;data&#x76EE;&#x5F55; &#xFF0C;&#x5E76;&#x4E14;&#x5C06; conf&#x4E0B;zoo_sample.cfg &#x6587;&#x4EF6;&#x6539;&#x540D;&#x4E3A; zoo.cfg</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">mkdir</span> /usr/local/zookeeper-cluster/zookeeper-1/data
+<span class="token function">mkdir</span> /usr/local/zookeeper-cluster/zookeeper-2/data
+<span class="token function">mkdir</span> /usr/local/zookeeper-cluster/zookeeper-3/data
+
+<span class="token function">mv</span>  /usr/local/zookeeper-cluster/zookeeper-1/conf/zoo_sample.cfg  /usr/local/zookeeper-cluster/zookeeper-1/conf/zoo.cfg
+<span class="token function">mv</span>  /usr/local/zookeeper-cluster/zookeeper-2/conf/zoo_sample.cfg  /usr/local/zookeeper-cluster/zookeeper-2/conf/zoo.cfg
+<span class="token function">mv</span>  /usr/local/zookeeper-cluster/zookeeper-3/conf/zoo_sample.cfg  /usr/local/zookeeper-cluster/zookeeper-3/conf/zoo.cfg
+</pre><p>&#xFF08;5&#xFF09; &#x914D;&#x7F6E;&#x6BCF;&#x4E00;&#x4E2A;Zookeeper &#x7684;dataDir &#x548C; clientPort &#x5206;&#x522B;&#x4E3A;2181  2182  2183</p>
+<p>&#x4FEE;&#x6539;/usr/local/zookeeper-cluster/zookeeper-1/conf/zoo.cfg</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">vim</span> /usr/local/zookeeper-cluster/zookeeper-1/conf/zoo.cfg
+
+<span class="token assign-left variable">clientPort</span><span class="token operator">=</span><span class="token number">2181</span>
+<span class="token assign-left variable">dataDir</span><span class="token operator">=</span>/usr/local/zookeeper-cluster/zookeeper-1/data
+</pre><p>&#x4FEE;&#x6539;/usr/local/zookeeper-cluster/zookeeper-2/conf/zoo.cfg</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">vim</span> /usr/local/zookeeper-cluster/zookeeper-2/conf/zoo.cfg
+
+<span class="token assign-left variable">clientPort</span><span class="token operator">=</span><span class="token number">2182</span>
+<span class="token assign-left variable">dataDir</span><span class="token operator">=</span>/usr/local/zookeeper-cluster/zookeeper-2/data
+</pre><p>&#x4FEE;&#x6539;/usr/local/zookeeper-cluster/zookeeper-3/conf/zoo.cfg</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">vim</span> /usr/local/zookeeper-cluster/zookeeper-3/conf/zoo.cfg
+
+<span class="token assign-left variable">clientPort</span><span class="token operator">=</span><span class="token number">2183</span>
+<span class="token assign-left variable">dataDir</span><span class="token operator">=</span>/usr/local/zookeeper-cluster/zookeeper-3/data
+</pre><h3 class="mume-header" id="54%E9%85%8D%E7%BD%AE%E9%9B%86%E7%BE%A4"><strong>5.4)&#x914D;&#x7F6E;&#x96C6;&#x7FA4;</strong></h3>
+
+<p>&#xFF08;1&#xFF09;&#x5728;&#x6BCF;&#x4E2A;zookeeper&#x7684; data &#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; myid &#x6587;&#x4EF6;&#xFF0C;&#x5185;&#x5BB9;&#x5206;&#x522B;&#x662F;1&#x3001;2&#x3001;3 &#x3002;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5C31;&#x662F;&#x8BB0;&#x5F55;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x7684;ID</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token builtin class-name">echo</span> <span class="token number">1</span> <span class="token operator">&gt;</span>/usr/local/zookeeper-cluster/zookeeper-1/data/myid
+<span class="token builtin class-name">echo</span> <span class="token number">2</span> <span class="token operator">&gt;</span>/usr/local/zookeeper-cluster/zookeeper-2/data/myid
+<span class="token builtin class-name">echo</span> <span class="token number">3</span> <span class="token operator">&gt;</span>/usr/local/zookeeper-cluster/zookeeper-3/data/myid
+</pre><p>&#xFF08;2&#xFF09;&#x5728;&#x6BCF;&#x4E00;&#x4E2A;zookeeper &#x7684; zoo.cfg&#x914D;&#x7F6E;&#x5BA2;&#x6237;&#x7AEF;&#x8BBF;&#x95EE;&#x7AEF;&#x53E3;&#xFF08;clientPort&#xFF09;&#x548C;&#x96C6;&#x7FA4;&#x670D;&#x52A1;&#x5668;IP&#x5217;&#x8868;&#x3002;</p>
+<p>&#x96C6;&#x7FA4;&#x670D;&#x52A1;&#x5668;IP&#x5217;&#x8868;&#x5982;&#x4E0B;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">vim</span> /usr/local/zookeeper-cluster/zookeeper-1/conf/zoo.cfg
+<span class="token function">vim</span> /usr/local/zookeeper-cluster/zookeeper-2/conf/zoo.cfg
+<span class="token function">vim</span> /usr/local/zookeeper-cluster/zookeeper-3/conf/zoo.cfg
+
+server.1<span class="token operator">=</span><span class="token number">192.168</span>.149.135:2881:3881
+server.2<span class="token operator">=</span><span class="token number">192.168</span>.149.135:2882:3882
+server.3<span class="token operator">=</span><span class="token number">192.168</span>.149.135:2883:3883
+</pre><p>&#x89E3;&#x91CA;&#xFF1A;server.&#x670D;&#x52A1;&#x5668;ID=&#x670D;&#x52A1;&#x5668;IP&#x5730;&#x5740;&#xFF1A;&#x670D;&#x52A1;&#x5668;&#x4E4B;&#x95F4;&#x901A;&#x4FE1;&#x7AEF;&#x53E3;&#xFF1A;&#x670D;&#x52A1;&#x5668;&#x4E4B;&#x95F4;&#x6295;&#x7968;&#x9009;&#x4E3E;&#x7AEF;&#x53E3;</p>
+<h3 class="mume-header" id="55%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><strong>5.5)&#x542F;&#x52A8;&#x96C6;&#x7FA4;</strong></h3>
+
+<p>&#x542F;&#x52A8;&#x96C6;&#x7FA4;&#x5C31;&#x662F;&#x5206;&#x522B;&#x542F;&#x52A8;&#x6BCF;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">/usr/local/zookeeper-cluster/zookeeper-1/bin/zkServer.sh start
+/usr/local/zookeeper-cluster/zookeeper-2/bin/zkServer.sh start
+/usr/local/zookeeper-cluster/zookeeper-3/bin/zkServer.sh start
+</pre><p><img src="G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps11.jpg" alt="img"></p>
+<p>&#x542F;&#x52A8;&#x540E;&#x6211;&#x4EEC;&#x67E5;&#x8BE2;&#x4E00;&#x4E0B;&#x6BCF;&#x4E2A;&#x5B9E;&#x4F8B;&#x7684;&#x8FD0;&#x884C;&#x72B6;&#x6001;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">/usr/local/zookeeper-cluster/zookeeper-1/bin/zkServer.sh status
+/usr/local/zookeeper-cluster/zookeeper-2/bin/zkServer.sh status
+/usr/local/zookeeper-cluster/zookeeper-3/bin/zkServer.sh status
+</pre><p>&#x5148;&#x67E5;&#x8BE2;&#x7B2C;&#x4E00;&#x4E2A;&#x670D;&#x52A1;</p>
+<p><img src="G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps12.jpg" alt="img"></p>
+<p>Mode&#x4E3A;follower&#x8868;&#x793A;&#x662F;<strong>&#x8DDF;&#x968F;&#x8005;</strong>&#xFF08;&#x4ECE;&#xFF09;</p>
+<p>&#x518D;&#x67E5;&#x8BE2;&#x7B2C;&#x4E8C;&#x4E2A;&#x670D;&#x52A1;Mod &#x4E3A;leader&#x8868;&#x793A;&#x662F;<strong>&#x9886;&#x5BFC;&#x8005;</strong>&#xFF08;&#x4E3B;&#xFF09;</p>
+<p><img src="G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps13.jpg" alt="img"></p>
+<p>&#x67E5;&#x8BE2;&#x7B2C;&#x4E09;&#x4E2A;&#x4E3A;&#x8DDF;&#x968F;&#x8005;&#xFF08;&#x4ECE;&#xFF09;</p>
+<p><img src="G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps14.jpg" alt="img"></p>
+<h3 class="mume-header" id="56%E6%A8%A1%E6%8B%9F%E9%9B%86%E7%BE%A4%E5%BC%82%E5%B8%B8"><strong>5.6)&#x6A21;&#x62DF;&#x96C6;&#x7FA4;&#x5F02;&#x5E38;</strong></h3>
+
+<p>&#xFF08;1&#xFF09;&#x9996;&#x5148;&#x6211;&#x4EEC;&#x5148;&#x6D4B;&#x8BD5;&#x5982;&#x679C;&#x662F;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x6302;&#x6389;&#xFF0C;&#x4F1A;&#x600E;&#x4E48;&#x6837;</p>
+<p>&#x628A;3&#x53F7;&#x670D;&#x52A1;&#x5668;&#x505C;&#x6389;&#xFF0C;&#x89C2;&#x5BDF;1&#x53F7;&#x548C;2&#x53F7;&#xFF0C;&#x53D1;&#x73B0;&#x72B6;&#x6001;&#x5E76;&#x6CA1;&#x6709;&#x53D8;&#x5316;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">/usr/local/zookeeper-cluster/zookeeper-3/bin/zkServer.sh stop
+
+/usr/local/zookeeper-cluster/zookeeper-1/bin/zkServer.sh status
+/usr/local/zookeeper-cluster/zookeeper-2/bin/zkServer.sh status
+</pre><p><img src="G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps15.jpg" alt="img"></p>
+<p>&#x7531;&#x6B64;&#x5F97;&#x51FA;&#x7ED3;&#x8BBA;&#xFF0C;3&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x96C6;&#x7FA4;&#xFF0C;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x6302;&#x6389;&#xFF0C;&#x96C6;&#x7FA4;&#x6B63;&#x5E38;</p>
+<p>&#xFF08;2&#xFF09;&#x6211;&#x4EEC;&#x518D;&#x628A;1&#x53F7;&#x670D;&#x52A1;&#x5668;&#xFF08;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#xFF09;&#x4E5F;&#x505C;&#x6389;&#xFF0C;&#x67E5;&#x770B;2&#x53F7;&#xFF08;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#xFF09;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x53D1;&#x73B0;&#x5DF2;&#x7ECF;&#x505C;&#x6B62;&#x8FD0;&#x884C;&#x4E86;&#x3002;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">/usr/local/zookeeper-cluster/zookeeper-1/bin/zkServer.sh stop
+
+/usr/local/zookeeper-cluster/zookeeper-2/bin/zkServer.sh status
+</pre><p><img src="G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps16.jpg" alt="img"></p>
+<p>&#x7531;&#x6B64;&#x5F97;&#x51FA;&#x7ED3;&#x8BBA;&#xFF0C;3&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x96C6;&#x7FA4;&#xFF0C;2&#x4E2A;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x90FD;&#x6302;&#x6389;&#xFF0C;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x4E5F;&#x65E0;&#x6CD5;&#x8FD0;&#x884C;&#x3002;&#x56E0;&#x4E3A;&#x53EF;&#x8FD0;&#x884C;&#x7684;&#x673A;&#x5668;&#x6CA1;&#x6709;&#x8D85;&#x8FC7;&#x96C6;&#x7FA4;&#x603B;&#x6570;&#x91CF;&#x7684;&#x534A;&#x6570;&#x3002;</p>
+<p>&#xFF08;3&#xFF09;&#x6211;&#x4EEC;&#x518D;&#x6B21;&#x628A;1&#x53F7;&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x8D77;&#x6765;&#xFF0C;&#x53D1;&#x73B0;2&#x53F7;&#x670D;&#x52A1;&#x5668;&#x53C8;&#x5F00;&#x59CB;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x4E86;&#x3002;&#x800C;&#x4E14;&#x4F9D;&#x7136;&#x662F;&#x9886;&#x5BFC;&#x8005;&#x3002;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">/usr/local/zookeeper-cluster/zookeeper-1/bin/zkServer.sh start
+
+/usr/local/zookeeper-cluster/zookeeper-2/bin/zkServer.sh status
+</pre><p><img src="G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps17.jpg" alt="img"></p>
+<p>&#xFF08;4&#xFF09;&#x6211;&#x4EEC;&#x628A;3&#x53F7;&#x670D;&#x52A1;&#x5668;&#x4E5F;&#x542F;&#x52A8;&#x8D77;&#x6765;&#xFF0C;&#x628A;2&#x53F7;&#x670D;&#x52A1;&#x5668;&#x505C;&#x6389;,&#x505C;&#x6389;&#x540E;&#x89C2;&#x5BDF;1&#x53F7;&#x548C;3&#x53F7;&#x7684;&#x72B6;&#x6001;&#x3002;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">/usr/local/zookeeper-cluster/zookeeper-3/bin/zkServer.sh start
+/usr/local/zookeeper-cluster/zookeeper-2/bin/zkServer.sh stop
+
+/usr/local/zookeeper-cluster/zookeeper-1/bin/zkServer.sh status
+/usr/local/zookeeper-cluster/zookeeper-3/bin/zkServer.sh status
+</pre><p><img src="G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps18.jpg" alt="img"></p>
+<p>&#x53D1;&#x73B0;&#x65B0;&#x7684;leader&#x4EA7;&#x751F;&#x4E86;~</p>
+<p>&#x7531;&#x6B64;&#x6211;&#x4EEC;&#x5F97;&#x51FA;&#x7ED3;&#x8BBA;&#xFF0C;&#x5F53;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x6302;&#x4E86;&#xFF0C;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x670D;&#x52A1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x8FDB;&#x884C;&#x9009;&#x4E3E;&#x72B6;&#x6001;&#xFF0C;&#x7136;&#x540E;&#x4EA7;&#x751F;&#x65B0;&#x5F97;leader</p>
+<p>&#xFF08;5&#xFF09;&#x6211;&#x4EEC;&#x518D;&#x6B21;&#x6D4B;&#x8BD5;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x628A;2&#x53F7;&#x670D;&#x52A1;&#x5668;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#x8D77;&#x6765;&#x542F;&#x52A8;&#x540E;&#xFF0C;&#x4F1A;&#x53D1;&#x751F;&#x4EC0;&#x4E48;&#xFF1F;2&#x53F7;&#x670D;&#x52A1;&#x5668;&#x4F1A;&#x518D;&#x6B21;&#x6210;&#x4E3A;&#x65B0;&#x7684;&#x9886;&#x5BFC;&#x5417;&#xFF1F;&#x6211;&#x4EEC;&#x770B;&#x7ED3;&#x679C;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">/usr/local/zookeeper-cluster/zookeeper-2/bin/zkServer.sh start
+
+/usr/local/zookeeper-cluster/zookeeper-2/bin/zkServer.sh status
+/usr/local/zookeeper-cluster/zookeeper-3/bin/zkServer.sh status
+</pre><p><img src="G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps19.jpg" alt="img"><img src="G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps20.jpg" alt="img"></p>
+<p>&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;2&#x53F7;&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x540E;&#x4F9D;&#x7136;&#x662F;&#x8DDF;&#x968F;&#x8005;&#xFF08;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#xFF09;&#xFF0C;3&#x53F7;&#x670D;&#x52A1;&#x5668;&#x4F9D;&#x7136;&#x662F;&#x9886;&#x5BFC;&#x8005;&#xFF08;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#xFF09;&#xFF0C;&#x6CA1;&#x6709;&#x64BC;&#x52A8;3&#x53F7;&#x670D;&#x52A1;&#x5668;&#x7684;&#x9886;&#x5BFC;&#x5730;&#x4F4D;&#x3002;</p>
+<p>&#x7531;&#x6B64;&#x6211;&#x4EEC;&#x5F97;&#x51FA;&#x7ED3;&#x8BBA;&#xFF0C;&#x5F53;&#x9886;&#x5BFC;&#x8005;&#x4EA7;&#x751F;&#x540E;&#xFF0C;&#x518D;&#x6B21;&#x6709;&#x65B0;&#x670D;&#x52A1;&#x5668;&#x52A0;&#x5165;&#x96C6;&#x7FA4;&#xFF0C;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x5230;&#x73B0;&#x4EFB;&#x9886;&#x5BFC;&#x8005;&#x3002;</p>
+<h2 class="mume-header" id="6zookeeper-%E6%A0%B8%E5%BF%83%E7%90%86%E8%AE%BA">6)Zookeeper &#x6838;&#x5FC3;&#x7406;&#x8BBA;</h2>
+
+<p><strong>Zookeepe&#x96C6;&#x7FA4;&#x89D2;&#x8272;</strong></p>
+<p>&#x5728;ZooKeeper&#x96C6;&#x7FA4;&#x670D;&#x4E2D;&#x52A1;&#x4E2D;&#x6709;&#x4E09;&#x4E2A;&#x89D2;&#x8272;&#xFF1A;</p>
+<p>&#x2022;Leader &#x9886;&#x5BFC;&#x8005; &#xFF1A;</p>
+<p>&#x200B;	1. &#x5904;&#x7406;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;</p>
+<p>&#x200B;	2. &#x96C6;&#x7FA4;&#x5185;&#x90E8;&#x5404;&#x670D;&#x52A1;&#x5668;&#x7684;&#x8C03;&#x5EA6;&#x8005;</p>
+<p>&#x2022;Follower &#x8DDF;&#x968F;&#x8005; &#xFF1A;</p>
+<p>&#x200B;	1. &#x5904;&#x7406;&#x5BA2;&#x6237;&#x7AEF;&#x975E;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#xFF0C;&#x8F6C;&#x53D1;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#x7ED9;Leader&#x670D;&#x52A1;&#x5668;</p>
+<p>&#x200B;	2. &#x53C2;&#x4E0E;Leader&#x9009;&#x4E3E;&#x6295;&#x7968;</p>
+<p>&#x2022;Observer &#x89C2;&#x5BDF;&#x8005;&#xFF1A;</p>
+<pre class="language-text">1. &#x5904;&#x7406;&#x5BA2;&#x6237;&#x7AEF;&#x975E;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#xFF0C;&#x8F6C;&#x53D1;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#x7ED9;Leader&#x670D;&#x52A1;&#x5668;
+</pre>
+<p><img src="assets%5C1592058451822.png" alt="1592058451822"></p>
+
+      </div>
+      <div class="md-sidebar-toc"><ul>
+<li><a href="#zookeeper">Zookeeper</a>
+<ul>
+<li><a href="#1%E5%88%9D%E8%AF%86-zookeeper">1)&#x521D;&#x8BC6; Zookeeper</a>
+<ul>
+<li><a href="#11zookeeper%E6%A6%82%E5%BF%B5">1.1)Zookeeper&#x6982;&#x5FF5;</a></li>
+</ul>
+</li>
+<li><a href="#2zookeeper-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE">2)ZooKeeper &#x5B89;&#x88C5;&#x4E0E;&#x914D;&#x7F6E;</a>
+<ul>
+<li><a href="#21-%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85">2.1) &#x4E0B;&#x8F7D;&#x5B89;&#x88C5;</a>
+<ul>
+<li><a href="#211-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><strong>2.1.1&#x3001;&#x73AF;&#x5883;&#x51C6;&#x5907;</strong></a></li>
+<li><a href="#212-%E4%B8%8A%E4%BC%A0"><strong>2.1.2&#x3001;&#x4E0A;&#x4F20;</strong></a></li>
+<li><a href="#213-%E8%A7%A3%E5%8E%8B"><strong>2.1.3&#x3001;&#x89E3;&#x538B;</strong></a></li>
+</ul>
+</li>
+<li><a href="#22-%E9%85%8D%E7%BD%AE%E5%90%AF%E5%8A%A8">2.2) &#x914D;&#x7F6E;&#x542F;&#x52A8;</a>
+<ul>
+<li><a href="#221-%E9%85%8D%E7%BD%AEzoocfg"><strong>2.2.1&#x3001;&#x914D;&#x7F6E;zoo.cfg</strong></a></li>
+<li><a href="#222-%E5%90%AF%E5%8A%A8zookeeper"><strong>2.2.2&#x3001;&#x542F;&#x52A8;ZooKeeper</strong></a></li>
+</ul>
+</li>
+<li><a href="#"></a></li>
+</ul>
+</li>
+<li><a href="#3zookeeper-%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C">3)ZooKeeper &#x547D;&#x4EE4;&#x64CD;&#x4F5C;</a>
+<ul>
+<li><a href="#31zookeeper%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B">3.1)Zookeeper&#x547D;&#x4EE4;&#x64CD;&#x4F5C;&#x6570;&#x636E;&#x6A21;&#x578B;</a></li>
+<li><a href="#32zookeeper%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%91%BD%E4%BB%A4"><strong>3.2)Zookeeper&#x547D;&#x4EE4;&#x64CD;&#x4F5C;&#x670D;&#x52A1;&#x7AEF;&#x547D;&#x4EE4;</strong></a></li>
+<li><a href="#33zookeeper%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><strong>3.3)Zookeeper&#x5BA2;&#x6237;&#x7AEF;&#x5E38;&#x7528;&#x547D;&#x4EE4;</strong></a></li>
+<li><a href="#34%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%91%BD%E4%BB%A4-%E5%88%9B%E5%BB%BA%E4%B8%B4%E6%97%B6%E6%9C%89%E5%BA%8F%E8%8A%82%E7%82%B9">3.4)&#x5BA2;&#x6237;&#x7AEF;&#x547D;&#x4EE4;-&#x521B;&#x5EFA;&#x4E34;&#x65F6;&#x6709;&#x5E8F;&#x8282;&#x70B9;</a></li>
+</ul>
+</li>
+<li><a href="#4zookeeper-javaapi-%E6%93%8D%E4%BD%9C">4)ZooKeeper JavaAPI &#x64CD;&#x4F5C;</a>
+<ul>
+<li><a href="#41urator%E4%BB%8B%E7%BB%8D">4.1)urator&#x4ECB;&#x7ECD;</a></li>
+<li><a href="#42javaapi%E6%93%8D%E4%BD%9C%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5">4.2)JavaAPI&#x64CD;&#x4F5C;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;</a></li>
+<li><a href="#43zookeeper-javaapi%E6%93%8D%E4%BD%9C-%E5%88%9B%E5%BB%BA%E8%8A%82%E7%82%B9">4.3)Zookeeper JavaAPI&#x64CD;&#x4F5C;-&#x521B;&#x5EFA;&#x8282;&#x70B9;</a></li>
+<li><a href="#44zookeeperjavaapi%E6%93%8D%E4%BD%9C-%E6%9F%A5%E8%AF%A2%E8%8A%82%E7%82%B9">4.4)ZookeeperJavaAPI&#x64CD;&#x4F5C;-&#x67E5;&#x8BE2;&#x8282;&#x70B9;</a></li>
+<li><a href="#45zookeeper-javaapi%E6%93%8D%E4%BD%9C-%E4%BF%AE%E6%94%B9%E8%8A%82%E7%82%B9">4.5)Zookeeper JavaAPI&#x64CD;&#x4F5C;-&#x4FEE;&#x6539;&#x8282;&#x70B9;</a></li>
+<li><a href="#46zookeeper-javaapi%E6%93%8D%E4%BD%9C-%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9">4.6)Zookeeper JavaAPI&#x64CD;&#x4F5C;-&#x5220;&#x9664;&#x8282;&#x70B9;</a></li>
+<li><a href="#47zookeeper-javaapi%E6%93%8D%E4%BD%9C-watch%E7%9B%91%E5%90%AC%E6%A6%82%E8%BF%B0">4.7)Zookeeper JavaAPI&#x64CD;&#x4F5C;-Watch&#x76D1;&#x542C;&#x6982;&#x8FF0;</a></li>
+<li><a href="#48zookeeper-javaapi%E6%93%8D%E4%BD%9C-watch%E7%9B%91%E5%90%AC-nodecache">4.8Zookeeper JavaAPI&#x64CD;&#x4F5C;-Watch&#x76D1;&#x542C;-NodeCache</a></li>
+<li><a href="#49zookeeper-javaapi%E6%93%8D%E4%BD%9C-watch%E7%9B%91%E5%90%AC-pathchildrencache"><strong>4.9)Zookeeper</strong> JavaAPI&#x64CD;&#x4F5C;-Watch&#x76D1;&#x542C;-PathChildrenCache</a></li>
+<li><a href="#410zookeeper-javaapi%E6%93%8D%E4%BD%9C-watch%E7%9B%91%E5%90%AC-treecache"><strong>4.10)Zookeeper</strong> JavaAPI&#x64CD;&#x4F5C;-Watch&#x76D1;&#x542C;-TreeCache</a></li>
+<li><a href="#411zookeeper%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E6%A6%82%E5%BF%B5">4.11)Zookeeper&#x5206;&#x5E03;&#x5F0F;&#x9501;-&#x6982;&#x5FF5;</a></li>
+<li><a href="#412zookeeper-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-zookeeper%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%8E%9F%E7%90%86"><strong>4.12)Zookeeper</strong> &#x5206;&#x5E03;&#x5F0F;&#x9501;-zookeeper&#x5206;&#x5E03;&#x5F0F;&#x9501;&#x539F;&#x7406;</a></li>
+<li><a href="#413zookeeper-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E6%A8%A1%E6%8B%9F12306%E5%94%AE%E7%A5%A8%E6%A1%88%E4%BE%8B"><strong>4.13)Zookeeper</strong> &#x5206;&#x5E03;&#x5F0F;&#x9501;-&#x6A21;&#x62DF;12306&#x552E;&#x7968;&#x6848;&#x4F8B;</a></li>
+</ul>
+</li>
+<li><a href="#5zookeeper-%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA">5)ZooKeeper &#x96C6;&#x7FA4;&#x642D;&#x5EFA;</a>
+<ul>
+<li><a href="#51zookeeper%E9%9B%86%E7%BE%A4%E4%BB%8B%E7%BB%8D"><strong>5.1)Zookeeper</strong>&#x96C6;&#x7FA4;&#x4ECB;&#x7ECD;</a></li>
+<li><a href="#52%E6%90%AD%E5%BB%BA%E8%A6%81%E6%B1%82">5.2)&#x642D;&#x5EFA;&#x8981;&#x6C42;</a></li>
+<li><a href="#53%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><strong>5.3)&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</strong></a></li>
+<li><a href="#54%E9%85%8D%E7%BD%AE%E9%9B%86%E7%BE%A4"><strong>5.4)&#x914D;&#x7F6E;&#x96C6;&#x7FA4;</strong></a></li>
+<li><a href="#55%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><strong>5.5)&#x542F;&#x52A8;&#x96C6;&#x7FA4;</strong></a></li>
+<li><a href="#56%E6%A8%A1%E6%8B%9F%E9%9B%86%E7%BE%A4%E5%BC%82%E5%B8%B8"><strong>5.6)&#x6A21;&#x62DF;&#x96C6;&#x7FA4;&#x5F02;&#x5E38;</strong></a></li>
+</ul>
+</li>
+<li><a href="#6zookeeper-%E6%A0%B8%E5%BF%83%E7%90%86%E8%AE%BA">6)Zookeeper &#x6838;&#x5FC3;&#x7406;&#x8BBA;</a></li>
+</ul>
+</li>
+</ul>
+</div>
+      <a id="sidebar-toc-btn">&#x2261;</a>
+    
+    
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    </body></html>
