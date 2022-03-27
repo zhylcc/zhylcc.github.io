@@ -1,8 +1,6 @@
-#  Zookeeper
+# 1)初识 Zookeeper
 
-## 1)初识 Zookeeper
-
-### 1.1)Zookeeper概念
+## 1.1)Zookeeper概念
 
 •Zookeeper 是 Apache Hadoop 项目下的一个子项目，是一个树形目录服务。
 
@@ -12,25 +10,25 @@
 
 •Zookeeper 提供的主要功能包括：
 
-•配置管理
+- 配置管理
 
-•分布式锁
+- 分布式锁
 
-•集群管理
+- 集群管理
 
 ![1592054580488](assets\1592054580488.png)
 
 ![1592054603167](assets\1592054603167.png)
 
-## 2)ZooKeeper 安装与配置
+# 2)ZooKeeper 安装与配置
 
-### 2.1) 下载安装
+## 2.1) 下载安装
 
-#### **2.1.1、环境准备**
+###2.1.1、环境准备
 
 ZooKeeper服务器是用Java创建的，它运行在JVM之上。需要安装JDK 7或更高版本。
 
-#### **2.1.2、上传**
+###2.1.2、上传
 
 将下载的ZooKeeper放到/opt/ZooKeeper目录下
 
@@ -45,7 +43,7 @@ mkdir  zooKeeper
 mv apache-zookeeper-3.5.6-bin.tar.gz /opt/zookeeper/
 ```
 
-#### **2.1.3、解压**
+###2.1.3、解压
 
 将tar包解压到/opt/zookeeper目录下
 
@@ -53,9 +51,9 @@ mv apache-zookeeper-3.5.6-bin.tar.gz /opt/zookeeper/
 tar -zxvf apache-ZooKeeper-3.5.6-bin.tar.gz 
 ```
 
-### 2.2) 配置启动
+## 2.2) 配置启动
 
-#### **2.2.1、配置zoo.cfg**
+###2.2.1、配置zoo.cfg
 
 进入到conf目录拷贝一个zoo_sample.cfg并完成配置
 
@@ -79,11 +77,11 @@ mkdir  zkdata
 vim /opt/zooKeeper/apache-zooKeeper-3.5.6-bin/conf/zoo.cfg
 ```
 
-![1577548250377](G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%AE%B2%E4%B9%89/assets/1577548250377.png)
+![1577548250377](assets/1577548250377.png)
 
 修改存储目录：dataDir=/opt/zookeeper/zkdata
 
-#### **2.2.2、启动ZooKeeper**
+###2.2.2、启动ZooKeeper
 
 ```shell
 cd /opt/zooKeeper/apache-zooKeeper-3.5.6-bin/bin/
@@ -91,7 +89,7 @@ cd /opt/zooKeeper/apache-zooKeeper-3.5.6-bin/bin/
  ./zkServer.sh  start
 ```
 
-![1577548052037](G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%AE%B2%E4%B9%89/assets/1577548052037.png)
+![1577548052037](assets/1577548052037.png)
 
 看到上图表示ZooKeeper成功启动
 
@@ -103,17 +101,17 @@ cd /opt/zooKeeper/apache-zooKeeper-3.5.6-bin/bin/
 
 zookeeper启动成功。standalone代表zk没有搭建集群，现在是单节点
 
-![1577548175232](G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%AE%B2%E4%B9%89/assets/1577548175232.png)
+![1577548175232](assets/1577548175232.png)
 
 zookeeper没有启动
 
-![1577548112773](G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%AE%B2%E4%B9%89/assets/1577548112773.png)
+![1577548112773](assets/1577548112773.png)
 
 ### 
 
-## 3)ZooKeeper 命令操作
+# 3)ZooKeeper 命令操作
 
-### 3.1)Zookeeper命令操作数据模型
+## 3.1)Zookeeper命令操作数据模型
 
 •ZooKeeper 是一个树形目录服务,其数据模型和Unix的文件系统目录树很类似，拥有一个层次化结构。
 
@@ -131,13 +129,13 @@ zookeeper没有启动
 
 •EPHEMERAL_SEQUENTIAL 临时顺序节点  ：-es
 
-![1592054828485](G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%AE%B2%E4%B9%89/assets/1592054828485.png)
+![1592054828485](assets/1592054828485.png)
 
-![1592054844023](G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%AE%B2%E4%B9%89/assets/1592054844023.png)
+![1592054844023](assets/1592054844023.png)
 
 
 
-### **3.2)Zookeeper命令操作服务端命令**
+##3.2)Zookeeper命令操作服务端命令
 
 •启动 ZooKeeper 服务: ./zkServer.sh start
 
@@ -149,7 +147,7 @@ zookeeper没有启动
 
 ![1592055088686](assets\1592055088686.png)
 
-### **3.3)Zookeeper客户端常用命令**
+##3.3)Zookeeper客户端常用命令
 
 •连接ZooKeeper服务端
 
@@ -209,7 +207,7 @@ deleteall /节点path
 
 ![1592055345400](assets\1592055345400.png)
 
-### 3.4)客户端命令-创建临时有序节点
+## 3.4)客户端命令-创建临时有序节点
 
 •创建临时节点
 
@@ -253,9 +251,9 @@ ls –s /节点path
 
 ![1592055462588](assets\1592055462588.png)
 
-## 4)ZooKeeper JavaAPI 操作
+# 4)ZooKeeper JavaAPI 操作
 
-### 4.1)urator介绍
+## 4.1)urator介绍
 
 •Curator 是 Apache ZooKeeper 的Java客户端库。
 
@@ -273,7 +271,7 @@ ls –s /节点path
 
 •官网：http://curator.apache.org/
 
-### 4.2)JavaAPI操作建立连接
+## 4.2)JavaAPI操作建立连接
 
 1，搭建项目
 
@@ -306,7 +304,7 @@ public void testConnect() {
 }
 ```
 
-### 4.3)Zookeeper JavaAPI操作-创建节点
+## 4.3)Zookeeper JavaAPI操作-创建节点
 
 ```java
 /**
@@ -349,7 +347,7 @@ public void testCreate4() throws Exception {
 }
 ```
 
-### 4.4)ZookeeperJavaAPI操作-查询节点
+## 4.4)ZookeeperJavaAPI操作-查询节点
 
 ```java
 /**
@@ -383,7 +381,7 @@ public void testGet3() throws Exception {
 }
 ```
 
-### 4.5)Zookeeper JavaAPI操作-修改节点
+## 4.5)Zookeeper JavaAPI操作-修改节点
 
 ```JAVA
 /**
@@ -412,7 +410,7 @@ public void testSetForVersion() throws Exception {
 }
 ```
 
-### 4.6)Zookeeper JavaAPI操作-删除节点
+## 4.6)Zookeeper JavaAPI操作-删除节点
 
 ```JAVA
 /**
@@ -454,7 +452,7 @@ public void testDelete4() throws Exception {
 }
 ```
 
-### 4.7)Zookeeper JavaAPI操作-Watch监听概述
+## 4.7)Zookeeper JavaAPI操作-Watch监听概述
 
 •ZooKeeper 允许用户在指定节点上注册一些Watcher，并且在一些特定事件触发的时候，ZooKeeper 服务端会将事件通知到感兴趣的客户端上去，该机制是 ZooKeeper 实现分布式协调服务的重要特性。
 
@@ -476,7 +474,7 @@ public void testDelete4() throws Exception {
 
 ![1592057429708](assets\1592057429708.png)
 
-### 4.8Zookeeper JavaAPI操作-Watch监听-NodeCache
+## 4.8)Zookeeper JavaAPI操作-Watch监听-NodeCache
 
 ```java
 /**
@@ -503,7 +501,7 @@ public void testNodeCache() throws Exception {
 }
 ```
 
-### **4.9)Zookeeper** JavaAPI操作-Watch监听-PathChildrenCache
+##4.9)Zookeeper JavaAPI操作-Watch监听-PathChildrenCache
 
 ```java
 @Test
@@ -533,7 +531,7 @@ public void testPathChildrenCache() throws Exception {
 }
 ```
 
-### **4.10)Zookeeper** JavaAPI操作-Watch监听-TreeCache
+##4.10)Zookeeper JavaAPI操作-Watch监听-TreeCache
 
 ```java
 /**
@@ -558,7 +556,7 @@ public void testTreeCache() throws Exception {
 }
 ```
 
-### 4.11)Zookeeper分布式锁-概念
+## 4.11)Zookeeper分布式锁-概念
 
 •在我们进行单机应用开发，涉及并发同步的时候，我们往往采用synchronized或者Lock的方式来解决多线程间的代码同步问题，这时多线程的运行都是在同一个JVM之下，没有任何问题。
 
@@ -568,7 +566,7 @@ public void testTreeCache() throws Exception {
 
 ![1592057871141](assets\1592057871141.png)
 
-### **4.12)Zookeeper** 分布式锁-zookeeper分布式锁原理
+##4.12)Zookeeper 分布式锁-zookeeper分布式锁原理
 
 •核心思想：当客户端要获取锁，则创建节点，使用完锁，则删除该节点。
 
@@ -590,7 +588,7 @@ public void testTreeCache() throws Exception {
 
 ![1592057925831](assets\1592057925831.png)
 
-### **4.13)Zookeeper** 分布式锁-模拟12306售票案例
+##4.13)Zookeeper 分布式锁-模拟12306售票案例
 
 **Curator实现分布式锁API**
 
@@ -676,9 +674,9 @@ public class LockTest {
 }
 ```
 
-## 5)ZooKeeper 集群搭建
+# 5)ZooKeeper 集群搭建
 
-### **5.1)Zookeeper**集群介绍
+##5.1)Zookeeper集群介绍
 
 Leader选举：
 
@@ -698,13 +696,13 @@ Leader选举：
 
 ​    则此ZooKeeper就可以成为Leader了。
 
-### 5.2)搭建要求
+## 5.2)搭建要求
 
 真实的集群是需要部署在不同的服务器上的，但是在我们测试时同时启动很多个虚拟机内存会吃不消，所以我们通常会搭建**伪集群**，也就是把所有的服务都搭建在一台虚拟机上，用端口进行区分。
 
 我们这里要求搭建一个三个节点的Zookeeper集群（伪集群）。
 
-### **5.3)准备工作**
+##5.3)准备工作
 
 重新部署一台虚拟机作为我们搭建集群的测试服务器。
 
@@ -773,7 +771,7 @@ dataDir=/usr/local/zookeeper-cluster/zookeeper-3/data
 
 
 
-### **5.4)配置集群**
+##5.4)配置集群
 
 （1）在每个zookeeper的 data 目录下创建一个 myid 文件，内容分别是1、2、3 。这个文件就是记录每个服务器的ID
 
@@ -807,7 +805,7 @@ server.3=192.168.149.135:2883:3883
 
  
 
-### **5.5)启动集群**
+##5.5)启动集群
 
 启动集群就是分别启动每个实例。
 
@@ -819,7 +817,7 @@ server.3=192.168.149.135:2883:3883
 
 
 
-![img](G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps11.jpg) 
+![img](assets\wps11.jpg) 
 
 启动后我们查询一下每个实例的运行状态
 
@@ -833,19 +831,19 @@ server.3=192.168.149.135:2883:3883
 
 先查询第一个服务
 
-![img](G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps12.jpg) 
+![img](assets\wps12.jpg) 
 
 Mode为follower表示是**跟随者**（从）
 
 再查询第二个服务Mod 为leader表示是**领导者**（主）
 
-![img](G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps13.jpg) 
+![img](assets\wps13.jpg) 
 
 查询第三个为跟随者（从）
 
-![img](G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps14.jpg) 
+![img](assets\wps14.jpg) 
 
-### **5.6)模拟集群异常**
+##5.6)模拟集群异常
 
 （1）首先我们先测试如果是从服务器挂掉，会怎么样
 
@@ -858,7 +856,7 @@ Mode为follower表示是**跟随者**（从）
 /usr/local/zookeeper-cluster/zookeeper-2/bin/zkServer.sh status
 ```
 
-![img](G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps15.jpg) 
+![img](assets\wps15.jpg) 
 
 由此得出结论，3个节点的集群，从服务器挂掉，集群正常
 
@@ -872,7 +870,7 @@ Mode为follower表示是**跟随者**（从）
 
 
 
-![img](G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps16.jpg) 
+![img](assets\wps16.jpg) 
 
 由此得出结论，3个节点的集群，2个从服务器都挂掉，主服务器也无法运行。因为可运行的机器没有超过集群总数量的半数。
 
@@ -886,7 +884,7 @@ Mode为follower表示是**跟随者**（从）
 
 
 
-![img](G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps17.jpg) 
+![img](assets\wps17.jpg) 
 
 （4）我们把3号服务器也启动起来，把2号服务器停掉,停掉后观察1号和3号的状态。
 
@@ -900,7 +898,7 @@ Mode为follower表示是**跟随者**（从）
 
 
 
-![img](G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps18.jpg) 
+![img](assets\wps18.jpg) 
 
 发现新的leader产生了~  
 
@@ -917,7 +915,7 @@ Mode为follower表示是**跟随者**（从）
 
 
 
-![img](G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps19.jpg)![img](G:/2020%E6%96%B0%E8%AF%BE%E7%A8%8B/zookeeper-2020-%E8%AF%BE%E4%BB%B6/%E8%B5%84%E6%96%99/images/wps20.jpg) 
+![img](assets\wps19.jpg)![img](assets\wps20.jpg) 
 
 我们会发现，2号服务器启动后依然是跟随者（从服务器），3号服务器依然是领导者（主服务器），没有撼动3号服务器的领导地位。
 
@@ -925,7 +923,7 @@ Mode为follower表示是**跟随者**（从）
 
 
 
-## 6)Zookeeper 核心理论
+# 6)Zookeeper 核心理论
 
 **Zookeepe集群角色**
 
