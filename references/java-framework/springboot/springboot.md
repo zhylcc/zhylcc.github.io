@@ -8,13 +8,13 @@
 
 ## 01-SpringBoot概述
 
- SpringBoot提供了一种快速使用Spring的方式，基于约定优于配置的思想，可以让开发人员不必在配置与逻辑业务之间进行思维的切换，全身心的投入到逻辑业务的代码编写中，从而大大提高了开发的效率
+ SpringBoot提供了一种快速使用Spring的方式，基于**约定优于配置**的思想，可以让开发人员不必在配置与逻辑业务之间进行思维的切换，全身心的投入到逻辑业务的代码编写中，从而大大提高了开发的效率
 
 **SpringBoot功能**
 
  **1**） **自动配置**
 
-Spring Boot的自动配置是一个运行时（更准确地说，是应用程序启动时）的过程，考虑了众多因素，才决定Spring配置应该用哪个，不该用哪个。该过程是SpringBoot自动完成的。
+SpringBoot的自动配置是一个运行时（更准确地说，是应用程序启动时）的过程，考虑了众多因素，才决定Spring配置应该用哪个，不该用哪个。该过程是SpringBoot自动完成的。
 
 **2**） **起步依赖**
 
@@ -27,7 +27,7 @@ Spring Boot的自动配置是一个运行时（更准确地说，是应用程序
 提供了一些大型项目中常见的非功能性特性，如嵌入式服务器、安全、指标，健康检测、外部配置等。
 
 
-**注意：Spring Boot 并不是对 Spring 功能上的增强，而是提供了一种快速使用 Spring 的方式。**
+**注意：SpringBoot 并不是对 Spring 功能上的增强，而是提供了一种快速使用 Spring 的方式。**
 
 ## 02-SpringBoot快速入门
 
@@ -135,7 +135,8 @@ server.port=8080
 yml:
 
 ```yaml
-server: port: 8080
+server:
+    port: 8080
 
 ```
 
@@ -146,11 +147,11 @@ server: port: 8080
 - 使用缩进表示层级关系
 - 缩进时不允许使用Tab键，只允许使用空格（各个系统 Tab对应的 空格数目可能不同，导致层次混乱）。
 - 缩进的空格数目不重要，只要相同层级的元素左侧对齐即可
-- ''#" 表示注释，从这个字符一直到行尾，都会被解析器忽略。
+- `#` 表示注释，从这个字符一直到行尾，都会被解析器忽略。
 
 ```yaml
 server: 
-	port: 8080  
+    port: 8080  
     address: 127.0.0.1
 name: abc
 
@@ -170,7 +171,7 @@ person: {name: zhangsan}
 
 **数组**：一组按次序排列的值
 
-```
+```yaml
 address:
   - beijing
   - shanghai
@@ -196,9 +197,9 @@ person:
 
 ```
 
-## 04-获取数据_1
+## 04-获取数据
 
-@**Value**
+* **@Value**
 
 ```java
 #获取普通配置
@@ -216,7 +217,7 @@ private String msg1;
 
 ```
 
-**Evironment**
+* **Evironment**
 
 ```java
 @Autowired
@@ -228,18 +229,14 @@ System.out.println(env.getProperty("address[0]"));
 
 ```
 
-## 05-获取数据_2
-
- @ConfigurationProperties 
-
-**注意**：prefix一定要写
+* **@ConfigurationProperties** 
 
 ```java
 @Component
-@ConfigurationProperties(prefix = "person")
+@ConfigurationProperties(prefix = "person") //prefix表示配置文件中变量层级，默认顶级
 public class Person {
 
-    private String name;
+    private String name; //属性名要与配置文件变量名一致
     private int age;
     private String[] address;
 
@@ -277,31 +274,51 @@ public class Person {
 }
 ```
 
-## 06-profile
+## 05-profile
 
-1.  **profile是用来完成不同环境下，配置动态切换功能的**。
+profile是用来完成不同环境下，配置动态切换功能的。
 
-2.  **profile配置方式**
+**profile配置方式**
 
-   ​	多profile文件方式：提供多个配置文件，每个代表一种环境。
+​多profile文件方式：提供多个配置文件，每个代表一种环境。
+* application-dev.properties/yml 开发环境
+* application-test.properties/yml 测试环境
+* application-pro.properties/yml 生产环境
 
-   ​		application-dev.properties/yml 开发环境
+yml多文档方式：在yml中使用`---`分隔不同配置
+```yaml
+---
+server:
+    port: 8081
 
-   ​		application-test.properties/yml 测试环境
+spring:
+    profiles: dev
+---
+server:
+    port: 8082
 
-   ​		application-pro.properties/yml 生产环境
+spring:
+    profiles: test
+---
+```
 
-   ​    yml多文档方式：
+**profile激活方式**
 
-​				在yml中使用  --- 分隔不同配置
-
-3.  **profile激活方式**
-
-- 配置文件： 再配置文件中配置：spring.profiles.active=dev
+- 配置文件：
+    - 在properties配置文件中配置：spring.profiles.active=dev
+    - 在yaml配置文件中配置：
+        ```yaml
+        ---
+        <!-- 其它配置 -->
+        ---
+        spring:
+            profiles:
+                active: dev
+        ```
 - 虚拟机参数：在VM options 指定：-Dspring.profiles.active=dev
 - 命令行参数：java –jar xxx.jar  --spring.profiles.active=dev
 
-## 07-项目内部配置文件加载顺序
+## 06-项目内部配置文件加载顺序
 
  加载顺序为上文的排列顺序，高优先级配置的属性会生效
 
@@ -310,7 +327,7 @@ public class Person {
 - classpath:/config/：classpath的/config目录
 - classpath:/  ：classpath的根目录
 
-## 08-项目外部配置加载顺序
+## 07-项目外部配置加载顺序
 
  外部配置文件的使用是为了对能不文件的配合
 
@@ -329,8 +346,8 @@ java -jar app.jar --name="Spring“ --server.port=9000
 3.外部不带profile的properties文件
 
 ```java
-    classpath:/config/application.properties
-    classpath:/application.properties
+classpath:/config/application.properties
+classpath:/application.properties
 ```
 
 
@@ -347,7 +364,6 @@ java -jar app.jar --name="Spring“ --server.port=9000
 1. 搭建SpringBoot工程
 
 2.  引入starter-test起步依赖
-
 
 ```xml
  <dependencies>
@@ -366,14 +382,14 @@ java -jar app.jar --name="Spring“ --server.port=9000
 
 3. 编写测试类
 
-```
-
+```java
 /**
  * 测试类
  */
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringbootJunitApplication.class )
+//如果测试类的包和引导类的包相同，则不需要classes属性
 public class UserServiceTest {
 
     @Test
@@ -385,9 +401,74 @@ public class UserServiceTest {
 
 4.测试
 
-## 02-整合mybatis
+## 02-整合redis
 
 ①搭建SpringBoot工程
+
+    添加NoSQL->Redis
+
+②引入redis起步依赖
+
+```xml
+  <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+```
+
+③配置redis相关属性
+
+```yaml
+spring:
+  redis:
+    host: 127.0.0.1 # redis的主机ip
+    port: 6379
+
+```
+
+④注入RedisTemplate模板
+
+⑤编写测试方法，测试
+
+```java
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class SpringbootRedisApplicationTests {
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    @Test
+    public void testSet() {
+        //存入数据
+        redisTemplate.boundValueOps("name").set("zhangsan");
+    }
+
+    @Test
+    public void testGet() {
+        //获取数据
+        Object name = redisTemplate.boundValueOps("name").get();
+        System.out.println(name);
+    }
+
+}
+
+```
+
+
+## 03-整合mybatis
+
+①搭建SpringBoot工程
+
+    添加SQL->MyBatis、MySQL
 
 ②引入mybatis起步依赖，添加mysql驱动
 
@@ -427,10 +508,10 @@ spring:
 
 
 # mybatis
+# 使用注解映射的话则不需要额外配置
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml # mapper映射文件路径
   type-aliases-package: com.itheima.springbootmybatis.domain
-
   # config-location:  # 指定mybatis的核心配置文件
 ```
 
@@ -517,65 +598,6 @@ public interface UserMapper {
 
 ⑥测试
 
-## 03-整合redis
-
-①搭建SpringBoot工程
-
-②引入redis起步依赖
-
-```xml
-  <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-```
-
-③配置redis相关属性
-
-```yaml
-spring:
-  redis:
-    host: 127.0.0.1 # redis的主机ip
-    port: 6379
-
-```
-
-④注入RedisTemplate模板
-
-⑤编写测试方法，测试
-
-```java
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class SpringbootRedisApplicationTests {
-
-    @Autowired
-    private RedisTemplate redisTemplate;
-
-    @Test
-    public void testSet() {
-        //存入数据
-        redisTemplate.boundValueOps("name").set("zhangsan");
-    }
-
-    @Test
-    public void testGet() {
-        //获取数据
-        Object name = redisTemplate.boundValueOps("name").get();
-        System.out.println(name);
-    }
-
-}
-
-```
 
 # 五、SpringBoot高级概述
 
@@ -589,25 +611,19 @@ public class SpringbootRedisApplicationTests {
 
 ## 01-Condition-1
 
- Condition是Spring4.0后引入的条件化配置接口，通过实现Condition接口可以完成有条件的加载相应的Bean
+Condition是Spring4.0后引入的条件化配置接口，通过实现Condition接口可以完成**有条件的加载相应的Bean**
 
-@Conditional要配和Condition的实现类（ClassCondition）进行使用
+需求： 导入Jedis坐标后创建Bean
 
-- ClassCondition
+**@Conditional要配合Condition的实现类（ClassCondition）进行使用**
+
+- **ClassCondition**
 
 ```java
 
 public class ClassCondition implements Condition {
-    /**
-     *
-     * @param context 上下文对象。用于获取环境，IOC容器，ClassLoader对象
-     * @param metadata 注解元对象。 可以用于获取注解定义的属性值
-     * @return
-     */
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
-      
-        //1.需求： 导入Jedis坐标后创建Bean
         //思路：判断redis.clients.jedis.Jedis.class文件是否存在
         boolean flag = true;
         try {
@@ -621,7 +637,7 @@ public class ClassCondition implements Condition {
 }
 ```
 
-- UserConfig
+- **UserConfig**
 
 ```java
 @Configuration
@@ -656,9 +672,9 @@ public class SpringbootConditionApplication {
 
 ## 02-Condition-2
 
- 需求：将类的判断定义为动态的。判断哪个字节码文件存在可以动态指定。
+需求：将类的判断定义为动态的。判断哪个字节码文件存在可以动态指定。
 
-自定义条件注解类
+**自定义条件注解类**
 
 ```java
 import org.springframework.context.annotation.Conditional;
@@ -669,13 +685,44 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+//上面三个为@Conditional的元注解
 @Conditional(ClassCondition.class)
 public @interface ConditionOnClass {
     String[] value();
 }
 ```
 
-**注意：**此处@ConditionOnClass为自定义注解
+**修改ClassCondition类**
+```java
+
+public class ClassCondition implements Condition {
+    /**
+     *
+     * @param context 上下文对象。用于获取环境，IOC容器，ClassLoader对象
+     * @param metadata 注解元对象。 可以用于获取注解定义的属性值
+     * @return
+     */
+    @Override
+    public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+        // 通过注解属性值value获取指定坐标
+        Map<String, Object> map = metadata.getAnnotationAttributes(ConditionOnClass.class.getName());
+        String[] value = (Stringp[]) map.get("value")
+        boolean flag = true;
+        try {
+            for (String className : value) {
+                Class<?> cls = Class.forName(className);
+            }
+        } catch (ClassNotFoundException e) {
+            flag = false;
+        }
+        return flag;
+      
+    }
+}
+```
+
+
+**注意：** 此处@ConditionOnClass为自定义注解
 
 ```java
 @Configuration
@@ -729,148 +776,141 @@ ConditionalOnClass：判断环境中是否有对应字节码文件才初始化Be
 
 ConditionalOnMissingBean：判断环境中没有对应Bean才初始化Bean
 
+上述注解可以直接使用。
+
 ## 03-切换内置web服务器
 
 查看继承关系图
 
 ![1571306414687](img/1571306414687.png)
 
-
-
-
-
 排除Tomcat
 
 ![1571306366201](img/1571306366201.png)
 
- 
-
 pom文件中的排除依赖效果
 
 ```xml
- <dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+    <!--排除tomcat依赖-->
+    <exclusions>
+        <exclusion>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <!--排除tomcat依赖-->
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                    <groupId>org.springframework.boot</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        </exclusion>
+    </exclusions>
+</dependency>
 
-        <!--引入jetty的依赖-->
-        <dependency>
-            <artifactId>spring-boot-starter-jetty</artifactId>
-            <groupId>org.springframework.boot</groupId>
-        </dependency>
+<!--引入jetty的依赖-->
+<dependency>
+    <artifactId>spring-boot-starter-jetty</artifactId>
+    <groupId>org.springframework.boot</groupId>
+</dependency>
 ```
 
-## 04-Enable注解原理
+## 04-@Enable*注解原理
 
-- SpringBoot不能直接获取在其他工程中定义的Bean
+SpringBoot不能直接获取在其他工程中定义的Bean
 
-  演示代码：
+演示代码：
 
-  springboot-enable工程
+- springboot-enable-other工程
 
-  ```java
-/**
-   * @ComponentScan 扫描范围：当前引导类所在包及其子包
- *
-   * com.itheima.springbootenable
-   * com.itheima.config
-   * //1.使用@ComponentScan扫描com.itheima.config包
-   * //2.可以使用@Import注解，加载类。这些类都会被Spring创建，并放入IOC容器
-   * //3.可以对Import注解进行封装。
-   */
-  
-  //@ComponentScan("com.itheima.config")
-  //@Import(UserConfig.class)
-  @EnableUser
-  @SpringBootApplication
-  public class SpringbootEnableApplication {
-  
-      public static void main(String[] args) {
-          ConfigurableApplicationContext context = SpringApplication.run(SpringbootEnableApplication.class, args);
-  
-       //获取Bean
-          Object user = context.getBean("user");
-          System.out.println(user);
-  
-  	}
-  
-  }
-  ```
-  
-  pom中引入springboot-enable-other
-  
-  ```
- 		<dependency>
-              <groupId>com.itheima</groupId>
-            <artifactId>springboot-enable-other</artifactId>
-              <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-  ```
+    **UserConfig**
 
-  springboot-enable-other工程
-  
-  **UserConfig**
-  
-  ```java
-  @Configuration
-  public class UserConfig {
+    ```java
+    @Configuration
+    public class UserConfig {
 
-      @Bean
-    public User user() {
-          return new User();
+        @Bean
+        public User user() {
+            return new User();
+        }
     }
+    ```
+
+
+- springboot-enable工程
+
+    ```java
+    /**
+    * @ComponentScan 扫描范围：当前引导类所在包及其子包
+    *
+    * com.itheima.springbootenable
+    * com.itheima.config
+    * //1.使用@ComponentScan扫描com.itheima.config包
+    * //2.可以使用@Import注解，加载类。这些类都会被Spring创建，并放入IOC容器
+    * //3.可以对Import注解进行封装。
+    */
+
+    //@ComponentScan("com.itheima.config")
+    //@Import(UserConfig.class)
+    @EnableUser
+    @SpringBootApplication
+    public class SpringbootEnableApplication {
+
+        public static void main(String[] args) {
+            ConfigurableApplicationContext context = SpringApplication.run(SpringbootEnableApplication.class, args);
+
+            //获取Bean
+            Object user = context.getBean("user");
+            System.out.println(user);
+        }
+    }
+    ```
+
+    pom中引入springboot-enable-other
+
+    ```
+    <dependency>
+            <groupId>com.itheima</groupId>
+        <artifactId>springboot-enable-other</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    ```
+
+
+- 运行测试：不能获取
+
   
- 
-  }
-  
-  ```
-  
-  **EnableUser注解类**
-  
-  ```java
-  import org.springframework.context.annotation.Import;
-  
-  import java.lang.annotation.*;
-  
-  @Target(ElementType.TYPE)
-  @Retention(RetentionPolicy.RUNTIME)
-  @Documented
-  @Import(UserConfig.class)
-  public @interface EnableUser {
-  
-  } 
-  ```
-  
-  **原因**：@ComponentScan 扫描范围：当前引导类所在包及其子包
-  
-  **三种解决方案：**
-  
-  1.使用@ComponentScan扫描com.itheima.config包 
-  
-  2.可以使用@Import注解，加载类。这些类都会被Spring创建，并放入IOC容器
-  
-  3.可以对Import注解进行封装。
-  
-  **重点：Enable注解底层原理是使用@Import注解实现Bean的动态加载**
+**原因**：@SpringBootApplication源码中的@ComponentScan 扫描范围：当前引导类所在包及其子包
+
+**三种解决方案：**
+
+1. 在springboot-enable中使用@ComponentScan扫描com.itheima.config包 
+
+2. 在springboot-enable中使用@Import注解加载类。这些类都会被Spring创建，并放入IOC容器
+
+3. 在springboot-enable-ohter中对Import注解进行封装，在springboot-enable中使用@EnableUser注解。
+    ```java
+    import org.springframework.context.annotation.Import;
+
+    import java.lang.annotation.*;
+
+    @Target(ElementType.TYPE)
+    @Retention(RetentionPolicy.RUNTIME)
+    @Documented
+    @Import(UserConfig.class)
+    public @interface EnableUser {
+
+    } 
+    ```
+
+**重点：Enable注解底层原理是使用@Import注解实现Bean的动态加载**
 
 ## 05-@Import详解
 
 @Enable*底层依赖于@Import注解导入一些类，使用@Import导入的类会被Spring加载到IOC容器中。而@Import提供4中用法：
 
-①导入Bean
+    ①导入Bean
 
-②导入配置类
+    ②导入配置类
 
-③导入 ImportSelector 实现类。一般用于加载配置文件中的类
+    ③导入 ImportSelector 实现类。一般用于加载配置文件中的类
 
-④导入 ImportBeanDefinitionRegistrar 实现类。
+    ④导入 ImportBeanDefinitionRegistrar 实现类。
 
 - 导入Bean  @Import(User.class)
 
@@ -908,7 +948,7 @@ pom文件中的排除依赖效果
   ```java
 
   /**
- * Import4中用法：
+   * Import4中用法：
    *  1. 导入Bean
    *  2. 导入配置类
    *  3. 导入ImportSelector的实现类。
@@ -957,7 +997,7 @@ pom文件中的排除依赖效果
 
 
 
-- @EnableAutoConfiguration 注解内部使用 @Import(AutoConfigurationImportSelector.**class**)来加载配置类。 
+- @EnableAutoConfiguration 注解内部使用 @Import(AutoConfigurationImportSelector.class)来加载配置类。 
 
 - 配置文件位置：META-INF/spring.factories，该配置文件中定义了大量的配置类，当 SpringBoot 应用启动时，会自动加载这些配置类，初始化Bean
 
@@ -965,7 +1005,7 @@ pom文件中的排除依赖效果
 
 ## 07-自定义starter步骤分析
 
-**需求：**自定义redis-starter。要求当导入redis坐标时，SpringBoot自动创建Jedis的Bean。
+**需求：** 自定义redis-starter。要求当导入redis坐标时，SpringBoot自动创建Jedis的Bean。
 
 **步骤：**
 
@@ -985,11 +1025,11 @@ pom文件中的排除依赖效果
 
 ```xml
  <!--引入configure-->
-        <dependency>
-            <groupId>com.itheima</groupId>
-            <artifactId>redis-spring-boot-autoconfigure</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+<dependency>
+    <groupId>com.itheima</groupId>
+    <artifactId>redis-spring-boot-autoconfigure</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</dependency>
 ```
 
 2. **创建redis-spring-boot-autoconfigure配置工程**  
@@ -1028,14 +1068,11 @@ public class RedisProperties {
 @Configuration
 @EnableConfigurationProperties(RedisProperties.class)
 public class RedisAutoConfiguration {
-
-
     /**
      * 提供Jedis的bean
      */
     @Bean
     public Jedis jedis(RedisProperties redisProperties) {
-       
         return new Jedis(redisProperties.getHost(), redisProperties.getPort());
     }
 }
@@ -1045,7 +1082,6 @@ public class RedisAutoConfiguration {
 
 在resource目录下创建META-INF文件夹并创建spring.factories
 
-注意：”\ “是换行使用的
 
 ```properties
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
@@ -1055,19 +1091,19 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 3. **在springboot-enable工程中引入自定义的redis的starter**
 
 ```
-  <!--自定义的redis的starter-->
-        <dependency>
-            <groupId>com.itheima</groupId>
-            <artifactId>redis-spring-boot-starter</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+<!--自定义的redis的starter-->
+<dependency>
+    <groupId>com.itheima</groupId>
+    <artifactId>redis-spring-boot-starter</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</dependency>
 ```
 
 在SpringbootEnableApplication启动类中测试
 
 ```java
- Jedis jedis = context.getBean(Jedis.class);
-        System.out.println(jedis);
+Jedis jedis = context.getBean(Jedis.class);
+System.out.println(jedis);
 ```
 
 ## 09-自定义starter实现-2
@@ -1103,120 +1139,118 @@ public class RedisAutoConfiguration {
 
  Java中的事件监听机制定义了以下几个角色：
 
-①事件：Event，继承 java.util.EventObject 类的对象
+- 事件：Event，继承 java.util.EventObject 类的对象
 
-②事件源：Source ，任意对象Object
+- 事件源：Source ，任意对象Object
 
-③监听器：Listener，实现 java.util.EventListener 接口 的对象
-
+- 监听器：Listener，实现 java.util.EventListener 接口 的对象
 
 
 SpringBoot 在项目启动时，会对几个监听器进行回调，我们可以实现这些监听器接口，在项目启动时完成一些操作。
 
-- ApplicationContextInitializer、
+- **ApplicationContextInitializer**
 
-- SpringApplicationRunListener、
+    MyApplicationContextInitializer的使用要在resource文件夹下添加META-INF/spring.factories
 
-- CommandLineRunner、
+    ```properties
+    org.springframework.context.ApplicationContextInitializer=\
+        com.itheima.springbootlistener.listener.MyApplicationContextInitializer
+    ```
 
-- ApplicationRunner
+    ```java
+    @Component
+    public class MyApplicationContextInitializer implements ApplicationContextInitializer {
+        @Override
+        public void initialize(ConfigurableApplicationContext applicationContext) {
+            System.out.println("ApplicationContextInitializer....initialize");
+        }
+    }
+    ```
 
+- **SpringApplicationRunListener**
+
+    MySpringApplicationRunListener的使用要添加构造器
+
+    ```java
+    public class MySpringApplicationRunListener implements SpringApplicationRunListener {
+
+        public MySpringApplicationRunListener(SpringApplication application, String[] args) {
+        }
+
+        @Override
+        public void starting() {
+            System.out.println("starting...项目启动中");
+        }
+
+        @Override
+        public void environmentPrepared(ConfigurableEnvironment environment) {
+            System.out.println("environmentPrepared...环境对象开始准备");
+        }
+
+        @Override
+        public void contextPrepared(ConfigurableApplicationContext context) {
+            System.out.println("contextPrepared...上下文对象开始准备");
+        }
+
+        @Override
+        public void contextLoaded(ConfigurableApplicationContext context) {
+            System.out.println("contextLoaded...上下文对象开始加载");
+        }
+
+        @Override
+        public void started(ConfigurableApplicationContext context) {
+            System.out.println("started...上下文对象加载完成");
+        }
+
+        @Override
+        public void running(ConfigurableApplicationContext context) {
+            System.out.println("running...项目启动完成，开始运行");
+        }
+
+        @Override
+        public void failed(ConfigurableApplicationContext context, Throwable exception) {
+            System.out.println("failed...项目启动失败");
+        }
+    }
+    ```
+
+- **CommandLineRunner**
+
+    MyCommandLineRunner
+
+    ```java
+    @Component
+    public class MyCommandLineRunner implements CommandLineRunner {
+        @Override
+        public void run(String... args) throws Exception {
+            System.out.println("CommandLineRunner...run");
+            System.out.println(Arrays.asList(args));
+        }
+    }
+
+    ```
+
+- **ApplicationRunner**
+
+    MyApplicationRunner
+
+    ```java
+    /**
+    * 当项目启动后执行run方法。
+    */
+    @Component
+    public class MyApplicationRunner implements ApplicationRunner {
+        @Override
+        public void run(ApplicationArguments args) throws Exception {
+            System.out.println("ApplicationRunner...run");
+            System.out.println(Arrays.asList(args.getSourceArgs()));
+        }
+    } 
+    ```
   
-  
-  自定义监听器的启动时机：MyApplicationRunner和MyCommandLineRunner都是当项目启动后执行，使用@Component放入容器即可使用
+**自定义监听器的启动时机：** 
+- MyApplicationRunner和MyCommandLineRunner都是当项目启动后执行，使用@Component放入容器即可使用
 
-MyApplicationRunner
-
-```java
-/**
- * 当项目启动后执行run方法。
- */
-@Component
-public class MyApplicationRunner implements ApplicationRunner {
-    @Override
-    public void run(ApplicationArguments args) throws Exception {
-        System.out.println("ApplicationRunner...run");
-        System.out.println(Arrays.asList(args.getSourceArgs()));
-    }
-} 
-```
-
- MyCommandLineRunner
-
-```java
-@Component
-public class MyCommandLineRunner implements CommandLineRunner {
-    @Override
-    public void run(String... args) throws Exception {
-        System.out.println("CommandLineRunner...run");
-        System.out.println(Arrays.asList(args));
-    }
-}
-
-```
-
-
-
-MyApplicationContextInitializer的使用要在resource文件夹下添加META-INF/spring.factories
-
-```properties
-org.springframework.context.ApplicationContextInitializer=com.itheima.springbootlistener.listener.MyApplicationContextInitializer
-```
-
-```
-@Component
-public class MyApplicationContextInitializer implements ApplicationContextInitializer {
-    @Override
-    public void initialize(ConfigurableApplicationContext applicationContext) {
-        System.out.println("ApplicationContextInitializer....initialize");
-    }
-}
-```
-
-MySpringApplicationRunListener的使用要添加**构造器**
-
-```
-public class MySpringApplicationRunListener implements SpringApplicationRunListener {
-
-    public MySpringApplicationRunListener(SpringApplication application, String[] args) {
-    }
-
-    @Override
-    public void starting() {
-        System.out.println("starting...项目启动中");
-    }
-
-    @Override
-    public void environmentPrepared(ConfigurableEnvironment environment) {
-        System.out.println("environmentPrepared...环境对象开始准备");
-    }
-
-    @Override
-    public void contextPrepared(ConfigurableApplicationContext context) {
-        System.out.println("contextPrepared...上下文对象开始准备");
-    }
-
-    @Override
-    public void contextLoaded(ConfigurableApplicationContext context) {
-        System.out.println("contextLoaded...上下文对象开始加载");
-    }
-
-    @Override
-    public void started(ConfigurableApplicationContext context) {
-        System.out.println("started...上下文对象加载完成");
-    }
-
-    @Override
-    public void running(ConfigurableApplicationContext context) {
-        System.out.println("running...项目启动完成，开始运行");
-    }
-
-    @Override
-    public void failed(ConfigurableApplicationContext context, Throwable exception) {
-        System.out.println("failed...项目启动失败");
-    }
-}
-```
 
 # 八、SpringBoot流程分析
 
@@ -1263,11 +1297,8 @@ public class MySpringApplicationRunListener implements SpringApplicationRunListe
 
 ```xml
 <dependency>
-
   <groupId>org.springframework.boot</groupId>
-
   <artifactId>spring-boot-starter-actuator</artifactId>
-
 </dependency>
 ```
 
@@ -1302,7 +1333,7 @@ public class MySpringApplicationRunListener implements SpringApplicationRunListe
 }
 ```
 
-http://localhost:8080/actuator/info
+`http://localhost:8080/actuator/info`
 
 在application.properties中配置
 
@@ -1311,7 +1342,7 @@ info.name=lucy
 info.age=99
 ```
 
-http://localhost:8080/actuator/health
+`http://localhost:8080/actuator/health`
 
 开启健康检查详细信息
 
@@ -1454,7 +1485,7 @@ SpringBoot Admin 有两个角色，客户端(Client)和服务端(Server)。
 
 以下为创建服务端和客户端工程步骤：
 
-admin-server：
+**admin-server：**
 
 ①创建 admin-server 模块
 
@@ -1463,10 +1494,10 @@ admin-server：
 ![1571812312998](img/1571812312998.png)
 
 ```xml
-      <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-server</artifactId>
-        </dependency>
+<dependency>
+    <groupId>de.codecentric</groupId>
+    <artifactId>spring-boot-admin-starter-server</artifactId>
+</dependency>
 ```
 
 ③在引导类上启用监控功能@EnableAdminServer
@@ -1484,19 +1515,17 @@ public class SpringbootAdminServerApplication {
 
 ```
 
-
-
-admin-client：
+**admin-client：**
 
 ①创建 admin-client 模块
 
 ②导入依赖坐标 admin-starter-client
 
 ```xml
-  		<dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
-        </dependency>
+<dependency>
+    <groupId>de.codecentric</groupId>
+    <artifactId>spring-boot-admin-starter-client</artifactId>
+</dependency>
 ```
 
 ③配置相关信息：server地址等
@@ -1548,14 +1577,14 @@ public class SpringbootDeployApplication extends SpringBootServletInitializer {
 指定打包的名称
 
 ```xml
- <build>
-        <finalName>springboot</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+<build>
+    <finalName>springboot</finalName>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
 ```
 
