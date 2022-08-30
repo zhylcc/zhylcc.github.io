@@ -16,9 +16,9 @@
 
 - 集群管理
 
-![1592054580488](assets\1592054580488.png)
+![1592054580488](assets/1592054580488.png)
 
-![1592054603167](assets\1592054603167.png)
+![1592054603167](assets/1592054603167.png)
 
 # 2)ZooKeeper 安装与配置
 
@@ -145,7 +145,7 @@ zookeeper没有启动
 
 •重启 ZooKeeper 服务: ./zkServer.sh restart 
 
-![1592055088686](assets\1592055088686.png)
+![1592055088686](assets/1592055088686.png)
 
 ##3.3)Zookeeper客户端常用命令
 
@@ -203,9 +203,9 @@ delete /节点path
 deleteall /节点path
 ```
 
-![1592055332198](assets\1592055332198.png)
+![1592055332198](assets/1592055332198.png)
 
-![1592055345400](assets\1592055345400.png)
+![1592055345400](assets/1592055345400.png)
 
 ## 3.4)客户端命令-创建临时有序节点
 
@@ -249,7 +249,7 @@ ls –s /节点path
 
 •numChildren：当前节点的子节点个数 
 
-![1592055462588](assets\1592055462588.png)
+![1592055462588](assets/1592055462588.png)
 
 # 4)ZooKeeper JavaAPI 操作
 
@@ -281,7 +281,7 @@ ls –s /节点path
 
 资料文件夹下pom.xml和log4j.properties
 
-![1592055569716](assets\1592055569716.png)
+![1592055569716](assets/1592055569716.png)
 
 2、创建测试类，使用curator连接zookeeper
 
@@ -472,7 +472,7 @@ public void testDelete4() throws Exception {
 
 •TreeCache : 可以监控整个树上的所有节点，类似于PathChildrenCache和NodeCache的组合
 
-![1592057429708](assets\1592057429708.png)
+![1592057429708](assets/1592057429708.png)
 
 ## 4.8)Zookeeper JavaAPI操作-Watch监听-NodeCache
 
@@ -564,7 +564,7 @@ public void testTreeCache() throws Exception {
 
 •那么就需要一种更加高级的锁机制，来处理种跨机器的进程之间的数据同步问题——这就是分布式锁。
 
-![1592057871141](assets\1592057871141.png)
+![1592057871141](assets/1592057871141.png)
 
 ##4.12)Zookeeper 分布式锁-zookeeper分布式锁原理
 
@@ -586,7 +586,7 @@ public void testTreeCache() throws Exception {
 
 ​    并注册监听。
 
-![1592057925831](assets\1592057925831.png)
+![1592057925831](assets/1592057925831.png)
 
 ##4.13)Zookeeper 分布式锁-模拟12306售票案例
 
@@ -604,7 +604,7 @@ public void testTreeCache() throws Exception {
 
   - InterProcessSemaphoreV2：共享信号量
 
-![1592058017457](assets\1592058017457.png)
+![1592058017457](assets/1592058017457.png)
 
 1,创建线程进行加锁设置
 
@@ -817,7 +817,7 @@ server.3=192.168.149.135:2883:3883
 
 
 
-![img](assets\wps11.jpg) 
+![img](assets/wps11.jpg) 
 
 启动后我们查询一下每个实例的运行状态
 
@@ -831,17 +831,17 @@ server.3=192.168.149.135:2883:3883
 
 先查询第一个服务
 
-![img](assets\wps12.jpg) 
+![img](assets/wps12.jpg) 
 
 Mode为follower表示是**跟随者**（从）
 
 再查询第二个服务Mod 为leader表示是**领导者**（主）
 
-![img](assets\wps13.jpg) 
+![img](assets/wps13.jpg) 
 
 查询第三个为跟随者（从）
 
-![img](assets\wps14.jpg) 
+![img](assets/wps14.jpg) 
 
 ##5.6)模拟集群异常
 
@@ -856,7 +856,7 @@ Mode为follower表示是**跟随者**（从）
 /usr/local/zookeeper-cluster/zookeeper-2/bin/zkServer.sh status
 ```
 
-![img](assets\wps15.jpg) 
+![img](assets/wps15.jpg) 
 
 由此得出结论，3个节点的集群，从服务器挂掉，集群正常
 
@@ -870,7 +870,7 @@ Mode为follower表示是**跟随者**（从）
 
 
 
-![img](assets\wps16.jpg) 
+![img](assets/wps16.jpg) 
 
 由此得出结论，3个节点的集群，2个从服务器都挂掉，主服务器也无法运行。因为可运行的机器没有超过集群总数量的半数。
 
@@ -884,7 +884,7 @@ Mode为follower表示是**跟随者**（从）
 
 
 
-![img](assets\wps17.jpg) 
+![img](assets/wps17.jpg) 
 
 （4）我们把3号服务器也启动起来，把2号服务器停掉,停掉后观察1号和3号的状态。
 
@@ -898,7 +898,7 @@ Mode为follower表示是**跟随者**（从）
 
 
 
-![img](assets\wps18.jpg) 
+![img](assets/wps18.jpg) 
 
 发现新的leader产生了~  
 
@@ -915,7 +915,7 @@ Mode为follower表示是**跟随者**（从）
 
 
 
-![img](assets\wps19.jpg)![img](assets\wps20.jpg) 
+![img](assets/wps19.jpg)![img](assets/wps20.jpg) 
 
 我们会发现，2号服务器启动后依然是跟随者（从服务器），3号服务器依然是领导者（主服务器），没有撼动3号服务器的领导地位。
 
@@ -945,4 +945,4 @@ Mode为follower表示是**跟随者**（从）
 
 	1. 处理客户端非事务请求，转发事务请求给Leader服务器
 
-![1592058451822](assets\1592058451822.png)
+![1592058451822](assets/1592058451822.png)
